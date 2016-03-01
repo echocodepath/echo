@@ -53,4 +53,4 @@ profile page
 Discovery feed
 
 ## Data Model
-![Echo Schema](http://s8.postimg.org/6kyc0ppub/Screen_Shot_2016_03_01_at_3_09_03_PM.png)
+![Echo Schema](s8.postimg.org/6kyc0ppub/Screen_Shot_2016_03_01_at_3_09_03_PM.png)
