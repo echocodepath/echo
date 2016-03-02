@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */; };
+		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
-		F56D5DF81C855AF6006A7D7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* ViewController.swift */; };
+		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
 		F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */; };
 		F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */; };
@@ -19,9 +20,10 @@
 		1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Echo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494E28C75F5AABB08FD92F7 /* Pods-Echo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Echo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Echo/Pods-Echo.debug.xcconfig"; sourceTree = "<group>"; };
 		B0A30DE2FAED7972BEBD3724 /* Pods-Echo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Echo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Echo/Pods-Echo.release.xcconfig"; sourceTree = "<group>"; };
+		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F56D5DF71C855AF6006A7D7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F56D5DFA1C855AF6006A7D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F56D5DFF1C855AF6006A7D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +48,15 @@
 				1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B26D5E9F1C879E3500528F2D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */,
+				B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		BA18F551F5EDB66B91F68C53 /* Pods */ = {
@@ -78,8 +89,8 @@
 		F56D5DF41C855AF6006A7D7A /* Echo */ = {
 			isa = PBXGroup;
 			children = (
+				B26D5E9F1C879E3500528F2D /* View Controllers */,
 				F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */,
-				F56D5DF71C855AF6006A7D7A /* ViewController.swift */,
 				F56D5DF91C855AF6006A7D7A /* Main.storyboard */,
 				F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */,
 				F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */,
@@ -211,7 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56D5DF81C855AF6006A7D7A /* ViewController.swift in Sources */,
+				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
+				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
