@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if (FBSDKAccessToken.currentAccessToken() == nil){
+            print("user is not logged in")
+        } else {
+            print("user logged in!!")
+        }
     }
 
     override func didReceiveMemoryWarning() {
