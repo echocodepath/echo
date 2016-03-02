@@ -20,7 +20,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {
-            print("user logged in!!")
+            let authenticatedSetupViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AuthenticatedSetupViewController") as! AuthenticatedSetupViewController
+            let authSetupPageNav = UINavigationController(rootViewController: authenticatedSetupViewController)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = authSetupPageNav
         }
     }
     
