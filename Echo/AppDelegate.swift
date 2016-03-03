@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         FBSDKLoginButton.classForCoder()
-        
+        Parse.setApplicationId("xQIGeEbrMBnA67fK51rSvrk9rpKiKP6ffqzsMoY6", clientKey: "L787WmbVcMpjlEsRXSIDMTT9ew8RjOsgRlDuOm0J")
+
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
