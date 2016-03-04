@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 class HomeViewController: UIViewController {
 
+    @IBAction func onLogout(sender: AnyObject) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        
+        let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let loginNav = UINavigationController(rootViewController: loginViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginNav
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
