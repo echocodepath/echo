@@ -1,27 +1,15 @@
 //
-//  AuthenticatedSetupViewController.swift
+//  HomeViewController.swift
 //  Echo
 //
-//  Created by Isis Anchalee on 3/2/16.
+//  Created by Isis Anchalee on 3/4/16.
 //  Copyright © 2016 echo. All rights reserved.
 //
 
 import UIKit
-import FBSDKLoginKit
-import ParseFacebookUtilsV4
 
-class AuthenticatedSetupViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    @IBAction func onLogout(sender: AnyObject) {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-
-        let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        let loginNav = UINavigationController(rootViewController: loginViewController)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = loginNav
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
