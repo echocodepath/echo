@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtilsV4
 
 //
 //  User.swift
@@ -20,50 +22,30 @@ var _currentUser: User?
 let currentUserKey = "kCurrentUserKey"
 
 class User: NSObject {
-    var user_id: Int?
-    var name: String?
+    var facebook_id: String?
+    var username: String?
     var is_teacher: Bool?
     var email: String?
-    var description: String?
-    var location: String?
     var profilePhotoUrl: String?
     var coverPhotoUrl: String?
-    var estimated_wait: Int?
-    var cost: Int?
     
-    // TODO: Fake hardcoded User info to be filled for real by Isis later
-    init(userDict: NSDictionary) {
-        print(userDict)
+    init(user: PFUser) {
+        super.init()
+        returnUserData()
     }
     
-    class var currentUser: User? {
-        get {
-            if let data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData {
-            do {
-                let data = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as! NSDictionary
-                User.currentUser = User(dictionary: data)
-            } catch {
-                print("Failed getting JSON object with data")
-            }
-        }
-        
-        return _currentUser
-        }
-        
-        set(user) {
-            _currentUser = user
-            if user != nil {
-                do {
-                    let data = try NSJSONSerialization.dataWithJSONObject((user?.dictionary)!, options: NSJSONWritingOptions(rawValue: 0))
-                    NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
-                } catch {
-                    print("Failed getting data with JSON object")
-                }
+    func returnUserData() {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if ((error) != nil) {
+                print("Error: \(error)")
             } else {
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
+                self.facebook_id = result.valueForKey("id") as? String
+                self.username = result.valueForKey("name") as? String
+                self.email = result.valueForKey("email") as? String
+                self.profilePhotoUrl = "https://graph.facebook.com/\(self.facebook_id)/picture?width=300&height=300"
+                self.coverPhotoUrl = "https://graph.facebook.com/\(FBSDKAccessToken.currentAccessToken().userID)/cover?"
             }
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
+        })
     }
-    
 }

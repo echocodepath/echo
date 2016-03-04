@@ -29,12 +29,14 @@ class LoginViewController: UIViewController {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
+                print("HIII!")
+                let echoUser = User(user: user)
+                print("onlogin \(user)")
                 if user.isNew {
                     self.openSetupPage()
                 } else {
                     self.openHomePage()
                 }
-                
             } else {
                 print("Uh oh. The user cancelled the Facebook login.")
             }
