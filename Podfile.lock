@@ -13,6 +13,12 @@ PODS:
     - FBSDKCoreKit
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
+  - ParseFacebookUtilsV4 (1.11.1):
+    - Bolts/Tasks (>= 1.6)
+    - FBSDKCoreKit (~> 4.10)
+    - FBSDKLoginKit (~> 4.10)
+    - FBSDKTVOSKit (~> 4.10)
+    - Parse (~> 1.12)
 
 DEPENDENCIES:
   - Bolts
@@ -20,6 +26,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - Parse
+  - ParseFacebookUtilsV4
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
@@ -27,5 +34,6 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: d3d4a2e9d31954deb00bfea964167a05ca1ea976
   FBSDKShareKit: 54587b4624706ace1e810cf83412a918141f807a
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
 
 COCOAPODS: 0.39.0

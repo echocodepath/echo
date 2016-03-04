@@ -5,6 +5,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="fI6-eP-eHz">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="7qs-zB-s7O" customClass="HomeViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qaf-jz-TtD"/>
+                        <viewControllerLayoutGuide type="bottom" id="TfL-17-DDP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeViewController" id="Y2O-1d-xQX" customClass="Home">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zac-SD-D2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046" y="-15"/>
+        </scene>
         <!--Echo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,25 +35,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-Ws-dM4" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="180" y="197" width="224" height="35"/>
-                                <color key="backgroundColor" red="0.64029969757948524" green="0.7009483448600804" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="224" id="LOW-hE-jXV"/>
-                                    <constraint firstAttribute="height" constant="35" id="XFJ-yu-sO8"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbw-8H-k0U">
+                                <rect key="frame" x="241" y="273" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8F0-wN-tTc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="u7b-Ws-dM4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Ag-BS-fBY"/>
-                            <constraint firstItem="u7b-Ws-dM4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XDI-Oe-rv2"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Echo" id="bti-Wh-LMK"/>
-                    <connections>
-                        <outlet property="loginBtn" destination="u7b-Ws-dM4" id="6ni-Oa-hQS"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,11 +107,22 @@
                             <constraint firstItem="cfu-OX-hf7" firstAttribute="centerX" secondItem="IEa-gA-XmK" secondAttribute="centerX" id="lvr-pl-0ky"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="glU-SH-fh0"/>
+                    <navigationItem key="navigationItem" id="glU-SH-fh0">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="SYn-0p-vS8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B0v-pb-hcA">
+                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogout:" destination="yn0-mm-zPt" eventType="touchUpInside" id="iae-eJ-J2w"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wga-KM-JvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="-570"/>
+            <point key="canvasLocation" x="887" y="-762"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ohv-a2-a7c">

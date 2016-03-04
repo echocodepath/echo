@@ -8,26 +8,52 @@
 
 import UIKit
 import FBSDKLoginKit
+import ParseFacebookUtilsV4
 import Parse
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-    @IBOutlet weak var loginBtn: FBSDKLoginButton!
+class LoginViewController: UIViewController {
+//, FBSDKLoginButtonDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginBtn.delegate = self
-        loginBtn.readPermissions = ["public_profile", "email", "user_friends"]
         
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {
-            let authenticatedSetupViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AuthenticatedSetupViewController") as! AuthenticatedSetupViewController
-            let authSetupPageNav = UINavigationController(rootViewController: authenticatedSetupViewController)
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.window?.rootViewController = authSetupPageNav
+            openSetupPage()
         }
     }
     
+    @IBAction func onLogin(sender: AnyObject) {
+        let permissions = ["public_profile", "email", "user_friends"]
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    self.openSetupPage()
+                } else {
+                    self.openHomePage()
+                }
+                
+            } else {
+                print("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
+    }
+    
+    func openSetupPage(){
+        let authenticatedSetupViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AuthenticatedSetupViewController") as! AuthenticatedSetupViewController
+        let authSetupPageNav = UINavigationController(rootViewController: authenticatedSetupViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = authSetupPageNav
+    }
+    
+    func openHomePage(){
+        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+        let homePageNav = UINavigationController(rootViewController: homeViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = homePageNav
+    }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!){
         print("user is logged out")
@@ -36,30 +62,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if (error != nil) {
-            print(error.localizedDescription)
-            return
-        }
-        
-        if let userToken = result.token {
-            //Get user access token
-            let token:FBSDKAccessToken = result.token
-            
-            print("User ID = \(FBSDKAccessToken.currentAccessToken().userID)")
-            
-            let authenticatedSetupViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AuthenticatedSetupViewController") as! AuthenticatedSetupViewController
-            
-            let authSetupPageNav = UINavigationController(rootViewController: authenticatedSetupViewController)
-            
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            appDelegate.window?.rootViewController = authSetupPageNav
-            
-        }
-        
     }
 }
 
