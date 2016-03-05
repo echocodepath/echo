@@ -7,9 +7,43 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 class AuthenticatedSetupViewController: UIViewController {
 
+    @IBAction func onLogout(sender: AnyObject) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        openLoginPage()
+    }
+    
+    func openLoginPage() {
+        let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let loginNav = UINavigationController(rootViewController: loginViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginNav
+    }
+    
+    func openHomePage() {
+        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+        let homePageNav = UINavigationController(rootViewController: homeViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = homePageNav
+    }
+    
+    @IBAction func onSelectDanceTeacher(sender: AnyObject) {
+        let responseDict: [String: String] = ["is_teacher": "true"]
+        ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
+        openHomePage()
+    }
+    
+    @IBAction func onSelectDanceStudent(sender: AnyObject) {
+        let responseDict: [String: String] = ["is_teacher": "false"]
+        ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
+        openHomePage()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
