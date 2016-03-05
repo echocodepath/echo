@@ -16,7 +16,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "login_background.png")!)
+
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {

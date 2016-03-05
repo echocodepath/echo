@@ -31,7 +31,21 @@ class ParseClient: NSObject {
                 // There was a problem, check error.description
             }
         }
-
     }
-
+    
+    func setCurrentUserWithDict(dict: NSDictionary) {
+        for (key, val) in dict {
+            currentUser[key as! String] = val
+        }
+        currentUser.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                print("success!!")
+                // The object has been saved.
+            } else {
+                print("there was a problem saving asset")
+                // There was a problem, check error.description
+            }
+        }
+    }
 }
