@@ -33,12 +33,14 @@ class AuthenticatedSetupViewController: UIViewController {
     }
     
     @IBAction func onSelectDanceTeacher(sender: AnyObject) {
-        ParseClient.sharedInstance.setUserValue("is_teacher", value: "true")
+        let responseDict: [String: String] = ["is_teacher": "true"]
+        ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
         openHomePage()
     }
     
     @IBAction func onSelectDanceStudent(sender: AnyObject) {
-        ParseClient.sharedInstance.setUserValue("is_teacher", value: "false")
+        let responseDict: [String: String] = ["is_teacher": "false"]
+        ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
         openHomePage()
     }
     
