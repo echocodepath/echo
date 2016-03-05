@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AE8EBC13395254142AE4D66F'
+               BlueprintIdentifier = '7B478974F9978111A3253187'
                BlueprintName = 'Pods-Echo'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Echo.framework'>
