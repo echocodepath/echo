@@ -2,7 +2,7 @@
 //  User.swift
 //  Echo
 //
-//  Created by Isis Anchalee on 3/4/16.
+//  Created by Christine Hong & Isis Anchalee on 3/4/16.
 //  Copyright © 2016 echo. All rights reserved.
 //
 
@@ -10,27 +10,20 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
-//
-//  User.swift
-//  Echo
-//
-//  Created by Christine Hong on 3/3/16.
-//  Copyright © 2016 echo. All rights reserved.
-//
-
 var _currentUser: User?
 let currentUserKey = "kCurrentUserKey"
 
 class User: NSObject {
     var facebook_id: String?
     var username: String?
-    var is_teacher: Bool?
+    var is_teacher: String?
     var email: String?
     var profilePhotoUrl: String?
     var coverPhotoUrl: String?
     
     init(user: PFUser) {
         super.init()
+        is_teacher = "false"
         returnUserData()
     }
     

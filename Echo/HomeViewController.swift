@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
-
 class HomeViewController: UIViewController {
 
     @IBAction func onLogout(sender: AnyObject) {
@@ -24,6 +23,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(PFUser.currentUser()!.is_teacher)
 
         // Do any additional setup after loading the view.
     }

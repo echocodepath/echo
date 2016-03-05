@@ -67,6 +67,9 @@
                                 <rect key="frame" x="248" y="328" width="103" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Dance Teacher"/>
+                                <connections>
+                                    <action selector="onSelectDanceTeacher:" destination="yn0-mm-zPt" eventType="touchUpInside" id="tM4-hx-OSy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-OX-hf7">
                                 <rect key="frame" x="250" y="175" width="100" height="35"/>
@@ -77,6 +80,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiK-AP-VTm">
                                 <rect key="frame" x="249" y="378" width="102" height="30"/>
                                 <state key="normal" title="Dance Student"/>
+                                <connections>
+                                    <action selector="onSelectDanceStudent:" destination="yn0-mm-zPt" eventType="touchUpInside" id="PO3-n8-jyq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
