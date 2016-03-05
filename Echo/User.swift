@@ -51,7 +51,7 @@ class User: NSObject {
         self.facebook_id = result.valueForKey("id") as? String
         self.username = result.valueForKey("name") as? String
         self.email = result.valueForKey("email") as? String
-        self.profilePhotoUrl = "https://graph.facebook.com/\(self.facebook_id)/picture?width=300&height=300"
+        self.profilePhotoUrl = "https://graph.facebook.com/\(self.facebook_id!)/picture?width=300&height=300"
         self.coverPhotoUrl = "https://graph.facebook.com/\(FBSDKAccessToken.currentAccessToken().userID)/cover?"
     }
     
