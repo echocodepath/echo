@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
                 if user.isNew {
                     self.openSetupPage()
                 } else {
-                    self.openHomePage()
+                    self.openSetupPage()
                 }
             } else {
             }
