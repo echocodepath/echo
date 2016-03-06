@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vlD-ZZ-OvJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vlD-ZZ-OvJ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Echo-->
@@ -36,7 +36,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Mtr-Bw-Fv9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6b-5q-co8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vlD-ZZ-OvJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -49,6 +48,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HO6-Fm-SkW"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6b-5q-co8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="-192"/>
         </scene>
@@ -113,6 +113,14 @@
             </objects>
             <point key="canvasLocation" x="887" y="-762"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="zgA-Dt-BPs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="dFN-BL-YjY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDU-QD-f71" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2065.5" y="-466"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
             <objects>
@@ -127,6 +135,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ndH-Fj-Olm">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" id="1UK-Ja-Blt">
+                            <connections>
+                                <segue destination="dFN-BL-YjY" kind="presentation" id="xB6-Ko-XVf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="EYg-dg-Cwg">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Xy-Kq-FjS">
                                 <rect key="frame" x="447" y="7" width="133" height="30"/>
