@@ -24,24 +24,30 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         user = User(user: PFUser.currentUser()!)
-        //user = User.currentUser
-        
-        print("--------USER----------")
         
         if let user = self.user {
             self.nameLabel.text = user.username!
-            print("NAME LABEL")
-            print(user.username)
             self.locationLabel.text = "San Francisco, CA"
             self.descriptionLabel.text = "Developer goddess working in San Francisco. When I'm not at Yahoo, you can find me at a dance class or chatting on Slack. Go Bulldogs!"
-//            if let profImage = user.profilePhotoUrl {
-//                print("PROF IMAGE")
-//                print(profImage)
-//                self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
-//            }
-//            if let coverImage = user.coverPhotoUrl {
-//                self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
-//            }
+            
+            if let profImage = user.profilePhotoUrl {
+                if let url  = NSURL(string: profImage),
+                    data = NSData(contentsOfURL: url)
+                {
+                    self.profilePhoto.image = UIImage(data: data)
+                }
+                //self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
+            }
+            if let coverImage = user.coverPhotoUrl {
+                print("coverPhotoUrl")
+                print(coverImage)
+                if let url  = NSURL(string: coverImage),
+                    data = NSData(contentsOfURL: url)
+                {
+                    self.coverPhoto.image = UIImage(data: data)
+                }
+                //self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
+            }
         }
         
     }

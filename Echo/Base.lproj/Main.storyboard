@@ -137,6 +137,9 @@
                                 <rect key="frame" x="20" y="512" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Request Feedback"/>
+                                <connections>
+                                    <segue destination="FV8-a5-ZiI" kind="modal" id="7w6-c2-wXG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +149,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKC-Sx-hyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2122" y="-39"/>
+        </scene>
+        <!--FeedbackRequest-->
+        <scene sceneID="gZc-ON-dfi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FeedbackRequest" id="FV8-a5-ZiI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvC-D9-aWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461.5" y="120"/>
         </scene>
         <!--Journal Entries View Controller-->
         <scene sceneID="T4M-9j-Jt0">
@@ -170,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujd-y8-OA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="257"/>
+            <point key="canvasLocation" x="1517" y="194"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
