@@ -15,6 +15,11 @@
 		B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */; };
 		B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */; };
 		B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */; };
+		EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */; };
+		EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */; };
+		EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */; };
+		EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */; };
+		EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D91C8DF60700BF0393 /* .gitignore */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -35,6 +40,11 @@
 		B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordEntryViewController.swift; sourceTree = "<group>"; };
 		B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntriesViewController.swift; sourceTree = "<group>"; };
 		B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
+		EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
+		EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
+		EFDCA1D91C8DF60700BF0393 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +86,8 @@
 				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
 				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
+				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
+				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -133,6 +145,7 @@
 				F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */,
 				F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */,
 				F56D5E011C855AF6006A7D7A /* Info.plist */,
+				EFDCA1D91C8DF60700BF0393 /* .gitignore */,
 			);
 			path = Echo;
 			sourceTree = "<group>";
@@ -143,6 +156,8 @@
 				F56D5DF91C855AF6006A7D7A /* Main.storyboard */,
 				F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */,
 				F5E2008E1C8CC64000DECA95 /* Profile.storyboard */,
+				EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */,
+				EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -210,9 +225,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
+				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
 				F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */,
+				EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */,
 				F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */,
 				F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */,
+				EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +296,10 @@
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
 				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
+				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
 				B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */,
+				EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */,
 				B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
