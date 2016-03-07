@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bKx-De-WoB">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Feedback Request View Controller-->
+        <scene sceneID="w3i-S2-ej7">
+            <objects>
+                <viewController id="bKx-De-WoB" customClass="FeedbackRequestViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mNb-ds-AsM"/>
+                        <viewControllerLayoutGuide type="bottom" id="3uo-Hg-ULi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tfU-aP-JPa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Instructors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
+                                <rect key="frame" x="86" y="30" width="148" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                <rect key="frame" x="60" y="62" width="201" height="30"/>
+                                <state key="normal" title="Add teachers in Explore page"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
+                                <rect key="frame" x="0.0" y="112.5" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherFeedbackCell" rowHeight="66" id="RBb-en-e2k" customClass="TeacherFeedbackCell" customModule="Echo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RBb-en-e2k" id="mMf-Yf-4Ec">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7m-4X-4DE">
+                                                    <rect key="frame" x="99" y="14" width="111" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="teacherName" destination="H7m-4X-4DE" id="hz7-4d-k9f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="59" id="5xw-Qo-DE0"/>
+                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" id="6GK-iq-vI9"/>
+                            <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="20" id="8YH-tJ-gnt"/>
+                            <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="C1Z-jm-LTs"/>
+                            <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="86" id="HmU-hl-Vfb"/>
+                            <constraint firstItem="nSy-Oc-eId" firstAttribute="top" secondItem="mNb-ds-AsM" secondAttribute="bottom" constant="10" id="Scd-ll-Iex"/>
+                            <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="86" id="TKH-fE-hdL"/>
+                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="nSy-Oc-eId" secondAttribute="bottom" constant="12" id="X0y-ee-VvM"/>
+                            <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="gwZ-nv-cki"/>
+                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="60" id="m0y-SC-eQ1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="teacherFeedbackList" destination="7ua-rc-djT" id="POu-Ja-bEU"/>
+                        <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="ACC-Jb-5u1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNW-Nn-GeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="107" y="27"/>
+        </scene>
+        <!--Feedback Request Sent View Controller-->
+        <scene sceneID="MuR-Qn-xot">
+            <objects>
+                <viewController id="b0G-Yd-x8h" customClass="FeedbackRequestSentViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eTh-wV-lNi"/>
+                        <viewControllerLayoutGuide type="bottom" id="e4F-ic-f0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sgu-DY-Sl6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feedback request just sent to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnP-Id-2kl">
+                                <rect key="frame" x="39" y="117" width="232" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YM9-hp-p59">
+                                <rect key="frame" x="123" y="290" width="91" height="30"/>
+                                <state key="normal" title="Return Home"/>
+                                <connections>
+                                    <segue destination="wvz-DM-QXa" kind="modal" id="dfe-GU-GjF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rocko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZA-4h-cTD">
+                                <rect key="frame" x="131" y="156" width="48" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="requestedTeacher" destination="SZA-4h-cTD" id="ncC-bP-bGB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMO-T5-Dt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="27"/>
+        </scene>
+        <!--HomeViewController-->
+        <scene sceneID="3Vj-em-yMi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="HomeViewController" id="wvz-DM-QXa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cs1-wO-G6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842.5" y="27"/>
+        </scene>
+    </scenes>
+</document>
