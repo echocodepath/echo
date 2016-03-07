@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var dancersGridView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dancersGridView.delegate = self
+        dancersGridView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -23,6 +28,15 @@ class ExploreViewController: UIViewController {
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = dancersGridView.dequeueReusableCellWithReuseIdentifier("DancerCollectionViewCell", forIndexPath: indexPath) as! DancerCollectionViewCell
+        
+        return cell
     }
 
     /*
