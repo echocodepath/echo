@@ -10,15 +10,16 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
-class FeedbackRequestViewController: UIViewController {
-    
-    @IBOutlet weak var teacherFeedbackList: UITableView!
-    @IBOutlet weak var teacherFeedback: UITableViewCell!
-    
+class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    @IBOutlet weak var tableView: UITableView!
     var teachers: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        teachers.append(User(user: PFUser.currentUser()!))
         
 //        let query = PFQuery(className:"User")
 //        query.whereKey("is_teacher", equalTo: true)
@@ -80,7 +81,7 @@ class FeedbackRequestViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
             case "feedbackSentSegue":
-                if let indexPath = self.teacherFeedbackList.indexPathForSelectedRow {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teachers[indexPath.row])
                 }
