@@ -24,7 +24,7 @@ class FeedbackRequestSentViewController: UIViewController {
     }
     
     func setTeacher(teacher: User) {
-        requestedTeacher.text = teacher.username
+//        self.requestedTeacher.text = teacher.username!
     }
     
 

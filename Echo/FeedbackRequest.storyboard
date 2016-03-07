@@ -39,7 +39,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7m-4X-4DE">
-                                                    <rect key="frame" x="99" y="14" width="111" height="21"/>
+                                                    <rect key="frame" x="29" y="14" width="253" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="teacherFeedbackList" destination="7ua-rc-djT" id="POu-Ja-bEU"/>
+                        <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
                         <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="ACC-Jb-5u1"/>
                     </connections>
                 </viewController>
@@ -101,8 +101,8 @@
                                     <segue destination="wvz-DM-QXa" kind="modal" id="dfe-GU-GjF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rocko" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZA-4h-cTD">
-                                <rect key="frame" x="131" y="156" width="48" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZA-4h-cTD">
+                                <rect key="frame" x="117" y="156" width="62" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
