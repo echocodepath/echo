@@ -20,6 +20,10 @@
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
 		F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */; };
 		F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */; };
+		F577A8561C8DEEC20085974D /* FeedbackRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F577A8551C8DEEC20085974D /* FeedbackRequest.storyboard */; };
+		F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */; };
+		F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */; };
+		F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */; };
 		F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E2008E1C8CC64000DECA95 /* Profile.storyboard */; };
 		F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E200901C8CC64800DECA95 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,10 @@
 		F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F56D5DFF1C855AF6006A7D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F56D5E011C855AF6006A7D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F577A8551C8DEEC20085974D /* FeedbackRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRequest.storyboard; sourceTree = "<group>"; };
+		F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestViewController.swift; sourceTree = "<group>"; };
+		F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherFeedbackCell.swift; sourceTree = "<group>"; };
+		F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestSentViewController.swift; sourceTree = "<group>"; };
 		F5E2008E1C8CC64000DECA95 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F5E200901C8CC64800DECA95 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +84,8 @@
 				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
 				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
+				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
+				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -130,11 +140,20 @@
 				B26D5EAE1C8A550700528F2D /* API */,
 				B26D5EAB1C8A448A00528F2D /* Models */,
 				B26D5E9F1C879E3500528F2D /* View Controllers */,
-				F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */,
+				F577A85B1C8DF3630085974D /* Views */,
 				F56D5DFC1C855AF6006A7D7A /* Assets.xcassets */,
+				F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */,
 				F56D5E011C855AF6006A7D7A /* Info.plist */,
 			);
 			path = Echo;
+			sourceTree = "<group>";
+		};
+		F577A85B1C8DF3630085974D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F5E200921C8CC64F00DECA95 /* Storyboards */ = {
@@ -143,6 +162,7 @@
 				F56D5DF91C855AF6006A7D7A /* Main.storyboard */,
 				F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */,
 				F5E2008E1C8CC64000DECA95 /* Profile.storyboard */,
+				F577A8551C8DEEC20085974D /* FeedbackRequest.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -211,6 +231,7 @@
 			files = (
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */,
+				F577A8561C8DEEC20085974D /* FeedbackRequest.storyboard in Resources */,
 				F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */,
 				F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */,
 			);
@@ -276,7 +297,10 @@
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
+				F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */,
 				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
+				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
+				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
 				B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */,
