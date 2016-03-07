@@ -12,6 +12,9 @@
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
 		B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAF1C8A551800528F2D /* ParseClient.swift */; };
+		B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */; };
+		B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */; };
+		B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B26D5EAF1C8A551800528F2D /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordEntryViewController.swift; sourceTree = "<group>"; };
+		B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntriesViewController.swift; sourceTree = "<group>"; };
+		B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 				B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */,
 				B26D5EA91C8A403400528F2D /* HomeViewController.swift */,
 				F5E200901C8CC64800DECA95 /* ProfileViewController.swift */,
+				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
+				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
+				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -263,7 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
+				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
+				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
+				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
 				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
