@@ -107,7 +107,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="dFN-BL-YjY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDU-QD-f71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1382" y="-430"/>
+            <point key="canvasLocation" x="1445" y="-279"/>
         </scene>
         <!--Explore-->
         <scene sceneID="G2A-wz-MxN">
@@ -115,7 +115,15 @@
                 <viewControllerPlaceholder storyboardName="Explore" id="ccZ-BY-QqA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfq-V4-A9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-244"/>
+            <point key="canvasLocation" x="1388.5" y="-226"/>
+        </scene>
+        <!--Inbox-->
+        <scene sceneID="PKm-vw-tKs">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Inbox" storyboardName="Inbox" id="oiS-Jp-7le" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDu-c8-Ojo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="-174"/>
         </scene>
         <!--Entry View Controller-->
         <scene sceneID="Jgr-Cn-Ihc">
@@ -162,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujd-y8-OA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="219"/>
+            <point key="canvasLocation" x="1582" y="257"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
@@ -176,6 +184,9 @@
                                 <rect key="frame" x="13" y="285" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Inbox"/>
+                                <connections>
+                                    <segue destination="oiS-Jp-7le" kind="modal" id="6Tl-Gj-8jh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uaq-ay-P9x">
                                 <rect key="frame" x="88" y="160" width="144" height="30"/>

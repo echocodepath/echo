@@ -8,11 +8,15 @@
 
 import UIKit
 
-class InboxViewController: UIViewController {
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +25,19 @@ class InboxViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("InboxCell", forIndexPath: indexPath) as! InboxCell
+        return cell
+    }
 
     /*
     // MARK: - Navigation
