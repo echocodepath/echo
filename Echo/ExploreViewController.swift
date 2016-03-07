@@ -23,7 +23,6 @@ class ExploreViewController: UIViewController {
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        print("back")
     }
 
     /*
