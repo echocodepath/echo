@@ -12,36 +12,38 @@ import ParseFacebookUtilsV4
 
 class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
-    var teachers: [User] = []
+    var teachers: [PFObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
-        teachers.append(User(user: PFUser.currentUser()!))
+        let teacher_ids = PFUser.currentUser()?.objectForKey("favorite_teachers") as! NSArray
         
-//        let query = PFQuery(className:"User")
-//        query.whereKey("is_teacher", equalTo: true)
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            
-//            if error == nil {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects!.count) teachers.")
-//                // Do something with the found objects
-//                if let objects = objects {
-//                    for object in objects {
-//                        let user = User(user: object as! PFUser)
-//                        self.teachers.append(user)
-//                        print(object.objectId)
-//                    }
-//                }
-//            } else {
-//                // Log details of the failure
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//        }
+        // TODO: Find better way to reload tableView
+        for id in teacher_ids {
+            let query = PFUser.query()!
+            query.whereKey("facebook_id", equalTo: id)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                
+                if error == nil {
+                    // The find succeeded.
+                    print("Successfully retrieved \(objects!.count) teachers.")
+                    // Do something with the found objects
+                    if let objects = objects {
+                        for object in objects {
+                            self.teachers.append(object)
+                        }
+                    }
+                    self.tableView.reloadData()
+                } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +63,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeacherFeedbackCell", forIndexPath: indexPath) as! TeacherFeedbackCell
         if self.teachers.count > 0 {
-            cell.teacherName.text = self.teachers[indexPath.row].username
+            cell.teacherName.text = self.teachers[indexPath.row]["username"] as? String
         } else {
             cell.teacherName.text = "Please add some favorite teachers"
         }
@@ -70,7 +72,9 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("feedbackSentSegue", sender: self)
+        if self.teachers.count > 0 {
+            performSegueWithIdentifier("feedbackSentSegue", sender: self)
+        }
     }
     
 
