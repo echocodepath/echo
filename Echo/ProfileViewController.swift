@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import Parse
 import ParseFacebookUtilsV4
 
@@ -31,12 +30,15 @@ class ProfileViewController: UIViewController {
                 let id = user.facebook_id!
                 if let favorite_teachers = currentUser["favorite_teachers"] {
                     var array = favorite_teachers as! Array<String>
-                    array.append(id)
-                    currentUser["favorite_teachers"] = array
+                    if !array.contains(id) {
+                        array.append(id)
+                        currentUser["favorite_teachers"] = array
+                    }
                 } else {
                     let array = [id]
-                    let responseDict: [String: Array] = ["favorite_teachers": array]
-                    ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
+                    currentUser["favorite_teachers"] = array
+//                    let responseDict: [String: Array] = ["favorite_teachers": array]
+//                    ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
                 }
                 currentUser.saveInBackground()
             }
@@ -46,7 +48,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: actually get user attached to profile
+        // TODO: actually get user that is selected
         user = User(user: PFUser.currentUser()!)
         
         if let user = self.user {
