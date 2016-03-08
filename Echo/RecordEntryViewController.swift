@@ -32,6 +32,10 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
         self.presentViewController(albumPicker, animated: true, completion: nil)
     }
 
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func recordVideo(sender: AnyObject) {
         
         // 1 Check if project runs on a device with camera available

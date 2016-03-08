@@ -244,7 +244,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload Journal Entry"/>
                                 <connections>
-                                    <segue destination="Ile-He-cgq" kind="modal" id="X88-38-Lhf"/>
+                                    <segue destination="OpJ-hu-KKs" kind="modal" id="X88-38-Lhf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9rp-z3-RiX">
@@ -351,10 +351,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="J7C-ZE-Ddb">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="gMd-TV-jLL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gwT-XT-pal">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="onBack:" destination="Ile-He-cgq" eventType="touchUpInside" id="SgR-Xm-2iw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPO-RD-x5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.6666666666667" y="666.45333333333338"/>
+            <point key="canvasLocation" x="1598" y="666"/>
         </scene>
         <!--Upload Entry-->
         <scene sceneID="ZIN-Z4-qz9">
@@ -442,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oN-l9-anc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="666"/>
+            <point key="canvasLocation" x="2481" y="666"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0bF-5g-AJW">
@@ -460,7 +472,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he1-Q8-UYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="655"/>
+            <point key="canvasLocation" x="1993" y="655"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q0h-xk-QJ9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OpJ-hu-KKs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mlK-NO-Wxb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ile-He-cgq" kind="relationship" relationship="rootViewController" id="EGJ-C8-FuH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nix-0i-Bzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="666"/>
         </scene>
     </scenes>
 </document>
