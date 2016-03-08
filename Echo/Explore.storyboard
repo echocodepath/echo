@@ -5,6 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
+        <!--Profile-->
+        <scene sceneID="PB5-1U-s4T">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="yyE-oW-zej" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QxN-Yd-hFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="577" y="-23"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="G5M-La-kEI">
             <objects>
@@ -56,6 +64,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="teacherImage" destination="dXl-5J-3In" id="Agl-Bi-Isr"/>
+                                            <segue destination="yyE-oW-zej" kind="modal" identifier="exploreToProfile" id="yMr-T0-noC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
