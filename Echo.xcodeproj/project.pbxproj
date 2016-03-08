@@ -458,9 +458,10 @@
 			baseConfigurationReference = 5494E28C75F5AABB08FD92F7 /* Pods-Echo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echo.Echo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echo.EchoDance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -470,9 +471,10 @@
 			baseConfigurationReference = B0A30DE2FAED7972BEBD3724 /* Pods-Echo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echo.Echo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echo.EchoDance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

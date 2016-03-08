@@ -83,15 +83,17 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-            case "feedbackSentSegue":
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let vc = segue.destinationViewController as! FeedbackRequestSentViewController
-                    vc.setTeacher(self.teachers[indexPath.row])
-                }
-                
-            default:
-                return
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "feedbackSentSegue":
+                    if let indexPath = self.tableView.indexPathForSelectedRow {
+                        let vc = segue.destinationViewController as! FeedbackRequestSentViewController
+                        vc.setTeacher(self.teachers[indexPath.row])
+                    }
+                    
+                default:
+                    return
+            }
         }
         
     }
