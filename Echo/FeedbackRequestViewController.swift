@@ -14,10 +14,15 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
     var teachers: [User] = []
     
+    var teacher_ids: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+//        let user = PFUser.currentUser()!
+//        teacher_ids = (user.valueForKey("favorite_teachers") as! [Int])
         
         teachers.append(User(user: PFUser.currentUser()!))
         
