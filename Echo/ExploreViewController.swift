@@ -7,23 +7,61 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtilsV4
 
 class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    @IBOutlet weak var dancersGridView: UICollectionView!
+    @IBOutlet weak var teachersGridView: UICollectionView!
+    @IBOutlet weak var entriesGridView: UICollectionView!
+    
+    var teachers: [PFUser] = []
+    var entries: [PFObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dancersGridView.delegate = self
-        dancersGridView.dataSource = self
+        teachersGridView.delegate = self
+        teachersGridView.dataSource = self
 
-        // Do any additional setup after loading the view.
+        let teacherQuery = PFUser.query()!
+        teacherQuery.whereKey("is_teacher", equalTo: "true")
+        teacherQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        let user = object as! PFUser
+                        self.teachers.append(user)
+                    }
+                }
+                self.teachersGridView.reloadData()
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+        entriesGridView.delegate = self
+        entriesGridView.dataSource = self
+        
+        let entryQuery = PFQuery(className:"Entry")
+        entryQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        self.entries.append(object)
+                    }
+                }
+                self.entriesGridView.reloadData()
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onBack(sender: AnyObject) {
@@ -31,12 +69,32 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        if collectionView == teachersGridView {
+            return self.teachers.count ?? 0
+        } else {
+            return self.entries.count ?? 0
+        }
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = dancersGridView.dequeueReusableCellWithReuseIdentifier("DancerCollectionViewCell", forIndexPath: indexPath) as! DancerCollectionViewCell
-        
-        return cell
+        if collectionView == teachersGridView {
+            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
+            let teacherImage = self.teachers[indexPath.row]["profilePhotoUrl"] as? String
+            if let url  = NSURL(string: teacherImage!),
+                data = NSData(contentsOfURL: url)
+            {
+                cell.teacherImage.image = UIImage(data: data)
+            }
+            return cell
+        } else {
+            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+//            let entryImage = self.entries[indexPath.row]["profilePhotoUrl"] as? String
+//            if let url  = NSURL(string: entryImage!),
+//                data = NSData(contentsOfURL: url)
+//            {
+//                cell.entryImage.image = UIImage(data: data)
+//            }
+            return cell
+        }
     }
 
     /*
