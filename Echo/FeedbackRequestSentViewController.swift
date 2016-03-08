@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtilsV4
 
 class FeedbackRequestSentViewController: UIViewController {
     
@@ -24,8 +26,8 @@ class FeedbackRequestSentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setTeacher(teacher: User) {
-        self.teacherName = teacher.username!
+    func setTeacher(teacher: PFObject) {
+        self.teacherName = teacher["username"] as? String
     }
     
     @IBAction func returnHome(sender: AnyObject) {
