@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Echo/RecordEntryViewController.swift"
-            timestampString = "479086062.576635"
+            timestampString = "479088929.442334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "RecordEntryViewController"
             landmarkType = "3">
          </BreakpointContent>
