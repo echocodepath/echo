@@ -24,7 +24,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if currentUser == nil {
+            currentUser = User(user: PFUser.currentUser()!)
+        }
         // Do any additional setup after loading the view.
     }
 

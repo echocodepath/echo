@@ -128,7 +128,7 @@
         <!--Entry View Controller-->
         <scene sceneID="Jgr-Cn-Ihc">
             <objects>
-                <viewController id="3ew-MU-BKc" customClass="EntryViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryViewController" id="3ew-MU-BKc" customClass="EntryViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ck4-Ct-gKC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,11 +374,15 @@
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveEntry:" destination="2I1-lI-8a6" eventType="touchUpInside" id="CPY-GS-At8"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="entryThumbnailImageView" destination="EYs-iA-L7N" id="cQG-7r-tGV"/>
+                        <outlet property="privateSwitch" destination="bEd-NA-cLh" id="Tds-Js-Vck"/>
                         <outlet property="songTextField" destination="gp3-LU-nmV" id="J63-xn-EhP"/>
                         <outlet property="titleTextField" destination="nXG-Up-vti" id="Kqh-Kd-u79"/>
                     </connections>

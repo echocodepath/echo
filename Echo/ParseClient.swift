@@ -48,4 +48,23 @@ class ParseClient: NSObject {
             }
         }
     }
+    
+    func createEntryWithCompletion(dict: NSDictionary, completion: (entry: PFObject?, error: NSError?) -> ()) {
+        
+        var entry = PFObject(className:"Entry")
+        for (key, val) in dict {
+            entry[key as! String] = val
+        }
+
+        entry.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(entry: entry, error: error)
+                print("in parse client")
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+
+    }
 }

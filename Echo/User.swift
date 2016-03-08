@@ -10,11 +10,10 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
-var _currentUser: User?
+var currentUser: User?
 
 class User: NSObject {
-    var currentUser: PFUser?
-    
+    var id: Int?
     var facebook_id: String?
     var username: String?
     var is_teacher: String?
@@ -23,10 +22,9 @@ class User: NSObject {
     var coverPhotoUrl: String?
     
     init(user: PFUser) {
-        currentUser = user
-        self.username = currentUser?.username
-        self.profilePhotoUrl = (currentUser?.valueForKey("profilePhotoUrl") as! String)
-        self.coverPhotoUrl = (currentUser?.valueForKey("coverPhotoUrl") as! String)
+        self.username = user.username
+        self.profilePhotoUrl = (user.valueForKey("profilePhotoUrl") as! String)
+        self.coverPhotoUrl = (user.valueForKey("coverPhotoUrl") as! String)
         super.init()
         self.is_teacher = "false"
         returnUserData()
@@ -53,6 +51,7 @@ class User: NSObject {
     }
     
     func saveLocally(result: NSDictionary){
+        id = Int((result.valueForKey("facebook_id") as? String)!)
         facebook_id = result.valueForKey("facebook_id") as? String
         print("FACEBOOK ID")
         print(facebook_id)
@@ -66,7 +65,7 @@ class User: NSObject {
         coverPhotoUrl = result.valueForKey("coverPhotoUrl") as? String
         print("coverPhotoUrl")
         print(coverPhotoUrl)
-        _currentUser = self
+        currentUser = self
     }
     
     func saveToParse(dict: NSDictionary){

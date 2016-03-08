@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class EntryViewController: UIViewController {
+    var entry: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
