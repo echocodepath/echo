@@ -15,6 +15,7 @@
 		B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */; };
 		B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */; };
 		B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */; };
+		B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */; };
 		EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */; };
 		EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */; };
 		EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */; };
@@ -46,6 +47,7 @@
 		B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordEntryViewController.swift; sourceTree = "<group>"; };
 		B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntriesViewController.swift; sourceTree = "<group>"; };
 		B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFormViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
 				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
 				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
+				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
+				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
