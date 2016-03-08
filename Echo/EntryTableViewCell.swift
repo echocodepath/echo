@@ -16,8 +16,8 @@ class EntryTableViewCell: UITableViewCell {
     
     var entry: PFObject!{
         didSet {
-            titleLabel.text = entry.valueForKey("title") as! String
-            songLabel.text = entry.valueForKey("song") as! String
+            titleLabel.text = entry.valueForKey("title") as? String
+            songLabel.text = entry.valueForKey("song") as? String
         }
     }
     

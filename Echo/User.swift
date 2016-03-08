@@ -23,8 +23,8 @@ class User: NSObject {
     
     init(user: PFUser) {
         super.init()
-        self.id = user.valueForKey("objectId") as! String
-        self.facebook_id = user.valueForKey("facebook_id") as! String
+        self.id = user.valueForKey("objectId") as? String
+        self.facebook_id = user.valueForKey("facebook_id") as? String
         self.username = user.username
         self.profilePhotoUrl = (user.valueForKey("profilePhotoUrl") as! String)
         self.coverPhotoUrl = (user.valueForKey("coverPhotoUrl") as! String)
