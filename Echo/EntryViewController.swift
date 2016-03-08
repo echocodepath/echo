@@ -9,11 +9,15 @@
 import UIKit
 
 class EntryViewController: UIViewController {
+    var entry: Entry?
+    
+    @IBOutlet weak var entryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // TODO: fill dynamically, just hardcoded in Entry.swift   
+        self.entry = Entry()
+        entryLabel.text = self.entry!.entry_title! + "\nSong: " + self.entry!.song! + "\nArtist: " + self.entry!.song_artist!
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +26,22 @@ class EntryViewController: UIViewController {
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "requestFeedback":
+                    let vc = segue.destinationViewController as! FeedbackRequestViewController
+                    vc.setFeedbackEntry(self.entry)
+                
+                default:
+                    return
+            }
+        }
     }
-    */
+
 
 }
