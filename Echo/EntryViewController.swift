@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import Parse
 
 class EntryViewController: UIViewController {
-    var entry: Entry?
+    var entry: PFObject?
     
     @IBOutlet weak var entryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: fill dynamically, just hardcoded in Entry.swift   
-        self.entry = Entry()
-        entryLabel.text = self.entry!.entry_title! + "\nSong: " + self.entry!.song! + "\nArtist: " + self.entry!.song_artist!
+//        self.entry = Entry()
+//        entryLabel.text = self.entry!.entry_title! + "\nSong: " + self.entry!.song! + "\nArtist: " + self.entry!.song_artist!
     }
 
     override func didReceiveMemoryWarning() {

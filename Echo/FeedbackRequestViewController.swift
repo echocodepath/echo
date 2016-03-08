@@ -15,7 +15,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     
     var currentUser: PFUser?
     var teachers: [PFObject] = []
-    var entry: Entry?
+    var entry: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +52,13 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func setFeedbackEntry(entry: Entry?) {
+    func setFeedbackEntry(entry: PFObject?) {
         self.entry = entry
     }
     
     func sendFeedbackRequest(teacher: PFObject) {
         var request: [String: String]! = Dictionary<String,String>()
-        request["entry_id"] = self.entry?.entry_id
+        request["entry_id"] = self.entry?.valueForKey("id") as? String
         request["request_body"] = "Hi please help me"
         let teacherId = teacher["facebook_id"] as? String
         request["teacher_id"] = teacherId

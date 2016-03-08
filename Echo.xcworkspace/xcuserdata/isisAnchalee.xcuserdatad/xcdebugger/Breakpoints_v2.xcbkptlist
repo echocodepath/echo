@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Echo/EntryFormViewController.swift"
-            timestampString = "479096746.348114"
+            timestampString = "479156123.099016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "EntryFormViewController"
             landmarkType = "3">
          </BreakpointContent>

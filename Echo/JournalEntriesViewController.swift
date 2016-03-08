@@ -7,20 +7,55 @@
 //
 
 import UIKit
+import Parse
 
-class JournalEntriesViewController: UIViewController {
-
+class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var entries: [PFObject] = []
+    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        loadEntries()
         // Do any additional setup after loading the view.
     }
-
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
+        let entry = entries[indexPath.row]
+        cell.entry = entry
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return entries.count
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func loadEntries() {
+        let entryQuery = PFQuery(className:"Entry")
+        entryQuery.whereKey("user_id", equalTo: (currentUser?.id)!)
+        
+        entryQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        self.entries.append(object)
+                    }
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
