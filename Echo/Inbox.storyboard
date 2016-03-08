@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZBK-us-6gh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZBK-us-6gh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -14,18 +14,18 @@
                         <viewControllerLayoutGuide type="bottom" id="54N-ZV-RI3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mcX-02-wlA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-Av-wVB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InboxCell" rowHeight="65" id="cxK-Br-b8l" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxK-Br-b8l" id="cKB-Ov-VlO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prof-pic" translatesAutoresizingMaskIntoConstraints="NO" id="wej-N4-85K">
@@ -35,13 +35,13 @@
                                                         <constraint firstAttribute="width" constant="44" id="Iqo-8J-bOg"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Andrew just requested feedback for 'Formation' dance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02q-LX-cmi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Andrew just requested feedback for 'Formation' dance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02q-LX-cmi">
                                                     <rect key="frame" x="74" y="6" width="473.5" height="52.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="cNH-4c-9wn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="cNH-4c-9wn">
                                                     <rect key="frame" x="564" y="18" width="13" height="24"/>
                                                 </imageView>
                                             </subviews>
@@ -49,22 +49,14 @@
                                                 <constraint firstItem="wej-N4-85K" firstAttribute="top" secondItem="cKB-Ov-VlO" secondAttribute="top" constant="9" id="4Jr-XJ-NXY"/>
                                                 <constraint firstAttribute="bottom" secondItem="wej-N4-85K" secondAttribute="bottom" constant="11" id="8JW-eI-B8o"/>
                                                 <constraint firstAttribute="bottom" secondItem="02q-LX-cmi" secondAttribute="bottom" constant="6" id="FpA-i0-aAt"/>
-                                                <constraint firstItem="02q-LX-cmi" firstAttribute="top" secondItem="cKB-Ov-VlO" secondAttribute="top" constant="6" id="Ksh-W2-2TB"/>
                                                 <constraint firstItem="cNH-4c-9wn" firstAttribute="leading" secondItem="02q-LX-cmi" secondAttribute="trailing" constant="16.5" id="R1L-ud-L9Q"/>
                                                 <constraint firstItem="02q-LX-cmi" firstAttribute="leading" secondItem="wej-N4-85K" secondAttribute="trailing" constant="15" id="SSW-f7-hby"/>
                                                 <constraint firstItem="02q-LX-cmi" firstAttribute="top" secondItem="cKB-Ov-VlO" secondAttribute="top" constant="6" id="Wys-ls-tTG"/>
                                                 <constraint firstAttribute="bottom" secondItem="cNH-4c-9wn" secondAttribute="bottom" constant="22.5" id="bgq-Oq-VZN"/>
                                                 <constraint firstItem="cNH-4c-9wn" firstAttribute="top" secondItem="cKB-Ov-VlO" secondAttribute="top" constant="18" id="dJv-T8-fmu"/>
                                                 <constraint firstItem="wej-N4-85K" firstAttribute="leading" secondItem="cKB-Ov-VlO" secondAttribute="leading" constant="15" id="nSj-xw-NT2"/>
-                                                <constraint firstItem="02q-LX-cmi" firstAttribute="leading" secondItem="wej-N4-85K" secondAttribute="trailing" constant="15" id="ntX-m0-7x3"/>
                                                 <constraint firstAttribute="trailing" secondItem="cNH-4c-9wn" secondAttribute="trailing" constant="23" id="pHy-dn-zye"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Ksh-W2-2TB"/>
-                                                    <exclude reference="ntX-m0-7x3"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="wej-N4-85K" id="Hy6-fX-NxN"/>
@@ -91,11 +83,69 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Hs5-Av-wVB" id="uN9-4d-IeT"/>
+                        <segue destination="gLP-wi-i0b" kind="modal" identifier="inboxDetails" id="gM7-o1-Rcr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyb-nF-pEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="175"/>
+            <point key="canvasLocation" x="496" y="165.66666666666666"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j28-C4-XdC">
+            <objects>
+                <navigationController id="gLP-wi-i0b" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pqp-AN-Lpi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QCR-QT-Qu5" kind="relationship" relationship="rootViewController" id="she-iZ-sfv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ycb-Or-VCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794.66666666666663" y="-597.34666666666669"/>
+        </scene>
+        <!--Inbox Details View Controller-->
+        <scene sceneID="RU6-nz-K6Q">
+            <objects>
+                <viewController id="QCR-QT-Qu5" customClass="InboxDetailsViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cBQ-KB-IN1"/>
+                        <viewControllerLayoutGuide type="bottom" id="QlB-z1-kX3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6tf-w3-2f0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-bY-tCY">
+                                <rect key="frame" x="125" y="349" width="49" height="30"/>
+                                <state key="normal" title="Accept"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Would you like to accept this feedback request?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-p1-vJh">
+                                <rect key="frame" x="20" y="191" width="261" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCo-U8-Xn4">
+                                <rect key="frame" x="131" y="387" width="43" height="30"/>
+                                <state key="normal" title="Reject"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yVZ-fA-lIn">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="26l-eC-JUK">
+                            <connections>
+                                <action selector="onBack:" destination="QCR-QT-Qu5" id="xP1-RD-39j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ow6-gr-taZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="-600"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jpY-yK-MnX">
@@ -113,7 +163,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLw-J1-X30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67.5" y="175.35211267605632"/>
+            <point key="canvasLocation" x="-36" y="165.99999999999997"/>
         </scene>
     </scenes>
     <resources>
