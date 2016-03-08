@@ -18,6 +18,13 @@ class EntryFormViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var songTextField: UITextField!
     
+    @IBAction func onCancel(sender: AnyObject) {
+        let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+        let homeNav = UINavigationController(rootViewController: homeViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = homeNav
+    }
+    
     @IBAction func onEntrySave(sender: AnyObject) {
         let user_id = currentUser!.id
         let username =  currentUser!.username
