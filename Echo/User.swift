@@ -66,7 +66,6 @@ class User: NSObject {
         coverPhotoUrl = result.valueForKey("coverPhotoUrl") as? String
         print("coverPhotoUrl")
         print(coverPhotoUrl)
-        _currentUser = self
     }
     
     func saveToParse(dict: NSDictionary){
