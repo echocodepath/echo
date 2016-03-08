@@ -12,6 +12,7 @@ import ParseFacebookUtilsV4
 
 class ProfileViewController: UIViewController {
     private var user: User?
+    private var profileUser: PFUser?
 
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var coverPhoto: UIImageView!
@@ -45,11 +46,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func setProfile(user: PFUser?) {
+        self.profileUser = user
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: actually get user that is selected
-        user = User(user: PFUser.currentUser()!)
+        if let pfUser = self.profileUser {
+            user = User(user: pfUser)
+        } else {
+            user = User(user: PFUser.currentUser()!)
+        }
         
         if let user = self.user {
             self.nameLabel.text = user.username!

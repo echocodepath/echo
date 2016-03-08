@@ -18,6 +18,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     var teachers: [PFUser] = []
     var entries: [PFObject] = []
     
+    var selectedTeacherRow: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +77,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             return self.entries.count ?? 0
         }
     }
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if collectionView == teachersGridView {
             let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
@@ -87,7 +90,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             return cell
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-//            let entryImage = self.entries[indexPath.row]["profilePhotoUrl"] as? String
+//            let entryImage = self.entries[indexPath.row]["video"] as? File
 //            if let url  = NSURL(string: entryImage!),
 //                data = NSData(contentsOfURL: url)
 //            {
@@ -96,15 +99,35 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             return cell
         }
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        if collectionView == teachersGridView {
+            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
+            performSegueWithIdentifier("exploreToProfile", sender: cell)
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "exploreToProfile":
+                    let cell = sender as! TeacherCollectionViewCell
+                    if let indexPath = self.teachersGridView.indexPathForCell(cell) {
+                        let nc = segue.destinationViewController as! UINavigationController
+                        let vc = nc.topViewController as! ProfileViewController
+                        vc.setProfile(self.teachers[indexPath.row])
+                    }
+                    
+                default:
+                    return
+            }
+        }
     }
-    */
+    
 
 }
