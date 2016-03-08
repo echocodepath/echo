@@ -27,7 +27,7 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     
     @IBAction func openAlbum(sender: AnyObject) {
         albumPicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        albumPicker.mediaTypes = [kUTTypeMovie as! String]
+        albumPicker.mediaTypes = [kUTTypeMovie as String]
         albumPicker.delegate = self
         self.presentViewController(albumPicker, animated: true, completion: nil)
     }
@@ -38,7 +38,7 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             // 2 Present UIImagePickerController to take video
             cameraPicker.sourceType = .Camera
-            cameraPicker.mediaTypes = [kUTTypeMovie as! String]
+            cameraPicker.mediaTypes = [kUTTypeMovie as String]
             cameraPicker.delegate = self
             cameraPicker.videoMaximumDuration = 10.0
             self.presentViewController(cameraPicker, animated: true, completion: nil)
@@ -53,22 +53,30 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        var videoUrl: NSURL?
         let mediaType:AnyObject? = info[UIImagePickerControllerMediaType]
         
         if let type:AnyObject = mediaType {
             if type is String {
                 let stringType = type as! String
-                if stringType == kUTTypeMovie as! String {
+                if stringType == kUTTypeMovie as String {
                     let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
                     if let url = urlOfVideo {
-                        // 2
-                        print("VIDEOOOO SUCCESSS!!!!!**\(url)")
+                        videoUrl = url
+                        print("URL!!!!! \(url)")
                     }
                 }
             }
         }
-        // 3
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        picker.dismissViewControllerAnimated(true) { () -> Void in
+            let entryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EntryFormViewController") as! EntryFormViewController
+            entryViewController.video = videoUrl!
+            let entryNav = UINavigationController(rootViewController: entryViewController)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = entryNav
+        }
+
     }
 
     
