@@ -16,9 +16,7 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: fill dynamically, just hardcoded in Entry.swift   
-//        self.entry = Entry()
-//        entryLabel.text = self.entry!.entry_title! + "\nSong: " + self.entry!.song! + "\nArtist: " + self.entry!.song_artist!
+        entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
     }
 
     override func didReceiveMemoryWarning() {
