@@ -22,9 +22,10 @@
 		EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */; };
 		EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D91C8DF60700BF0393 /* .gitignore */; };
 		EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */; };
-		EFDCA1DF1C8E12D600BF0393 /* DancerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DE1C8E12D600BF0393 /* DancerCollectionViewCell.swift */; };
 		F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFB1C8EC7BE00EC7CED /* Entry.swift */; };
 		F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */; };
+		F515CE021C8EF38D00EC7CED /* TeacherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */; };
+		F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -56,9 +57,10 @@
 		EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D91C8DF60700BF0393 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
-		EFDCA1DE1C8E12D600BF0393 /* DancerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancerCollectionViewCell.swift; sourceTree = "<group>"; };
 		F515CDFB1C8EC7BE00EC7CED /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxDetailsViewController.swift; sourceTree = "<group>"; };
+		F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCollectionViewCell.swift; sourceTree = "<group>"; };
+		F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -143,9 +145,10 @@
 		EFDCA1DB1C8E015100BF0393 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */,
-				EFDCA1DE1C8E12D600BF0393 /* DancerCollectionViewCell.swift */,
 				F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */,
+				EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */,
+				F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */,
+				F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -330,8 +333,10 @@
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
+				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
+				F515CE021C8EF38D00EC7CED /* TeacherCollectionViewCell.swift in Sources */,
 				F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */,
 				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
 				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
@@ -340,7 +345,6 @@
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
-				EFDCA1DF1C8E12D600BF0393 /* DancerCollectionViewCell.swift in Sources */,
 				B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */,
 				EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */,
 				EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */,
