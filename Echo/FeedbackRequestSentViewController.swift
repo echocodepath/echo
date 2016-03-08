@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtilsV4
 
 class FeedbackRequestSentViewController: UIViewController {
-
-    @IBOutlet weak var requestedTeacher: UILabel!
+    
+    @IBOutlet weak var teacherLabel: UILabel!
+    
+    private var teacherName : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.teacherLabel.text = self.teacherName
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,10 +26,15 @@ class FeedbackRequestSentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setTeacher(teacher: User) {
-//        self.requestedTeacher.text = teacher.username!
+    func setTeacher(teacher: PFObject) {
+        self.teacherName = teacher["username"] as? String
     }
     
+    @IBAction func returnHome(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
