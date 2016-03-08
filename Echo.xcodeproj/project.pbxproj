@@ -23,6 +23,7 @@
 		EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D91C8DF60700BF0393 /* .gitignore */; };
 		EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */; };
 		EFDCA1DF1C8E12D600BF0393 /* DancerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DE1C8E12D600BF0393 /* DancerCollectionViewCell.swift */; };
+		F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFB1C8EC7BE00EC7CED /* Entry.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		EFDCA1D91C8DF60700BF0393 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
 		EFDCA1DE1C8E12D600BF0393 /* DancerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancerCollectionViewCell.swift; sourceTree = "<group>"; };
+		F515CDFB1C8EC7BE00EC7CED /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				B26D5EAC1C8A44AE00528F2D /* User.swift */,
+				F515CDFB1C8EC7BE00EC7CED /* Entry.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
 				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
+				F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
