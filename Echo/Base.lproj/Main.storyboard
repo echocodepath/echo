@@ -138,13 +138,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Request Feedback"/>
                                 <connections>
-                                    <segue destination="FV8-a5-ZiI" kind="modal" id="7w6-c2-wXG"/>
+                                    <segue destination="FV8-a5-ZiI" kind="modal" identifier="requestFeedback" id="7w6-c2-wXG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rz9-5x-b34">
+                                <rect key="frame" x="44" y="106" width="234" height="368"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="VRD-uz-tnb"/>
+                    <connections>
+                        <outlet property="entryLabel" destination="Rz9-5x-b34" id="uKK-HX-7vy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKC-Sx-hyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

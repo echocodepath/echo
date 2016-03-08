@@ -12,14 +12,19 @@ import ParseFacebookUtilsV4
 
 class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
+    
+    var currentUser: PFUser?
     var teachers: [PFObject] = []
+    var entry: Entry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
-        let teacher_ids = PFUser.currentUser()?.objectForKey("favorite_teachers") as! NSArray
+        currentUser = PFUser.currentUser()
+        
+        let teacher_ids = currentUser!.objectForKey("favorite_teachers") as! NSArray
         
         // TODO: Find better way to reload tableView
         for id in teacher_ids {
@@ -29,9 +34,6 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 
                 if error == nil {
-                    // The find succeeded.
-                    print("Successfully retrieved \(objects!.count) teachers.")
-                    // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
                             self.teachers.append(object)
@@ -39,7 +41,6 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                     }
                     self.tableView.reloadData()
                 } else {
-                    // Log details of the failure
                     print("Error: \(error!) \(error!.userInfo)")
                 }
             }
@@ -49,6 +50,58 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setFeedbackEntry(entry: Entry?) {
+        self.entry = entry
+    }
+    
+    func sendFeedbackRequest(teacher: PFObject) {
+        var request: [String: String]! = Dictionary<String,String>()
+        request["entry_id"] = self.entry?.entry_id
+        request["request_body"] = "Hi please help me"
+        let teacherId = teacher["facebook_id"] as? String
+        request["teacher_id"] = teacherId
+        request["user_id"] = currentUser!["facebook_id"] as? String
+        request["accepted"] = "false"
+        request["resolved"] = "false"
+        
+        // add to requests_sent array for current user
+        if let requests_sent = currentUser!["requests_sent"] {
+            var array = requests_sent as! Array<Dictionary<String,String>>
+            array.append(request)
+            currentUser!["requests_sent"] = array
+        } else {
+            let array = [request]
+            currentUser!["requests_sent"] = array
+        }
+        currentUser!.saveInBackground()
+        
+        // add to requests_received array for current user
+        let query = PFUser.query()!
+        query.whereKey("facebook_id", equalTo: teacherId!)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        let teacher = object as! PFUser
+                        if let requests_received = teacher["requests_received"] {
+                            var array = requests_received as! Array<Dictionary<String,String>>
+                            array.append(request)
+                            teacher["requests_received"] = array
+                        } else {
+                            let array = [request]
+                            teacher["requests_received"] = array
+                        }
+                        teacher.saveInBackground()
+                    }
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
     }
     
     // MARK: Table View
@@ -89,6 +142,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                     if let indexPath = self.tableView.indexPathForSelectedRow {
                         let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                         vc.setTeacher(self.teachers[indexPath.row])
+                        sendFeedbackRequest(self.teachers[indexPath.row])
                     }
                     
                 default:
