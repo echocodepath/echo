@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujd-y8-OA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="194"/>
+            <point key="canvasLocation" x="1715" y="-9"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
@@ -202,7 +202,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uaq-ay-P9x">
                                 <rect key="frame" x="88" y="160" width="144" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Record Journal Entry"/>
+                                <state key="normal" title="Upload Journal Entry"/>
                                 <connections>
                                     <segue destination="Ile-He-cgq" kind="modal" id="X88-38-Lhf"/>
                                 </connections>
@@ -282,21 +282,53 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yof-JI-0hD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="-216"/>
+            <point key="canvasLocation" x="884" y="-1136"/>
         </scene>
         <!--Record Entry View Controller-->
         <scene sceneID="QLI-6t-K5n">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zPO-RD-x5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Ile-He-cgq" customClass="RecordEntryViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ysv-6w-hdn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9q6-Tk-jqQ">
+                                <rect key="frame" x="104" y="186" width="136" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload From Album"/>
+                                <connections>
+                                    <action selector="openAlbum:" destination="Ile-He-cgq" eventType="touchUpInside" id="lVN-h2-MCr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LsF-vG-WfW">
+                                <rect key="frame" x="114" y="119" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Record Video"/>
+                                <connections>
+                                    <action selector="recordVideo:" destination="Ile-He-cgq" eventType="touchUpInside" id="UcN-q6-pUT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1066.6666666666667" y="666.45333333333338"/>
+        </scene>
+        <!--Entry Form View Controller-->
+        <scene sceneID="ZIN-Z4-qz9">
+            <objects>
+                <viewController storyboardIdentifier="EntryFormViewController" id="2I1-lI-8a6" customClass="EntryFormViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qyN-uC-pPD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zPO-RD-x5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oN-l9-anc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.6666666666667" y="666.45333333333338"/>
+            <point key="canvasLocation" x="1483" y="719"/>
         </scene>
     </scenes>
 </document>
