@@ -15,6 +15,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var teachersGridView: UICollectionView!
     @IBOutlet weak var entriesGridView: UICollectionView!
     
+    var refreshControlTableView: UIRefreshControl!
+    
     var teachers: [PFUser] = []
     var entries: [PFObject] = []
     
@@ -23,9 +25,23 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        teachersGridView.delegate = self
+        teachersGridView.delegate   = self
         teachersGridView.dataSource = self
+        entriesGridView.delegate    = self
+        entriesGridView.dataSource  = self
+        
+        fetchInstructors()
+        fetchEntries()
 
+        
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+//        teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
+        
+    }
+    
+    func fetchInstructors(){
         let teacherQuery = PFUser.query()!
         teacherQuery.whereKey("is_teacher", equalTo: "true")
         teacherQuery.findObjectsInBackgroundWithBlock {
@@ -42,10 +58,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-        
-        entriesGridView.delegate = self
-        entriesGridView.dataSource = self
-        
+    }
+
+    func fetchEntries(){
         let entryQuery = PFQuery(className:"Entry")
         entryQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -60,6 +75,12 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
+        
+    }
+    func onRefresh(){
+        print("I just got refreshed")
+        
+        self.refreshControlTableView.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
