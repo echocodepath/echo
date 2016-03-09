@@ -15,20 +15,25 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var currentUser: PFUser?
     var requestsReceived: Array<Dictionary<String,String>> = []
+    var refreshControlTableView: UIRefreshControl!
     
     @IBOutlet weak var studentImage: UIImageView!
     @IBOutlet weak var feedbackLabel: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        currentUser = PFUser.currentUser()
-        // retriveve requests_received
-        if let requests_received = currentUser!["requests_received"] {
-            self.requestsReceived = requests_received as! Array<Dictionary<String,String>>
-        }
+        fetchRequests()
+        
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControlTableView, atIndex: 0)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +49,21 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return self.requestsReceived.count
         }
         return 1
+    }
+    
+    func fetchRequests(){
+        currentUser = PFUser.currentUser()
+        if let requests_received = currentUser!["requests_received"] {
+            self.requestsReceived = requests_received as! Array<Dictionary<String,String>>
+        }
+    }
+    
+    func onRefresh(){
+        print("I just got refreshed")
+
+        fetchRequests()
+        
+        self.refreshControlTableView.endRefreshing()
     }
     
     
