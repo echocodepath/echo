@@ -30,9 +30,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         entriesGridView.delegate    = self
         entriesGridView.dataSource  = self
         
+        // TODO: Implement Parse caching for teachers and entries, way too slow
         fetchInstructors()
         fetchEntries()
-
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
@@ -111,7 +111,10 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             return cell
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-//            let entryImage = self.entries[indexPath.row]["video"] as? File
+            let song = self.entries[indexPath.row]["song"] as! String
+            cell.entryLabel.text = song
+            // TO DO: figure out how to get image url from video
+//            let entryImage = self.entries[indexPath.row]["videoImage"] as! String
 //            if let url  = NSURL(string: entryImage!),
 //                data = NSData(contentsOfURL: url)
 //            {
@@ -126,6 +129,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         if collectionView == teachersGridView {
             let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
             performSegueWithIdentifier("exploreToProfile", sender: cell)
+        } else {
+            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+            performSegueWithIdentifier("exploreToEntry", sender: cell)
         }
     }
 
@@ -143,7 +149,14 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                         let vc = nc.topViewController as! ProfileViewController
                         vc.setProfile(self.teachers[indexPath.row])
                     }
-                    
+                
+                case "exploreToEntry":
+                    let cell = sender as! EntryCollectionViewCell
+                    if let indexPath = self.entriesGridView.indexPathForCell(cell) {
+                        let vc = segue.destinationViewController as! EntryViewController
+                        vc.updateEntry(self.entries[indexPath.row])
+                    }
+                
                 default:
                     return
             }
