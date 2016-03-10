@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Profile-->
@@ -12,6 +12,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxN-Yd-hFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="577" y="-23"/>
+        </scene>
+        <!--Entry-->
+        <scene sceneID="rQx-Xv-Kla">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Entry" id="IKP-oG-rqk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqj-95-KGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="751" y="-11"/>
         </scene>
         <!--Explore-->
         <scene sceneID="G5M-La-kEI">
@@ -91,21 +99,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dancer" translatesAutoresizingMaskIntoConstraints="NO" id="xHn-CJ-vKe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="94"/>
-                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LE1-7x-5p7">
+                                                    <rect key="frame" x="4" y="8" width="92" height="78"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="xHn-CJ-vKe" firstAttribute="top" secondItem="2x1-mB-zOM" secondAttribute="top" id="Avf-eE-8xX"/>
-                                            <constraint firstAttribute="bottom" secondItem="xHn-CJ-vKe" secondAttribute="bottom" id="fTc-56-vf0"/>
-                                            <constraint firstItem="xHn-CJ-vKe" firstAttribute="leading" secondItem="2x1-mB-zOM" secondAttribute="leading" id="h4t-Lr-zuw"/>
-                                            <constraint firstAttribute="trailing" secondItem="xHn-CJ-vKe" secondAttribute="trailing" id="oOf-iz-i3q"/>
-                                        </constraints>
                                         <size key="customSize" width="100" height="94"/>
                                         <connections>
-                                            <outlet property="entryImage" destination="xHn-CJ-vKe" id="sqy-Gx-yBA"/>
+                                            <outlet property="entryLabel" destination="LE1-7x-5p7" id="LPK-sf-rpM"/>
+                                            <segue destination="IKP-oG-rqk" kind="modal" identifier="exploreToEntry" id="bB0-0S-f08"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -164,7 +170,4 @@
             <point key="canvasLocation" x="173.33333333333334" y="369.19999999999993"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="dancer" width="836" height="764"/>
-    </resources>
 </document>
