@@ -12,18 +12,25 @@ import Parse
 class EntryViewController: UIViewController {
     var entry: PFObject?
     
+    
     @IBOutlet weak var entryLabel: UILabel!
+    
+    
+    func updateEntry(myEntry: PFObject?) {
+        self.entry = myEntry
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+        if entry != nil {
+            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     
     // MARK: - Navigation
