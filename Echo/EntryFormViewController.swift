@@ -53,6 +53,9 @@ class EntryFormViewController: UIViewController {
             appDelegate.window?.rootViewController = entryNav
         }
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
