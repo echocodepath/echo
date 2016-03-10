@@ -9,5 +9,5 @@
 import UIKit
 
 class EntryCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var entryImage: UIImageView!
+    @IBOutlet weak var entryLabel: UILabel!
 }
