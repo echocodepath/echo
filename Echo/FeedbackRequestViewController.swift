@@ -58,7 +58,8 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     
     func sendFeedbackRequest(teacher: PFObject) {
         var request: [String: String]! = Dictionary<String,String>()
-        request["entry_id"] = self.entry?.valueForKey("id") as? String
+        
+        request["entry_id"] = self.entry?.objectId
         request["request_body"] = "Hi please help me"
         let teacherId = teacher["facebook_id"] as? String
         request["teacher_id"] = teacherId
