@@ -51,7 +51,7 @@ class ParseClient: NSObject {
     
     func createEntryWithCompletion(dict: NSDictionary, completion: (entry: PFObject?, error: NSError?) -> ()) {
         
-        var entry = PFObject(className:"Entry")
+        let entry = PFObject(className:"Entry")
         for (key, val) in dict {
             entry[key as! String] = val
         }

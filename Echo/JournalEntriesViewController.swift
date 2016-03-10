@@ -65,14 +65,24 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        if let identifier = segue.identifier {
+//            switch identifier {
+//            case "journalToEntrySegue":
+//                if let indexPath = self.tableView.indexPathForSelectedRow {
+//                    let vc = segue.destinationViewController as! EntryViewController
+//                    vc.setEntry(self.entries[indexPath.row])
+//                }
+//                
+//            default:
+//                return
+//            }
+//        }
     }
-    */
+    
 
 }
