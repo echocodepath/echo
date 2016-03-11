@@ -50,7 +50,7 @@ class EntryViewController: UIViewController {
         controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         controller.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 0.6, constant: 1)
+        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
         let player = AVPlayer(URL: url)
         controller.player = player
         controller.player!.play()
@@ -90,6 +90,4 @@ class EntryViewController: UIViewController {
             }
         }
     }
-
-
 }
