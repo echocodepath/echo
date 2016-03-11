@@ -143,7 +143,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        entryViewController.entry = entry
         
         let request = requestsReceived[indexPath.row]
-        InboxDetailsViewController.request = request
+
+        inboxDetailsViewController.request = request
         
         print("this is the request")
         print(request)
