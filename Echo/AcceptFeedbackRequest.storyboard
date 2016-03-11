@@ -30,6 +30,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxv-DN-e8k">
                                         <rect key="frame" x="92" y="14" width="30" height="30"/>
                                         <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="onTogglePlayPause:" destination="pZo-Ig-Fpy" eventType="touchUpInside" id="k3P-um-gY2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94381953534031415" green="0.94381953534031415" blue="0.94381953534031415" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,7 +42,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackClipTableViewCell" rowHeight="2" id="GF2-Wb-Hat">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="2"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="2"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GF2-Wb-Hat" id="ibb-Zw-Xac">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="1.5"/>
@@ -57,7 +60,17 @@
                                 <action selector="onBack:" destination="pZo-Ig-Fpy" id="AQJ-9F-gz5"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5eM-ar-Stn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A02-7l-KKZ">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="recordButton" destination="RVj-Pi-438" id="Y9A-fW-anQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHy-rn-oGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
