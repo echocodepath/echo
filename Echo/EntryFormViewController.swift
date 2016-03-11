@@ -32,7 +32,7 @@ class EntryFormViewController: UIViewController {
         let song = songTextField.text
         var responseDict: [String: NSObject] = Dictionary<String,NSObject>()
         let videoData = NSData(contentsOfURL: video!)
-        let videoFile = PFFile(name: "Entry", data: videoData!)
+        let videoFile = PFFile(name: "Entry.mov", data: videoData!)
         
         responseDict["username"] = username
         responseDict["user_id"] = user_id
