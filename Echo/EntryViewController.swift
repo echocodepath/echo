@@ -8,6 +8,9 @@
 
 import UIKit
 import Parse
+import AVKit
+import AVFoundation
+
 
 class EntryViewController: UIViewController {
     var entry: PFObject?
@@ -24,6 +27,29 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+        }
+        convertVideoDataToNSURL()
+    }
+    
+    private func playVideo(url: NSURL){
+        let player = AVPlayer(URL: url)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        self.presentViewController(playerController, animated: true) {
+            player.play()
+        }
+    }
+    
+    private func convertVideoDataToNSURL() {
+        let url: NSURL?
+        let rawData: NSData?
+        let videoData = entry!["video"] as! PFFile
+        do {
+            rawData = try videoData.getData()
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
+            playVideo(url!)
+        } catch {
+        
         }
     }
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */; };
+		B22EFDF41C9293DB0048EF5E /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF31C9293DB0048EF5E /* DateManager.swift */; };
+		B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF51C9293E80048EF5E /* FileProcessor.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -48,6 +50,8 @@
 		1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Echo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494E28C75F5AABB08FD92F7 /* Pods-Echo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Echo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Echo/Pods-Echo.debug.xcconfig"; sourceTree = "<group>"; };
 		B0A30DE2FAED7972BEBD3724 /* Pods-Echo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Echo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Echo/Pods-Echo.release.xcconfig"; sourceTree = "<group>"; };
+		B22EFDF31C9293DB0048EF5E /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		B22EFDF51C9293E80048EF5E /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B22EFDF21C9293CF0048EF5E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B22EFDF31C9293DB0048EF5E /* DateManager.swift */,
+				B22EFDF51C9293E80048EF5E /* FileProcessor.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		B26D5E9F1C879E3500528F2D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +126,6 @@
 				EF0AF2451C9253F9005CDCA2 /* Feedback Request Flow */,
 				EF0AF2471C925430005CDCA2 /* Journal Entries Flow */,
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
-				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -171,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
+				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
 				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 			);
@@ -210,6 +223,7 @@
 		F56D5DF41C855AF6006A7D7A /* Echo */ = {
 			isa = PBXGroup;
 			children = (
+				B22EFDF21C9293CF0048EF5E /* Utils */,
 				EFDCA1DB1C8E015100BF0393 /* Views */,
 				F5E200921C8CC64F00DECA95 /* Storyboards */,
 				B26D5EAE1C8A550700528F2D /* API */,
@@ -370,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */,
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
 				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
@@ -383,6 +398,7 @@
 				F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */,
 				B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */,
 				B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */,
+				B22EFDF41C9293DB0048EF5E /* DateManager.swift in Sources */,
 				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
