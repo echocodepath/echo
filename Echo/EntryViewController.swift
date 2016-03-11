@@ -16,6 +16,7 @@ class EntryViewController: UIViewController {
     var entry: PFObject?
     
     
+    @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
     
     
@@ -27,17 +28,13 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+            if entry!["user_id"] as? String != currentUser?.id{
+                requestFeedbackBtn.hidden = true
+            }
+            convertVideoDataToNSURL()
         }
-        convertVideoDataToNSURL()
+        
     }
-//    private func playVideo(url: NSURL){
-//        let player = AVPlayer(URL: url)
-//        let playerController = AVPlayerViewController()
-//        playerController.player = player
-//        self.presentViewController(playerController, animated: true) {
-//            player.play()
-//        }
-//    }
     
     private func playVideo(url: NSURL){
         let controller = AVPlayerViewController()
