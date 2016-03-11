@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZBK-us-6gh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZBK-us-6gh">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Inbox-->
@@ -28,8 +28,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prof-pic" translatesAutoresizingMaskIntoConstraints="NO" id="wej-N4-85K">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wej-N4-85K">
                                                     <rect key="frame" x="15" y="9" width="44" height="44.5"/>
+                                                    <color key="backgroundColor" red="0.38675820707070707" green="0.38675820707070707" blue="0.38675820707070707" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44.5" id="I9S-jN-CcR"/>
                                                         <constraint firstAttribute="width" constant="44" id="Iqo-8J-bOg"/>
@@ -41,7 +43,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Andrew just requested feedback for 'Formation' dance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02q-LX-cmi">
                                                     <rect key="frame" x="74" y="6" width="201" height="52.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -89,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyb-nF-pEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496" y="165.66666666666666"/>
+            <point key="canvasLocation" x="176" y="-587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j28-C4-XdC">
@@ -110,7 +112,7 @@
         <!--Inbox Details View Controller-->
         <scene sceneID="RU6-nz-K6Q">
             <objects>
-                <viewController id="QCR-QT-Qu5" customClass="InboxDetailsViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InboxDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QCR-QT-Qu5" customClass="InboxDetailsViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cBQ-KB-IN1"/>
                         <viewControllerLayoutGuide type="bottom" id="QlB-z1-kX3"/>
@@ -122,17 +124,32 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-bY-tCY">
                                 <rect key="frame" x="125" y="349" width="49" height="30"/>
                                 <state key="normal" title="Accept"/>
+                                <connections>
+                                    <segue destination="Vtk-a1-NBz" kind="modal" id="sQe-BE-fHz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Would you like to accept this feedback request?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-p1-vJh">
                                 <rect key="frame" x="20" y="191" width="261" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCo-U8-Xn4">
                                 <rect key="frame" x="131" y="387" width="43" height="30"/>
                                 <state key="normal" title="Reject"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&quot;It's Britney Bitch&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRO-9p-1NV">
+                                <rect key="frame" x="83" y="123" width="139" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Christine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKr-Ak-AzQ">
+                                <rect key="frame" x="118" y="152" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -147,6 +164,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ow6-gr-taZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1146" y="-600"/>
+        </scene>
+        <!--AcceptFeedbackRequest-->
+        <scene sceneID="bqu-sh-hC0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AcceptFeedbackRequest" id="Vtk-a1-NBz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6p-VG-H2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1509.5" y="-598"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jpY-yK-MnX">
@@ -164,11 +189,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLw-J1-X30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="165.99999999999997"/>
+            <point key="canvasLocation" x="-228" y="-587"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron-right" width="13" height="24"/>
-        <image name="prof-pic" width="585" height="783"/>
     </resources>
 </document>
