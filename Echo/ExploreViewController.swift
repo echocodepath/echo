@@ -111,8 +111,10 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             return cell
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-            let song = self.entries[indexPath.row]["song"] as! String
-            cell.entryLabel.text = song
+            let entry = self.entries[indexPath.row]
+            print("FIRST TRY\(entry)")
+            cell.entry = entry
+            
             // TO DO: figure out how to get image url from video
 //            let entryImage = self.entries[indexPath.row]["videoImage"] as! String
 //            if let url  = NSURL(string: entryImage!),

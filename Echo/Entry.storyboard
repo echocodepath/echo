@@ -34,6 +34,7 @@
                     <navigationItem key="navigationItem" id="VRD-uz-tnb"/>
                     <connections>
                         <outlet property="entryLabel" destination="Rz9-5x-b34" id="C8k-ct-Neq"/>
+                        <outlet property="requestFeedbackBtn" destination="Bbx-gQ-fiv" id="pzC-SX-aEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKC-Sx-hyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
