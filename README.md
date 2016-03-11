@@ -1,5 +1,7 @@
 # Echo PRD
 
+![](https://cloud.githubusercontent.com/assets/5696002/13692560/61302c0e-e6f7-11e5-91c8-831ef016d85d.png)
+
 ### Introduction
 
 Echo is a platform that connects dancers with instructors for custom, hands on lessons. Dancers monitor their growth through video journaling, and can request an expert video review from a network of curated teachers, instructors, and directors.
