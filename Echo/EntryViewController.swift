@@ -30,14 +30,24 @@ class EntryViewController: UIViewController {
         }
         convertVideoDataToNSURL()
     }
+//    private func playVideo(url: NSURL){
+//        let player = AVPlayer(URL: url)
+//        let playerController = AVPlayerViewController()
+//        playerController.player = player
+//        self.presentViewController(playerController, animated: true) {
+//            player.play()
+//        }
+//    }
     
     private func playVideo(url: NSURL){
+        let controller = AVPlayerViewController()
+        controller.willMoveToParentViewController(self)
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
         let player = AVPlayer(URL: url)
-        let playerController = AVPlayerViewController()
-        playerController.player = player
-        self.presentViewController(playerController, animated: true) {
-            player.play()
-        }
+        controller.player = player
+        controller.player!.play()
     }
     
     private func convertVideoDataToNSURL() {
