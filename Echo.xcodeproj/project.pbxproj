@@ -10,6 +10,7 @@
 		47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */; };
 		B22EFDF41C9293DB0048EF5E /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF31C9293DB0048EF5E /* DateManager.swift */; };
 		B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF51C9293E80048EF5E /* FileProcessor.swift */; };
+		B22EFDFA1C9378C50048EF5E /* FeedbackClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -52,6 +53,7 @@
 		B0A30DE2FAED7972BEBD3724 /* Pods-Echo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Echo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Echo/Pods-Echo.release.xcconfig"; sourceTree = "<group>"; };
 		B22EFDF31C9293DB0048EF5E /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		B22EFDF51C9293E80048EF5E /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
+		B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackClipTableViewCell.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */,
 				F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */,
 				B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */,
+				B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
+				B22EFDFA1C9378C50048EF5E /* FeedbackClipTableViewCell.swift in Sources */,
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
 				B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */,
 				EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */,

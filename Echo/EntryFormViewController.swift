@@ -12,6 +12,7 @@ import Parse
 
 class EntryFormViewController: UIViewController {
     var video: NSURL?
+    var thumbnail: NSData?
     
     @IBOutlet weak var privateSwitch: UISwitch!
     @IBOutlet weak var entryThumbnailImageView: UIImageView!
@@ -25,6 +26,20 @@ class EntryFormViewController: UIViewController {
         appDelegate.window?.rootViewController = homeNav
     }
     
+    func generateThumbnail(){
+        let asset = AVURLAsset(URL: video!, options: nil)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+        var uiImage: UIImage?
+        do {
+            let cgImage = try imgGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
+            uiImage = UIImage(CGImage: cgImage)
+        } catch {
+            uiImage = UIImage(named: "sea-otter")
+        }
+        entryThumbnailImageView.image = uiImage
+        thumbnail = UIImagePNGRepresentation(uiImage!)
+    }
+    
     @IBAction func onEntrySave(sender: AnyObject) {
         let user_id = currentUser!.id
         let username =  currentUser!.username
@@ -33,12 +48,14 @@ class EntryFormViewController: UIViewController {
         var responseDict: [String: NSObject] = Dictionary<String,NSObject>()
         let videoData = NSData(contentsOfURL: video!)
         let videoFile = PFFile(name: "Entry.mov", data: videoData!)
+        let thumbnailFile = PFFile(name: "Thumbnail.png", data: thumbnail!)
         
         responseDict["username"] = username
         responseDict["user_id"] = user_id
         responseDict["title"] = title
         responseDict["song"] = song
         responseDict["video"] = videoFile
+        responseDict["thumbnail"] = thumbnailFile
         if privateSwitch.on{
             responseDict["private"] = true
         } else {
@@ -60,7 +77,6 @@ class EntryFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("I SEE U \(video!)")
         generateThumbnail()
     }
 
@@ -70,18 +86,7 @@ class EntryFormViewController: UIViewController {
     }
     
     
-    func generateThumbnail(){
-        let asset = AVURLAsset(URL: video!, options: nil)
-        let imgGenerator = AVAssetImageGenerator(asset: asset)
-        var uiImage: UIImage?
-        do {
-            let cgImage = try imgGenerator.copyCGImageAtTime(CMTimeMake(0, 1), actualTime: nil)
-            uiImage = UIImage(CGImage: cgImage)
-        } catch {
-            uiImage = UIImage(named: "sea-otter")
-        }
-        entryThumbnailImageView.image = uiImage
-    }
+
     /*
     // MARK: - Navigation
 

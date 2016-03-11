@@ -107,7 +107,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycb-Or-VCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794.66666666666663" y="-597.34666666666669"/>
+            <point key="canvasLocation" x="696" y="-600"/>
         </scene>
         <!--Inbox Details View Controller-->
         <scene sceneID="RU6-nz-K6Q">
@@ -125,7 +125,7 @@
                                 <rect key="frame" x="125" y="349" width="49" height="30"/>
                                 <state key="normal" title="Accept"/>
                                 <connections>
-                                    <segue destination="Vtk-a1-NBz" kind="modal" id="sQe-BE-fHz"/>
+                                    <segue destination="Vtk-a1-NBz" kind="modal" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Would you like to accept this feedback request?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-p1-vJh">
