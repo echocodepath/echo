@@ -1,38 +1,29 @@
 //
-//  InboxDetailsViewController.swift
+//  AcceptFeedbackRequestViewController.swift
 //  Echo
 //
-//  Created by Christine Hong on 3/8/16.
+//  Created by Andrew Yu on 3/10/16.
 //  Copyright © 2016 echo. All rights reserved.
 //
 
 import UIKit
 
-class InboxDetailsViewController: UIViewController {
+class AcceptFeedbackRequestViewController: UIViewController {
 
-//    var request: Dictionary<String,String>?
-    var request : [String: String]?
-    
-//    var feedbackRequest: NSDictionary?
-    
-
-    @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-    func setFeedbackRequest(request: Dictionary<String,String>) {
-        self.request = request
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 

@@ -17,6 +17,8 @@
 		B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */; };
 		B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */; };
 		B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */; };
+		EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */; };
+		EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */; };
 		EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */; };
 		EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */; };
 		EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */; };
@@ -55,6 +57,8 @@
 		B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFormViewController.swift; sourceTree = "<group>"; };
 		B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AcceptFeedbackRequest.storyboard; sourceTree = "<group>"; };
+		EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptFeedbackRequestViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
@@ -105,19 +109,11 @@
 		B26D5E9F1C879E3500528F2D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */,
-				B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */,
-				B26D5EA91C8A403400528F2D /* HomeViewController.swift */,
-				F5E200901C8CC64800DECA95 /* ProfileViewController.swift */,
-				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
-				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
-				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
+				EF0AF2461C925402005CDCA2 /* Auth Login Home Flow */,
+				EF0AF2451C9253F9005CDCA2 /* Feedback Request Flow */,
+				EF0AF2471C925430005CDCA2 /* Journal Entries Flow */,
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
-				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
-				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
 				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
-				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
-				F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -146,6 +142,39 @@
 				B0A30DE2FAED7972BEBD3724 /* Pods-Echo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EF0AF2451C9253F9005CDCA2 /* Feedback Request Flow */ = {
+			isa = PBXGroup;
+			children = (
+				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
+				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
+				EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */,
+				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
+				F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */,
+			);
+			name = "Feedback Request Flow";
+			sourceTree = "<group>";
+		};
+		EF0AF2461C925402005CDCA2 /* Auth Login Home Flow */ = {
+			isa = PBXGroup;
+			children = (
+				F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */,
+				B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */,
+				B26D5EA91C8A403400528F2D /* HomeViewController.swift */,
+				F5E200901C8CC64800DECA95 /* ProfileViewController.swift */,
+			);
+			name = "Auth Login Home Flow";
+			sourceTree = "<group>";
+		};
+		EF0AF2471C925430005CDCA2 /* Journal Entries Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
+				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
+				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
+			);
+			name = "Journal Entries Flow";
 			sourceTree = "<group>";
 		};
 		EFDCA1DB1C8E015100BF0393 /* Views */ = {
@@ -205,6 +234,7 @@
 				EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */,
 				EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */,
 				F577A8551C8DEEC20085974D /* FeedbackRequest.storyboard */,
+				EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -271,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */,
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
 				F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */,
@@ -347,6 +378,7 @@
 				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
+				EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */,
 				F515CE021C8EF38D00EC7CED /* TeacherCollectionViewCell.swift in Sources */,
 				F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */,
 				B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */,

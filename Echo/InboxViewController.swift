@@ -121,11 +121,37 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//
+//        let inboxDetailsViewController = self.storyboard!.instantiateInitialViewController("InboxDetailsViewController") as! InboxDetailsViewController
+//
+//        let request = requestsReceived[indexPath.row]
+////        InboxDetailsViewController.request = request
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.navigationController?.pushViewController("InboxDetailsViewController", animated: true)
+//        
+//        
+//
+//        if self.requestsReceived.count > 0 {
+//            performSegueWithIdentifier("inboxDetails", sender: self)
+//        }
+//    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.requestsReceived.count > 0 {
-            performSegueWithIdentifier("inboxDetails", sender: self)
-        }
+        let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
+//        let entry = entries[indexPath.row]
+//        entryViewController.entry = entry
+        
+        let request = requestsReceived[indexPath.row]
+        InboxDetailsViewController.request = request
+        
+        print("this is the request")
+        print(request)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.navigationController?.pushViewController(inboxDetailsViewController, animated: true)
     }
+    
 
     
     // MARK: - Navigation
