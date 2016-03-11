@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class AcceptFeedbackRequestViewController: UIViewController {
-
+    var entry: PFObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("YAYYYYY \(entry)")
         // Do any additional setup after loading the view.
     }
 
