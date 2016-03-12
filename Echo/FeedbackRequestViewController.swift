@@ -56,55 +56,6 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
         self.entry = entry
     }
     
-    func sendFeedbackRequest(teacher: PFObject) {
-        var request: [String: String]! = Dictionary<String,String>()
-        
-        request["entry_id"] = self.entry?.objectId
-        request["request_body"] = "Hi please help me"
-        let teacherId = teacher["facebook_id"] as? String
-        request["teacher_id"] = teacherId
-        request["user_id"] = currentUser!["facebook_id"] as? String
-        request["accepted"] = "false"
-        request["resolved"] = "false"
-        
-        // add to requests_sent array for current user
-        if let requests_sent = currentUser!["requests_sent"] {
-            var array = requests_sent as! Array<Dictionary<String,String>>
-            array.append(request)
-            currentUser!["requests_sent"] = array
-        } else {
-            let array = [request]
-            currentUser!["requests_sent"] = array
-        }
-        currentUser!.saveInBackground()
-        
-        // add to requests_received array for current user
-        let query = PFUser.query()!
-        query.whereKey("facebook_id", equalTo: teacherId!)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        let teacher = object as! PFUser
-                        if let requests_received = teacher["requests_received"] {
-                            var array = requests_received as! Array<Dictionary<String,String>>
-                            array.append(request)
-                            teacher["requests_received"] = array
-                        } else {
-                            let array = [request]
-                            teacher["requests_received"] = array
-                        }
-                        teacher.saveInBackground()
-                    }
-                }
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-    }
-    
     // MARK: Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,7 +78,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.teachers.count > 0 {
-            performSegueWithIdentifier("feedbackSentSegue", sender: self)
+            performSegueWithIdentifier("feedbackDetailsSegue", sender: self)
         }
     }
     
@@ -139,11 +90,12 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-                case "feedbackSentSegue":
+                case "feedbackDetailsSegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow {
-                        let vc = segue.destinationViewController as! FeedbackRequestSentViewController
-                        vc.setTeacher(self.teachers[indexPath.row])
-                        sendFeedbackRequest(self.teachers[indexPath.row])
+                        let nc = segue.destinationViewController as! UINavigationController
+                        let vc = nc.topViewController as! FeedbackRequestDetailsViewController
+                        vc.updateTeacher(self.teachers[indexPath.row])
+                        vc.updateEntry(self.entry!)
                     }
                     
                 default:

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bKx-De-WoB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bKx-De-WoB">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Explore-->
@@ -25,19 +25,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Instructors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
-                                <rect key="frame" x="86" y="30" width="148" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
+                                <rect key="frame" x="80" y="28" width="161" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
-                                <rect key="frame" x="60" y="62" width="201" height="30"/>
-                                <state key="normal" title="Add teachers in Explore page"/>
-                                <connections>
-                                    <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
                                 <rect key="frame" x="0.0" y="112.5" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,24 +52,31 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="teacherName" destination="H7m-4X-4DE" id="hz7-4d-k9f"/>
-                                            <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="rAW-b4-4On"/>
+                                            <segue destination="iPd-Dt-VnD" kind="modal" identifier="feedbackDetailsSegue" id="mht-3y-htF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                <rect key="frame" x="33" y="62" width="256" height="30"/>
+                                <state key="normal" title="Add favorite teachers in Explore page"/>
+                                <connections>
+                                    <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="59" id="5xw-Qo-DE0"/>
+                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="31" id="60e-PR-phQ"/>
                             <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" id="6GK-iq-vI9"/>
                             <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="20" id="8YH-tJ-gnt"/>
                             <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="C1Z-jm-LTs"/>
+                            <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="31" id="DZm-xp-o6o"/>
                             <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="86" id="HmU-hl-Vfb"/>
                             <constraint firstItem="nSy-Oc-eId" firstAttribute="top" secondItem="mNb-ds-AsM" secondAttribute="bottom" constant="10" id="Scd-ll-Iex"/>
                             <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="86" id="TKH-fE-hdL"/>
                             <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="nSy-Oc-eId" secondAttribute="bottom" constant="12" id="X0y-ee-VvM"/>
                             <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="gwZ-nv-cki"/>
-                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="60" id="m0y-SC-eQ1"/>
                         </constraints>
                     </view>
                     <connections>
@@ -85,7 +85,93 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNW-Nn-GeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="27"/>
+            <point key="canvasLocation" x="77" y="26"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h6V-OU-vfG">
+            <objects>
+                <navigationController id="iPd-Dt-VnD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C1G-dB-GIq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tmx-UA-XdX" kind="relationship" relationship="rootViewController" id="T4a-yA-2dJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lyv-ev-FUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477" y="15"/>
+        </scene>
+        <!--Feedback Request Details View Controller-->
+        <scene sceneID="eDf-aS-shN">
+            <objects>
+                <viewController id="tmx-UA-XdX" customClass="FeedbackRequestDetailsViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AQ0-PM-rTy"/>
+                        <viewControllerLayoutGuide type="bottom" id="ydX-WO-Wi1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NFg-Ud-thZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Message Body (not editable for now)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZd-23-WSt">
+                                <rect key="frame" x="38" y="383" width="242" height="109"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
+                                <rect key="frame" x="76" y="510" width="167" height="30"/>
+                                <state key="normal" title="Send Feedback Request"/>
+                                <connections>
+                                    <action selector="clickedSendFeedback:" destination="tmx-UA-XdX" eventType="touchUpInside" id="o5V-kM-kq8"/>
+                                    <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="qNg-EL-Qdt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
+                                <rect key="frame" x="11" y="92" width="299" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
+                                <rect key="frame" x="20" y="121" width="280" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyp-Ib-sDG">
+                                <rect key="frame" x="85" y="383" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feedback Request to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
+                                <rect key="frame" x="62" y="64" width="197" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7Yg-Yy-ca2">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="7Dy-Hk-mxe">
+                            <connections>
+                                <action selector="onBack:" destination="tmx-UA-XdX" id="zRa-tV-BDr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="entryLabel" destination="siO-tY-TRs" id="fai-rb-xyA"/>
+                        <outlet property="messageTextView" destination="rZd-23-WSt" id="FQH-UR-vbh"/>
+                        <outlet property="teacherLabel" destination="tes-Y4-PTa" id="ccQ-9f-a2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ohq-yB-Slv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="15"/>
         </scene>
         <!--Feedback Request Sent View Controller-->
         <scene sceneID="MuR-Qn-xot">
@@ -127,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMO-T5-Dt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="33"/>
+            <point key="canvasLocation" x="1282" y="20"/>
         </scene>
     </scenes>
 </document>
