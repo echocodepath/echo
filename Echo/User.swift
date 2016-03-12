@@ -46,7 +46,7 @@ class User: NSObject {
                     responseDict["username"] = result.valueForKey("name") as? String
                     responseDict["email"] =  result.valueForKey("email") as? String
                     responseDict["profilePhotoUrl"] = "https://graph.facebook.com/\(self.facebook_id!)/picture?width=300&height=300"
-                    responseDict["coverPhotoUrl"] = "https://graph.facebook.com/\(FBSDKAccessToken.currentAccessToken().userID!)/cover?"
+                    responseDict["coverPhotoUrl"] = "https://graph.facebook.com/\(FBSDKAccessToken.currentAccessToken().userID!)?fields=cover"
                     self.saveToParse(responseDict)
                     currentUser = self
                 }

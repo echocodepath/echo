@@ -16,7 +16,8 @@ class EntryCollectionViewCell: UICollectionViewCell {
             do {
                 let rawData = try thumbnailData.getData()
                 let thumbnailImage = UIImage(data: rawData)
-                thumbnailImageView.image = thumbnailImage
+                thumbnailImageView?.image = thumbnailImage
+                profileThumbnailImageView?.image = thumbnailImage
             } catch {
                 
             }
@@ -26,6 +27,7 @@ class EntryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var entryLabel: UILabel!
     
+    @IBOutlet weak var profileThumbnailImageView: UIImageView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
