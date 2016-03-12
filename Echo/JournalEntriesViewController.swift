@@ -10,21 +10,24 @@ import UIKit
 import Parse
 
 class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var entries: [PFObject] = []
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var entries: [PFObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         loadEntries()
-        // Do any additional setup after loading the view.
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
-        let entry = entries[indexPath.row]
-        cell.entry = entry
+        let entry = self.entries[indexPath.row]
+        cell.titleLabel.text = entry.valueForKey("title") as? String
+        cell.songLabel.text = entry.valueForKey("song") as? String
+        //cell.entry = entry
         return cell
     }
     
@@ -33,11 +36,13 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let entryViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
-        let entry = entries[indexPath.row]
-        entryViewController.entry = entry
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.pushViewController(entryViewController, animated: true)
+        performSegueWithIdentifier("journalToEntrySegue", sender: self)
+        
+//        let entryViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
+//        let entry = entries[indexPath.row]
+//        entryViewController.entry = entry
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.navigationController?.pushViewController(entryViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,19 +75,19 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let identifier = segue.identifier {
-//            switch identifier {
-//            case "journalToEntrySegue":
-//                if let indexPath = self.tableView.indexPathForSelectedRow {
-//                    let vc = segue.destinationViewController as! EntryViewController
-//                    vc.setEntry(self.entries[indexPath.row])
-//                }
-//                
-//            default:
-//                return
-//            }
-//        }
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "journalToEntrySegue":
+                    if let indexPath = self.tableView.indexPathForSelectedRow{
+                        let nc = segue.destinationViewController as! UINavigationController
+                        let vc = nc.topViewController as! EntryViewController
+                        vc.updateEntry(self.entries[indexPath.row])
+                    }
+                    
+                default:
+                    return
+            }
+        }
     }
-    
 
 }
