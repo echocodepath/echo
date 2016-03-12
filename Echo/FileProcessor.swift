@@ -23,7 +23,7 @@ class FileProcessor: NSObject {
         do {
             data.writeToURL(url, atomically: true)
         } catch {
-        
+            print("error writing data to url")
         }
         return url
     }
