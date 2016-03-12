@@ -12,12 +12,14 @@ import AVKit
 import AVFoundation
 
 
-class AcceptFeedbackRequestViewController: UIViewController {
+class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate {
     var entry: PFObject?
     let controller = AVPlayerViewController()
     var player: AVPlayer?
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
     
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -29,6 +31,7 @@ class AcceptFeedbackRequestViewController: UIViewController {
             timeSlider.value = 0.0
             convertVideoDataToNSURL()
             bindRecordOptions()
+            startRecordingSession()
         }
         
     }
@@ -51,6 +54,36 @@ class AcceptFeedbackRequestViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func startRecordingSession() {
+        recordingSession = AVAudioSession.sharedInstance()
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    if allowed {
+
+                    } else {
+                        // failed to record!
+                    }
+                }
+            }
+        } catch {
+            // failed to record!
+        }
+    }
+    
+    func directoryURL() -> NSURL? {
+        let fileManager = NSFileManager.defaultManager()
+        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentDirectory = urls[0] as NSURL
+        let soundURL = documentDirectory.URLByAppendingPathComponent("sound.m4a")
+        debugPrint(soundURL)
+        
+        return soundURL
+    }
+    
+    
     func bindRecordOptions() {
         recordButton.addTarget(self, action:"handleTouchUp:", forControlEvents: .TouchUpInside)
         recordButton.addTarget(self, action: "handleTouchDown:", forControlEvents: .TouchDown)
@@ -63,14 +96,32 @@ class AcceptFeedbackRequestViewController: UIViewController {
             forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func handleTouchUp() {
-        //create audio piece and add to table
-        //play video
+    func handleTouchUp(sender: AnyObject) {
+        audioRecorder.stop()
+        audioRecorder = nil
+        player!.play()
     }
     
-    func handleTouchDown() {
-        // pause video
-        // start recording audio
+    func handleTouchDown(sender: AnyObject) {
+        let audioURL = directoryURL()
+        print("URL!!!! \(audioURL)")
+        
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000.0,
+            AVNumberOfChannelsKey: 1 as NSNumber,
+            AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
+        ]
+        do {
+            audioRecorder = try AVAudioRecorder(URL: audioURL!, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            print("recording!!")
+        } catch {
+        }
+        
+        player!.pause()
+
     }
     
     func sliderBeganTracking(slider: UISlider) {
