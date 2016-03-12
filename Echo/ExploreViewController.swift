@@ -20,8 +20,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     var teachers: [PFUser] = []
     var entries: [PFObject] = []
     
-    var selectedTeacherRow: Int?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -155,7 +153,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 case "exploreToEntry":
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.entriesGridView.indexPathForCell(cell) {
-                        let vc = segue.destinationViewController as! EntryViewController
+                        let nc = segue.destinationViewController as! UINavigationController
+                        let vc = nc.topViewController as! EntryViewController
                         vc.updateEntry(self.entries[indexPath.row])
                     }
                 
