@@ -19,6 +19,9 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
     
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func updateEntry(myEntry: PFObject?) {
         self.entry = myEntry
