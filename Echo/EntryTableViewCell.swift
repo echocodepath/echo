@@ -14,12 +14,12 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var entry: PFObject!{
-        didSet {
-            titleLabel.text = entry.valueForKey("title") as? String
-            songLabel.text = entry.valueForKey("song") as? String
-        }
-    }
+//    var entry: PFObject!{
+//        didSet {
+//            titleLabel.text = entry.valueForKey("title") as? String
+//            songLabel.text = entry.valueForKey("song") as? String
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
