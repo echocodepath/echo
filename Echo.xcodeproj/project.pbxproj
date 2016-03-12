@@ -34,6 +34,7 @@
 		F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */; };
 		F52E1FB21C91F3400052D039 /* Journal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52E1FB01C91F3400052D039 /* Journal.storyboard */; };
 		F52E1FB41C91F4440052D039 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52E1FB31C91F4440052D039 /* Entry.storyboard */; };
+		F52E1FB61C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E1FB51C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F52E1FB11C91F3400052D039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Journal.storyboard; sourceTree = "<group>"; };
 		F52E1FB31C91F4440052D039 /* Entry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Entry.storyboard; sourceTree = "<group>"; };
+		F52E1FB51C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestDetailsViewController.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
+				F52E1FB51C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift */,
 				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
 				EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */,
 				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F52E1FB61C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift in Sources */,
 				B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */,
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
 				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
