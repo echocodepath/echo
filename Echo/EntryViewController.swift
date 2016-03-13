@@ -82,7 +82,8 @@ class EntryViewController: UIViewController {
         if let identifier = segue.identifier {
             switch identifier {
                 case "requestFeedback":
-                    let vc = segue.destinationViewController as! FeedbackRequestViewController
+                    let nc = segue.destinationViewController as! UINavigationController
+                    let vc = nc.topViewController as! FeedbackRequestViewController
                     vc.setFeedbackEntry(self.entry)
                 
                 default:

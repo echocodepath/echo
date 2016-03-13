@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bKx-De-WoB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Explore-->
@@ -12,6 +12,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLa-h6-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="65" y="-392"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dzQ-t9-Phx">
+            <objects>
+                <navigationController id="TtE-mM-nPE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KvQ-LX-E4X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bKx-De-WoB" kind="relationship" relationship="rootViewController" id="xNp-Pu-bX5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Emt-kE-Qic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362" y="26"/>
         </scene>
         <!--Feedback Request View Controller-->
         <scene sceneID="w3i-S2-ej7">
@@ -26,13 +42,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
-                                <rect key="frame" x="80" y="28" width="161" height="21"/>
+                                <rect key="frame" x="80" y="30" width="161" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
-                                <rect key="frame" x="0.0" y="112.5" width="320" height="455"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
+                                <rect key="frame" x="0.0" y="113" width="320" height="454.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherFeedbackCell" rowHeight="66" id="RBb-en-e2k" customClass="TeacherFeedbackCell" customModule="Echo" customModuleProvider="target">
@@ -72,13 +88,20 @@
                             <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="20" id="8YH-tJ-gnt"/>
                             <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="C1Z-jm-LTs"/>
                             <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="31" id="DZm-xp-o6o"/>
-                            <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="86" id="HmU-hl-Vfb"/>
+                            <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="80" id="JmK-ad-N2L"/>
                             <constraint firstItem="nSy-Oc-eId" firstAttribute="top" secondItem="mNb-ds-AsM" secondAttribute="bottom" constant="10" id="Scd-ll-Iex"/>
-                            <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="86" id="TKH-fE-hdL"/>
                             <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="nSy-Oc-eId" secondAttribute="bottom" constant="12" id="X0y-ee-VvM"/>
                             <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="gwZ-nv-cki"/>
+                            <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="79" id="ur2-lU-RkH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Hga-l5-FuN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="f82-sw-vUK">
+                            <connections>
+                                <action selector="onBack:" destination="bKx-De-WoB" id="YC3-TQ-632"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
                     </connections>
@@ -115,12 +138,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Message Body (not editable for now)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZd-23-WSt">
-                                <rect key="frame" x="38" y="383" width="242" height="109"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
                                 <rect key="frame" x="76" y="510" width="167" height="30"/>
                                 <state key="normal" title="Send Feedback Request"/>
@@ -153,6 +170,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-10-oQJ">
+                                <rect key="frame" x="39" y="383" width="240" height="119"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -165,7 +188,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="entryLabel" destination="siO-tY-TRs" id="fai-rb-xyA"/>
-                        <outlet property="messageTextView" destination="rZd-23-WSt" id="FQH-UR-vbh"/>
+                        <outlet property="messageTextView" destination="HS6-10-oQJ" id="Hk1-CP-fk6"/>
                         <outlet property="teacherLabel" destination="tes-Y4-PTa" id="ccQ-9f-a2f"/>
                     </connections>
                 </viewController>
