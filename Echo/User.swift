@@ -41,6 +41,8 @@ class User: NSObject {
                 } else {
                     var responseDict: [String: String]! = Dictionary<String,String>()
                     let id: String? = result.valueForKey("id") as? String
+//                    let location : NSDictionary? = result.valueForKey("location") as? NSDictionary
+//                    let city : String? = location!.valueForKey("name") as? String
                     self.facebook_id = id!
                     responseDict["facebook_id"] = id!
                     responseDict["username"] = result.valueForKey("name") as? String

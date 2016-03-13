@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -54,28 +53,27 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwW-QC-LcC">
-                                <rect key="frame" x="10" y="251" width="300" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbI-MM-L4q">
+                                <rect key="frame" x="19.5" y="256" width="280" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0zn-Ca-uod">
+                                <rect key="frame" x="19.5" y="285" width="280" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3q-2d-rej">
-                                <rect key="frame" x="16" y="276" width="288" height="43"/>
-                                <string key="text">Developer goddess working in San Francisco. When I'm not at Yahoo, you can fine me at adance class or chatting on Slack. Go Bulldogs!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-No-BdO">
-                                <rect key="frame" x="104" y="327" width="112" height="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-No-BdO">
+                                <rect key="frame" x="104" y="344" width="112" height="13"/>
                                 <state key="normal" title="Add to Favorites"/>
                                 <connections>
                                     <action selector="addFavorite:" destination="QSf-33-f4J" eventType="touchUpInside" id="jne-mb-y3W"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="372-ye-luG">
-                                <rect key="frame" x="0.0" y="379" width="320" height="189"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="372-ye-luG">
+                                <rect key="frame" x="-0.5" y="379" width="320" height="189"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gpw-pi-Jla">
                                     <size key="itemSize" width="111" height="103"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -106,27 +104,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C3q-2d-rej" firstAttribute="top" secondItem="vwW-QC-LcC" secondAttribute="bottom" constant="8" id="2NV-2X-lyX"/>
                             <constraint firstItem="372-ye-luG" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" id="69t-nR-KgA"/>
                             <constraint firstAttribute="trailing" secondItem="GgP-Cg-hJP" secondAttribute="trailing" id="9w0-ud-Mld"/>
+                            <constraint firstItem="DbI-MM-L4q" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" constant="20" id="BOV-Q8-vbY"/>
                             <constraint firstAttribute="trailing" secondItem="372-ye-luG" secondAttribute="trailing" id="C8T-gg-1Sw"/>
-                            <constraint firstItem="C3q-2d-rej" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leadingMargin" id="CpT-L5-FOz"/>
                             <constraint firstAttribute="trailing" secondItem="qqR-DY-MJF" secondAttribute="trailing" constant="10" id="JPQ-RY-eRo"/>
-                            <constraint firstItem="vwW-QC-LcC" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" constant="10" id="QFg-HK-8zy"/>
+                            <constraint firstItem="DbI-MM-L4q" firstAttribute="top" secondItem="qqR-DY-MJF" secondAttribute="bottom" constant="4" id="Sdd-mk-001"/>
                             <constraint firstItem="GgP-Cg-hJP" firstAttribute="top" secondItem="c8Z-lO-sqv" secondAttribute="bottom" id="Uo6-Hb-PUT"/>
                             <constraint firstItem="Hph-az-bAU" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" constant="110" id="WEF-fR-Gcd"/>
+                            <constraint firstAttribute="trailing" secondItem="DbI-MM-L4q" secondAttribute="trailing" constant="20" id="X6m-Az-d3Y"/>
                             <constraint firstAttribute="trailing" secondItem="Hph-az-bAU" secondAttribute="trailing" constant="110" id="XRf-H7-3hz"/>
                             <constraint firstItem="qqR-DY-MJF" firstAttribute="top" secondItem="Hph-az-bAU" secondAttribute="bottom" constant="13" id="ae8-EG-0x8"/>
                             <constraint firstAttribute="trailing" secondItem="3JB-No-BdO" secondAttribute="trailing" constant="104" id="aiM-eW-k7E"/>
                             <constraint firstItem="GgP-Cg-hJP" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" id="gby-wr-A7o"/>
-                            <constraint firstItem="372-ye-luG" firstAttribute="top" secondItem="3JB-No-BdO" secondAttribute="bottom" constant="22" id="hxe-ho-2So"/>
-                            <constraint firstItem="C3q-2d-rej" firstAttribute="trailing" secondItem="3l3-yS-Vcn" secondAttribute="trailingMargin" id="i47-NS-960"/>
                             <constraint firstItem="bZM-Bp-ZgF" firstAttribute="top" secondItem="372-ye-luG" secondAttribute="bottom" id="jA5-0N-hCm"/>
                             <constraint firstItem="Hph-az-bAU" firstAttribute="top" secondItem="c8Z-lO-sqv" secondAttribute="bottom" constant="54" id="nVL-jk-B7r"/>
                             <constraint firstItem="qqR-DY-MJF" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" constant="10" id="nwx-0d-KLt"/>
-                            <constraint firstAttribute="trailing" secondItem="vwW-QC-LcC" secondAttribute="trailing" constant="10" id="pXc-kB-4qD"/>
-                            <constraint firstItem="vwW-QC-LcC" firstAttribute="top" secondItem="qqR-DY-MJF" secondAttribute="bottom" id="qk3-tf-lcZ"/>
-                            <constraint firstItem="3JB-No-BdO" firstAttribute="top" secondItem="C3q-2d-rej" secondAttribute="bottom" constant="8" id="rhd-kh-bUC"/>
                             <constraint firstItem="3JB-No-BdO" firstAttribute="leading" secondItem="3l3-yS-Vcn" secondAttribute="leading" constant="104" id="x7z-6g-lzw"/>
                         </constraints>
                     </view>
@@ -139,9 +132,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="coverPhoto" destination="GgP-Cg-hJP" id="MVc-kn-NHp"/>
-                        <outlet property="descriptionLabel" destination="C3q-2d-rej" id="OyQ-4A-XOM"/>
+                        <outlet property="descriptionTextView" destination="0zn-Ca-uod" id="mCY-ES-KD2"/>
                         <outlet property="favoriteButton" destination="3JB-No-BdO" id="cu7-LG-xGM"/>
-                        <outlet property="locationLabel" destination="vwW-QC-LcC" id="3mZ-Iq-Otw"/>
+                        <outlet property="locationLabel" destination="DbI-MM-L4q" id="tbd-9R-pbH"/>
                         <outlet property="nameLabel" destination="qqR-DY-MJF" id="7i2-Ls-OBP"/>
                         <outlet property="profilePhoto" destination="Hph-az-bAU" id="omZ-tz-vaG"/>
                         <outlet property="videosCollectionView" destination="372-ye-luG" id="zif-lo-Ffq"/>
