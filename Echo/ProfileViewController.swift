@@ -13,6 +13,8 @@ import ParseFacebookUtilsV4
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     private var user: User?
     private var profileUser: PFUser?
+    private var isMyProfile: Bool?
+    private var isTeacher: String?
 
     var entries: [PFObject] = []
 
@@ -41,8 +43,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 } else {
                     let array = [id]
                     currentUser["favorite_teachers"] = array
-//                    let responseDict: [String: Array] = ["favorite_teachers": array]
-//                    ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
                 }
                 currentUser.saveInBackground()
             }
@@ -58,8 +58,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let pfUser = self.profileUser {
             user = User(user: pfUser)
+            isMyProfile = false
+            isTeacher = pfUser["is_teacher"] as?String
         } else {
-            user = User(user: PFUser.currentUser()!)
+            self.profileUser = PFUser.currentUser()
+            user = User(user: self.profileUser!)
+            isMyProfile = true
+            isTeacher = self.profileUser!["is_teacher"] as?String
         }
         
         if let user = self.user {
@@ -86,9 +91,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 //self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
             }
             
-//            if user.is_teacher! == "false" {
-//                favoriteButton.hidden = true
-//            }
+            if isMyProfile! == true || isTeacher! == "false" {
+                favoriteButton.hidden = true
+            }
+            
+//            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
+//            self.favoriteButton.setImage(UIImage(named: "added-favorite") as UIImage?, forState: .Selected)
         }
         
 
@@ -100,7 +108,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func fetchEntries(){
 
         // Define query for entires for user and NOT private
-        let userId     = PFUser.currentUser()?.objectId as String!
+        let userId     = self.profileUser?.objectId as String!
         let predicate  = NSPredicate(format:"user_id = '\(userId)' AND private = false ")
         let entryQuery = PFQuery(className:"Entry", predicate: predicate)
 
@@ -121,7 +129,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.entries.count)
         return self.entries.count ?? 0
     }
     
@@ -131,11 +138,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 
         let entry = self.entries[indexPath.row]
         cell.entry = entry
-        print("----- THIS IS A CELL")
-        print(indexPath)
-        
+
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+        performSegueWithIdentifier("profileToEntry", sender: cell)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -143,14 +155,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "profileToEntry":
+                    let cell = sender as! EntryCollectionViewCell
+                    if let indexPath = self.videosCollectionView.indexPathForCell(cell) {
+                        let nc = segue.destinationViewController as! UINavigationController
+                        let vc = nc.topViewController as! EntryViewController
+                        vc.updateEntry(self.entries[indexPath.row])
+                    }
+                    
+                default:
+                    return
+            }
+        }
     }
-    */
+    
 
 }
