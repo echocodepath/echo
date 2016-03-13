@@ -112,14 +112,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             let entry = self.entries[indexPath.row]
             print("FIRST TRY\(entry)")
             cell.entry = entry
-            
-            // TO DO: figure out how to get image url from video
-//            let entryImage = self.entries[indexPath.row]["videoImage"] as! String
-//            if let url  = NSURL(string: entryImage!),
-//                data = NSData(contentsOfURL: url)
-//            {
-//                cell.entryImage.image = UIImage(data: data)
-//            }
             return cell
         }
     }
