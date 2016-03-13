@@ -12,16 +12,24 @@ import AVKit
 import AVFoundation
 
 
-class AcceptFeedbackRequestViewController: UIViewController {
+class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource {
     var entry: PFObject?
     let controller = AVPlayerViewController()
     var player: AVPlayer?
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
+    var fileNumber = 0
+    var audioClips: [AudioClip] = []
+    var currentUrl: NSURL?
+    var timer = NSTimer()
+    var currentAudioLength: Double = 0.0
     
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +37,10 @@ class AcceptFeedbackRequestViewController: UIViewController {
             timeSlider.value = 0.0
             convertVideoDataToNSURL()
             bindRecordOptions()
+            startRecordingSession()
         }
-        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     @IBAction func onTogglePlayPause(sender: AnyObject) {
@@ -51,6 +61,35 @@ class AcceptFeedbackRequestViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func startRecordingSession() {
+        recordingSession = AVAudioSession.sharedInstance()
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    if allowed {
+
+                    } else {
+                        // failed to record!
+                    }
+                }
+            }
+        } catch {
+            // failed to record!
+        }
+    }
+    
+    func directoryURL() -> NSURL? {
+        let fileManager = NSFileManager.defaultManager()
+        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentDirectory = urls[0] as NSURL
+        currentUrl = documentDirectory.URLByAppendingPathComponent("sound\(fileNumber).m4a")
+        
+        return currentUrl
+    }
+    
+    
     func bindRecordOptions() {
         recordButton.addTarget(self, action:"handleTouchUp:", forControlEvents: .TouchUpInside)
         recordButton.addTarget(self, action: "handleTouchDown:", forControlEvents: .TouchDown)
@@ -63,14 +102,45 @@ class AcceptFeedbackRequestViewController: UIViewController {
             forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func handleTouchUp() {
-        //create audio piece and add to table
-        //play video
+    func handleTouchUp(sender: AnyObject) {
+        let timestamp = player!.currentTime()
+        let audioClip = AudioClip(url: currentUrl!, timestamp: timestamp, duration: currentAudioLength)
+        audioRecorder.stop()
+        timer.invalidate()
+        audioRecorder = nil
+        audioClips.append(audioClip)
+        fileNumber += 1
+        player!.play()
+        tableView.reloadData()
+        
     }
     
-    func handleTouchDown() {
-        // pause video
-        // start recording audio
+    func updateTimer() {
+        currentAudioLength += 1
+    }
+    
+    func handleTouchDown(sender: AnyObject) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+
+        
+        let audioURL = directoryURL()
+        
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000.0,
+            AVNumberOfChannelsKey: 1 as NSNumber,
+            AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
+        ]
+        do {
+            audioRecorder = try AVAudioRecorder(URL: audioURL!, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            print("recording!!")
+        } catch {
+        }
+        
+        player!.pause()
+
     }
     
     func sliderBeganTracking(slider: UISlider) {
@@ -109,7 +179,7 @@ class AcceptFeedbackRequestViewController: UIViewController {
         controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        controller.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
         player = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
@@ -149,6 +219,17 @@ class AcceptFeedbackRequestViewController: UIViewController {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
         }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("FeedbackClipTableViewCell") as! FeedbackClipTableViewCell
+        let audioClip = audioClips[indexPath.row]
+        cell.audioClip = audioClip
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return audioClips.count
     }
     
     deinit {
