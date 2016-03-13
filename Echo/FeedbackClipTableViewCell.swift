@@ -9,7 +9,15 @@
 import UIKit
 
 class FeedbackClipTableViewCell: UITableViewCell {
-
+    var audioClip: AudioClip? {
+        didSet {
+            durationLabel.text = "\(Int(audioClip!.duration!))s"
+            timestampLabel.text = "\(audioClip!.timestamp!)"
+        }
+    }
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +25,6 @@ class FeedbackClipTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
