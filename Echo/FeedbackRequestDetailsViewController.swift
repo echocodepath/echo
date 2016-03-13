@@ -12,10 +12,13 @@ import ParseFacebookUtilsV4
 import AVKit
 import AVFoundation
 
-class FeedbackRequestDetailsViewController: UIViewController {
+class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate {
+    let MESSAGE_PLACEHOLDER = "Add a message for instructor"
+    
     var entry: PFObject?
     var teacher: PFObject?
     var currentUser: PFUser?
+    var messageBody: String?
     
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
@@ -42,6 +45,14 @@ class FeedbackRequestDetailsViewController: UIViewController {
         if teacher != nil {
             teacherLabel.text = teacher!["username"] as? String
         }
+        
+        //text view styling and make text view editable
+        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderColor = borderColor.CGColor
+        messageTextView.layer.cornerRadius = 5.0
+        messageTextView.delegate = self
+        applyPlaceholderStyle(self.messageTextView, placeholderText: MESSAGE_PLACEHOLDER)
     }
     
     func updateEntry(entry: PFObject) {
@@ -57,6 +68,74 @@ class FeedbackRequestDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Text View
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        // Save text to message body
+        self.messageBody = textView.text
+        
+        // remove the placeholder text when they start typing
+        // first, see if the field is empty
+        // if it's not empty, then the text should be black and not italic
+        // BUT, we also need to remove the placeholder text if that's the only text
+        // if it is empty, then the text should be the placeholder
+        let newLength = textView.text.utf16.count + text.utf16.count - range.length
+        if newLength > 0 // have text, so don't show the placeholder
+        {
+            // check if the only text is the placeholder and remove it if needed
+            // unless they've hit the delete button with the placeholder displayed
+            if textView == messageTextView && textView.text == MESSAGE_PLACEHOLDER
+            {
+                if text.utf16.count == 0 // they hit the back button
+                {
+                    return false // ignore it
+                }
+                applyNonPlaceholderStyle(textView)
+                textView.text = ""
+            }
+            return true
+        }
+        else  // no text, so show the placeholder
+        {
+            applyPlaceholderStyle(textView, placeholderText: MESSAGE_PLACEHOLDER)
+            moveCursorToStart(textView)
+            return false
+        }
+    }
+    
+    func textViewShouldBeginEditing(aTextView: UITextView) -> Bool
+    {
+        if aTextView == messageTextView && aTextView.text == MESSAGE_PLACEHOLDER
+        {
+            // move cursor to start
+            moveCursorToStart(aTextView)
+        }
+        return true
+    }
+    
+    func moveCursorToStart(aTextView: UITextView)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            aTextView.selectedRange = NSMakeRange(0, 0);
+        })
+    }
+    
+    func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String)
+    {
+        // make it look (initially) like a placeholder
+        aTextview.textColor = UIColor.lightGrayColor()
+        aTextview.text = placeholderText
+    }
+    
+    func applyNonPlaceholderStyle(aTextview: UITextView)
+    {
+        // make it look like normal text instead of a placeholder
+        aTextview.textColor = UIColor.darkTextColor()
+        aTextview.alpha = 1.0
+    }
+
+    
+    
+    // MARK: Video
     private func playVideo(url: NSURL){
         let controller = AVPlayerViewController()
         controller.willMoveToParentViewController(self)
@@ -87,11 +166,13 @@ class FeedbackRequestDetailsViewController: UIViewController {
         }
     }
     
+    
+    // MARK: send feedback request
     func sendFeedbackRequest(teacher: PFObject) {
         var request: [String: String]! = Dictionary<String,String>()
         
         request["entry_id"] = self.entry?.objectId
-        request["request_body"] = "Hi please help me"
+        request["request_body"] = self.messageBody
         let teacherId = teacher["facebook_id"] as? String
         request["teacher_id"] = teacherId
         request["user_id"] = currentUser!["facebook_id"] as? String

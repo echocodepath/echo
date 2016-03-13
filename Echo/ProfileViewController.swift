@@ -104,7 +104,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         //if my profile, text view styling and make text view editable
         if isMyProfile == true {
-            print("CAN EDIT MY DESCRIPTION")
             let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
             descriptionTextView.layer.borderWidth = 0.5
             descriptionTextView.layer.borderColor = borderColor.CGColor
@@ -114,7 +113,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 applyPlaceholderStyle(self.descriptionTextView, placeholderText: DESCRIPTION_PLACEHOLDER)
             }
         } else {
-            print("CAN NOT EDIT MY DESCRIPTION")
             descriptionTextView.userInteractionEnabled = false
         }
         
@@ -126,8 +124,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: Text View
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        print("TEXT")
-        print(textView.text)
         // Save text to user description
         if let currentUser = self.profileUser {
             currentUser["description"] = textView.text
