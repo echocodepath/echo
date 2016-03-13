@@ -17,6 +17,10 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     var teachers: [PFObject] = []
     var entry: PFObject?
     
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self

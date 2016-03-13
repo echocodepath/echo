@@ -15,9 +15,9 @@ class InboxDetailsViewController: UIViewController {
     var request : [String: String]?
     var currentEntry : PFObject?
     
-    
     @IBOutlet weak var songTitleLabel: UILabel!
     @IBOutlet weak var requestedUserLabel: UILabel!
+    @IBOutlet weak var requestBodyLabel: UILabel!
 
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -29,6 +29,7 @@ class InboxDetailsViewController: UIViewController {
         print("the request on inbox details view")
         print(self.request)
         let entryId = self.request!["entry_id"]
+        self.requestBodyLabel.text = self.request!["request_body"]
         
         let query = PFQuery(className:"Entry")
         query.getObjectInBackgroundWithId(entryId!) {
@@ -38,12 +39,8 @@ class InboxDetailsViewController: UIViewController {
                 print(currentEntry!)
                 
                 self.currentEntry = currentEntry
-                
                 self.songTitleLabel.text = self.currentEntry!["song"] as? String
                 self.requestedUserLabel.text = self.currentEntry!["username"] as? String
-                
-                
-                
             } else {
                 print(error)
             }
