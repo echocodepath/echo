@@ -11,14 +11,18 @@ import CoreMedia
 
 
 class AudioClip: NSObject {
-    var url: NSURL?
+    var path: NSURL?
     var timestamp: CMTime?
     var duration: Float64?
+    var offset: Double?
     
-    init(url: NSURL, timestamp: CMTime, duration: Float64 ) {
-        self.url = url
+    init(path: NSURL, timestamp: CMTime, duration: Float64 ) {
+        self.path = path
         self.timestamp = timestamp
         self.duration = duration
+        self.offset = timestamp.seconds
+        print("duration!! \(duration)")
+        print(path)
     }
     
 }
