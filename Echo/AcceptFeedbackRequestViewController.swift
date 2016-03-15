@@ -12,20 +12,29 @@ import AVKit
 import AVFoundation
 
 
-class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource {
+class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
+    
+    enum State {
+        case None, Playing, Paused, Rewinding
+    }
+    
+    var state: State = .None
+    let videoPlayer = AVPlayerViewController()
+    var audioPlayers = Array<AVAudioPlayer>()
+    var avPlayer: AVPlayer?
+    var feedback: [AudioClip] = []
+    var entryDuration: Double?
     var entry: PFObject?
-    let controller = AVPlayerViewController()
-    var player: AVPlayer?
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var fileNumber = 0
-    var audioClips: [AudioClip] = []
     var currentUrl: NSURL?
-    var timer = NSTimer()
-    var currentAudioLength: Double = 0.0
     
+    
+    var audioTimers = Array<NSTimer>()
+
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
@@ -42,23 +51,66 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func videoPlaybackDidUnPause() {
+        audioTimers.forEach({ $0.invalidate() })
+        audioPlayers.removeAll()
+        videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
+    }
+    
+    func videoPlaybackDidPause() {
+        avPlayer!.pause();
+    }
+    
+    func videoDidRewind() {
+        invalidateTimers()
+    }
+    
+    func invalidateTimers() {
+        audioTimers.forEach({ $0.invalidate() })
+        feedback.forEach({ $0.hasBeenPlayed = false })
+    }
+    
+    func createTimer(clip: AudioClip) {
+        clip.hasBeenPlayed = true
+        let currentTime = avPlayer!.currentTime().seconds
+        let params: [String: AudioClip] = ["clip" : clip]
+        let playAudioAt = clip.offset! - currentTime
+        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
+        audioTimers.append(timer)
+    }
+    
 
-    @IBAction func onTogglePlayPause(sender: AnyObject) {
-        let playerIsPlaying:Bool = player!.rate > 0
-        if (playerIsPlaying) {
-            player!.pause();
+    func playAudio(timer: NSTimer){
+        let clip = timer.userInfo!["clip"] as! AudioClip
+        avPlayer!.pause()
+        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
+            player.delegate = self
+            player.prepareToPlay()
+            player.play()
+            audioPlayers.append(player)
         } else {
-            player!.play();
+            print("Something went wrong")
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func onTogglePlayPause(sender: AnyObject) {
+        let playerIsPlaying:Bool = avPlayer!.rate > 0
+        if playerIsPlaying {
+            videoPlaybackDidPause()
+        } else {
+            avPlayer!.play()
+            videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+            videoPlaybackDidUnPause()
+        }
     }
     
-    @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
+        let filteredClips = feedback.filter({ $0.offset > offset && $0.hasBeenPlayed == false })
+        if filteredClips.count > 0 {
+            createTimer(filteredClips[0])
+        }
     }
     
     func startRecordingSession() {
@@ -84,8 +136,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         let fileManager = NSFileManager.defaultManager()
         let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let documentDirectory = urls[0] as NSURL
-        currentUrl = documentDirectory.URLByAppendingPathComponent("sound\(fileNumber).m4a")
-        
+        currentUrl = documentDirectory.URLByAppendingPathComponent("feedback-clip-\(fileNumber).m4a")
         return currentUrl
     }
     
@@ -93,7 +144,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     func bindRecordOptions() {
         recordButton.addTarget(self, action:"handleTouchUp:", forControlEvents: .TouchUpInside)
         recordButton.addTarget(self, action: "handleTouchDown:", forControlEvents: .TouchDown)
-        
         timeSlider.addTarget(self, action: "sliderBeganTracking:",
             forControlEvents: UIControlEvents.TouchDown)
         timeSlider.addTarget(self, action: "sliderEndedTracking:",
@@ -103,26 +153,18 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func handleTouchUp(sender: AnyObject) {
-        let timestamp = player!.currentTime()
-        let audioClip = AudioClip(url: currentUrl!, timestamp: timestamp, duration: currentAudioLength)
+        let timestamp = avPlayer!.currentTime()
+        let duration = audioRecorder.currentTime
+        let audioClip = AudioClip(path: currentUrl!, timestamp: timestamp, duration: duration)
         audioRecorder.stop()
-        timer.invalidate()
         audioRecorder = nil
-        audioClips.append(audioClip)
+        feedback.append(audioClip)
         fileNumber += 1
-        player!.play()
+        avPlayer!.play()
         tableView.reloadData()
-        
-    }
-    
-    func updateTimer() {
-        currentAudioLength += 1
     }
     
     func handleTouchDown(sender: AnyObject) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
-
-        
         let audioURL = directoryURL()
         
         let settings = [
@@ -139,59 +181,69 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         } catch {
         }
         
-        player!.pause()
+        avPlayer!.pause()
 
     }
     
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        
+        videoPlayer.player!.play()
+        videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+    }
+
     func sliderBeganTracking(slider: UISlider) {
-        print("sliderBeganTracking")
-        playerRateBeforeSeek = player!.rate
-        player!.pause()
+        playerRateBeforeSeek = avPlayer!.rate
+        avPlayer!.pause()
     }
     
     func sliderEndedTracking(slider: UISlider) {
-        print("sliderEndedTracking")
-        let videoDuration = CMTimeGetSeconds(player!.currentItem!.duration)
+        state = .Rewinding
+        let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
         
-        player!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
+
+        avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
             if (self.playerRateBeforeSeek > 0) {
-                self.player!.play()
+                self.avPlayer!.play()
+                self.invalidateTimers()
+                print("offset!!! \(self.avPlayer!.currentTime().seconds)")
+                self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
         }
+        videoDidRewind()
     }
     
     func sliderValueChanged(slider: UISlider) {
-        print("sliderValueChanged")
-        let videoDuration = CMTimeGetSeconds(player!.currentItem!.duration)
+        let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
     }
     
     private func playVideo(url: NSURL){
-        controller.showsPlaybackControls = false
-        controller.willMoveToParentViewController(self)
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
-        player = AVPlayer(URL: url)
+        videoPlayer.showsPlaybackControls = false
+        videoPlayer.willMoveToParentViewController(self)
+        addChildViewController(videoPlayer)
+        view.addSubview(videoPlayer.view)
+        videoPlayer.didMoveToParentViewController(self)
+        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
+        avPlayer = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
-        player!.replaceCurrentItemWithPlayerItem(playerItem)
+        avPlayer!.replaceCurrentItemWithPlayerItem(playerItem)
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
-        timeObserver = player!.addPeriodicTimeObserverForInterval(timeInterval,
+        timeObserver = avPlayer!.addPeriodicTimeObserverForInterval(timeInterval,
             queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
                 self.observeTime(elapsedTime)
         }
         
-        controller.player = player
-        controller.player!.play()
+        videoPlayer.player = avPlayer
+        videoPlayer.player!.play()
+        videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
     }
     
     private func convertVideoDataToNSURL() {
@@ -214,7 +266,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     private func observeTime(elapsedTime: CMTime) {
-        let duration = CMTimeGetSeconds(player!.currentItem!.duration);
+        let duration = CMTimeGetSeconds(avPlayer!.currentItem!.duration);
+        timeSlider.maximumValue = Float(duration/100)
         if (isfinite(duration)) {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
@@ -223,17 +276,26 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FeedbackClipTableViewCell") as! FeedbackClipTableViewCell
-        let audioClip = audioClips[indexPath.row]
+        let audioClip = feedback[indexPath.row]
         cell.audioClip = audioClip
         return cell
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return audioClips.count
+        return feedback.count
     }
     
     deinit {
-        player!.removeTimeObserver(timeObserver)
+        avPlayer!.removeTimeObserver(timeObserver)
     }
     /*
     // MARK: - Navigation

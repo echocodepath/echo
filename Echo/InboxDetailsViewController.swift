@@ -46,9 +46,6 @@ class InboxDetailsViewController: UIViewController {
             }
         }
         
-
-        
-        
     }
     
     func setFeedbackRequest(request: Dictionary<String,String>) {
