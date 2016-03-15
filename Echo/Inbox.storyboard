@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZBK-us-6gh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sob-ni-PjW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -8,7 +8,7 @@
         <!--Inbox-->
         <scene sceneID="D6R-PG-G3o">
             <objects>
-                <viewController id="ZsL-K1-y6g" customClass="InboxViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZsL-K1-y6g" userLabel="Inbox" customClass="InboxViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rjx-Bf-06x"/>
                         <viewControllerLayoutGuide type="bottom" id="54N-ZV-RI3"/>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-Av-wVB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InboxCell" rowHeight="65" id="cxK-Br-b8l" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceivedRequests" rowHeight="65" id="cxK-Br-b8l" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxK-Br-b8l" id="cKB-Ov-VlO">
@@ -71,19 +71,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Hs5-Av-wVB" secondAttribute="trailing" id="C3f-4U-Wab"/>
-                            <constraint firstItem="Hs5-Av-wVB" firstAttribute="top" secondItem="mcX-02-wlA" secondAttribute="top" id="llj-Qm-uRm"/>
-                            <constraint firstItem="Hs5-Av-wVB" firstAttribute="leading" secondItem="mcX-02-wlA" secondAttribute="leading" id="pdt-oj-z2g"/>
-                            <constraint firstItem="54N-ZV-RI3" firstAttribute="top" secondItem="Hs5-Av-wVB" secondAttribute="bottom" id="rma-Wj-inu"/>
+                            <constraint firstItem="Hs5-Av-wVB" firstAttribute="leading" secondItem="mcX-02-wlA" secondAttribute="leading" id="525-pD-K0W"/>
+                            <constraint firstAttribute="trailing" secondItem="Hs5-Av-wVB" secondAttribute="trailing" id="AAK-tT-MQl"/>
+                            <constraint firstItem="Hs5-Av-wVB" firstAttribute="top" secondItem="Rjx-Bf-06x" secondAttribute="bottom" id="QwP-Ys-ZJr"/>
+                            <constraint firstItem="54N-ZV-RI3" firstAttribute="top" secondItem="Hs5-Av-wVB" secondAttribute="bottom" id="wao-Ro-tqf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inbox" id="rxg-bu-dYB">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="3GL-bq-W7N">
-                            <connections>
-                                <action selector="onBack:" destination="ZsL-K1-y6g" id="wj6-vj-UPX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Item" id="Pln-gU-orl" userLabel="Inbox"/>
                     <connections>
                         <outlet property="tableView" destination="Hs5-Av-wVB" id="uN9-4d-IeT"/>
                         <segue destination="gLP-wi-i0b" kind="modal" identifier="inboxDetails" id="gM7-o1-Rcr"/>
@@ -92,6 +86,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyb-nF-pEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="176" y="-587"/>
+        </scene>
+        <!--Sent-->
+        <scene sceneID="rOp-7Z-JeT">
+            <objects>
+                <viewController id="g8K-Je-1LX" userLabel="Sent" customClass="SentViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CPZ-xa-9gc"/>
+                        <viewControllerLayoutGuide type="bottom" id="f3V-av-aJl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vhD-ng-sFi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v5N-Rv-MVa">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SentRequests" rowHeight="65" id="s0Z-s3-FcG" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s0Z-s3-FcG" id="Pt2-te-Cux">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKh-Mt-D3r">
+                                                    <rect key="frame" x="69" y="3" width="201" height="52.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="zzE-41-Gus">
+                                                    <rect key="frame" x="292" y="18" width="5.5" height="24"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2N2-v7-h2y">
+                                                    <rect key="frame" x="8" y="10" width="44" height="44.5"/>
+                                                    <color key="backgroundColor" red="0.38675820709999997" green="0.38675820709999997" blue="0.38675820709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="WeV-4C-8gB"/>
+                                                        <constraint firstAttribute="height" constant="44.5" id="esb-6C-QTN"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="arrowLabel" destination="zzE-41-Gus" id="PFS-Bw-Lsq"/>
+                                            <outlet property="avatarImageView" destination="2N2-v7-h2y" id="lGL-ua-K4U"/>
+                                            <outlet property="inboxTextLabel" destination="cKh-Mt-D3r" id="Jfv-Ti-GJX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f3V-av-aJl" firstAttribute="top" secondItem="v5N-Rv-MVa" secondAttribute="bottom" id="2sN-Qb-Sqr"/>
+                            <constraint firstItem="v5N-Rv-MVa" firstAttribute="leading" secondItem="vhD-ng-sFi" secondAttribute="leading" id="DgE-ZZ-Ozu"/>
+                            <constraint firstAttribute="trailing" secondItem="v5N-Rv-MVa" secondAttribute="trailing" id="Iej-Rc-65c"/>
+                            <constraint firstItem="v5N-Rv-MVa" firstAttribute="top" secondItem="CPZ-xa-9gc" secondAttribute="bottom" id="Wie-4c-5ol"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="F3Z-sc-nQX" userLabel="Sent"/>
+                    <connections>
+                        <outlet property="requestsSentTableView" destination="v5N-Rv-MVa" id="Zr9-HS-ZCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kt6-zW-AA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="162" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j28-C4-XdC">
@@ -185,22 +248,46 @@
             <point key="canvasLocation" x="1509.5" y="-598"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="jpY-yK-MnX">
+        <scene sceneID="UFY-es-kTd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZBK-us-6gh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9BC-vp-v9g">
+                <navigationController id="sob-ni-PjW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ib-Vt-aoU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ZsL-K1-y6g" kind="relationship" relationship="rootViewController" id="DjO-c1-jKA"/>
+                        <segue destination="PXl-Gf-5Tk" kind="relationship" relationship="rootViewController" id="lH6-n9-46p"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HLw-J1-X30" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="USs-bj-87E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="-587"/>
+            <point key="canvasLocation" x="-760" y="-499"/>
+        </scene>
+        <!--Inbox Tab Bar Controller-->
+        <scene sceneID="ngk-gj-yVi">
+            <objects>
+                <tabBarController id="PXl-Gf-5Tk" customClass="InboxTabBarController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="R5z-QO-oBZ">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="UBO-W6-IaT">
+                            <connections>
+                                <action selector="onBack:" destination="PXl-Gf-5Tk" id="4sd-NQ-FdS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="0zS-8l-dWN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <outlet property="inboxTabBar" destination="0zS-8l-dWN" id="QGb-ga-G6V"/>
+                        <segue destination="ZsL-K1-y6g" kind="relationship" relationship="viewControllers" id="pVU-vl-wDA"/>
+                        <segue destination="g8K-Je-1LX" kind="relationship" relationship="viewControllers" id="aaw-cI-diK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ALb-gI-Y5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="-506"/>
         </scene>
     </scenes>
     <resources>
