@@ -13,8 +13,8 @@ import ParseFacebookUtilsV4
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate {
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
-    private var user: User?
-    private var profileUser: PFUser?
+    private var currentUser: PFUser?
+    private var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
     private var isTeacher: String?
 
@@ -34,22 +34,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     @IBAction func addFavorite(sender: AnyObject) {
-        if let currentUser = PFUser.currentUser() {
-            if let user = self.user {
-                let id = user.facebook_id!
-                if let favorite_teachers = currentUser["favorite_teachers"] {
-                    var array = favorite_teachers as! Array<String>
-                    if !array.contains(id) {
-                        array.append(id)
-                        currentUser["favorite_teachers"] = array
-                    }
-                } else {
-                    let array = [id]
-                    currentUser["favorite_teachers"] = array
-                }
-                currentUser.saveInBackground()
+        let id = profileUser!["facebook_id"] as! String
+        if let favorite_teachers = currentUser!["favorite_teachers"] {
+            var array = favorite_teachers as! Array<String>
+            if !array.contains(id) {
+                array.append(id)
+                currentUser!["favorite_teachers"] = array
             }
+        } else {
+            let array = [id]
+            currentUser!["favorite_teachers"] = array
         }
+        currentUser!.saveInBackground()
     }
     
     func setProfile(user: PFUser?) {
@@ -58,49 +54,57 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentUser = PFUser.currentUser()
+        do {
+            try currentUser!.fetch()
+        } catch {
+            
+        }
         
         if let pfUser = self.profileUser {
-            user = User(user: pfUser)
             isMyProfile = false
             isTeacher = pfUser["is_teacher"] as? String
         } else {
-            self.profileUser = PFUser.currentUser()
-            user = User(user: self.profileUser!)
+            self.profileUser = currentUser
             isMyProfile = true
             isTeacher = self.profileUser!["is_teacher"] as? String
         }
         
-        if let user = self.user {
-            self.nameLabel.text = user.username!
-            self.locationLabel.text = "San Francisco, CA"
-            if let desc = self.profileUser!["description"] {
-                self.descriptionTextView.text = desc as? String
+        if let name = self.profileUser!["username"] {
+            self.nameLabel.text = name as? String
+        }
+        
+        if let location = profileUser!["location"] {
+            self.locationLabel.text = location as? String
+        }
+        
+        if let desc = self.profileUser!["description"] {
+            self.descriptionTextView.text = desc as? String
+        }
+        
+        if let profImage =  self.profileUser!["profilePhotoUrl"] {
+            if let url  = NSURL(string: profImage as! String),
+                data = NSData(contentsOfURL: url)
+            {
+                self.profilePhoto.image = UIImage(data: data)
             }
-            
-            if let profImage = user.profilePhotoUrl {
-                if let url  = NSURL(string: profImage),
-                    data = NSData(contentsOfURL: url)
-                {
-                    self.profilePhoto.image = UIImage(data: data)
-                }
-                //self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
+            //self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
+        }
+        if let coverImage =  self.profileUser!["coverPhotoUrl"] {
+            if let url  = NSURL(string: coverImage as! String),
+                data = NSData(contentsOfURL: url)
+            {
+                self.coverPhoto.image = UIImage(data: data)
             }
-            if let coverImage = user.coverPhotoUrl {
-                if let url  = NSURL(string: coverImage),
-                    data = NSData(contentsOfURL: url)
-                {
-                    self.coverPhoto.image = UIImage(data: data)
-                }
-                //self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
-            }
-            
-            if isMyProfile! == true || isTeacher! == "false" {
-                favoriteButton.hidden = true
-            }
-            
+            //self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
+        }
+        
+        if isMyProfile! == true || isTeacher! == "false" {
+            favoriteButton.hidden = true
+        }
+        
 //            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
 //            self.favoriteButton.setImage(UIImage(named: "added-favorite") as UIImage?, forState: .Selected)
-        }
         
         //if my profile, text view styling and make text view editable
         if isMyProfile == true {
@@ -120,6 +124,60 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         videosCollectionView.dataSource = self
         fetchEntries()
     }
+    
+    // MARK: Entries
+    
+    func fetchEntries(){
+        // Define query for entires for user and NOT private
+        let userId     = self.profileUser?.objectId as String!
+        let predicate  = NSPredicate(format:"user_id = '\(userId)' AND private = false ")
+        let entryQuery = PFQuery(className:"Entry", predicate: predicate)
+        
+        entryQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        self.entries.append(object)
+                    }
+                }
+                self.videosCollectionView.reloadData()
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+    }
+    
+    // MARK: Collection View
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.entries.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+        
+        let entry = self.entries[indexPath.row]
+        cell.entry = entry
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+        performSegueWithIdentifier("profileToEntry", sender: cell)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
     
     
     // MARK: Text View
@@ -189,60 +247,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         aTextview.textColor = UIColor.darkTextColor()
         aTextview.alpha = 1.0
     }
-    
-    // MARK: Entries
-    
-    func fetchEntries(){
-        // Define query for entires for user and NOT private
-        let userId     = self.profileUser?.objectId as String!
-        let predicate  = NSPredicate(format:"user_id = '\(userId)' AND private = false ")
-        let entryQuery = PFQuery(className:"Entry", predicate: predicate)
-
-        entryQuery.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        self.entries.append(object)
-                    }
-                }
-                self.videosCollectionView.reloadData()
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-        
-    }
-    
-    // MARK: Collection View
-
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.entries.count ?? 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-
-        let entry = self.entries[indexPath.row]
-        cell.entry = entry
-
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
-        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-        performSegueWithIdentifier("profileToEntry", sender: cell)
-    }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     
     // MARK: - Navigation
 
