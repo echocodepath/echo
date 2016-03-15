@@ -60,7 +60,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func videoPlaybackDidPause() {
         avPlayer!.pause();
-
     }
     
     func videoDidRewind() {
@@ -69,7 +68,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func invalidateTimers() {
         audioTimers.forEach({ $0.invalidate() })
-        feedback.map({ $0.hasBeenPlayed = false })
+        feedback.forEach({ $0.hasBeenPlayed = false })
     }
     
     func createTimer(clip: AudioClip) {
@@ -207,6 +206,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
             if (self.playerRateBeforeSeek > 0) {
                 self.avPlayer!.play()
+                self.invalidateTimers()
                 print("offset!!! \(self.avPlayer!.currentTime().seconds)")
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
