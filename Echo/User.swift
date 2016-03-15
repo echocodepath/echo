@@ -26,8 +26,6 @@ class User: NSObject {
         self.id = user.valueForKey("objectId") as? String
         self.facebook_id = user.valueForKey("facebook_id") as? String
         self.username = user.username
-        self.profilePhotoUrl = (user.valueForKey("profilePhotoUrl") as! String)
-        self.coverPhotoUrl = (user.valueForKey("coverPhotoUrl") as! String)
         self.is_teacher = "false"
         returnUserData()
     }
@@ -48,7 +46,9 @@ class User: NSObject {
                     responseDict["username"] = result.valueForKey("name") as? String
                     responseDict["email"] =  result.valueForKey("email") as? String
                     responseDict["profilePhotoUrl"] = "https://graph.facebook.com/\(self.facebook_id!)/picture?width=300&height=300"
+                    self.profilePhotoUrl = responseDict["profilePhotoUrl"]
                     responseDict["coverPhotoUrl"] = "https://graph.facebook.com/\(FBSDKAccessToken.currentAccessToken().userID!)?fields=cover"
+                    self.coverPhotoUrl = responseDict["coverPhotoUrl"]
                     self.saveToParse(responseDict)
                     currentUser = self
                 }
