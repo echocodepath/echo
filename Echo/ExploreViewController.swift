@@ -35,8 +35,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-//        teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
-        
+        teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
+        entriesGridView?.insertSubview(refreshControlTableView, atIndex: 0)
     }
     
     func fetchInstructors(){
@@ -49,9 +49,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                     for object in objects {
                         let user = object as! PFUser
                         self.teachers.append(user)
+                        self.teachersGridView.reloadData()
                     }
                 }
-                self.teachersGridView.reloadData()
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
@@ -66,9 +66,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 if let objects = objects {
                     for object in objects {
                         self.entries.append(object)
+                        self.entriesGridView.reloadData()
                     }
                 }
-                self.entriesGridView.reloadData()
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
