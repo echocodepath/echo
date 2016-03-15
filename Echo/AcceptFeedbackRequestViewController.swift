@@ -155,7 +155,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     func handleTouchUp(sender: AnyObject) {
         let timestamp = avPlayer!.currentTime()
         let duration = audioRecorder.currentTime
-        let audioClip = AudioClip(path: currentUrl!, timestamp: timestamp, duration: duration)
+        let audioClip = AudioClip(path: currentUrl!, offset: timestamp.seconds, duration: duration)
         audioRecorder.stop()
         audioRecorder = nil
         feedback.append(audioClip)
@@ -300,7 +300,24 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         paramDict["user_id"] = entry!.objectForKey("user_id") as! String
         
         ParseClient.sharedInstance.createFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
-            print(feedback)
+            self.feedback.forEach { clip in
+                var params = Dictionary<String, NSObject>()
+                let audioData = NSData(contentsOfURL: clip.path!)
+                let audioFile = PFFile(name: "AudioClip.mp4", data: audioData!)
+                let duration = clip.duration
+                let offset = clip.offset
+                
+                params["feedback_id"] = feedback
+                params["audioFile"] = audioFile
+                params["duration"] = duration
+                params["offset"] = offset
+                
+                print(feedback)
+                ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in
+                    //do nothing
+                    print(audioClip)
+                }
+            }
         }
     }
     
