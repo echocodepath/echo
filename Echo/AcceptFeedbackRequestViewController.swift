@@ -207,7 +207,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             if (self.playerRateBeforeSeek > 0) {
                 self.avPlayer!.play()
                 self.invalidateTimers()
-                print("offset!!! \(self.avPlayer!.currentTime().seconds)")
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
         }
@@ -294,6 +293,18 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         return feedback.count
     }
     
+    @IBAction func onSaveFeedback(sender: AnyObject) {
+        var paramDict: [String: NSObject] = Dictionary<String, NSObject>()
+        paramDict["teacher_id"] = PFUser.currentUser()
+        paramDict["entry_id"] = entry!
+        paramDict["user_id"] = entry!.objectForKey("user_id") as! String
+        
+        ParseClient.sharedInstance.createFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
+            print(feedback)
+        }
+    }
+    
+
     deinit {
         avPlayer!.removeTimeObserver(timeObserver)
     }

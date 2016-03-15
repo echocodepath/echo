@@ -67,4 +67,39 @@ class ParseClient: NSObject {
         }
         
     }
+    
+    func createFeedbackWithCompletion(dict: NSDictionary, completion: (feedback: PFObject?, error: NSError?) -> ()) {
+        
+        let feedback = PFObject(className:"Feedback")
+        for (key, val) in dict {
+            feedback[key as! String] = val
+        }
+        
+        feedback.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(feedback: feedback, error: error)
+            } else {
+            }
+        }
+        
+    }
+    
+    func createAudioClipWithCompletion(dict: NSDictionary, completion: (audioClip: PFObject?, error: NSError?) -> ()) {
+        
+        let audioClip = PFObject(className:"AudioClip")
+        for (key, val) in dict {
+            audioClip[key as! String] = val
+        }
+        
+        audioClip.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(audioClip: audioClip, error: error)
+            } else {
+            }
+        }
+        
+    }
+    
 }
