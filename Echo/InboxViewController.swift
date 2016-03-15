@@ -73,7 +73,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("InboxCell", forIndexPath: indexPath) as! InboxCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ReceivedRequests", forIndexPath: indexPath) as! InboxCell
         if self.requestsReceived.count > 0 {
             let request = self.requestsReceived[indexPath.row]
             

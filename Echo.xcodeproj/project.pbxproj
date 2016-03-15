@@ -29,6 +29,8 @@
 		EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */; };
 		EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D91C8DF60700BF0393 /* .gitignore */; };
 		EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */; };
+		F501EDB81C97AAC0003581A5 /* SentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDB71C97AAC0003581A5 /* SentViewController.swift */; };
+		F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */; };
 		F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFB1C8EC7BE00EC7CED /* Entry.swift */; };
 		F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */; };
 		F515CE021C8EF38D00EC7CED /* TeacherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */; };
@@ -74,6 +76,8 @@
 		EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D91C8DF60700BF0393 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
+		F501EDB71C97AAC0003581A5 /* SentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentViewController.swift; sourceTree = "<group>"; };
+		F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxTabBarController.swift; sourceTree = "<group>"; };
 		F515CDFB1C8EC7BE00EC7CED /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxDetailsViewController.swift; sourceTree = "<group>"; };
 		F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */,
 				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
 				F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */,
+				F501EDB71C97AAC0003581A5 /* SentViewController.swift */,
+				F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */,
 			);
 			name = "Feedback Request Flow";
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */,
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
 				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
+				F501EDB81C97AAC0003581A5 /* SentViewController.swift in Sources */,
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
@@ -412,6 +419,7 @@
 				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
+				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
 				B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
