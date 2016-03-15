@@ -40,13 +40,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.requestsReceived.count > 0 {
-            return self.requestsReceived.count
-        }
-        return 1
-    }
-    
     func fetchRequests(){
         inboxUser = PFUser.currentUser()
         inboxUser?.fetchInBackground()
@@ -68,52 +61,51 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    // MARK: Table View
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.requestsReceived.count
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ReceivedRequests", forIndexPath: indexPath) as! InboxCell
-        if self.requestsReceived.count > 0 {
-            let request = self.requestsReceived[indexPath.row]
+        let request = self.requestsReceived[indexPath.row]
+        
+        if let id = request["entry_id"] {
+            let entry_id = id as String
+            var song = ""
+            let entryQuery = PFQuery(className:"Entry")
+            do {
+                let entry = try entryQuery.getObjectWithId(entry_id)
+                song = entry["song"] as! String
+            } catch {
+                print("Error getting entry from inbox")
+            }
             
-            if let id = request["entry_id"] {
-                let entry_id = id as String
-                var song = ""
-                let entryQuery = PFQuery(className:"Entry")
-                do {
-                    let entry = try entryQuery.getObjectWithId(entry_id)
-                    song = entry["song"] as! String
-                } catch {
-                    print("Error getting entry from inbox")
-                }
-                
-                let student_id = request["user_id"]! as String
-                var student_name = ""
-                let studentQuery = PFUser.query()!
-                studentQuery.whereKey("facebook_id", equalTo: student_id)
-                studentQuery.findObjectsInBackgroundWithBlock {
-                    (objects: [PFObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        var student_picture = ""
-                        if let objects = objects {
-                            for object in objects {
-                                student_name = object["username"] as! String
-                                student_picture = object["profilePhotoUrl"] as! String
-                            }
+            let student_id = request["user_id"]! as String
+            var student_name = ""
+            let studentQuery = PFUser.query()!
+            studentQuery.whereKey("facebook_id", equalTo: student_id)
+            studentQuery.findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    var student_picture = ""
+                    if let objects = objects {
+                        for object in objects {
+                            student_name = object["username"] as! String
+                            student_picture = object["profilePhotoUrl"] as! String
                         }
-                        cell.inboxTextLabel.text = student_name + " would like feedback on " + song
-                        if let url  = NSURL(string: student_picture),
-                            data = NSData(contentsOfURL: url)
-                        {
-                            cell.avatarImageView.image = UIImage(data: data)
-                        }
-                    } else {
-                        print("Error: \(error!) \(error!.userInfo)")
                     }
+                    cell.inboxTextLabel.text = student_name + " would like feedback on " + song
+                    if let url  = NSURL(string: student_picture),
+                        data = NSData(contentsOfURL: url)
+                    {
+                        cell.avatarImageView.image = UIImage(data: data)
+                    }
+                } else {
+                    print("Error: \(error!) \(error!.userInfo)")
                 }
-                return cell
             }
         }
-        cell.avatarImageView.hidden = true
-        cell.arrowLabel.hidden = true
-        cell.inboxTextLabel.text = "You have no feedback requests"
         return cell
     }
     
