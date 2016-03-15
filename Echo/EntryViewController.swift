@@ -15,9 +15,11 @@ import AVFoundation
 class EntryViewController: UIViewController {
     var entry: PFObject?
     
-    
+    let videoPlayer = AVPlayerViewController()
+
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
+    @IBOutlet weak var feedbackIcon: UINavigationItem!
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -34,26 +36,30 @@ class EntryViewController: UIViewController {
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
+            
             convertVideoDataToNSURL()
+            
+            if entry?.valueForKey("user_id") as! String != currentUser!.id {
+                self.navigationController!.navigationItem.rightBarButtonItem = nil
+            }
         }
         
     }
     
     private func playVideo(url: NSURL){
-        let controller = AVPlayerViewController()
-        controller.willMoveToParentViewController(self)
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+        videoPlayer.willMoveToParentViewController(self)
+        addChildViewController(videoPlayer)
+        view.addSubview(videoPlayer.view)
+        videoPlayer.didMoveToParentViewController(self)
+        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        videoPlayer.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
         let player = AVPlayer(URL: url)
-        controller.player = player
-        controller.player!.play()
+        videoPlayer.player = player
+        videoPlayer.player!.play()
     }
     
     private func convertVideoDataToNSURL() {
@@ -73,8 +79,8 @@ class EntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,6 +91,10 @@ class EntryViewController: UIViewController {
                     let nc = segue.destinationViewController as! UINavigationController
                     let vc = nc.topViewController as! FeedbackRequestViewController
                     vc.setFeedbackEntry(self.entry)
+                case "allFeedback":
+                    let vc = segue.destinationViewController as! EntryFeedbackViewController
+                    vc.entry = entry
+                    videoPlayer.player?.pause()
                 
                 default:
                     return
