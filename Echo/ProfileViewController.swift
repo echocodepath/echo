@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
     private var isTeacher: String?
+    private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
 
@@ -128,12 +129,23 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: Entries
     
     func fetchEntries(){
+
         // Define query for entires for user and NOT private
         let userId     = self.profileUser?.objectId as String!
-        let predicate  = NSPredicate(format:"user_id = '\(userId)' AND private = false ")
-        let entryQuery = PFQuery(className:"Entry", predicate: predicate)
+
+        // Show all user's own videos
+        if isMyProfile == true {
+            let predicate  = NSPredicate(format:"user_id = '\(userId)' ")
+            entryQuery = PFQuery(className:"Entry", predicate: predicate)
+        }
+        // Only show public videos
+        else {
+            let predicate  = NSPredicate(format:"user_id = '\(userId)' AND private = false ")
+            entryQuery = PFQuery(className:"Entry", predicate: predicate)
+        }
         
-        entryQuery.findObjectsInBackgroundWithBlock {
+        
+        entryQuery!.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
