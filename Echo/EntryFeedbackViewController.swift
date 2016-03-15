@@ -55,6 +55,14 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let feedbackInstance = feedback[indexPath.row]
+        let feedbackVC = self.storyboard!.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+        feedbackVC.feedback = feedbackInstance
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.navigationController?.pushViewController(feedbackVC, animated: true)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedback.count
     }

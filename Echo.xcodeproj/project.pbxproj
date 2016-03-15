@@ -14,6 +14,7 @@
 		B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDFB1C9405E60048EF5E /* AudioClip.swift */; };
 		B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */; };
 		B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */; };
+		B22EFE061C98B1DC0048EF5E /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -65,6 +66,7 @@
 		B22EFDFB1C9405E60048EF5E /* AudioClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClip.swift; sourceTree = "<group>"; };
 		B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFeedbackViewController.swift; sourceTree = "<group>"; };
 		B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
+		B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
 				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 				B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */,
+				B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */,
 			);
 			name = "Journal Entries Flow";
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				F501EDBF1C97C2FC003581A5 /* RejectedRequestsViewController.swift in Sources */,
 				F52E1FB61C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift in Sources */,
 				B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */,
+				B22EFE061C98B1DC0048EF5E /* FeedbackViewController.swift in Sources */,
 				B26D5EB01C8A551800528F2D /* ParseClient.swift in Sources */,
 				B2B111581C8E4B69009695A6 /* EntryFormViewController.swift in Sources */,
 				F501EDB81C97AAC0003581A5 /* SentViewController.swift in Sources */,
