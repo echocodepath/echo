@@ -14,11 +14,6 @@ import AVFoundation
 
 class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
     
-    enum State {
-        case None, Playing, Paused, Rewinding
-    }
-    
-    var state: State = .None
     let videoPlayer = AVPlayerViewController()
     var audioPlayers = Array<AVAudioPlayer>()
     var avPlayer: AVPlayer?
@@ -197,7 +192,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func sliderEndedTracking(slider: UISlider) {
-        state = .Rewinding
         let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)

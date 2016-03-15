@@ -13,7 +13,7 @@ class FeedbackTableViewCell: UITableViewCell {
     var feedback: PFObject? {
         didSet {
             createdAtLabel.text = DateManager.getFriendlyTime(feedback?.createdAt)
-            teacherLabel.text = feedback?. as! String
+            teacherLabel.text = feedback?.objectForKey("teacher_username") as? String
         }
     }
     
