@@ -103,14 +103,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AcceptedRequests" rowHeight="64" id="oQs-y5-aBh" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AcceptedRequest" rowHeight="64" id="oQs-y5-aBh" customClass="InboxCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oQs-y5-aBh" id="bDQ-KU-W6Q">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-m1-A5C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wk1-XO-EQX">
+                                                    <rect key="frame" x="75" y="4" width="229" height="52.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-m1-A5C">
                                                     <rect key="frame" x="15" y="8" width="44" height="44.5"/>
                                                     <color key="backgroundColor" red="0.38675820709999997" green="0.38675820709999997" blue="0.38675820709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,17 +125,21 @@
                                                         <constraint firstAttribute="height" constant="44.5" id="n6U-Kg-SaD"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wk1-XO-EQX">
-                                                    <rect key="frame" x="75" y="4" width="201" height="52.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Wk1-XO-EQX" firstAttribute="leading" secondItem="hCC-m1-A5C" secondAttribute="trailing" constant="15" id="BCv-LT-xzi"/>
+                                                <constraint firstItem="hCC-m1-A5C" firstAttribute="top" secondItem="bDQ-KU-W6Q" secondAttribute="top" constant="8" id="9IE-2v-8CX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wk1-XO-EQX" secondAttribute="trailing" constant="16" id="D84-Rp-2Wl"/>
+                                                <constraint firstItem="Wk1-XO-EQX" firstAttribute="top" secondItem="bDQ-KU-W6Q" secondAttribute="top" constant="4" id="F1v-aZ-at3"/>
+                                                <constraint firstAttribute="bottom" secondItem="hCC-m1-A5C" secondAttribute="bottom" constant="11" id="Iya-P5-urK"/>
+                                                <constraint firstItem="hCC-m1-A5C" firstAttribute="leading" secondItem="bDQ-KU-W6Q" secondAttribute="leading" constant="15" id="KY9-50-yfy"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wk1-XO-EQX" secondAttribute="bottom" constant="7" id="Xry-Sd-YyG"/>
+                                                <constraint firstItem="Wk1-XO-EQX" firstAttribute="leading" secondItem="hCC-m1-A5C" secondAttribute="trailing" constant="16" id="h1V-wM-TFg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="hCC-m1-A5C" id="8hj-NW-lRh"/>
+                                            <outlet property="inboxTextLabel" destination="Wk1-XO-EQX" id="mSf-Vs-fkl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

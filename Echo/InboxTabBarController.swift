@@ -11,7 +11,9 @@ import UIKit
 class InboxTabBarController: UITabBarController {
     @IBOutlet weak var inboxTabBar: UITabBar!
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
