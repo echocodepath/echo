@@ -12,7 +12,7 @@ class FeedbackClipTableViewCell: UITableViewCell {
     var audioClip: AudioClip? {
         didSet {
             durationLabel.text = "\(Int(audioClip!.duration!))s"
-            timestampLabel.text = "\(audioClip!.timestamp!)"
+            timestampLabel.text = "\(audioClip!.offset!)"
         }
     }
     
