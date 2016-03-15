@@ -40,10 +40,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.requestsReceived.count > 0 {
             return self.requestsReceived.count
@@ -73,7 +69,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("InboxCell", forIndexPath: indexPath) as! InboxCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ReceivedRequests", forIndexPath: indexPath) as! InboxCell
         if self.requestsReceived.count > 0 {
             let request = self.requestsReceived[indexPath.row]
             
