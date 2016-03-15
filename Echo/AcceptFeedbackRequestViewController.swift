@@ -298,7 +298,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         paramDict["teacher_id"] = PFUser.currentUser()
         paramDict["entry_id"] = entry!
         paramDict["user_id"] = entry!.objectForKey("user_id") as! String
-        
+        paramDict["teacher_username"] = currentUser?.username
+
         ParseClient.sharedInstance.createFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
             self.feedback.forEach { clip in
                 var params = Dictionary<String, NSObject>()
@@ -306,11 +307,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 let audioFile = PFFile(name: "AudioClip.mp4", data: audioData!)
                 let duration = clip.duration
                 let offset = clip.offset
-                
                 params["feedback_id"] = feedback
                 params["audioFile"] = audioFile
                 params["duration"] = duration
                 params["offset"] = offset
+                
                 
                 print(feedback)
                 ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in
