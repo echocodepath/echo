@@ -31,10 +31,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var audioRecorder: AVAudioRecorder!
     var fileNumber = 0
     var currentUrl: NSURL?
-    var currentAudioLength: Double = 0.0
     
+    
+    var audioTimers = Array<NSTimer>()
 
-    
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
@@ -53,23 +53,45 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func videoPlaybackDidUnPause() {
-        state = .Playing
-        // You'll have to test this because the API docs aren't clear
-        // When the video goes from paused to play you'll have to restart the players that were setup using `playAtTime`. Just calling play may cause them to begin timing again or play instantly. I'm not sure. If they do play instantly you might have to repeat the method above and recreate the audioPlayers (except ones that are already playing)
-        audioPlayers.forEach({ $0.play() })
+        audioTimers.forEach({ $0.invalidate() })
+        audioPlayers.removeAll()
+        videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
     }
     
     func videoPlaybackDidPause() {
-        state = .Paused
         avPlayer!.pause();
-        audioPlayers.forEach({ $0.pause() })
     }
     
     func videoDidRewind() {
-        audioPlayers.forEach({ $0.stop() })
-        audioPlayers.removeAll()
-        
+        invalidateTimers()
     }
+    
+    func invalidateTimers() {
+        audioTimers.forEach({ $0.invalidate() })
+    }
+    
+    func createTimer(clip: AudioClip) {
+        let currentTime = avPlayer!.currentTime().seconds
+        let params: [String: AudioClip] = ["clip" : clip]
+        let playAudioAt = clip.offset! - currentTime
+        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
+        audioTimers.append(timer)
+    }
+    
+
+    func playAudio(timer: NSTimer){
+        let clip = timer.userInfo!["clip"] as! AudioClip
+        avPlayer!.pause()
+        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
+            player.delegate = self
+            player.prepareToPlay()
+            player.play()
+            audioPlayers.append(player)
+        } else {
+            print("Something went wrong")
+        }
+    }
+    
     
     @IBAction func onTogglePlayPause(sender: AnyObject) {
         let playerIsPlaying:Bool = avPlayer!.rate > 0
@@ -82,47 +104,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
-        print("okay in here!")
-        // Remove old instances.
-        // This method should never be called while the video is already playing or paused
-        // Using the state property to ensure that
-        audioPlayers.forEach({ $0.stop() })
-        audioPlayers.removeAll()
-        
-        feedback.forEach { clip in
-            print(clip)
-            // Clip that will be played sometime soon
-            if clip.offset > offset {
-                // The `playAtTime` API docs say that it is meant for audio synchronization! Yay!
-                if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
-                    player.playAtTime(player.deviceCurrentTime + clip.offset!)
-                    audioPlayers.append(player)
-                } else {
-                    print("Something went wrong")
-                }
-            }
-                // Current audio clip
-                // Handle the case where the user rewinds the video and we may have to start an audio clip part way through
-            else if clip.offset! < offset && clip.duration! + clip.offset! > offset {
-                if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
-                    player.currentTime = clip.duration! + clip.offset! - offset
-                    player.prepareToPlay()
-                    player.play()
-                    audioPlayers.append(player)
-                } else {
-                    print("Something went wrong")
-                }
-            }
+        let filteredClips = feedback.filter({ $0.offset > offset })
+        if filteredClips.count > 0 {
+            createTimer(filteredClips[0])
+
         }
     }
     
@@ -178,7 +164,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func handleTouchDown(sender: AnyObject) {
-        currentAudioLength = 0
         let audioURL = directoryURL()
         
         let settings = [
@@ -199,6 +184,12 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
 
     }
     
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        
+        videoPlayer.player!.play()
+        videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+    }
+
     func sliderBeganTracking(slider: UISlider) {
         playerRateBeforeSeek = avPlayer!.rate
         avPlayer!.pause()
@@ -214,6 +205,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
             if (self.playerRateBeforeSeek > 0) {
                 self.avPlayer!.play()
+                print("offset!!! \(self.avPlayer!.currentTime().seconds)")
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
         }
@@ -285,6 +277,15 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         let audioClip = feedback[indexPath.row]
         cell.audioClip = audioClip
         return cell
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
