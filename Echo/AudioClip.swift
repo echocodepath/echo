@@ -15,6 +15,7 @@ class AudioClip: NSObject {
     var timestamp: CMTime?
     var duration: Float64?
     var offset: Double?
+    var hasBeenPlayed: Bool = false
     
     init(path: NSURL, timestamp: CMTime, duration: Float64 ) {
         self.path = path

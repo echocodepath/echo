@@ -60,6 +60,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func videoPlaybackDidPause() {
         avPlayer!.pause();
+
     }
     
     func videoDidRewind() {
@@ -68,9 +69,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func invalidateTimers() {
         audioTimers.forEach({ $0.invalidate() })
+        feedback.map({ $0.hasBeenPlayed = false })
     }
     
     func createTimer(clip: AudioClip) {
+        clip.hasBeenPlayed = true
         let currentTime = avPlayer!.currentTime().seconds
         let params: [String: AudioClip] = ["clip" : clip]
         let playAudioAt = clip.offset! - currentTime
@@ -105,10 +108,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
-        let filteredClips = feedback.filter({ $0.offset > offset })
+        let filteredClips = feedback.filter({ $0.offset > offset && $0.hasBeenPlayed == false })
         if filteredClips.count > 0 {
             createTimer(filteredClips[0])
-
         }
     }
     
