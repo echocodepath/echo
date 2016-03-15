@@ -23,29 +23,37 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentUser = PFUser.currentUser()
+        do {
+            try currentUser!.fetch()
+        } catch {
+            
+        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         
-        currentUser = PFUser.currentUser()
-        
-        let teacher_ids = currentUser!.objectForKey("favorite_teachers") as! NSArray
-        
-        // TODO: Find better way to reload tableView
-        for id in teacher_ids {
-            let query = PFUser.query()!
-            query.whereKey("facebook_id", equalTo: id)
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                
-                if error == nil {
-                    if let objects = objects {
-                        for object in objects {
-                            self.teachers.append(object)
+        let teacher_ids: [String]
+        if let favorite_teachers = currentUser!["favorite_teachers"] {
+            teacher_ids = favorite_teachers as! [String]
+            // TODO: Find better way to reload tableView
+            for id in teacher_ids {
+                let query = PFUser.query()!
+                query.whereKey("facebook_id", equalTo: id)
+                query.findObjectsInBackgroundWithBlock {
+                    (objects: [PFObject]?, error: NSError?) -> Void in
+                    
+                    if error == nil {
+                        if let objects = objects {
+                            for object in objects {
+                                self.teachers.append(object)
+                            }
                         }
+                        self.tableView.reloadData()
+                    } else {
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
-                    self.tableView.reloadData()
-                } else {
-                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
         }
