@@ -12,6 +12,8 @@
 		B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF51C9293E80048EF5E /* FileProcessor.swift */; };
 		B22EFDFA1C9378C50048EF5E /* FeedbackClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */; };
 		B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDFB1C9405E60048EF5E /* AudioClip.swift */; };
+		B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */; };
+		B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -61,6 +63,8 @@
 		B22EFDF51C9293E80048EF5E /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackClipTableViewCell.swift; sourceTree = "<group>"; };
 		B22EFDFB1C9405E60048EF5E /* AudioClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClip.swift; sourceTree = "<group>"; };
+		B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFeedbackViewController.swift; sourceTree = "<group>"; };
+		B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
 				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
+				B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */,
 			);
 			name = "Journal Entries Flow";
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				F515CE031C8EF62A00EC7CED /* EntryCollectionViewCell.swift */,
 				B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */,
 				B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */,
+				B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				F501EDB81C97AAC0003581A5 /* SentViewController.swift in Sources */,
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */,
+				B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */,
 				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
@@ -428,6 +435,7 @@
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
+				B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
 				B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
