@@ -56,7 +56,7 @@ class EntryFormViewController: UIViewController {
         responseDict["song"] = song
         responseDict["video"] = videoFile
         responseDict["thumbnail"] = thumbnailFile
-        if privateSwitch.on{
+        if privateSwitch.on {
             responseDict["private"] = true
         } else {
             responseDict["private"] = false
