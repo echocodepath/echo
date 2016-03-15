@@ -103,41 +103,14 @@ class RejectedRequestsViewController: UIViewController, UITableViewDelegate, UIT
         }
         return cell
     }
-    
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //            if tableView == requestsReceivedTableView {
-        //                let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
-        //
-        //                let request = requestsReceived[indexPath.row]
-        //
-        //                inboxDetailsViewController.request = request
-        //
-        //                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        //                self.navigationController?.pushViewController(inboxDetailsViewController, animated: true)
-        //            }
-    }
-    
-    
-    
+
+    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-                //                case "inboxDetails":
-                //                    if let indexPath = self.tableView.indexPathForSelectedRow {
-                //                        let nc = segue.destinationViewController as! UINavigationController
-                //                        let vc = nc.topViewController as! InboxDetailsViewController
-                //                        vc.setFeedbackRequest(self.requestsReceived[indexPath.row])
-                //                    }
-                
-            default:
-                return
-            }
-        }
     }
+    */
 
 
 }
