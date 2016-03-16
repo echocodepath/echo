@@ -18,7 +18,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     var entry: PFObject?
     var teacher: PFObject?
     var currentUser: PFUser?
-    var messageBody: String?
     
     var controller: AVPlayerViewController?
     
@@ -76,9 +75,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     // MARK: Text View
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        // Save text to message body
-        self.messageBody = textView.text
-        
         // remove the placeholder text when they start typing
         // first, see if the field is empty
         // if it's not empty, then the text should be black and not italic
@@ -178,7 +174,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         var request: [String: String]! = Dictionary<String,String>()
         
         request["entry_id"] = self.entry?.objectId
-        request["request_body"] = self.messageBody
+        request["request_body"] = self.messageTextView.text
         let teacherId = teacher["facebook_id"] as? String
         request["teacher_id"] = teacherId
         request["user_id"] = currentUser!["facebook_id"] as? String
