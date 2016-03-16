@@ -102,6 +102,14 @@
             <point key="canvasLocation" x="661" y="-486"/>
         </scene>
         <!--Profile-->
+        <scene sceneID="7xJ-uQ-ZQb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="aWM-aw-WD4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anf-fV-nLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1383" y="-441"/>
+        </scene>
+        <!--Profile-->
         <scene sceneID="zgA-Dt-BPs">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="dFN-BL-YjY" sceneMemberID="viewController"/>
@@ -134,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" id="ucB-gB-kbM">
-                                <rect key="frame" x="0.0" y="64" width="320" height="323"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="9sy-PE-HQ8">
@@ -176,7 +184,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6dH-WE-THI" userLabel="Inbox Button">
-                                        <rect key="frame" x="14" y="7" width="26" height="28"/>
+                                        <rect key="frame" x="0.0" y="6" width="26" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Inbox Icon"/>
                                         <connections>
@@ -236,7 +244,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" id="mnx-1R-JVH" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="232" y="309" width="55" height="42"/>
+                                <rect key="frame" x="259" y="309" width="55" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JKK-7t-64R" userLabel="Explore Button">
@@ -299,6 +307,25 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UM6-Bb-jFP">
+                                <rect key="frame" x="20" y="30" width="12" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="User Icon"/>
+                                <connections>
+                                    <segue destination="aWM-aw-WD4" kind="modal" id="z2Y-pe-Cct"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nNp-VC-Dmo">
+                                <rect key="frame" x="264" y="28" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="fNo-NI-33C" eventType="touchUpInside" id="f7j-Ln-36D"/>
+                                    <action selector="onLogoutPress:" destination="fNo-NI-33C" eventType="touchUpInside" id="gii-Hp-8eD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -345,7 +372,7 @@
         <!--Home Navigation Controller-->
         <scene sceneID="JZX-y4-VRL">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FCh-jL-zxa" customClass="HomeNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FCh-jL-zxa" customClass="HomeNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9e5-9A-flk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -537,7 +564,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qM2-gN-p5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715" y="-9"/>
+            <point key="canvasLocation" x="1401" y="-124"/>
         </scene>
     </scenes>
     <resources>
@@ -545,6 +572,7 @@
         <image name="Explore Icon" width="22" height="22"/>
         <image name="Inbox Icon" width="22" height="22"/>
         <image name="Journal Icon" width="29" height="22"/>
+        <image name="User Icon" width="14" height="35"/>
         <image name="home photo" width="640" height="480"/>
         <image name="home-bg" width="640" height="750"/>
     </resources>
