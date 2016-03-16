@@ -65,6 +65,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         dismissViewControllerAnimated(true) { () -> Void in
             self.invalidateTimersAndFeedback()
             self.avPlayer!.pause()
+            FileProcessor.sharedInstance.deleteVideoFile()
+            self.audioClips.forEach({ clip in
+                FileProcessor.sharedInstance.deleteFile(clip.path!)
+            })
         }
     }
     
