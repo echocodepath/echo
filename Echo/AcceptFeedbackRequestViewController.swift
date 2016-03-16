@@ -307,11 +307,16 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         // Dispose of any resources that can be recreated.
     }
     
-//    @IBAction func onBack(sender: AnyObject) {
-//        self.dismissViewControllerAnimated(true) { () -> Void in
-//            self.avPlayer?.pause()
-//        }
-//    }
+    @IBAction func onBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            self.avPlayer?.pause()
+            FileProcessor.sharedInstance.deleteVideoFile()
+
+            self.feedback.forEach({ clip in
+                FileProcessor.sharedInstance.deleteFile(clip.path!)
+            })
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedback.count
