@@ -55,7 +55,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     func videoPlaybackDidPause() {
         avPlayer!.pause();
-        invalidateTimers()
+        invalidateTimersAndFeedback()
     }
     
     func invalidateTimers(){
@@ -68,22 +68,26 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func createTimer(clip: AudioClip) {
-        clip.hasBeenPlayed = true
         let currentTime = avPlayer!.currentTime().seconds
         let params: [String: AudioClip] = ["clip" : clip]
         let playAudioAt = clip.offset! - currentTime
+        print("play audio at \(playAudioAt)")
         let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
         audioTimers.append(timer)
     }
     
 
     func playAudio(timer: NSTimer){
-        let clip = timer.userInfo!["clip"] as! AudioClip
         avPlayer!.pause()
+        print("current time playing audio \(avPlayer!.currentTime().seconds)")
+        print("here are the audioclips")
+        let clip = timer.userInfo!["clip"] as! AudioClip
+        print("time suppose to be playing clip \(clip.offset)")
         if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
             player.delegate = self
             player.prepareToPlay()
             player.play()
+            clip.hasBeenPlayed = true
             audioPlayers.append(player)
         } else {
             print("Something went wrong")
@@ -106,6 +110,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
         let filteredClips = feedback.filter({ $0.offset > offset && $0.hasBeenPlayed == false })
         if filteredClips.count > 0 {
+            print("current time!!!\(avPlayer!.currentTime().seconds)")
+            print("clip offset \(filteredClips[0].offset)")
             createTimer(filteredClips[0])
         }
     }
@@ -202,8 +208,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
             let playerIsPlaying:Bool = self.avPlayer!.rate > 0
             if (self.playerRateBeforeSeek > 0 && playerIsPlaying == true) {
-                self.avPlayer!.play()
                 self.invalidateTimersAndFeedback()
+                self.avPlayer!.play()
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
         }
