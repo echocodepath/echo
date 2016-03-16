@@ -44,7 +44,7 @@
                                                     <rect key="frame" x="14" y="12" width="37" height="36"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-v6-dUO">
-                                                    <rect key="frame" x="21" y="19" width="23" height="23"/>
+                                                    <rect key="frame" x="23" y="20" width="20" height="20"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>

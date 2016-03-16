@@ -36,6 +36,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         } catch {
             
         }
+        cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
 
         //cell.entry = entry
         return cell
