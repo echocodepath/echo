@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Explore-->
@@ -142,8 +142,7 @@
                                 <rect key="frame" x="76" y="510" width="167" height="30"/>
                                 <state key="normal" title="Send Feedback Request"/>
                                 <connections>
-                                    <action selector="clickedSendFeedback:" destination="tmx-UA-XdX" eventType="touchUpInside" id="o5V-kM-kq8"/>
-                                    <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="qNg-EL-Qdt"/>
+                                    <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="h9I-1g-pQR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">

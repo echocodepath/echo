@@ -20,6 +20,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     var currentUser: PFUser?
     var messageBody: String?
     
+    var controller: AVPlayerViewController?
+    
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
@@ -36,6 +38,10 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         super.viewDidLoad()
         
         currentUser = PFUser.currentUser()
+        do {
+            try currentUser!.fetch()
+        } catch {
+        }
         
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
@@ -137,20 +143,20 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     // MARK: Video
     private func playVideo(url: NSURL){
-        let controller = AVPlayerViewController()
-        controller.willMoveToParentViewController(self)
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+        controller = AVPlayerViewController()
+        controller!.willMoveToParentViewController(self)
+        addChildViewController(controller!)
+        view.addSubview(controller!.view)
+        controller!.didMoveToParentViewController(self)
+        controller!.view.translatesAutoresizingMaskIntoConstraints = false
+        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller!.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
         let player = AVPlayer(URL: url)
-        controller.player = player
-        controller.player!.play()
+        controller!.player = player
+        controller!.player!.play()
     }
     
     private func convertVideoDataToNSURL() {
@@ -190,7 +196,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
         currentUser!.saveInBackground()
         
-        // add to requests_received array for current user
+        // add to requests_received array for selected teacher
         let query = PFUser.query()!
         query.whereKey("facebook_id", equalTo: teacherId!)
         query.findObjectsInBackgroundWithBlock {
@@ -227,6 +233,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                 case "feedbackSentSegue":
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teacher!)
+                    controller!.player!.pause()
                     sendFeedbackRequest(self.teacher!)
                     
                 default:
