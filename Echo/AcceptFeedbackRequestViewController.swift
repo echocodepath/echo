@@ -48,21 +48,22 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func videoPlaybackDidUnPause() {
-        audioTimers.forEach({ $0.invalidate() })
+        invalidateTimers()
         audioPlayers.removeAll()
         videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
     }
     
     func videoPlaybackDidPause() {
         avPlayer!.pause();
-    }
-    
-    func videoDidRewind() {
         invalidateTimers()
     }
     
-    func invalidateTimers() {
+    func invalidateTimers(){
         audioTimers.forEach({ $0.invalidate() })
+    }
+    
+    func invalidateTimersAndFeedback() {
+        invalidateTimers()
         feedback.forEach({ $0.hasBeenPlayed = false })
     }
     
@@ -96,6 +97,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             videoPlaybackDidPause()
         } else {
             avPlayer!.play()
+            invalidateTimersAndFeedback()
             videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
             videoPlaybackDidUnPause()
         }
@@ -198,13 +200,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         
 
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
-            if (self.playerRateBeforeSeek > 0) {
+            let playerIsPlaying:Bool = self.avPlayer!.rate > 0
+            if (self.playerRateBeforeSeek > 0 && playerIsPlaying == true) {
                 self.avPlayer!.play()
-                self.invalidateTimers()
+                self.invalidateTimersAndFeedback()
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
         }
-        videoDidRewind()
     }
     
     func sliderValueChanged(slider: UISlider) {
