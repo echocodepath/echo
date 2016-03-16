@@ -17,6 +17,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
         tableView.dataSource = self
@@ -26,17 +27,25 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
         let entry = self.entries[indexPath.row]
-        cell.titleLabel.text = entry.valueForKey("title") as? String
-        cell.songLabel.text = entry.valueForKey("song") as? String
-        let thumbnailData = entry["thumbnail"] as! PFFile
-        do {
-            let rawData = try thumbnailData.getData()
-            let thumbnailImage = UIImage(data: rawData)
-            cell.thumbnailImageView.image = thumbnailImage
-        } catch {
-            
-        }
-        cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
+        cell.titleLabel.alpha = 0
+        cell.songLabel.alpha = 0
+        cell.thumbnailImageView.alpha = 0
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            cell.titleLabel.text = entry.valueForKey("title") as? String
+            cell.songLabel.text = entry.valueForKey("song") as? String
+            let thumbnailData = entry["thumbnail"] as! PFFile
+            do {
+                let rawData = try thumbnailData.getData()
+                let thumbnailImage = UIImage(data: rawData)
+                cell.thumbnailImageView.image = thumbnailImage
+            } catch {
+                
+            }
+            cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
+            cell.titleLabel.alpha = 1
+            cell.songLabel.alpha = 1
+            cell.thumbnailImageView.alpha = 1
+        })
 
         //cell.entry = entry
         return cell
