@@ -79,11 +79,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="FEEDBACK MODE" id="fh5-Wy-eBn">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="lgh-O9-d9R">
-                            <connections>
-                                <action selector="onBack:" destination="pZo-Ig-Fpy" id="AQJ-9F-gz5"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5eM-ar-Stn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A02-7l-KKZ">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
