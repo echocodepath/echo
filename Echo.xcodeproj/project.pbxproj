@@ -26,6 +26,7 @@
 		B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */; };
 		EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */; };
 		EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */; };
+		EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE10B31C9A14500018C251 /* StyleGuide.swift */; };
 		EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */; };
 		EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */; };
 		EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */; };
@@ -78,6 +79,7 @@
 		B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AcceptFeedbackRequest.storyboard; sourceTree = "<group>"; };
 		EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptFeedbackRequestViewController.swift; sourceTree = "<group>"; };
+		EFBE10B31C9A14500018C251 /* StyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				B22EFDF31C9293DB0048EF5E /* DateManager.swift */,
 				B22EFDF51C9293E80048EF5E /* FileProcessor.swift */,
+				EFBE10B31C9A14500018C251 /* StyleGuide.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
 				B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */,
+				EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
 				B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
