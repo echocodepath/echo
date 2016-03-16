@@ -199,6 +199,9 @@
                                         <rect key="frame" x="29" y="14" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="onTogglePlayPause:" destination="8C0-1C-gZt" eventType="touchUpInside" id="AVt-Jy-P7h"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94381953529999996" green="0.94381953529999996" blue="0.94381953529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,6 +209,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ADh-I7-7UG" id="9v1-Pk-uCv"/>
+                        <outlet property="timeLeftLabel" destination="2iM-TE-6al" id="nRv-uF-qw0"/>
+                        <outlet property="timeSlider" destination="GgU-xg-bVQ" id="Wwe-eG-f7P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbC-gE-cnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
