@@ -308,7 +308,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            self.avPlayer?.pause()
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

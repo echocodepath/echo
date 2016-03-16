@@ -151,7 +151,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackClipTableViewCell" id="6fy-Ig-cKh" customClass="FeedbackClipTableViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="41"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fy-Ig-cKh" id="AzO-Hi-AKC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="40.5"/>
@@ -209,6 +209,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YFd-KJ-1je">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Dbj-C8-w98">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jP2-r4-XUl">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="onBack:" destination="8C0-1C-gZt" eventType="touchUpInside" id="BHR-Or-YYs"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ADh-I7-7UG" id="9v1-Pk-uCv"/>
                         <outlet property="timeLeftLabel" destination="2iM-TE-6al" id="nRv-uF-qw0"/>
@@ -216,6 +228,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbC-gE-cnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3619" y="-70"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gdc-XZ-E5n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uKO-1W-0D1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dc6-UB-LmJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8C0-1C-gZt" kind="relationship" relationship="rootViewController" id="U4K-LN-Btp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMB-Nf-b4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3087" y="-70"/>
         </scene>

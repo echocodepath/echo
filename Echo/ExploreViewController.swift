@@ -104,13 +104,17 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             if let url  = NSURL(string: teacherImage!),
                 data = NSData(contentsOfURL: url)
             {
+                cell.teacherImage.alpha = 0
                 cell.teacherImage.image = UIImage(data: data)
+
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    cell.teacherImage.alpha = 1.0
+                })
             }
             return cell
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
             let entry = self.entries[indexPath.row]
-            print("FIRST TRY\(entry)")
             cell.entry = entry
             return cell
         }

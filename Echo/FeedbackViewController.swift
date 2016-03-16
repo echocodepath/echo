@@ -61,6 +61,13 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         audioClips.forEach({ $0.hasBeenPlayed = false })
     }
     
+    @IBAction func onBack(sender: AnyObject) {
+        dismissViewControllerAnimated(true) { () -> Void in
+            self.invalidateTimersAndFeedback()
+            self.avPlayer!.pause()
+        }
+    }
+    
     @IBAction func onTogglePlayPause(sender: AnyObject) {
         let playerIsPlaying:Bool = avPlayer!.rate > 0
         if playerIsPlaying {
