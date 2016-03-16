@@ -30,6 +30,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBAction func onBack(sender: AnyObject) {
+        // Save text to user description
+        if let currentUser = self.profileUser {
+            currentUser["description"] = descriptionTextView.text
+            currentUser.saveInBackground()
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -131,7 +137,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func fetchEntries(){
 
         // Define query for entires for user and NOT private
-        let userId     = self.profileUser?.objectId as String!
+        let userId = self.profileUser?.objectId as String!
 
         // Show all user's own videos
         if isMyProfile == true {
@@ -194,12 +200,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: Text View
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        // Save text to user description
-        if let currentUser = self.profileUser {
-            currentUser["description"] = textView.text
-            currentUser.saveInBackground()
-        }
-        
         // remove the placeholder text when they start typing
         // first, see if the field is empty
         // if it's not empty, then the text should be black and not italic
