@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Journal Entries View Controller-->
+        <!--My Journal-->
         <scene sceneID="T4M-9j-Jt0">
             <objects>
                 <viewController storyboardIdentifier="UIViewController-klE-Bi-xnV" id="klE-Bi-xnV" customClass="JournalEntriesViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                             <constraint firstAttribute="trailing" secondItem="is6-P7-adi" secondAttribute="trailing" id="rTO-ss-ZAg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Xu4-hQ-fo6"/>
+                    <navigationItem key="navigationItem" title="My Journal" id="Xu4-hQ-fo6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="is6-P7-adi" id="h3J-xY-V7L"/>
