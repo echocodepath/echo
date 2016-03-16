@@ -80,6 +80,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             player.delegate = self
             player.prepareToPlay()
             player.play()
+            clip.hasBeenPlayed = true
             audioPlayers.append(player)
         } else {
             print("Something went wrong")
@@ -94,7 +95,6 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     func createTimer(clip: AudioClip) {
-        clip.hasBeenPlayed = true
         let currentTime = avPlayer!.currentTime().seconds
         let params: [String: AudioClip] = ["clip" : clip]
         let playAudioAt = clip.offset! - currentTime
