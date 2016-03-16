@@ -87,6 +87,7 @@ class EntryViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             videoPlayer.player?.pause()
+            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "requestFeedback":
                     let nc = segue.destinationViewController as! UINavigationController
