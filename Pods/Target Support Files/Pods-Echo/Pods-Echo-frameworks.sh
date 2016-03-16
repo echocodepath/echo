@@ -84,18 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Echo/AFNetworking.framework"
   install_framework "Pods-Echo/Bolts.framework"
   install_framework "Pods-Echo/FBSDKCoreKit.framework"
   install_framework "Pods-Echo/FBSDKLoginKit.framework"
   install_framework "Pods-Echo/FBSDKShareKit.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/Spring.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Echo/AFNetworking.framework"
   install_framework "Pods-Echo/Bolts.framework"
   install_framework "Pods-Echo/FBSDKCoreKit.framework"
   install_framework "Pods-Echo/FBSDKLoginKit.framework"
   install_framework "Pods-Echo/FBSDKShareKit.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/Spring.framework"
 fi
