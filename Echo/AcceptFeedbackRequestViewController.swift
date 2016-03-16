@@ -135,6 +135,26 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
     }
     
+    func jumpAndPlayAudio(clip: AudioClip) {
+        avPlayer!.pause()
+        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
+            player.delegate = self
+            player.prepareToPlay()
+            player.play()
+            clip.hasBeenPlayed = true
+            audioPlayers.append(player)
+        } else {
+            print("Something went wrong")
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let clip = feedback[indexPath.row]
+        avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
+        }
+        jumpAndPlayAudio(clip)
+    }
+    
     func directoryURL() -> NSURL? {
         let fileManager = NSFileManager.defaultManager()
         let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
