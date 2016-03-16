@@ -107,15 +107,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="aWM-aw-WD4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anf-fV-nLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="-441"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="zgA-Dt-BPs">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="dFN-BL-YjY" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MDU-QD-f71" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1445" y="-279"/>
+            <point key="canvasLocation" x="1392" y="-277"/>
         </scene>
         <!--Explore-->
         <scene sceneID="G2A-wz-MxN">
@@ -136,6 +128,7 @@
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxZ-E6-SkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeViewController" id="fNo-NI-33C" customClass="HomeViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3l-lI-vt6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -330,11 +323,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ndH-Fj-Olm">
-                        <barButtonItem key="leftBarButtonItem" title="Profile" id="1UK-Ja-Blt">
-                            <connections>
-                                <segue destination="dFN-BL-YjY" kind="modal" id="xB6-Ko-XVf"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Profile" id="1UK-Ja-Blt"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="oIs-Y1-79e">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lwf-Sz-uvm">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
@@ -347,7 +336,6 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bxZ-E6-SkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1082" y="-201"/>
         </scene>

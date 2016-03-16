@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
     private var currentUser: PFUser?
@@ -29,13 +29,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    @IBAction func onBack(sender: AnyObject) {
+
+    @IBAction func onBackPress(sender: AnyObject) {
         // Save text to user description
         if let currentUser = self.profileUser {
             currentUser["description"] = descriptionTextView.text
             currentUser.saveInBackground()
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -94,6 +94,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 data = NSData(contentsOfURL: url)
             {
                 self.profilePhoto.image = UIImage(data: data)
+
+                // Set profile to circle
+                self.profilePhoto.layer.borderWidth = 3
+                self.profilePhoto.layer.masksToBounds = false
+                self.profilePhoto.layer.borderColor = UIColor.blackColor().CGColor
+                self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
+                self.profilePhoto.clipsToBounds = true
+                
+                
+                
             }
             //self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
         }
@@ -172,6 +182,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.entries.count ?? 0
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+        let kWidth = 100 as! CGFloat
+        let kHeight = 100 as! CGFloat
+//        return CGSizeMake(collectionView.bounds.size.width, kHeight)
+        return CGSizeMake(kWidth, kHeight)
+    }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         

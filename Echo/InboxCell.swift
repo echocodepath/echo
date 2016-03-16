@@ -17,6 +17,8 @@ class InboxCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Make into circle
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.masksToBounds = false
         avatarImageView.layer.borderColor = UIColor.blackColor().CGColor
