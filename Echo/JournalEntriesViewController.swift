@@ -17,6 +17,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
         tableView.dataSource = self
         loadEntries()
@@ -27,6 +28,16 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         let entry = self.entries[indexPath.row]
         cell.titleLabel.text = entry.valueForKey("title") as? String
         cell.songLabel.text = entry.valueForKey("song") as? String
+        let thumbnailData = entry["thumbnail"] as! PFFile
+        do {
+            let rawData = try thumbnailData.getData()
+            let thumbnailImage = UIImage(data: rawData)
+            cell.thumbnailImageView.image = thumbnailImage
+        } catch {
+            
+        }
+        cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
+
         //cell.entry = entry
         return cell
     }
@@ -41,7 +52,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
 //        let entryViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
 //        let entry = entries[indexPath.row]
 //        entryViewController.entry = entry
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //        self.navigationController?.pushViewController(entryViewController, animated: true)
     }
     
