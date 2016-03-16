@@ -14,6 +14,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     
     var entries: [PFObject] = []
+    @IBOutlet weak var backBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,11 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         tableView.delegate = self
         tableView.dataSource = self
         loadEntries()
+    }
+    
+    @IBAction func onBackBtn(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.navigationBarHidden = true
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
