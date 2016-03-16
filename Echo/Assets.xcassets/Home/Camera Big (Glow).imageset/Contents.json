@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Camera Big (Glow).png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Camera Big (Glow)@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

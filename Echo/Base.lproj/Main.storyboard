@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vlD-ZZ-OvJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vlD-ZZ-OvJ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Echo-->
@@ -133,36 +133,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6dH-WE-THI">
-                                <rect key="frame" x="13" y="285" width="38" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" id="ucB-gB-kbM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="323"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Inbox"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="9sy-PE-HQ8">
+                                <rect key="frame" x="0.0" y="377" width="320" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home photo" id="J2W-fK-mK8" customClass="hom">
+                                        <rect key="frame" x="-1" y="1" width="321" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wSg-kG-VsF">
+                                        <rect key="frame" x="141" y="98" width="41" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIDEO CAROUSEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n1e-Yk-n1x">
+                                        <rect key="frame" x="87" y="69" width="149" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;This is an inspirational quote about dance&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ls3-At-801">
+                                <rect key="frame" x="47" y="92" width="226" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6dH-WE-THI">
+                                <rect key="frame" x="20" y="316" width="26" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Inbox Icon"/>
                                 <connections>
                                     <segue destination="oiS-Jp-7le" kind="modal" id="6Tl-Gj-8jh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uaq-ay-P9x">
-                                <rect key="frame" x="88" y="160" width="144" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9rp-z3-RiX">
+                                <rect key="frame" x="146" y="319" width="29" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Upload Journal Entry"/>
-                                <connections>
-                                    <segue destination="OpJ-hu-KKs" kind="modal" id="X88-38-Lhf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9rp-z3-RiX">
-                                <rect key="frame" x="136" y="285" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Entries"/>
+                                <state key="normal" image="Journal Icon"/>
                                 <connections>
                                     <segue destination="wic-0d-feJ" kind="push" id="CdQ-Vr-Hrn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JKK-7t-64R">
-                                <rect key="frame" x="260" y="285" width="52" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JKK-7t-64R">
+                                <rect key="frame" x="278" y="319" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Explore"/>
+                                <state key="normal" image="Explore Icon"/>
                                 <connections>
                                     <segue destination="ccZ-BY-QqA" kind="modal" id="LYj-qa-9Ii"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uaq-ay-P9x">
+                                <rect key="frame" x="120" y="189" width="80" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Camera Big (Glow)"/>
+                                <connections>
+                                    <segue destination="OpJ-hu-KKs" kind="modal" id="X88-38-Lhf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -188,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxZ-E6-SkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082.1333333333332" y="-200.69333333333333"/>
+            <point key="canvasLocation" x="1082" y="-201"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ohv-a2-a7c">
@@ -216,6 +254,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9e5-9A-flk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.70054005196878677" blue="0.23799992045730012" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -224,7 +263,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yof-JI-0hD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="-1136"/>
+            <point key="canvasLocation" x="1082" y="-932"/>
         </scene>
         <!--Record Entry View Controller-->
         <scene sceneID="QLI-6t-K5n">
@@ -292,7 +331,7 @@
                                 <rect key="frame" x="33" y="301" width="34" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="gp3-LU-nmV">
@@ -305,7 +344,7 @@
                                 <rect key="frame" x="33" y="367" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="bEd-NA-cLh">
@@ -316,7 +355,7 @@
                                 <rect key="frame" x="33" y="439" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -405,4 +444,13 @@
             <point key="canvasLocation" x="1715" y="-9"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Camera Big (Glow)" width="80" height="60"/>
+        <image name="Explore Icon" width="22" height="22"/>
+        <image name="Inbox Icon" width="22" height="22"/>
+        <image name="Journal Icon" width="29" height="22"/>
+        <image name="home photo" width="640" height="480"/>
+        <image name="home-bg" width="640" height="750"/>
+    </resources>
+    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
 </document>
