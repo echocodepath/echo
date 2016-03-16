@@ -12,7 +12,7 @@ import ParseFacebookUtilsV4
 
 class HomeViewController: UIViewController {
 
-    @IBAction func onLogout(sender: AnyObject) {
+    @IBAction func onLogoutPress(sender: AnyObject) {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         
@@ -24,9 +24,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
         if currentUser == nil {
             currentUser = User(user: PFUser.currentUser()!)
         }
+
 
     }
     
