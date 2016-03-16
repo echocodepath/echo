@@ -80,6 +80,26 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         }
     }
     
+    func jumpAndPlayAudio(clip: AudioClip) {
+        avPlayer!.pause()
+        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
+            player.delegate = self
+            player.prepareToPlay()
+            player.play()
+            clip.hasBeenPlayed = true
+            audioPlayers.append(player)
+        } else {
+            print("Something went wrong")
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let clip = audioClips[indexPath.row]
+        avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
+        }
+        jumpAndPlayAudio(clip)
+    }
+    
     func playAudio(timer: NSTimer){
         let clip = timer.userInfo!["clip"] as! AudioClip
         avPlayer!.pause()
