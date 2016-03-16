@@ -86,6 +86,7 @@ class EntryViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
+            videoPlayer.player?.pause()
             switch identifier {
                 case "requestFeedback":
                     let nc = segue.destinationViewController as! UINavigationController
@@ -94,8 +95,6 @@ class EntryViewController: UIViewController {
                 case "allFeedback":
                     let vc = segue.destinationViewController as! EntryFeedbackViewController
                     vc.entry = entry
-                    videoPlayer.player?.pause()
-                
                 default:
                     return
             }
