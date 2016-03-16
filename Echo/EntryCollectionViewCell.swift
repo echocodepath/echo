@@ -17,7 +17,12 @@ class EntryCollectionViewCell: UICollectionViewCell {
                 let rawData = try thumbnailData.getData()
                 let thumbnailImage = UIImage(data: rawData)
                 thumbnailImageView?.image = thumbnailImage
+                profileThumbnailImageView?.alpha = 0
                 profileThumbnailImageView?.image = thumbnailImage
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.profileThumbnailImageView?.alpha = 1
+                })
             } catch {
                 
             }
