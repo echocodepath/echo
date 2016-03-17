@@ -26,6 +26,8 @@
 		B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */; };
 		EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */; };
 		EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */; };
+		EF6EC6691C9A67F300412C16 /* ExploreTopHalf.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6EC6681C9A67F300412C16 /* ExploreTopHalf.xib */; };
+		EF6EC66D1C9A7C0D00412C16 /* ExploreTopHalfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EC66C1C9A7C0D00412C16 /* ExploreTopHalfView.swift */; };
 		EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE10B31C9A14500018C251 /* StyleGuide.swift */; };
 		EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */; };
 		EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */; };
@@ -79,6 +81,8 @@
 		B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AcceptFeedbackRequest.storyboard; sourceTree = "<group>"; };
 		EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptFeedbackRequestViewController.swift; sourceTree = "<group>"; };
+		EF6EC6681C9A67F300412C16 /* ExploreTopHalf.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreTopHalf.xib; sourceTree = "<group>"; };
+		EF6EC66C1C9A7C0D00412C16 /* ExploreTopHalfView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTopHalfView.swift; sourceTree = "<group>"; };
 		EFBE10B31C9A14500018C251 /* StyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */,
 				B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */,
 				B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */,
+				EF6EC6681C9A67F300412C16 /* ExploreTopHalf.xib */,
+				EF6EC66C1C9A7C0D00412C16 /* ExploreTopHalfView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
 				F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */,
+				EF6EC6691C9A67F300412C16 /* ExploreTopHalf.xib in Resources */,
 				EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */,
 				F577A8561C8DEEC20085974D /* FeedbackRequest.storyboard in Resources */,
 				F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */,
@@ -440,6 +447,7 @@
 				B22EFDF41C9293DB0048EF5E /* DateManager.swift in Sources */,
 				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
+				EF6EC66D1C9A7C0D00412C16 /* ExploreTopHalfView.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
 				B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */,
