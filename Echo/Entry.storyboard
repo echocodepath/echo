@@ -192,21 +192,21 @@
                                 <rect key="frame" x="0.0" y="159" width="320" height="52"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GgU-xg-bVQ">
-                                        <rect key="frame" x="69" y="16" width="244" height="31"/>
+                                        <rect key="frame" x="66" y="14" width="242" height="31"/>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iM-TE-6al">
-                                        <rect key="frame" x="33" y="24" width="36" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQq-Tq-4hT">
-                                        <rect key="frame" x="8" y="21" width="20" height="20"/>
+                                        <rect key="frame" x="6" y="19" width="20" height="20"/>
                                         <state key="normal" image="white_play_button"/>
                                         <connections>
                                             <action selector="onTogglePlayPause:" destination="8C0-1C-gZt" eventType="touchUpInside" id="AVt-Jy-P7h"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iM-TE-6al">
+                                        <rect key="frame" x="26" y="22" width="36" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -228,7 +228,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRR-3Q-3do">
-                                                    <rect key="frame" x="63" y="29" width="257" height="15"/>
+                                                    <rect key="frame" x="63" y="27" width="257" height="20.5"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l67-gI-Nwu">
                                                     <rect key="frame" x="13" y="22" width="9" height="13"/>
@@ -274,7 +274,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="controlView" destination="SuI-X4-6Dv" id="UI4-NC-PyK"/>
-                        <outlet property="playBtn" destination="CQq-Tq-4hT" id="rVK-yk-hWa"/>
+                        <outlet property="playBtn" destination="CQq-Tq-4hT" id="LxO-Wa-6IE"/>
                         <outlet property="tableView" destination="ADh-I7-7UG" id="9v1-Pk-uCv"/>
                         <outlet property="timeLeftLabel" destination="2iM-TE-6al" id="nRv-uF-qw0"/>
                         <outlet property="timeSlider" destination="GgU-xg-bVQ" id="Wwe-eG-f7P"/>
