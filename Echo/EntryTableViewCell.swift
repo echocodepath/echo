@@ -15,7 +15,6 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
 //    var entry: PFObject!{
@@ -29,6 +28,11 @@ class EntryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.3)
+        songLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        titleLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.95)
+        createdAtLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        artistLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
