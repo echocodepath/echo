@@ -19,6 +19,9 @@ class EntryFormViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var songTextField: UITextField!
     
+    @IBOutlet weak var artistIconImageView: UIImageView!
+    @IBOutlet weak var songIconImageView: UIImageView!
+    @IBOutlet weak var titleIconImageView: UIImageView!
     @IBOutlet weak var artistTextField: UITextField!
     @IBAction func onCancel(sender: AnyObject) {
         let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
@@ -39,6 +42,12 @@ class EntryFormViewController: UIViewController {
         }
         entryThumbnailImageView.image = uiImage
         thumbnail = UIImagePNGRepresentation(uiImage!)
+    }
+    
+    func setupIcons() {
+        artistIconImageView.image = UIImage(named: "Artist Icon")
+        songIconImageView.image = UIImage(named: "Music Icon")
+        titleIconImageView.image = UIImage(named:"Title Icon")
     }
     
     @IBAction func onEntrySave(sender: AnyObject) {
@@ -80,6 +89,7 @@ class EntryFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateThumbnail()
+        setupIcons()
     }
 
     override func didReceiveMemoryWarning() {

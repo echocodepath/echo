@@ -37,10 +37,12 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FeedbackClipTableViewCell.count = 0
         bindGestures()
         loadAudioClips()
         setupColors()
         setupButtonToggle()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
