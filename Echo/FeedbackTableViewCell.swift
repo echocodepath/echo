@@ -20,12 +20,16 @@ class FeedbackTableViewCell: UITableViewCell {
     
     var teacher: PFObject? {
         didSet {
+            teacherProfileImageView.alpha = 0
             teacher!.fetchIfNeededInBackgroundWithBlock {
                 (teacher: PFObject?, error: NSError?) -> Void in
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    let url  = NSURL(string: (teacher?.objectForKey("profilePhotoUrl") as? String)!)
+                    let data = NSData(contentsOfURL: url!)
+                    self.teacherProfileImageView.image = UIImage(data: data!)
+                    self.teacherProfileImageView.alpha = 1
+                })
 
-                let url  = NSURL(string: (teacher?.objectForKey("profilePhotoUrl") as? String)!)
-                let data = NSData(contentsOfURL: url!)
-                self.teacherProfileImageView.image = UIImage(data: data!)
             }
 
         }
