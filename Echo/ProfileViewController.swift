@@ -29,7 +29,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-
     @IBAction func onBackPress(sender: AnyObject) {
         // Save text to user description
         if let currentUser = self.profileUser {
