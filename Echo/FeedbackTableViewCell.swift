@@ -12,9 +12,16 @@ import Parse
 class FeedbackTableViewCell: UITableViewCell {
     var feedback: PFObject? {
         didSet {
-            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate((feedback?.createdAt)!)
-            teacherLabel.text = feedback?.objectForKey("teacher_username") as? String
-            teacher = feedback?.objectForKey("teacher_id") as? PFObject
+            createdAtLabel.alpha = 0
+            teacherLabel.alpha = 0
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.createdAtLabel.text = DateManager.defaultFormatter.stringFromDate((self.feedback?.createdAt)!)
+                self.teacherLabel.text = self.feedback?.objectForKey("teacher_username") as? String
+                self.teacher = self.feedback?.objectForKey("teacher_id") as? PFObject
+                self.createdAtLabel.alpha = 1
+                self.teacherLabel.alpha = 1
+            })
+
         }
     }
     
