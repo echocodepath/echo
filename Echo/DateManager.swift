@@ -14,7 +14,7 @@ class DateManager {
         struct Static {
             static let instance: NSDateFormatter = NSDateFormatter()
         }
-        Static.instance.dateFormat = "dd MMMM, yyyy"
+        Static.instance.dateFormat = "MMMM dd, yyyy"
         
         return Static.instance
     }
