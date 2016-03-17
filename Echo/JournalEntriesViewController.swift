@@ -18,7 +18,6 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utils.configureDefaultNavigationBar((self.navigationController?.navigationBar)!)
         self.navigationController?.navigationBarHidden = false
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
