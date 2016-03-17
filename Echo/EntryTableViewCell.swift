@@ -16,6 +16,8 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
+    @IBOutlet weak var createdAtLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
 //    var entry: PFObject!{
 //        didSet {
 //            titleLabel.text = entry.valueForKey("title") as? String
@@ -26,7 +28,7 @@ class EntryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clearColor()
-        self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.4)
+        self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.3)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
