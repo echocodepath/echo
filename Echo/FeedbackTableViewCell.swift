@@ -14,9 +14,24 @@ class FeedbackTableViewCell: UITableViewCell {
         didSet {
             createdAtLabel.text = DateManager.defaultFormatter.stringFromDate((feedback?.createdAt)!)
             teacherLabel.text = feedback?.objectForKey("teacher_username") as? String
+            teacher = feedback?.objectForKey("teacher_id") as? PFObject
         }
     }
     
+    var teacher: PFObject? {
+        didSet {
+            teacher!.fetchIfNeededInBackgroundWithBlock {
+                (teacher: PFObject?, error: NSError?) -> Void in
+
+                let url  = NSURL(string: (teacher?.objectForKey("profilePhotoUrl") as? String)!)
+                let data = NSData(contentsOfURL: url!)
+                self.teacherProfileImageView.image = UIImage(data: data!)
+            }
+
+        }
+    }
+    
+    @IBOutlet weak var teacherProfileImageView: UIImageView!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     override func awakeFromNib() {
