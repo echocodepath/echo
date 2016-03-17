@@ -7,34 +7,30 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func onBack(sender: AnyObject) {
-
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func onLogoutPress(sender: AnyObject) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let loginNav = UINavigationController(rootViewController: loginViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginNav
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    //    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
 
 }
