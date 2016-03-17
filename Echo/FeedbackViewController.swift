@@ -97,6 +97,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             player.delegate = self
             player.prepareToPlay()
             player.play()
+            invalidateTimersAndFeedback()
             clip.hasBeenPlayed = true
             audioPlayers.append(player)
         } else {
