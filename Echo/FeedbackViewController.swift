@@ -28,6 +28,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var audioUrls:[NSURL] = []
     var playerRateBeforeSeek: Float = 0
 
+    @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -38,6 +39,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         bindGestures()
         loadAudioClips()
         setupColors()
+        setupButtonToggle()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
@@ -46,6 +48,11 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     func setupColors() {
         controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
+    }
+    
+    func setupButtonToggle() {
+        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Selected)
+        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Normal)
     }
     
     func videoPlaybackDidPause() {
@@ -82,8 +89,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     @IBAction func onTogglePlayPause(sender: AnyObject) {
         let playerIsPlaying:Bool = avPlayer!.rate > 0
         if playerIsPlaying {
+            playBtn.selected = true
             videoPlaybackDidPause()
         } else {
+            playBtn.selected = false
             avPlayer!.play()
             invalidateTimersAndFeedback()
             videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
