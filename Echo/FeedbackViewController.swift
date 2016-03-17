@@ -103,6 +103,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     func jumpAndPlayAudio(clip: AudioClip) {
         avPlayer!.pause()
+        playBtn.selected = true
         if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
             player.delegate = self
             player.prepareToPlay()
@@ -118,6 +119,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentIndexPath = indexPath
         let clip = audioClips[indexPath.row]
+        playBtn.selected = true
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
         }
         jumpAndPlayAudio(clip)
@@ -133,6 +135,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             player.delegate = self
             player.prepareToPlay()
             player.play()
+            playBtn.selected = true
             clip.hasBeenPlayed = true
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
             currentIndexPath = indexPath
@@ -172,6 +175,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        playBtn.selected = false
     }
 
     func loadAudioClips() {
