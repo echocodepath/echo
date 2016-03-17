@@ -19,6 +19,7 @@ class EntryFormViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var songTextField: UITextField!
     
+    @IBOutlet weak var artistTextField: UITextField!
     @IBAction func onCancel(sender: AnyObject) {
         let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
         let homeNav = UINavigationController(rootViewController: homeViewController)
@@ -56,6 +57,7 @@ class EntryFormViewController: UIViewController {
         responseDict["song"] = song
         responseDict["video"] = videoFile
         responseDict["thumbnail"] = thumbnailFile
+        responseDict["artist"] = artistTextField.text
         if privateSwitch.on {
             responseDict["private"] = true
         } else {
