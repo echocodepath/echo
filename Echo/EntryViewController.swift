@@ -20,6 +20,9 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var feedbackIcon: UINavigationItem!
+    @IBOutlet weak var createdAtLabel: UILabel!
+    @IBOutlet weak var songLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -31,9 +34,12 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    Utils.configureDefaultNavigationBar((self.navigationController?.navigationBar)!)
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String) by \(entry!.valueForKey("artist") as! String)"
+            self.title = entry!.valueForKey("title") as! String
+//            entryLabel.text = "\(entry!.valueForKey("title") as! String)"
+            songLabel.text = "\(entry!.valueForKey("song") as! String)"
+            artistLabel.text = "by \(entry!.valueForKey("artist") as! String)"
+            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
