@@ -42,6 +42,11 @@ class FeedbackTableViewCell: UITableViewCell {
         }
     }
     
+    
+    
+    
+    @IBOutlet weak var fromLabel: UILabel!
+    
     @IBOutlet weak var teacherProfileImageView: UIImageView!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
@@ -51,6 +56,8 @@ class FeedbackTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.3)
         createdAtLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
         teacherLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        fromLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
