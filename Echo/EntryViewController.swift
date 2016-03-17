@@ -32,7 +32,7 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String) by \(entry!.valueForKey("artist") as! String)"
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }

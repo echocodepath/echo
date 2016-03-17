@@ -33,12 +33,17 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
         let entry = self.entries[indexPath.row]
+        let createdAt = DateManager.defaultFormatter.stringFromDate(entry.createdAt!)
         cell.titleLabel.alpha = 0
         cell.songLabel.alpha = 0
         cell.thumbnailImageView.alpha = 0
+        cell.createdAtLabel.alpha = 0
+        cell.artistLabel.alpha = 0
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             cell.titleLabel.text = entry.valueForKey("title") as? String
             cell.songLabel.text = entry.valueForKey("song") as? String
+            cell.artistLabel.text = entry.valueForKey("artist") as? String
+            cell.createdAtLabel.text = createdAt
             let thumbnailData = entry["thumbnail"] as! PFFile
             do {
                 let rawData = try thumbnailData.getData()
@@ -51,6 +56,8 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
             cell.titleLabel.alpha = 1
             cell.songLabel.alpha = 1
             cell.thumbnailImageView.alpha = 1
+            cell.artistLabel.alpha = 1
+            cell.createdAtLabel.alpha = 1
         })
 
         //cell.entry = entry
