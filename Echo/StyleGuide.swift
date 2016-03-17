@@ -26,8 +26,8 @@ struct StyleGuide {
     }
 }
 
-class Utils {
-    class func configureDefaultNavigationBar(navBar: UINavigationBar) {
+struct Utils {
+    static func configureDefaultNavigationBar(navBar: UINavigationBar) {
         navBar.translucent = false
         navBar.barTintColor = StyleGuide.Colors.echoOrange
         navBar.tintColor = UIColor.whiteColor()

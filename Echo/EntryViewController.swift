@@ -34,7 +34,6 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    Utils.configureDefaultNavigationBar((self.navigationController?.navigationBar)!)
         if entry != nil {
             self.title = entry!.valueForKey("title") as! String
 //            entryLabel.text = "\(entry!.valueForKey("title") as! String)"

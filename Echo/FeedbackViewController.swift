@@ -287,7 +287,6 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             let audioClipUrl = convertAudioDataToNSURL(audioClipParseObject)
             let duration = parseObject.objectForKey("duration") as! Float64
             let offset = parseObject.objectForKey("offset") as! Double
-
             let audioClip = AudioClip(path: audioClipUrl, offset: offset, duration: duration)
             audioClips.append(audioClip)
             
