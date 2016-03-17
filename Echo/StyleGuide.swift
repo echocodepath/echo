@@ -23,6 +23,8 @@ struct StyleGuide {
     struct Colors {
         static let echoOrange = UIColor(red:0.96, green:0.65, blue:0.14, alpha:1.0)
         static let echoTeal = UIColor(red:0.33, green:0.78, blue:0.69, alpha:1.0)
+        static let echoBrownGray = UIColor(red: 59/255, green: 59/255, blue: 67/255, alpha: 1.0)
+        static let echoLightBrownGray = UIColor(red: 83/255, green: 83/255, blue: 92/255, alpha: 1.0)
     }
 }
 
