@@ -304,19 +304,8 @@
                                     <segue destination="aWM-aw-WD4" kind="modal" id="z2Y-pe-Cct"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nNp-VC-Dmo">
-                                <rect key="frame" x="264" y="28" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onLogout:" destination="fNo-NI-33C" eventType="touchUpInside" id="f7j-Ln-36D"/>
-                                    <action selector="onLogoutPress:" destination="fNo-NI-33C" eventType="touchUpInside" id="gii-Hp-8eD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XhF-ZW-xhj">
-                                <rect key="frame" x="273" y="57" width="26" height="27"/>
+                                <rect key="frame" x="284" y="33" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
