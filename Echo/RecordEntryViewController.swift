@@ -32,6 +32,10 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
         self.presentViewController(albumPicker, animated: true, completion: nil)
     }
 
+    @IBAction func onBackPress(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
