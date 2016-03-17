@@ -46,7 +46,6 @@ class FeedbackTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var fromLabel: UILabel!
-    
     @IBOutlet weak var teacherProfileImageView: UIImageView!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!

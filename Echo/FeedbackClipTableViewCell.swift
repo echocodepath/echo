@@ -9,6 +9,8 @@
 import UIKit
 
 class FeedbackClipTableViewCell: UITableViewCell {
+    static var count = 0
+    
     var audioClip: AudioClip? {
         didSet {
             durationLabel.text = "\(Int(audioClip!.duration!))s"
@@ -21,14 +23,17 @@ class FeedbackClipTableViewCell: UITableViewCell {
     @IBOutlet weak var audioClipImageView: UIImageView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        FeedbackClipTableViewCell.count += 1
         audioClipImageView.image = UIImage(named: "Sound Waves")
         locationImageView.image = UIImage(named: "timestamp_icon")
         contentView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         durationLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
         timestampLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
         noteLabel.textColor = UIColor(red: 199/255, green: 161/255, blue: 129/255, alpha: 1.0)
+        noteLabel.text = "NOTE \(FeedbackClipTableViewCell.count)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
