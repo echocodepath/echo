@@ -17,7 +17,8 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var avPlayer: AVPlayer?
     var timeObserver: AnyObject!
     var audioTimers = Array<NSTimer>()
-
+    var currentIndexPath: NSIndexPath?
+    
     var feedback: PFObject?
     var entry: PFObject?
     
@@ -115,6 +116,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        currentIndexPath = indexPath
         let clip = audioClips[indexPath.row]
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
         }
@@ -123,12 +125,17 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     func playAudio(timer: NSTimer){
         let clip = timer.userInfo!["clip"] as! AudioClip
+        let index = timer.userInfo!["index"] as! Int
+        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
         avPlayer!.pause()
         if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
             player.delegate = self
             player.prepareToPlay()
             player.play()
             clip.hasBeenPlayed = true
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+            currentIndexPath = indexPath
             audioPlayers.append(player)
         } else {
             print("Something went wrong")
@@ -138,13 +145,14 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
         let filteredClips = audioClips.filter({ $0.offset > offset && $0.hasBeenPlayed == false })
         if filteredClips.count > 0 {
-            createTimer(filteredClips[0])
+            let clipIndex = audioClips.indexOf(filteredClips[0])
+            createTimer(filteredClips[0], clipIndex: clipIndex!)
         }
     }
     
-    func createTimer(clip: AudioClip) {
+    func createTimer(clip: AudioClip, clipIndex: Int) {
         let currentTime = avPlayer!.currentTime().seconds
-        let params: [String: AudioClip] = ["clip" : clip]
+        let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
         let playAudioAt = clip.offset! - currentTime
         let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
         audioTimers.append(timer)
@@ -161,9 +169,9 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
     }
 
     func loadAudioClips() {
