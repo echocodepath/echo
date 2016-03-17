@@ -28,6 +28,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var audioUrls:[NSURL] = []
     var playerRateBeforeSeek: Float = 0
 
+    @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
@@ -36,9 +37,15 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         super.viewDidLoad()
         bindGestures()
         loadAudioClips()
+        setupColors()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         // Do any additional setup after loading the view.
+    }
+    
+    func setupColors() {
+        controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
     }
     
     func videoPlaybackDidPause() {
