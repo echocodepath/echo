@@ -144,6 +144,7 @@
                                         <connections>
                                             <outlet property="createdAtLabel" destination="43O-NM-shO" id="Vsf-3c-ATS"/>
                                             <outlet property="teacherLabel" destination="9Ss-lr-bDX" id="3LW-mr-iXE"/>
+                                            <outlet property="teacherProfileImageView" destination="Oka-Pg-nCF" id="D1Q-G7-V0S"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
