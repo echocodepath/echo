@@ -90,13 +90,21 @@
             </objects>
             <point key="canvasLocation" x="661" y="-486"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="kaC-gY-J61">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Settings" storyboardName="Settings" id="1Ys-Qw-m7W" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdu-C2-Nm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405.5" y="-305"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="7xJ-uQ-ZQb">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="aWM-aw-WD4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anf-fV-nLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="-277"/>
+            <point key="canvasLocation" x="1403" y="-249"/>
         </scene>
         <!--Explore-->
         <scene sceneID="G2A-wz-MxN">
@@ -104,7 +112,7 @@
                 <viewControllerPlaceholder storyboardName="Explore" id="ccZ-BY-QqA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfq-V4-A9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388.5" y="-226"/>
+            <point key="canvasLocation" x="1403.5" y="-196"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="PKm-vw-tKs">
@@ -112,7 +120,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Inbox" storyboardName="Inbox" id="oiS-Jp-7le" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDu-c8-Ojo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1395" y="-174"/>
+            <point key="canvasLocation" x="1395" y="-154"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="atW-3S-ZQj">
@@ -296,15 +304,12 @@
                                     <segue destination="aWM-aw-WD4" kind="modal" id="z2Y-pe-Cct"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nNp-VC-Dmo">
-                                <rect key="frame" x="264" y="28" width="44" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XhF-ZW-xhj">
+                                <rect key="frame" x="284" y="33" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" image="settings"/>
                                 <connections>
-                                    <action selector="onLogout:" destination="fNo-NI-33C" eventType="touchUpInside" id="f7j-Ln-36D"/>
-                                    <action selector="onLogoutPress:" destination="fNo-NI-33C" eventType="touchUpInside" id="gii-Hp-8eD"/>
+                                    <segue destination="1Ys-Qw-m7W" kind="modal" id="fQZ-Eu-xMB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -639,7 +644,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qM2-gN-p5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-124"/>
+            <point key="canvasLocation" x="1401" y="-106"/>
         </scene>
     </scenes>
     <resources>
@@ -657,6 +662,7 @@
         <image name="bg-common" width="640" height="750"/>
         <image name="home photo" width="640" height="480"/>
         <image name="home-bg" width="640" height="750"/>
+        <image name="settings" width="35" height="35"/>
     </resources>
     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
 </document>

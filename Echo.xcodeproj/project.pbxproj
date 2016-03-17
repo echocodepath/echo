@@ -33,6 +33,8 @@
 		EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */; };
 		EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EFDCA1D91C8DF60700BF0393 /* .gitignore */; };
 		EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */; };
+		EFDDB5091C9B5ED70021DF36 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDDB5081C9B5ED70021DF36 /* Settings.storyboard */; };
+		EFDDB50B1C9B5F510021DF36 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */; };
 		F501EDB81C97AAC0003581A5 /* SentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDB71C97AAC0003581A5 /* SentViewController.swift */; };
 		F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */; };
 		F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBC1C97C2EE003581A5 /* AcceptedRequestsViewController.swift */; };
@@ -86,6 +88,8 @@
 		EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		EFDCA1D91C8DF60700BF0393 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EFDCA1DC1C8E019100BF0393 /* InboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
+		EFDDB5081C9B5ED70021DF36 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F501EDB71C97AAC0003581A5 /* SentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentViewController.swift; sourceTree = "<group>"; };
 		F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxTabBarController.swift; sourceTree = "<group>"; };
 		F501EDBC1C97C2EE003581A5 /* AcceptedRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptedRequestsViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				EF0AF2451C9253F9005CDCA2 /* Feedback Request Flow */,
 				EF0AF2471C925430005CDCA2 /* Journal Entries Flow */,
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
+				EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				EFDCA1D51C8DF53C00BF0393 /* Inbox.storyboard */,
 				F577A8551C8DEEC20085974D /* FeedbackRequest.storyboard */,
 				EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */,
+				EFDDB5081C9B5ED70021DF36 /* Settings.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */,
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
+				EFDDB5091C9B5ED70021DF36 /* Settings.storyboard in Resources */,
 				F56D5DFD1C855AF6006A7D7A /* Assets.xcassets in Resources */,
 				EFDCA1D21C8DE01900BF0393 /* Explore.storyboard in Resources */,
 				F577A8561C8DEEC20085974D /* FeedbackRequest.storyboard in Resources */,
@@ -442,6 +449,7 @@
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
 				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
+				EFDDB50B1C9B5F510021DF36 /* SettingsViewController.swift in Sources */,
 				B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */,
 				EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
