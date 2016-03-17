@@ -12,7 +12,7 @@ import Parse
 class FeedbackTableViewCell: UITableViewCell {
     var feedback: PFObject? {
         didSet {
-            createdAtLabel.text = DateManager.getFriendlyTime(feedback?.createdAt)
+            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate((feedback?.createdAt)!)
             teacherLabel.text = feedback?.objectForKey("teacher_username") as? String
         }
     }
@@ -21,7 +21,10 @@ class FeedbackTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.3)
+        createdAtLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        teacherLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

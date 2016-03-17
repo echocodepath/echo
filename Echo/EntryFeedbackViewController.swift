@@ -19,6 +19,7 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         loadFeedback()
         // Do any additional setup after loading the view.
     }
