@@ -79,16 +79,12 @@ class EntryViewController: UIViewController {
     }
     
     private func convertVideoDataToNSURL() {
-        let url: NSURL?
-        let rawData: NSData?
+        var url: NSURL?
         let videoData = entry!["video"] as! PFFile
-        do {
-            rawData = try videoData.getData()
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-            playVideo(url!)
-        } catch {
-        
-        }
+        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            self.playVideo(url!)
+        })
     }
 
     override func didReceiveMemoryWarning() {
