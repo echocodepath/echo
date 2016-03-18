@@ -22,11 +22,9 @@ class InboxTabBarController: UITabBarController {
         let tabItem0 = tabItems[0] as UITabBarItem
         let tabItem1 = tabItems[1] as UITabBarItem
         let tabItem2 = tabItems[2] as UITabBarItem
-        let tabItem3 = tabItems[3] as UITabBarItem
         tabItem0.title = "Inbox"
         tabItem1.title = "Sent"
         tabItem2.title = "Accepted"
-        tabItem3.title = "Rejected"
     }
 
     override func didReceiveMemoryWarning() {
