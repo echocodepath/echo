@@ -32,10 +32,6 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
         self.presentViewController(albumPicker, animated: true, completion: nil)
     }
 
-    @IBAction func onBackPress(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -77,25 +73,21 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
             }
         }
         
-        picker.dismissViewControllerAnimated(true) { () -> Void in
-            let entryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EntryFormViewController") as! EntryFormViewController
-            entryViewController.video = videoUrl!
-            let entryNav = UINavigationController(rootViewController: entryViewController)
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.window?.rootViewController = entryNav
-        }
-
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("upload-entry", sender: videoUrl!)
     }
 
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "upload-entry" {
+            let controller = segue.destinationViewController as! EntryFormViewController
+            controller.video = sender as? NSURL
+        }
     }
-    */
+
 
 }

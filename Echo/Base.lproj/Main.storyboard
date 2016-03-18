@@ -395,13 +395,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-common" translatesAutoresizingMaskIntoConstraints="NO" id="nFr-dF-hWY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-jU-IOH" userLabel="Back">
-                                <rect key="frame" x="20" y="28" width="26" height="24"/>
-                                <state key="normal" image="Back"/>
-                                <connections>
-                                    <action selector="onBackPress:" destination="Ile-He-cgq" eventType="touchUpInside" id="Thc-ag-ehz"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7y-Cs-4Tf" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="164" y="190" width="156" height="113"/>
                                 <subviews>
@@ -486,17 +479,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="J7C-ZE-Ddb">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="gMd-TV-jLL">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gwT-XT-pal">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="onBack:" destination="Ile-He-cgq" eventType="touchUpInside" id="SgR-Xm-2iw"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="zqF-2L-7uW">
+                            <connections>
+                                <action selector="onBack:" destination="Ile-He-cgq" id="7Ku-Bo-PoN"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2I1-lI-8a6" kind="push" identifier="upload-entry" id="cCb-aZ-1j6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPO-RD-x5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -627,30 +618,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oN-l9-anc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2481" y="666"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0bF-5g-AJW">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zAi-3f-eJS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yom-Lw-3A1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2I1-lI-8a6" kind="relationship" relationship="rootViewController" id="g2V-cb-IKB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="he1-Q8-UYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1993" y="655"/>
+            <point key="canvasLocation" x="1947" y="497"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q0h-xk-QJ9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="OpJ-hu-KKs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OpJ-hu-KKs" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mlK-NO-Wxb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
