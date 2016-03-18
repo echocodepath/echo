@@ -74,16 +74,23 @@ class EntryFormViewController: UIViewController {
         }
         
         ParseClient.sharedInstance.createEntryWithCompletion(responseDict) { (entry, error) -> () in
-            let entryViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
+            let entryStoryBoard = UIStoryboard(name: "Entry", bundle: nil)
+            let entryViewController = entryStoryBoard.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
             entryViewController.entry = entry
+            entryViewController.onComplete = { [weak self] finished in
+                if !finished {
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDelegate.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+            
             let entryNav = UINavigationController(rootViewController: entryViewController)
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.window?.rootViewController = entryNav
+            self.presentViewController(entryNav, animated: true, completion: { () -> Void in
+                
+            })
+//            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//            appDelegate.window?.rootViewController = entryNav
         }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
-        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
