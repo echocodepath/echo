@@ -33,7 +33,7 @@
               @"expiration_date" : [[NSDateFormatter pffb_preciseDateFormatter] stringFromDate:expirationDate] };
 }
 
-+ (nullable NSDictionary *)userAuthenticationDataFromAccessToken:(FBSDKAccessToken *)token {
++ (NSDictionary *)userAuthenticationDataFromAccessToken:(FBSDKAccessToken *)token {
     if (!token.userID || !token.tokenString || !token.expirationDate) {
         return nil;
     }
@@ -43,7 +43,7 @@
                                            expirationDate:token.expirationDate];
 }
 
-+ (nullable FBSDKAccessToken *)facebookAccessTokenFromUserAuthenticationData:(nullable NSDictionary<NSString *, NSString *> *)authData {
++ (FBSDKAccessToken *)facebookAccessTokenFromUserAuthenticationData:(nullable NSDictionary<NSString *, NSString *> *)authData {
     NSString *accessToken = authData[@"access_token"];
     NSString *expirationDateString = authData[@"expiration_date"];
     if (!accessToken || !expirationDateString) {
