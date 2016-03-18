@@ -13,6 +13,9 @@ import AVFoundation
 
 
 class EntryViewController: UIViewController {
+    
+    var onComplete: ((finished: Bool) -> Void)?
+    
     var entry: PFObject?
     
     let videoPlayer = AVPlayerViewController()
@@ -26,12 +29,12 @@ class EntryViewController: UIViewController {
     
     @IBAction func onBack(sender: AnyObject) {
         videoPlayer.player!.pause()
-        let homeStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = homeStoryBoard
-            .instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        let homePageNav = UINavigationController(rootViewController: homeViewController)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homePageNav
+        
+        if let handler = onComplete {
+            handler(finished: false)
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func updateEntry(myEntry: PFObject?) {
