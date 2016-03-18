@@ -14,15 +14,17 @@ class EntryCollectionViewCell: UICollectionViewCell {
         didSet {
             let thumbnailData = entry!["thumbnail"] as! PFFile
             do {
-                let rawData = try thumbnailData.getData()
-                let thumbnailImage = UIImage(data: rawData)
-                thumbnailImageView?.image = thumbnailImage
-                profileThumbnailImageView?.alpha = 0
-                profileThumbnailImageView?.image = thumbnailImage
-                
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.profileThumbnailImageView?.alpha = 1
+                thumbnailData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    let thumbnailImage = UIImage(data: data!)
+                    self.thumbnailImageView?.image = thumbnailImage
+                    self.profileThumbnailImageView?.alpha = 0
+                    self.profileThumbnailImageView?.image = thumbnailImage
+                    
+                    UIView.animateWithDuration(0.3, animations: { () -> Void in
+                        self.profileThumbnailImageView?.alpha = 1
+                    })
                 })
+
             } catch {
                 
             }
@@ -36,5 +38,11 @@ class EntryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        let thumbnailData = entry!["thumbnail"] as! PFFile
+        thumbnailData.cancel()
     }
 }
