@@ -247,19 +247,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
+        print(offset)
         if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moving up
-            if hiddenProfilePhoto == true && offset > -100 {
+            if hiddenProfilePhoto == true && offset > -50 {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.profilePhoto.alpha = 1
+                    self.profileBorderView.alpha = 1
                     self.hiddenProfilePhoto = false
                 })
             }
         } else if (self.lastContentOffset < scrollView.contentOffset.y){
         // moving down
-            if hiddenProfilePhoto == false && offset < -147 {
+            if hiddenProfilePhoto == false && offset < -125 {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.profilePhoto.alpha = 0
+                    self.profileBorderView.alpha = 0
                     self.hiddenProfilePhoto = true
                 })
             }
