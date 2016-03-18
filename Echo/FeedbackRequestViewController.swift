@@ -12,6 +12,7 @@ import ParseFacebookUtilsV4
 
 class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var instructorHeadView: UIView!
     
     var currentUser: PFUser?
     var teachers: [PFObject] = []
@@ -31,8 +32,11 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
             
         }
         
+        tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.dataSource = self
         tableView.delegate = self
+
+        instructorHeadView.backgroundColor = UIColor.clearColor()
         
         let teacher_ids: [String]
         if let favorite_teachers = currentUser!["favorite_teachers"] {
@@ -84,6 +88,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
         } else {
             cell.teacherName.text = "Please add some favorite teachers"
         }
+        cell.backgroundColor = UIColor.clearColor()
 
         return cell
     }
