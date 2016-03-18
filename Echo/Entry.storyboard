@@ -33,24 +33,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song by" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp5-BY-bzz">
-                                <rect key="frame" x="263" y="78" width="47" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-CS-4dU">
-                                <rect key="frame" x="248" y="99" width="62" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 10, 2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f5-J6-loA">
-                                <rect key="frame" x="12" y="78" width="109" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbx-gQ-fiv">
                                 <rect key="frame" x="87" y="437" width="146" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -61,16 +43,41 @@
                                     <segue destination="FV8-a5-ZiI" kind="modal" identifier="requestFeedback" id="7w6-c2-wXG"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hW6-BG-Ex7">
+                                <rect key="frame" x="0.0" y="190" width="320" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f5-J6-loA">
+                                        <rect key="frame" x="253" y="5" width="59" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Formation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp5-BY-bzz">
+                                        <rect key="frame" x="41" y="8" width="58" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQK-K7-IqD">
+                                        <rect key="frame" x="41" y="21" width="14" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.0" alpha="0.91998922409999995" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beyonce" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-CS-4dU">
+                                        <rect key="frame" x="57" y="21" width="49" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.0" alpha="0.91998922413793105" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmM-As-iQE">
+                                        <rect key="frame" x="18" y="7" width="19" height="30"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7f5-J6-loA" firstAttribute="top" secondItem="eRr-0o-Nm9" secondAttribute="bottom" constant="14" id="IOV-p7-NjX"/>
-                            <constraint firstItem="Ebu-CS-4dU" firstAttribute="top" secondItem="dp5-BY-bzz" secondAttribute="bottom" constant="6" id="Oas-s7-wJn"/>
-                            <constraint firstItem="7f5-J6-loA" firstAttribute="leading" secondItem="Ck4-Ct-gKC" secondAttribute="leading" constant="12" id="YoY-CN-qb8"/>
-                            <constraint firstAttribute="trailing" secondItem="dp5-BY-bzz" secondAttribute="trailing" constant="10" id="h3A-Nx-GJ5"/>
-                            <constraint firstAttribute="trailing" secondItem="Ebu-CS-4dU" secondAttribute="trailing" constant="10" id="j5L-ix-d2r"/>
-                            <constraint firstItem="dp5-BY-bzz" firstAttribute="top" secondItem="eRr-0o-Nm9" secondAttribute="bottom" constant="14" id="yZn-Zi-ImU"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VRD-uz-tnb">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="t2x-j6-1du">
@@ -93,6 +100,7 @@
                         <outlet property="artistLabel" destination="Ebu-CS-4dU" id="SZ4-mh-wRu"/>
                         <outlet property="createdAtLabel" destination="7f5-J6-loA" id="iBc-ja-GNG"/>
                         <outlet property="feedbackIcon" destination="VRD-uz-tnb" id="d1h-AP-xfE"/>
+                        <outlet property="microphoneImageView" destination="ZmM-As-iQE" id="M0R-Bb-doI"/>
                         <outlet property="requestFeedbackBtn" destination="Bbx-gQ-fiv" id="pzC-SX-aEh"/>
                         <outlet property="songLabel" destination="dp5-BY-bzz" id="6lu-4P-BLh"/>
                     </connections>
