@@ -8,15 +8,8 @@
 
 import UIKit
 
-class InspirationGenerator: NSObject {
-    class var sharedInstance: InspirationGenerator {
-        struct Static {
-            static let instance =  InspirationGenerator()
-        }
-        return Static.instance
-    }
-    
-    let quotes = [
+struct InspirationGenerator {
+    static let quotes = [
         ["\"Do it big, do it right, and do it with style.\"", "Fred Astaire"],
         ["\"Life is the dancer and you are the dance.\"", "Eckhart Tolle"],
         ["\"Dancing is like dreaming with your feet.\"", "Constanze"],
@@ -33,7 +26,7 @@ class InspirationGenerator: NSObject {
         ["\"Everything in the universe has rhythm. Everything dances.\"", "Maya Angelou"],
         ["\"I grew up with six brothers. That's how I learned to dance--waiting for the bathroom.\"", "Bob Hope"]]
     
-    func pickRandomQuote() -> [String] {
+    static func pickRandomQuote() -> [String] {
         let maxLength = quotes.count - 1
         let randomIndex = Int(arc4random_uniform(UInt32(maxLength)) + 1)
         return quotes[randomIndex]
