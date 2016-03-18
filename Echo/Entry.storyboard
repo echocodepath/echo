@@ -33,9 +33,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-alternative" translatesAutoresizingMaskIntoConstraints="NO" id="jN2-VB-FT2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbx-gQ-fiv">
                                 <rect key="frame" x="87" y="437" width="146" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -337,7 +334,6 @@
     </scenes>
     <resources>
         <image name="Back" width="26" height="24"/>
-        <image name="bg-alternative" width="640" height="1136"/>
         <image name="favorite-button" width="310" height="80"/>
         <image name="white_play_button" width="13" height="16"/>
     </resources>
