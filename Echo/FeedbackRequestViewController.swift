@@ -32,7 +32,6 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
             
         }
         
-        tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -84,7 +83,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeacherFeedbackCell", forIndexPath: indexPath) as! TeacherFeedbackCell
         if self.teachers.count > 0 {
-            cell.teacherName.text = self.teachers[indexPath.row]["username"] as? String
+            cell.teacher = self.teachers[indexPath.row]
         } else {
             cell.teacherName.text = "Please add some favorite teachers"
         }
