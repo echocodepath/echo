@@ -67,11 +67,11 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
         
         if let id = request["entry_id"] {
             let entry_id = id as String
-            var song = ""
+            var title = ""
             let entryQuery = PFQuery(className:"Entry")
             do {
                 let entry = try entryQuery.getObjectWithId(entry_id)
-                song = entry["song"] as! String
+                title = entry["title"] as! String
             } catch {
                 print("Error getting entry from inbox")
             }
@@ -86,7 +86,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
                     var student_picture = ""
                     student_name = object["username"] as! String
                     student_picture = object["profilePhotoUrl"] as! String
-                    cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + song
+                    cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + title
                     cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
                 } else {
                     print(error)
