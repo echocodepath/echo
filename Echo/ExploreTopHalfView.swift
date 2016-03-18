@@ -10,39 +10,29 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
-class ExploreTopHalfView: UICollectionReusableView, UICollectionViewDataSource, UICollectionViewDelegate  {
+class ExploreTopHalfView: UICollectionReusableView  {
 
-    @IBOutlet weak var teachersGridView: UICollectionView!
-
-    //////////////////////////////////////////////////////////////////////////////
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        teachersGridView.delegate = self
-        teachersGridView.dataSource = self
-        self.myCustomInit()
+    var headerView: UIView? {
+        willSet {
+            if let headerView = headerView {
+                headerView.removeConstraints(headerView.constraints)
+                headerView.removeFromSuperview()
+            }
+        }
+        didSet {
+            if let headerView = headerView {
+                addSubview(headerView)
+                headerView.translatesAutoresizingMaskIntoConstraints = false
+                headerView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
+                headerView.leftAnchor.constraintEqualToAnchor(leftAnchor).active = true
+                headerView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+                headerView.rightAnchor.constraintEqualToAnchor(rightAnchor).active = true
+            }
+        }
     }
     
-    
-    //////////////////////////////////////////////////////////////////////////////
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        self.myCustomInit()
-    }
-    
-    func myCustomInit() {
-        print("hello there from SupView")
-
-
-        
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
-        print(cell)
-        return cell
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        headerView = nil
     }
 }

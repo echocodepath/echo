@@ -10,10 +10,17 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 
+class ExploreHeaderView: UIView {
+    
+    let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: UICollectionViewFlowLayout())
+}
+
 class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    @IBOutlet weak var teachersGridView: UICollectionView!
+    lazy var headerView: ExploreHeaderView = ExploreHeaderView()
+    
     @IBOutlet weak var entriesGridView: UICollectionView!
+    
     
     var refreshControlTableView: UIRefreshControl!
     
@@ -21,10 +28,12 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     var entries: [PFObject] = []
     
     override func viewDidLoad() {
+    
         super.viewDidLoad()
         
-        teachersGridView.delegate   = self
-        teachersGridView.dataSource = self
+        headerView.collectionView.dataSource = self
+        headerView.collectionView.delegate   = self
+        
         entriesGridView.delegate    = self
         entriesGridView.dataSource  = self
         
@@ -35,11 +44,15 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-        teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
         entriesGridView?.insertSubview(refreshControlTableView, atIndex: 0)
+        
+        if let layout = entriesGridView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.headerReferenceSize = CGSize(width: 0, height: 120)
+        }
     }
     
     func fetchInstructors(){
+        
         let teacherQuery = PFUser.query()!
         teacherQuery.whereKey("is_teacher", equalTo: "true")
         teacherQuery.findObjectsInBackgroundWithBlock {
@@ -90,11 +103,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == teachersGridView {
-            return self.teachers.count ?? 0
-        } else {
-            return self.entries.count ?? 0
-        }
+        
+        return self.entries.count ?? 0
+        
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -141,6 +152,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             let headerView =
             collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ExploreTopHalfView", forIndexPath: indexPath) as! ExploreTopHalfView
 
+            headerView.headerView = self.headerView
+            
             return headerView
             
         default:
