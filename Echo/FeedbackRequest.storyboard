@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -41,13 +41,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
-                                <rect key="frame" x="80" y="30" width="161" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
+                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-zk-hRF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
+                                        <rect key="frame" x="79" y="20" width="161" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                        <rect key="frame" x="32" y="60" width="256" height="30"/>
+                                        <state key="normal" title="Add favorite teachers in Explore page"/>
+                                        <connections>
+                                            <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14187575860000001" green="0.51404748970000003" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
                                 <rect key="frame" x="0.0" y="113" width="320" height="454.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -60,8 +73,8 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7m-4X-4DE">
                                                     <rect key="frame" x="29" y="0.0" width="253" height="57.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -73,27 +86,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
-                                <rect key="frame" x="33" y="62" width="256" height="30"/>
-                                <state key="normal" title="Add favorite teachers in Explore page"/>
-                                <connections>
-                                    <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="31" id="60e-PR-phQ"/>
-                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" id="6GK-iq-vI9"/>
-                            <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="20" id="8YH-tJ-gnt"/>
-                            <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="C1Z-jm-LTs"/>
-                            <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="31" id="DZm-xp-o6o"/>
-                            <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="80" id="JmK-ad-N2L"/>
-                            <constraint firstItem="nSy-Oc-eId" firstAttribute="top" secondItem="mNb-ds-AsM" secondAttribute="bottom" constant="10" id="Scd-ll-Iex"/>
-                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="nSy-Oc-eId" secondAttribute="bottom" constant="12" id="X0y-ee-VvM"/>
-                            <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="gwZ-nv-cki"/>
-                            <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="79" id="ur2-lU-RkH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hga-l5-FuN">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="f82-sw-vUK">
@@ -103,6 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="instructorHeadView" destination="AEi-zk-hRF" id="KeF-4W-HTa"/>
                         <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
                     </connections>
                 </viewController>
@@ -138,45 +133,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
-                                <rect key="frame" x="76" y="510" width="167" height="30"/>
-                                <state key="normal" title="Send Feedback Request"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-qq-kl3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request feedback from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
+                                        <rect key="frame" x="18" y="78" width="150.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
+                                        <rect key="frame" x="19" y="20" width="69" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtu-ac-T2o">
+                                        <rect key="frame" x="18" y="49" width="68" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
+                                        <rect key="frame" x="19" y="98" width="52" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="221" id="1KM-9d-UDJ"/>
+                                    <constraint firstItem="cSs-jk-4C4" firstAttribute="top" secondItem="wtu-ac-T2o" secondAttribute="bottom" constant="12" id="2GO-bX-myu"/>
+                                    <constraint firstItem="tes-Y4-PTa" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="Bn7-8a-8yy"/>
+                                    <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="cSs-jk-4C4" secondAttribute="bottom" constant="3" id="MHU-sd-IWN"/>
+                                    <constraint firstItem="wtu-ac-T2o" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="MmP-sn-jJE"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="top" secondItem="NkI-qq-kl3" secondAttribute="top" constant="20" id="Tfk-LB-gJe"/>
+                                    <constraint firstItem="wtu-ac-T2o" firstAttribute="top" secondItem="siO-tY-TRs" secondAttribute="bottom" constant="12" id="nqC-GV-dMW"/>
+                                    <constraint firstItem="cSs-jk-4C4" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="pQu-en-W71"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="t1X-hh-KeN"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
+                                <rect key="frame" x="100" y="530" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2KU-SX-Lym"/>
+                                    <constraint firstAttribute="height" constant="30" id="sEA-oD-5rq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="SEND" backgroundImage="favorite-button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="h9I-1g-pQR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
-                                <rect key="frame" x="11" y="92" width="299" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
-                                <rect key="frame" x="20" y="121" width="280" height="74"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyp-Ib-sDG">
-                                <rect key="frame" x="85" y="383" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feedback Request to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
-                                <rect key="frame" x="62" y="64" width="197" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-10-oQJ">
-                                <rect key="frame" x="39" y="383" width="240" height="119"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-10-oQJ">
+                                <rect key="frame" x="20" y="417" width="280" height="105"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="0Fv-TN-gC3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HS6-10-oQJ" firstAttribute="leading" secondItem="NFg-Ud-thZ" secondAttribute="leading" constant="20" id="5b2-mH-ajv"/>
+                            <constraint firstAttribute="trailing" secondItem="HS6-10-oQJ" secondAttribute="trailing" constant="20" id="7em-r0-lIW"/>
+                            <constraint firstItem="NkI-qq-kl3" firstAttribute="top" secondItem="NFg-Ud-thZ" secondAttribute="top" id="FqP-nC-qRr"/>
+                            <constraint firstItem="NkI-qq-kl3" firstAttribute="leading" secondItem="NFg-Ud-thZ" secondAttribute="leading" id="Luk-Ji-Efr"/>
+                            <constraint firstItem="FIO-JS-vHn" firstAttribute="centerX" secondItem="NFg-Ud-thZ" secondAttribute="centerX" id="M6x-Ap-ePc"/>
+                            <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="8" id="N0w-kg-TFf"/>
+                            <constraint firstItem="ydX-WO-Wi1" firstAttribute="top" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="8" id="Xtz-O4-GHT"/>
+                            <constraint firstItem="HS6-10-oQJ" firstAttribute="centerX" secondItem="NFg-Ud-thZ" secondAttribute="centerX" id="gmT-FU-wAm"/>
+                            <constraint firstAttribute="trailing" secondItem="NkI-qq-kl3" secondAttribute="trailing" id="vx6-C5-rt7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Yg-Yy-ca2">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="7Dy-Hk-mxe">
@@ -188,6 +221,7 @@
                     <connections>
                         <outlet property="entryLabel" destination="siO-tY-TRs" id="fai-rb-xyA"/>
                         <outlet property="messageTextView" destination="HS6-10-oQJ" id="Hk1-CP-fk6"/>
+                        <outlet property="songLabel" destination="wtu-ac-T2o" id="Sec-hY-VyS"/>
                         <outlet property="teacherLabel" destination="tes-Y4-PTa" id="ccQ-9f-a2f"/>
                     </connections>
                 </viewController>
@@ -238,4 +272,7 @@
             <point key="canvasLocation" x="1282" y="20"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite-button" width="310" height="80"/>
+    </resources>
 </document>
