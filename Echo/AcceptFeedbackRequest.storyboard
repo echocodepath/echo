@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hiT-Jr-RY5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hiT-Jr-RY5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--FEEDBACK MODE-->
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STO-ih-dpp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STO-ih-dpp">
                                 <rect key="frame" x="0.0" y="516" width="320" height="52"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVj-Pi-438">
@@ -42,10 +42,16 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94381953534031415" green="0.94381953534031415" blue="0.94381953534031415" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Wb8-V7-MXD"/>
+                                </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
                                 <rect key="frame" x="0.0" y="243" width="320" height="273"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="273" id="Gif-PY-moS"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackClipTableViewCell" rowHeight="46" id="sNV-XK-0Pn" customClass="FeedbackClipTableViewCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="46"/>
@@ -81,6 +87,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="STO-ih-dpp" secondAttribute="trailing" id="5rA-2z-Kzl"/>
+                            <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="7dM-Bu-C2h"/>
+                            <constraint firstAttribute="trailing" secondItem="AuA-PP-7UM" secondAttribute="trailing" id="9fD-MY-mRf"/>
+                            <constraint firstItem="AuA-PP-7UM" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="Hst-rs-GPd"/>
+                            <constraint firstItem="STO-ih-dpp" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="Wti-pv-W1a"/>
+                            <constraint firstItem="STO-ih-dpp" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" id="jXy-up-jfO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FEEDBACK MODE" id="fh5-Wy-eBn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5eM-ar-Stn">
