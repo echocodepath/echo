@@ -25,6 +25,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     
     @IBAction func onBack(sender: AnyObject) {
+        videoPlayer.player!.pause()
         let homeStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let homeViewController = homeStoryBoard
             .instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
