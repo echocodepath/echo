@@ -45,19 +45,18 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
             cell.artistLabel.text = entry.valueForKey("artist") as? String
             cell.createdAtLabel.text = createdAt
             let thumbnailData = entry["thumbnail"] as! PFFile
-            do {
-                let rawData = try thumbnailData.getData()
-                let thumbnailImage = UIImage(data: rawData)
+            thumbnailData.getDataInBackgroundWithBlock({ (data
+                , error) -> Void in
+                let thumbnailImage = UIImage(data: data!)
                 cell.thumbnailImageView.image = thumbnailImage
-            } catch {
-                
-            }
-            cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
-            cell.titleLabel.alpha = 1
-            cell.songLabel.alpha = 1
-            cell.thumbnailImageView.alpha = 1
-            cell.artistLabel.alpha = 1
-            cell.createdAtLabel.alpha = 1
+                cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
+                cell.titleLabel.alpha = 1
+                cell.songLabel.alpha = 1
+                cell.thumbnailImageView.alpha = 1
+                cell.artistLabel.alpha = 1
+                cell.createdAtLabel.alpha = 1
+            })
+            
         })
 
         //cell.entry = entry
