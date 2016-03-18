@@ -237,11 +237,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
         
-        if offset > 0 {
-            return
-        }
-        
-        headerHeightConstraint.constant = headerHeight + offset
+        headerHeightConstraint.constant = max(0, min(headerHeight, headerHeight + offset))
     }
     
     override func didReceiveMemoryWarning() {
