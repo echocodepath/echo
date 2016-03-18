@@ -78,28 +78,41 @@ class RejectedRequestsViewController: UIViewController, UITableViewDelegate, UIT
             
             let student_id = request["user_id"]! as String
             let studentQuery = PFUser.query()!
-            studentQuery.whereKey("facebook_id", equalTo: student_id)
-            studentQuery.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
+            studentQuery.getObjectInBackgroundWithId(student_id) {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
                     var student_name = ""
                     var student_picture = ""
-                    if let objects = objects {
-                        for object in objects {
-                            student_name = object["username"] as! String
-                            student_picture = object["profilePhotoUrl"] as! String
-                        }
-                    }
+                    student_name = object!["username"] as! String
+                    student_picture = object!["profilePhotoUrl"] as! String
                     cell.inboxTextLabel.text = "Rejected request on " + song + " from " + student_name
-                    if let url  = NSURL(string: student_picture),
-                        data = NSData(contentsOfURL: url)
-                    {
-                        cell.avatarImageView.image = UIImage(data: data)
-                    }
+                    cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
                 } else {
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print(error)
                 }
             }
+//            studentQuery.whereKey("facebook_id", equalTo: student_id)
+//            studentQuery.findObjectsInBackgroundWithBlock {
+//                (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error == nil {
+//                    var student_name = ""
+//                    var student_picture = ""
+//                    if let objects = objects {
+//                        for object in objects {
+//                            student_name = object["username"] as! String
+//                            student_picture = object["profilePhotoUrl"] as! String
+//                        }
+//                    }
+//                    cell.inboxTextLabel.text = "Rejected request on " + song + " from " + student_name
+//                    if let url  = NSURL(string: student_picture),
+//                        data = NSData(contentsOfURL: url)
+//                    {
+//                        cell.avatarImageView.image = UIImage(data: data)
+//                    }
+//                } else {
+//                    print("Error: \(error!) \(error!.userInfo)")
+//                }
+//            }
         }
         return cell
     }

@@ -184,9 +184,9 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         
         request["entry_id"] = self.entry?.objectId
         request["request_body"] = self.messageTextView.text
-        let teacherId = teacher["facebook_id"] as? String
+        let teacherId = teacher.objectId! as String
         request["teacher_id"] = teacherId
-        request["user_id"] = currentUser!["facebook_id"] as? String
+        request["user_id"] = currentUser!.objectId! as String
         request["accepted"] = "false"
         request["resolved"] = "false"
         
@@ -203,29 +203,46 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         
         // add to requests_received array for selected teacher
         let query = PFUser.query()!
-        query.whereKey("facebook_id", equalTo: teacherId!)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        let teacher = object as! PFUser
-                        if let requests_received = teacher["requests_received"] {
-                            var array = requests_received as! Array<Dictionary<String,String>>
-                            array.append(request)
-                            teacher["requests_received"] = array
-                        } else {
-                            let array = [request]
-                            teacher["requests_received"] = array
-                        }
-                        teacher.saveInBackground()
-                    }
+        query.getObjectInBackgroundWithId(teacherId) {
+            (userObject: PFObject?, error: NSError?) -> Void in
+            if error == nil && userObject != nil {
+                let teacher = userObject as! PFUser
+                if let requests_received = teacher["requests_received"] {
+                    var array = requests_received as! Array<Dictionary<String,String>>
+                    array.append(request)
+                    teacher["requests_received"] = array
+                } else {
+                    let array = [request]
+                    teacher["requests_received"] = array
                 }
+                teacher.saveInBackground()
             } else {
-                print("Error: \(error!) \(error!.userInfo)")
+                print(error)
             }
         }
+//        query.whereKey("facebook_id", equalTo: teacherId!)
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [PFObject]?, error: NSError?) -> Void in
+//            
+//            if error == nil {
+//                if let objects = objects {
+//                    for object in objects {
+//                        let teacher = object as! PFUser
+//                        if let requests_received = teacher["requests_received"] {
+//                            var array = requests_received as! Array<Dictionary<String,String>>
+//                            array.append(request)
+//                            teacher["requests_received"] = array
+//                        } else {
+//                            let array = [request]
+//                            teacher["requests_received"] = array
+//                        }
+//                        teacher.saveInBackground()
+//                    }
+//                }
+//            } else {
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
     }
 
     
