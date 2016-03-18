@@ -20,10 +20,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
-    let headerHeight: CGFloat = 354
+    let headerHeight: CGFloat = 334
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topHeaderConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var topHeaderComponent: UIView!
+    @IBOutlet weak var bottomHeaderComponent: UIView!
     
     @IBOutlet weak var videosCollectionView: UICollectionView!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -64,11 +67,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
+        videosCollectionView.contentInset = UIEdgeInsets(top: 280, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let constraint = NSLayoutConstraint(item: topHeaderComponent, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 74)
+        constraint.priority = UILayoutPriorityRequired
+        constraint.active = true
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.translucent = true
+        
         currentUser = PFUser.currentUser()
         automaticallyAdjustsScrollViewInsets = false
         do {
@@ -226,9 +238,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             return
         }
         
-        debugPrint(offset)
+//        debugPrint(offset)
         let height: CGFloat = 334
-        topHeaderConstraint.constant = offset
+//        topHeaderConstraint.constant = offset
         headerHeightConstraint.constant = height + offset
     }
     

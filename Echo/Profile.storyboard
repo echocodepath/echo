@@ -202,7 +202,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="230" id="C9A-Gg-oWC"/>
+                                            <constraint firstAttribute="height" constant="230" id="0uF-ZW-fR9"/>
                                             <constraint firstItem="mg5-HD-CF5" firstAttribute="top" secondItem="U5P-hZ-DM2" secondAttribute="top" constant="80" id="QQz-wH-MZs"/>
                                             <constraint firstAttribute="trailing" secondItem="GgP-Cg-hJP" secondAttribute="trailing" id="SFR-2R-NrY"/>
                                             <constraint firstItem="mg5-HD-CF5" firstAttribute="centerX" secondItem="U5P-hZ-DM2" secondAttribute="centerX" id="djU-8T-oVc"/>
@@ -213,13 +213,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U5P-hZ-DM2" secondAttribute="bottom" priority="751" id="4CE-A1-LIk"/>
+                                    <constraint firstItem="U5P-hZ-DM2" firstAttribute="top" secondItem="Bnt-z3-gTK" secondAttribute="top" priority="750" id="7Pu-fY-WhX"/>
                                     <constraint firstItem="U5P-hZ-DM2" firstAttribute="leading" secondItem="Bnt-z3-gTK" secondAttribute="leading" id="9Qe-JL-40F"/>
                                     <constraint firstAttribute="height" constant="334" id="dHJ-Cx-GcG"/>
                                     <constraint firstItem="ots-Pn-6fc" firstAttribute="leading" secondItem="Bnt-z3-gTK" secondAttribute="leading" id="oLh-GN-Q6d"/>
                                     <constraint firstAttribute="bottom" secondItem="ots-Pn-6fc" secondAttribute="bottom" id="qGy-Vl-L0I"/>
                                     <constraint firstAttribute="trailing" secondItem="U5P-hZ-DM2" secondAttribute="trailing" id="v8W-zM-fs8"/>
                                     <constraint firstAttribute="trailing" secondItem="ots-Pn-6fc" secondAttribute="trailing" id="yJc-Jj-MDV"/>
-                                    <constraint firstItem="U5P-hZ-DM2" firstAttribute="top" secondItem="Bnt-z3-gTK" secondAttribute="top" id="zD4-tc-xC1"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </view>
@@ -243,14 +244,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomHeaderComponent" destination="ots-Pn-6fc" id="ng0-MZ-EuE"/>
                         <outlet property="coverPhoto" destination="GgP-Cg-hJP" id="MVc-kn-NHp"/>
                         <outlet property="descriptionTextView" destination="0zn-Ca-uod" id="mCY-ES-KD2"/>
                         <outlet property="favoriteButton" destination="3JB-No-BdO" id="cu7-LG-xGM"/>
                         <outlet property="headerHeightConstraint" destination="dHJ-Cx-GcG" id="NY2-i9-bhl"/>
+                        <outlet property="headerView" destination="Bnt-z3-gTK" id="d2i-5h-HcG"/>
                         <outlet property="locationLabel" destination="DbI-MM-L4q" id="tbd-9R-pbH"/>
                         <outlet property="nameLabel" destination="qqR-DY-MJF" id="7i2-Ls-OBP"/>
                         <outlet property="profilePhoto" destination="Hph-az-bAU" id="omZ-tz-vaG"/>
-                        <outlet property="topHeaderConstraint" destination="zD4-tc-xC1" id="DKy-Gr-NlG"/>
+                        <outlet property="topHeaderComponent" destination="U5P-hZ-DM2" id="wE8-P5-3Tp"/>
                         <outlet property="videosCollectionView" destination="372-ye-luG" id="zif-lo-Ffq"/>
                     </connections>
                 </viewController>
