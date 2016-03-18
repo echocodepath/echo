@@ -79,28 +79,41 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let teacher_id = request["teacher_id"]! as String
             let teacherQuery = PFUser.query()!
-            teacherQuery.whereKey("facebook_id", equalTo: teacher_id)
-            teacherQuery.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
+            teacherQuery.getObjectInBackgroundWithId(teacher_id) {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
                     var teacher_name = ""
                     var teacher_picture = ""
-                    if let objects = objects {
-                        for object in objects {
-                            teacher_name = object["username"] as! String
-                            teacher_picture = object["profilePhotoUrl"] as! String
-                        }
-                    }
+                    teacher_name = object!["username"] as! String
+                    teacher_picture = object!["profilePhotoUrl"] as! String
                     cell.inboxTextLabel.text = "Awaiting feedback on " + song + " from " + teacher_name
-                    if let url  = NSURL(string: teacher_picture),
-                        data = NSData(contentsOfURL: url)
-                    {
-                        cell.avatarImageView.image = UIImage(data: data)
-                    }
+                    cell.avatarImageView.setImageWithURL(NSURL(string: teacher_picture)!)
                 } else {
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print(error)
                 }
             }
+//            teacherQuery.whereKey("facebook_id", equalTo: teacher_id)
+//            teacherQuery.findObjectsInBackgroundWithBlock {
+//                (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error == nil {
+//                    var teacher_name = ""
+//                    var teacher_picture = ""
+//                    if let objects = objects {
+//                        for object in objects {
+//                            teacher_name = object["username"] as! String
+//                            teacher_picture = object["profilePhotoUrl"] as! String
+//                        }
+//                    }
+//                    cell.inboxTextLabel.text = "Awaiting feedback on " + song + " from " + teacher_name
+//                    if let url  = NSURL(string: teacher_picture),
+//                        data = NSData(contentsOfURL: url)
+//                    {
+//                        cell.avatarImageView.image = UIImage(data: data)
+//                    }
+//                } else {
+//                    print("Error: \(error!) \(error!.userInfo)")
+//                }
+//            }
         }
         return cell
     }

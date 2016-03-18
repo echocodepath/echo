@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     @IBAction func addFavorite(sender: AnyObject) {
-        let id = profileUser!["facebook_id"] as! String
+        let id = self.profileUser?.objectId as String!
         if let favorite_teachers = currentUser!["favorite_teachers"] {
             var array = favorite_teachers as! Array<String>
             if !array.contains(id) {
@@ -118,11 +118,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
-//            if let url  = NSURL(string: profImage as! String),
-//                data = NSData(contentsOfURL: url)
-//            {
-//                self.profilePhoto.image = UIImage(data: data)
-//            }
             self.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
             // Set profile to circle
             self.profileBorderView.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
@@ -139,11 +134,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.profilePhoto.clipsToBounds = true
         }
         if let coverImage =  self.profileUser!["coverPhotoUrl"] {
-//            if let url  = NSURL(string: coverImage as! String),
-//                data = NSData(contentsOfURL: url)
-//            {
-//                self.coverPhoto.image = UIImage(data: data)
-//            }
             self.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
         }
         
