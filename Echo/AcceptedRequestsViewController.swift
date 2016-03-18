@@ -20,6 +20,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        acceptedRequestsTableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         acceptedRequestsTableView.delegate = self
         acceptedRequestsTableView.dataSource = self
         

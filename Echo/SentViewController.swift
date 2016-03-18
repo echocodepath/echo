@@ -20,6 +20,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        requestsSentTableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         requestsSentTableView.delegate = self
         requestsSentTableView.dataSource = self
         
