@@ -13,22 +13,16 @@ class EntryCollectionViewCell: UICollectionViewCell {
     var entry: PFObject? {
         didSet {
             let thumbnailData = entry!["thumbnail"] as! PFFile
-            do {
-                thumbnailData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    let thumbnailImage = UIImage(data: data!)
-                    self.thumbnailImageView?.image = thumbnailImage
-                    self.profileThumbnailImageView?.alpha = 0
-                    self.profileThumbnailImageView?.image = thumbnailImage
-                    
-                    UIView.animateWithDuration(0.3, animations: { () -> Void in
-                        self.profileThumbnailImageView?.alpha = 1
-                    })
-                })
-
-            } catch {
+            thumbnailData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                let thumbnailImage = UIImage(data: data!)
+                self.thumbnailImageView?.image = thumbnailImage
+                self.profileThumbnailImageView?.alpha = 0
+                self.profileThumbnailImageView?.image = thumbnailImage
                 
-            }
-
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.profileThumbnailImageView?.alpha = 1
+                })
+            })
         }
     }
     
