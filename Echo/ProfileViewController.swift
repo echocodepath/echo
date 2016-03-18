@@ -20,7 +20,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
-
+    let headerHeight: CGFloat = 354
+    
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topHeaderConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var videosCollectionView: UICollectionView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var coverPhoto: UIImageView!
@@ -58,9 +62,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.profileUser = user
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        videosCollectionView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = PFUser.currentUser()
+        automaticallyAdjustsScrollViewInsets = false
         do {
             try currentUser!.fetch()
         } catch {
@@ -139,6 +149,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
         fetchEntries()
+        
+        coverPhoto.superview?.sendSubviewToBack(coverPhoto)
     }
     
     // MARK: Entries
@@ -207,6 +219,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         performSegueWithIdentifier("profileToEntry", sender: cell)
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
+        
+        if offset > 0 {
+            return
+        }
+        
+        debugPrint(offset)
+        let height: CGFloat = 334
+        topHeaderConstraint.constant = offset
+        headerHeightConstraint.constant = height + offset
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
