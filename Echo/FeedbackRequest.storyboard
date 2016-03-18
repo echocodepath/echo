@@ -138,29 +138,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-qq-kl3">
-                                <rect key="frame" x="0.0" y="64" width="320" height="157"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-qq-kl3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request feedback from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
-                                        <rect key="frame" x="46" y="16" width="197" height="37"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request feedback from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
+                                        <rect key="frame" x="18" y="98" width="150.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
-                                        <rect key="frame" x="46" y="49" width="243" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
+                                        <rect key="frame" x="19" y="40" width="69" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
-                                        <rect key="frame" x="38" y="76" width="251" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtu-ac-T2o">
+                                        <rect key="frame" x="18" y="69" width="68" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
+                                        <rect key="frame" x="19" y="118" width="52" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="221" id="1KM-9d-UDJ"/>
+                                    <constraint firstItem="cSs-jk-4C4" firstAttribute="top" secondItem="wtu-ac-T2o" secondAttribute="bottom" constant="12" id="2GO-bX-myu"/>
+                                    <constraint firstItem="tes-Y4-PTa" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="Bn7-8a-8yy"/>
+                                    <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="cSs-jk-4C4" secondAttribute="bottom" constant="3" id="MHU-sd-IWN"/>
+                                    <constraint firstItem="wtu-ac-T2o" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="MmP-sn-jJE"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="top" secondItem="NkI-qq-kl3" secondAttribute="top" constant="40" id="Tfk-LB-gJe"/>
+                                    <constraint firstItem="wtu-ac-T2o" firstAttribute="top" secondItem="siO-tY-TRs" secondAttribute="bottom" constant="12" id="nqC-GV-dMW"/>
+                                    <constraint firstItem="cSs-jk-4C4" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="pQu-en-W71"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="t1X-hh-KeN"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
                                 <rect key="frame" x="100" y="530" width="120" height="30"/>
@@ -190,10 +207,13 @@
                         <constraints>
                             <constraint firstItem="HS6-10-oQJ" firstAttribute="leading" secondItem="NFg-Ud-thZ" secondAttribute="leading" constant="20" id="5b2-mH-ajv"/>
                             <constraint firstAttribute="trailing" secondItem="HS6-10-oQJ" secondAttribute="trailing" constant="20" id="7em-r0-lIW"/>
+                            <constraint firstItem="NkI-qq-kl3" firstAttribute="top" secondItem="NFg-Ud-thZ" secondAttribute="top" id="FqP-nC-qRr"/>
+                            <constraint firstItem="NkI-qq-kl3" firstAttribute="leading" secondItem="NFg-Ud-thZ" secondAttribute="leading" id="Luk-Ji-Efr"/>
                             <constraint firstItem="FIO-JS-vHn" firstAttribute="centerX" secondItem="NFg-Ud-thZ" secondAttribute="centerX" id="M6x-Ap-ePc"/>
                             <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="8" id="N0w-kg-TFf"/>
                             <constraint firstItem="ydX-WO-Wi1" firstAttribute="top" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="8" id="Xtz-O4-GHT"/>
                             <constraint firstItem="HS6-10-oQJ" firstAttribute="centerX" secondItem="NFg-Ud-thZ" secondAttribute="centerX" id="gmT-FU-wAm"/>
+                            <constraint firstAttribute="trailing" secondItem="NkI-qq-kl3" secondAttribute="trailing" id="vx6-C5-rt7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Yg-Yy-ca2">
@@ -206,6 +226,7 @@
                     <connections>
                         <outlet property="entryLabel" destination="siO-tY-TRs" id="fai-rb-xyA"/>
                         <outlet property="messageTextView" destination="HS6-10-oQJ" id="Hk1-CP-fk6"/>
+                        <outlet property="songLabel" destination="wtu-ac-T2o" id="Sec-hY-VyS"/>
                         <outlet property="teacherLabel" destination="tes-Y4-PTa" id="ccQ-9f-a2f"/>
                     </connections>
                 </viewController>

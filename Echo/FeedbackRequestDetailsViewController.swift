@@ -21,6 +21,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
@@ -43,12 +44,14 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
         
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+            entryLabel.text = "Video: \(entry!.valueForKey("title") as! String)"
+            songLabel.text = "Song: \(entry!.valueForKey("song") as! String)"
             convertVideoDataToNSURL()
         }
         
         if teacher != nil {
             teacherLabel.text = teacher!["username"] as? String
+            teacherLabel.textColor = StyleGuide.Colors.echoTeal
         }
         
         //text view styling and make text view editable
