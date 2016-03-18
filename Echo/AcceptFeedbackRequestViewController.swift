@@ -26,10 +26,12 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var audioRecorder: AVAudioRecorder!
     var fileNumber = 0
     var currentUrl: NSURL?
-    
+    var currentIndexPath: NSIndexPath?
     
     var audioTimers = Array<NSTimer>()
 
+    @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
@@ -37,12 +39,15 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FeedbackClipTableViewCell.count = 0
         if entry != nil {
             timeSlider.value = 0.0
             convertVideoDataToNSURL()
             bindRecordOptions()
             startRecordingSession()
         }
+        setupViewProperties()
+        setupButtonToggle()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -51,6 +56,17 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         invalidateTimers()
         audioPlayers.removeAll()
         videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
+    }
+    
+    func setupViewProperties() {
+        controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
+        tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
+        tableView.tableFooterView = UIView()
+    }
+    
+    func setupButtonToggle() {
+        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Selected)
+        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Normal)
     }
     
     func videoPlaybackDidPause() {
@@ -67,11 +83,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         feedback.forEach({ $0.hasBeenPlayed = false })
     }
     
-    func createTimer(clip: AudioClip) {
+    func createTimer(clip: AudioClip, clipIndex: Int) {
         let currentTime = avPlayer!.currentTime().seconds
-        let params: [String: AudioClip] = ["clip" : clip]
+        let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
         let playAudioAt = clip.offset! - currentTime
-        print("play audio at \(playAudioAt)")
         let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
         audioTimers.append(timer)
     }
@@ -79,14 +94,16 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
 
     func playAudio(timer: NSTimer){
         avPlayer!.pause()
-        print("current time playing audio \(avPlayer!.currentTime().seconds)")
-        print("here are the audioclips")
         let clip = timer.userInfo!["clip"] as! AudioClip
-        print("time suppose to be playing clip \(clip.offset)")
+        let index = timer.userInfo!["index"] as! Int
+        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
         if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
             player.delegate = self
             player.prepareToPlay()
             player.play()
+            playBtn.selected = true
+            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
             clip.hasBeenPlayed = true
             audioPlayers.append(player)
         } else {
@@ -98,8 +115,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     @IBAction func onTogglePlayPause(sender: AnyObject) {
         let playerIsPlaying:Bool = avPlayer!.rate > 0
         if playerIsPlaying {
+            playBtn.selected = true
             videoPlaybackDidPause()
         } else {
+            playBtn.selected = false
             avPlayer!.play()
             invalidateTimersAndFeedback()
             videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
@@ -110,9 +129,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
         let filteredClips = feedback.filter({ $0.offset > offset && $0.hasBeenPlayed == false })
         if filteredClips.count > 0 {
-            print("current time!!!\(avPlayer!.currentTime().seconds)")
-            print("clip offset \(filteredClips[0].offset)")
-            createTimer(filteredClips[0])
+            let clipIndex = feedback.indexOf(filteredClips[0])
+            createTimer(filteredClips[0], clipIndex: clipIndex!)
         }
     }
     
@@ -212,6 +230,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+        playBtn.selected = false
     }
 
     func sliderBeganTracking(slider: UISlider) {
