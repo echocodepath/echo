@@ -123,9 +123,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 //            }
             self.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
             // Set profile to circle
-            self.profilePhoto.layer.borderWidth = 3
+            self.profilePhoto.layer.borderWidth = 4
             self.profilePhoto.layer.masksToBounds = false
-            self.profilePhoto.layer.borderColor = UIColor.blackColor().CGColor
+            self.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.5).CGColor
             self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
             self.profilePhoto.clipsToBounds = true
         }
@@ -238,10 +238,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
-        print(offset)
         if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moving up
-            if hiddenProfilePhoto == true && offset > -147 {
+            if hiddenProfilePhoto == true && offset > -100 {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.profilePhoto.alpha = 1
                     self.hiddenProfilePhoto = false
