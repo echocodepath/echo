@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
-        let quoteAndAuthor = InspirationGenerator.sharedInstance.pickRandomQuote()
+        let quoteAndAuthor = InspirationGenerator.pickRandomQuote()
         let quote = quoteAndAuthor[0]
         let author = quoteAndAuthor[1]
         
