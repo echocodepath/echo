@@ -26,9 +26,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var hiddenProfilePhoto = false
     private var lastContentOffset: CGFloat = 0
     
+    @IBOutlet weak var profileBorderView: UIView!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomHeaderHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var profileImageContainerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var topHeaderComponent: UIView!
     @IBOutlet weak var bottomHeaderComponent: UIView!
@@ -123,9 +125,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 //            }
             self.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
             // Set profile to circle
-            self.profilePhoto.layer.borderWidth = 4
+            self.profileBorderView.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
+            self.profileBorderView.layer.borderWidth = 3
+            self.profileBorderView.layer.masksToBounds = false
+            self.profileBorderView.layer.borderColor = StyleGuide.Colors.echoLightOrange.CGColor
+            self.profileBorderView.layer.cornerRadius = self.profileBorderView.frame.height/2
+            self.profilePhoto.clipsToBounds = true
+
+//            self.profilePhoto.layer.borderWidth = 4
             self.profilePhoto.layer.masksToBounds = false
-            self.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.5).CGColor
+            self.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7).CGColor
             self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
             self.profilePhoto.clipsToBounds = true
         }
