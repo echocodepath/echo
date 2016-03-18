@@ -44,21 +44,30 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
             // TODO: Find better way to reload tableView
             for id in teacher_ids {
                 let query = PFUser.query()!
-                query.whereKey("facebook_id", equalTo: id)
-                query.findObjectsInBackgroundWithBlock {
-                    (objects: [PFObject]?, error: NSError?) -> Void in
-                    
-                    if error == nil {
-                        if let objects = objects {
-                            for object in objects {
-                                self.teachers.append(object)
-                            }
-                        }
+                query.getObjectInBackgroundWithId(id) {
+                    (userObject: PFObject?, error: NSError?) -> Void in
+                    if error == nil && userObject != nil {
+                        self.teachers.append(userObject!)
                         self.tableView.reloadData()
                     } else {
-                        print("Error: \(error!) \(error!.userInfo)")
+                        print(error)
                     }
                 }
+//                query.whereKey("facebook_id", equalTo: id)
+//                query.findObjectsInBackgroundWithBlock {
+//                    (objects: [PFObject]?, error: NSError?) -> Void in
+//                    
+//                    if error == nil {
+//                        if let objects = objects {
+//                            for object in objects {
+//                                self.teachers.append(object)
+//                            }
+//                        }
+//                        self.tableView.reloadData()
+//                    } else {
+//                        print("Error: \(error!) \(error!.userInfo)")
+//                    }
+//                }
             }
         }
     }
