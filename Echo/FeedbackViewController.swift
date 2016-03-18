@@ -40,17 +40,17 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         FeedbackClipTableViewCell.count = 0
         bindGestures()
         loadAudioClips()
-        setupColors()
+        setupViewProperties()
         setupButtonToggle()
-        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         // Do any additional setup after loading the view.
     }
     
-    func setupColors() {
+    func setupViewProperties() {
         controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
+        tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
+        tableView.tableFooterView = UIView()
     }
     
     func setupButtonToggle() {
