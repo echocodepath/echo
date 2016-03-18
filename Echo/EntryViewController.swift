@@ -28,7 +28,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     
     @IBAction func onBack(sender: AnyObject) {
-        videoPlayer.player!.pause()
+        videoPlayer.player?.pause()
         
         if let handler = onComplete {
             handler(finished: false)
