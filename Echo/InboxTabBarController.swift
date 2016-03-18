@@ -23,8 +23,12 @@ class InboxTabBarController: UITabBarController {
         let tabItem1 = tabItems[1] as UITabBarItem
         let tabItem2 = tabItems[2] as UITabBarItem
         tabItem0.title = "Inbox"
+        tabItem0.image = UIImage(named: "inbox")
+        //tabItem0.selectedImage = UIImage(named: "inbox_selected") // need to get legit icons from Rocko
         tabItem1.title = "Sent"
+        tabItem1.image = UIImage(named: "sent")
         tabItem2.title = "Accepted"
+        tabItem2.image = UIImage(named: "accepted")
     }
 
     override func didReceiveMemoryWarning() {
