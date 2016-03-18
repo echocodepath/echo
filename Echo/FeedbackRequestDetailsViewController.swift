@@ -21,6 +21,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
@@ -43,12 +44,14 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
         
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("title") as! String) \nSong: \(entry!.valueForKey("song") as! String)"
+            entryLabel.text = "Video: \(entry!.valueForKey("title") as! String)"
+            songLabel.text = "Song: \(entry!.valueForKey("song") as! String)"
             convertVideoDataToNSURL()
         }
         
         if teacher != nil {
             teacherLabel.text = teacher!["username"] as? String
+            teacherLabel.textColor = StyleGuide.Colors.echoTeal
         }
         
         //text view styling and make text view editable
@@ -139,6 +142,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     // MARK: Video
     private func playVideo(url: NSURL){
+
         controller = AVPlayerViewController()
         controller!.willMoveToParentViewController(self)
         addChildViewController(controller!)
@@ -150,9 +154,14 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         controller!.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
         controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
+        
+
+        
         let player = AVPlayer(URL: url)
         controller!.player = player
         controller!.player!.play()
+        
+        
     }
     
     private func convertVideoDataToNSURL() {
