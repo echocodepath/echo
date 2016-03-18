@@ -20,7 +20,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
-
+    var headerHeight: CGFloat = 334
+    var bottomHeaderHeight: CGFloat = 178
+    
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomHeaderHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var topHeaderComponent: UIView!
+    @IBOutlet weak var bottomHeaderComponent: UIView!
+    
     @IBOutlet weak var videosCollectionView: UICollectionView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var coverPhoto: UIImageView!
@@ -58,9 +67,24 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.profileUser = user
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        videosCollectionView.contentInset = UIEdgeInsets(top: headerHeight - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let constraint = NSLayoutConstraint(item: topHeaderComponent, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 74)
+        constraint.priority = UILayoutPriorityRequired
+        constraint.active = true
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.translucent = true
+        
         currentUser = PFUser.currentUser()
+        automaticallyAdjustsScrollViewInsets = false
         do {
             try currentUser!.fetch()
         } catch {
@@ -117,6 +141,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if isMyProfile! == true || isTeacher! == "false" {
             favoriteButton.hidden = true
+            headerHeight -= 20
+            bottomHeaderHeight -= 20
+            headerHeightConstraint.constant = headerHeight
+            bottomHeaderHeightConstraint.constant = bottomHeaderHeight
         }
         
 //            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
@@ -139,6 +167,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
         fetchEntries()
+        
+        coverPhoto.superview?.sendSubviewToBack(coverPhoto)
     }
     
     // MARK: Entries
@@ -207,6 +237,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         performSegueWithIdentifier("profileToEntry", sender: cell)
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
+        
+        if offset > 0 {
+            return
+        }
+        
+        headerHeightConstraint.constant = headerHeight + offset
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

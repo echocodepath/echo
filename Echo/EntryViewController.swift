@@ -13,6 +13,9 @@ import AVFoundation
 
 
 class EntryViewController: UIViewController {
+    
+    var onComplete: ((finished: Bool) -> Void)?
+    
     var entry: PFObject?
     
     let videoPlayer = AVPlayerViewController()
@@ -25,7 +28,13 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        videoPlayer.player!.pause()
+        
+        if let handler = onComplete {
+            handler(finished: false)
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func updateEntry(myEntry: PFObject?) {

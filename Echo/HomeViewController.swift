@@ -12,9 +12,18 @@ import ParseFacebookUtilsV4
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var inspirationalQuoteLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
+        let quoteAndAuthor = InspirationGenerator.sharedInstance.pickRandomQuote()
+        let quote = quoteAndAuthor[0]
+        let author = quoteAndAuthor[1]
+        
+        inspirationalQuoteLabel.text = quote
+        authorLabel.text = "- \(author)"
         if currentUser == nil {
             currentUser = User(user: PFUser.currentUser()!)
         }
