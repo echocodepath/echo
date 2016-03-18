@@ -68,11 +68,11 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let id = request["entry_id"] {
             let entry_id = id as String
-            var song = ""
+            var title = ""
             let entryQuery = PFQuery(className:"Entry")
             do {
                 let entry = try entryQuery.getObjectWithId(entry_id)
-                song = entry["song"] as! String
+                title = entry["title"] as! String
             } catch {
                 print("Error getting entry from inbox")
             }
@@ -86,7 +86,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
                     var teacher_picture = ""
                     teacher_name = object!["username"] as! String
                     teacher_picture = object!["profilePhotoUrl"] as! String
-                    cell.inboxTextLabel.text = "Awaiting feedback on " + song + " from " + teacher_name
+                    cell.inboxTextLabel.text = "Awaiting feedback on " + title + " from " + teacher_name
                     cell.avatarImageView.setImageWithURL(NSURL(string: teacher_picture)!)
                 } else {
                     print(error)

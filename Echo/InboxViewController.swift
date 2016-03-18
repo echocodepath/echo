@@ -73,11 +73,11 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if let id = request["entry_id"] {
             let entry_id = id as String
-            var song = ""
+            var title = ""
             let entryQuery = PFQuery(className:"Entry")
             do {
                 let entry = try entryQuery.getObjectWithId(entry_id)
-                song = entry["song"] as! String
+                title = entry["title"] as! String
             } catch {
                 print("Error getting entry from inbox")
             }
@@ -91,7 +91,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     var student_picture = ""
                     student_name = object!["username"] as! String
                     student_picture = object!["profilePhotoUrl"] as! String
-                    cell.inboxTextLabel.text = student_name + " would like feedback on " + song
+                    cell.inboxTextLabel.text = student_name + " would like feedback on " + title
                     cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
                 } else {
                     print(error)
