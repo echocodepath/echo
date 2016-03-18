@@ -20,6 +20,7 @@ class EntryViewController: UIViewController {
     
     let videoPlayer = AVPlayerViewController()
 
+    @IBOutlet weak var microphoneImageView: UIImageView!
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var feedbackIcon: UINavigationItem!
@@ -45,10 +46,11 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
         if entry != nil {
             self.title = entry!.valueForKey("title") as! String
-//            entryLabel.text = "\(entry!.valueForKey("title") as! String)"
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "by \(entry!.valueForKey("artist") as! String)"
-            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
+            createdAtLabel.text = DateManager.getFriendlyTime(entry!.createdAt!)
+            microphoneImageView.image = UIImage(named: "Artist Icon")
+            
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
