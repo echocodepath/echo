@@ -41,13 +41,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
-                                <rect key="frame" x="80" y="30" width="161" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
+                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-zk-hRF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose an Instructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSy-Oc-eId">
+                                        <rect key="frame" x="79" y="20" width="161" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                        <rect key="frame" x="32" y="60" width="256" height="30"/>
+                                        <state key="normal" title="Add favorite teachers in Explore page"/>
+                                        <connections>
+                                            <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14187575860000001" green="0.51404748970000003" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
                                 <rect key="frame" x="0.0" y="113" width="320" height="454.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -60,8 +73,8 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7m-4X-4DE">
                                                     <rect key="frame" x="29" y="0.0" width="253" height="57.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -73,27 +86,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
-                                <rect key="frame" x="33" y="62" width="256" height="30"/>
-                                <state key="normal" title="Add favorite teachers in Explore page"/>
-                                <connections>
-                                    <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="31" id="60e-PR-phQ"/>
-                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" id="6GK-iq-vI9"/>
-                            <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="20" id="8YH-tJ-gnt"/>
-                            <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="C1Z-jm-LTs"/>
-                            <constraint firstAttribute="trailing" secondItem="OVo-Ii-9Tv" secondAttribute="trailing" constant="31" id="DZm-xp-o6o"/>
-                            <constraint firstItem="nSy-Oc-eId" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" constant="80" id="JmK-ad-N2L"/>
-                            <constraint firstItem="nSy-Oc-eId" firstAttribute="top" secondItem="mNb-ds-AsM" secondAttribute="bottom" constant="10" id="Scd-ll-Iex"/>
-                            <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="nSy-Oc-eId" secondAttribute="bottom" constant="12" id="X0y-ee-VvM"/>
-                            <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="gwZ-nv-cki"/>
-                            <constraint firstAttribute="trailing" secondItem="nSy-Oc-eId" secondAttribute="trailing" constant="79" id="ur2-lU-RkH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hga-l5-FuN">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="f82-sw-vUK">
@@ -103,6 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="instructorHeadView" destination="AEi-zk-hRF" id="KeF-4W-HTa"/>
                         <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
                     </connections>
                 </viewController>
@@ -142,25 +137,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request feedback from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-jk-4C4">
-                                        <rect key="frame" x="18" y="98" width="150.5" height="17"/>
+                                        <rect key="frame" x="18" y="78" width="150.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
-                                        <rect key="frame" x="19" y="40" width="69" height="17"/>
+                                        <rect key="frame" x="19" y="20" width="69" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtu-ac-T2o">
-                                        <rect key="frame" x="18" y="69" width="68" height="17"/>
+                                        <rect key="frame" x="18" y="49" width="68" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
-                                        <rect key="frame" x="19" y="118" width="52" height="17"/>
+                                        <rect key="frame" x="19" y="98" width="52" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -173,7 +168,7 @@
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="Bn7-8a-8yy"/>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="cSs-jk-4C4" secondAttribute="bottom" constant="3" id="MHU-sd-IWN"/>
                                     <constraint firstItem="wtu-ac-T2o" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="MmP-sn-jJE"/>
-                                    <constraint firstItem="siO-tY-TRs" firstAttribute="top" secondItem="NkI-qq-kl3" secondAttribute="top" constant="40" id="Tfk-LB-gJe"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="top" secondItem="NkI-qq-kl3" secondAttribute="top" constant="20" id="Tfk-LB-gJe"/>
                                     <constraint firstItem="wtu-ac-T2o" firstAttribute="top" secondItem="siO-tY-TRs" secondAttribute="bottom" constant="12" id="nqC-GV-dMW"/>
                                     <constraint firstItem="cSs-jk-4C4" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="18" id="pQu-en-W71"/>
                                     <constraint firstItem="siO-tY-TRs" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="19" id="t1X-hh-KeN"/>
