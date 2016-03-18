@@ -24,10 +24,7 @@ class EntryFormViewController: UIViewController {
     @IBOutlet weak var titleIconImageView: UIImageView!
     @IBOutlet weak var artistTextField: UITextField!
     @IBAction func onCancel(sender: AnyObject) {
-        let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        let homeNav = UINavigationController(rootViewController: homeViewController)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homeNav
+        navigationController?.popViewControllerAnimated(true)
     }
     
     func generateThumbnail(){
