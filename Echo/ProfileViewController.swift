@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var entries: [PFObject] = []
     var headerHeight: CGFloat = 334
     var bottomHeaderHeight: CGFloat = 178
+    var hiddenProfilePhoto = false
+    private var lastContentOffset: CGFloat = 0
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomHeaderHeightConstraint: NSLayoutConstraint!
@@ -236,12 +238,28 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
-        
-        if offset > 0 {
-            return
+        print(offset)
+        if (self.lastContentOffset > scrollView.contentOffset.y) {
+            // moving up
+            if hiddenProfilePhoto == true && offset > -147 {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.profilePhoto.alpha = 1
+                    self.hiddenProfilePhoto = false
+                })
+            }
+        } else if (self.lastContentOffset < scrollView.contentOffset.y){
+        // moving down
+            if hiddenProfilePhoto == false && offset < -147 {
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.profilePhoto.alpha = 0
+                    self.hiddenProfilePhoto = true
+                })
+            }
         }
+    
+        self.lastContentOffset = scrollView.contentOffset.y
         
-        headerHeightConstraint.constant = headerHeight + offset
+        headerHeightConstraint.constant = max(0, min(headerHeight, headerHeight + offset))
     }
     
     override func didReceiveMemoryWarning() {
