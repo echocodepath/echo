@@ -148,8 +148,8 @@
                                             <constraint firstItem="DbI-MM-L4q" firstAttribute="top" secondItem="qqR-DY-MJF" secondAttribute="bottom" constant="5" id="2Id-02-pAc"/>
                                             <constraint firstAttribute="bottom" secondItem="L8x-Ss-G8V" secondAttribute="bottom" id="81v-zS-z0J"/>
                                             <constraint firstAttribute="height" constant="178" id="Di6-0P-yuI"/>
-                                            <constraint firstItem="3JB-No-BdO" firstAttribute="top" secondItem="0zn-Ca-uod" secondAttribute="bottom" constant="10" id="EGE-Vd-zIc"/>
                                             <constraint firstItem="0zn-Ca-uod" firstAttribute="leading" secondItem="ots-Pn-6fc" secondAttribute="leading" constant="21" id="Lb5-JV-UTM"/>
+                                            <constraint firstItem="qqR-DY-MJF" firstAttribute="top" secondItem="ots-Pn-6fc" secondAttribute="top" constant="32" id="NXx-w0-92x"/>
                                             <constraint firstItem="0zn-Ca-uod" firstAttribute="top" secondItem="DbI-MM-L4q" secondAttribute="bottom" constant="6" id="TU9-uY-uwE"/>
                                             <constraint firstItem="L8x-Ss-G8V" firstAttribute="leading" secondItem="ots-Pn-6fc" secondAttribute="leading" id="V7y-o2-qdT"/>
                                             <constraint firstItem="DbI-MM-L4q" firstAttribute="centerX" secondItem="ots-Pn-6fc" secondAttribute="centerX" id="WNl-VC-d4q"/>
@@ -245,6 +245,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomHeaderComponent" destination="ots-Pn-6fc" id="ng0-MZ-EuE"/>
+                        <outlet property="bottomHeaderHeightConstraint" destination="Di6-0P-yuI" id="UEd-Va-ysw"/>
                         <outlet property="coverPhoto" destination="GgP-Cg-hJP" id="MVc-kn-NHp"/>
                         <outlet property="descriptionTextView" destination="0zn-Ca-uod" id="mCY-ES-KD2"/>
                         <outlet property="favoriteButton" destination="3JB-No-BdO" id="cu7-LG-xGM"/>

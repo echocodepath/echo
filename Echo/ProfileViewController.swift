@@ -20,9 +20,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
-    let headerHeight: CGFloat = 334
+    var headerHeight: CGFloat = 334
+    var bottomHeaderHeight: CGFloat = 178
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomHeaderHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var topHeaderComponent: UIView!
@@ -67,7 +69,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: 280, left: 0, bottom: 0, right: 0)
+        videosCollectionView.contentInset = UIEdgeInsets(top: headerHeight - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidLoad() {
@@ -139,6 +141,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if isMyProfile! == true || isTeacher! == "false" {
             favoriteButton.hidden = true
+            headerHeight -= 20
+            bottomHeaderHeight -= 20
+            headerHeightConstraint.constant = headerHeight
+            bottomHeaderHeightConstraint.constant = bottomHeaderHeight
         }
         
 //            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
@@ -238,10 +244,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             return
         }
         
-//        debugPrint(offset)
-        let height: CGFloat = 334
-//        topHeaderConstraint.constant = offset
-        headerHeightConstraint.constant = height + offset
+        headerHeightConstraint.constant = headerHeight + offset
     }
     
     override func didReceiveMemoryWarning() {
