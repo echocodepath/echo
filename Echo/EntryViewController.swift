@@ -25,7 +25,12 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let homeStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = homeStoryBoard
+            .instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+        let homePageNav = UINavigationController(rootViewController: homeViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = homePageNav
     }
     
     func updateEntry(myEntry: PFObject?) {

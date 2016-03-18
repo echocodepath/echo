@@ -73,7 +73,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VRD-uz-tnb">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="t2x-j6-1du">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="t2x-j6-1du">
                             <connections>
                                 <action selector="onBack:" destination="3ew-MU-BKc" id="FEE-Ux-kRc"/>
                             </connections>
@@ -305,6 +305,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back" width="26" height="24"/>
         <image name="favorite-button" width="310" height="80"/>
         <image name="white_play_button" width="13" height="16"/>
     </resources>
