@@ -44,8 +44,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
         
         if entry != nil {
-            entryLabel.text = "Video: \(entry!.valueForKey("title") as! String)"
-            songLabel.text = "Song: \(entry!.valueForKey("song") as! String)"
+            entryLabel.text = "\(entry!.valueForKey("title") as! String)"
+            songLabel.text = "\(entry!.valueForKey("song") as! String)"
             convertVideoDataToNSURL()
         }
         
