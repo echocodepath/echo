@@ -105,8 +105,6 @@
 
 #pragma mark - UIActionSheetDelegate
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
   if (buttonIndex == 0) {
@@ -115,7 +113,6 @@
     [self.delegate loginButtonDidLogOut:self];
   }
 }
-#pragma clang diagnostic pop
 
 #pragma mark - FBSDKButtonImpressionTracking
 

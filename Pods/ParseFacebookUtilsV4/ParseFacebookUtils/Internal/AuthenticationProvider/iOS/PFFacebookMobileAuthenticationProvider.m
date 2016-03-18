@@ -31,7 +31,7 @@
 - (instancetype)initWithApplication:(UIApplication *)application
                       launchOptions:(nullable NSDictionary *)launchOptions {
     self = [super initWithApplication:application launchOptions:launchOptions];
-    if (!self) return self;
+    if (!self) return nil;
 
     _loginManager = [[FBSDKLoginManager alloc] init];
 

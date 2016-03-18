@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import AFNetworking
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
     let DESCRIPTION_PLACEHOLDER = "Add a description"
@@ -113,30 +114,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
-            if let url  = NSURL(string: profImage as! String),
-                data = NSData(contentsOfURL: url)
-            {
-                self.profilePhoto.image = UIImage(data: data)
-
-                // Set profile to circle
-                self.profilePhoto.layer.borderWidth = 3
-                self.profilePhoto.layer.masksToBounds = false
-                self.profilePhoto.layer.borderColor = UIColor.blackColor().CGColor
-                self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
-                self.profilePhoto.clipsToBounds = true
-                
-                
-                
-            }
-            //self.profilePhoto.setImageWithURL(NSURL(string: profImage)!)
+//            if let url  = NSURL(string: profImage as! String),
+//                data = NSData(contentsOfURL: url)
+//            {
+//                self.profilePhoto.image = UIImage(data: data)
+//            }
+            self.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
+            // Set profile to circle
+            self.profilePhoto.layer.borderWidth = 3
+            self.profilePhoto.layer.masksToBounds = false
+            self.profilePhoto.layer.borderColor = UIColor.blackColor().CGColor
+            self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
+            self.profilePhoto.clipsToBounds = true
         }
         if let coverImage =  self.profileUser!["coverPhotoUrl"] {
-            if let url  = NSURL(string: coverImage as! String),
-                data = NSData(contentsOfURL: url)
-            {
-                self.coverPhoto.image = UIImage(data: data)
-            }
-            //self.coverPhoto.setImageWithURL(NSURL(string: coverImage)!)
+//            if let url  = NSURL(string: coverImage as! String),
+//                data = NSData(contentsOfURL: url)
+//            {
+//                self.coverPhoto.image = UIImage(data: data)
+//            }
+            self.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
         }
         
         if isMyProfile! == true || isTeacher! == "false" {
