@@ -79,27 +79,40 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
             let student_id = request["user_id"]! as String
             var student_name = ""
             let studentQuery = PFUser.query()!
-            studentQuery.whereKey("facebook_id", equalTo: student_id)
-            studentQuery.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
+            studentQuery.getObjectInBackgroundWithId(student_id) {
+                (userObject: PFObject?, error: NSError?) -> Void in
+                if error == nil && userObject != nil {
+                    let object = userObject as! PFUser
                     var student_picture = ""
-                    if let objects = objects {
-                        for object in objects {
-                            student_name = object["username"] as! String
-                            student_picture = object["profilePhotoUrl"] as! String
-                        }
-                    }
+                    student_name = object["username"] as! String
+                    student_picture = object["profilePhotoUrl"] as! String
                     cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + song
-                    if let url  = NSURL(string: student_picture),
-                        data = NSData(contentsOfURL: url)
-                    {
-                        cell.avatarImageView.image = UIImage(data: data)
-                    }
+                    cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
                 } else {
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print(error)
                 }
             }
+//            studentQuery.whereKey("facebook_id", equalTo: student_id)
+//            studentQuery.findObjectsInBackgroundWithBlock {
+//                (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error == nil {
+//                    var student_picture = ""
+//                    if let objects = objects {
+//                        for object in objects {
+//                            student_name = object["username"] as! String
+//                            student_picture = object["profilePhotoUrl"] as! String
+//                        }
+//                    }
+//                    cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + song
+//                    if let url  = NSURL(string: student_picture),
+//                        data = NSData(contentsOfURL: url)
+//                    {
+//                        cell.avatarImageView.image = UIImage(data: data)
+//                    }
+//                } else {
+//                    print("Error: \(error!) \(error!.userInfo)")
+//                }
+//            }
         }
         return cell
     }

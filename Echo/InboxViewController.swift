@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import AFNetworking
 
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -84,27 +85,39 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let student_id = request["user_id"]! as String
             var student_name = ""
             let studentQuery = PFUser.query()!
-            studentQuery.whereKey("facebook_id", equalTo: student_id)
-            studentQuery.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
+            studentQuery.getObjectInBackgroundWithId(student_id) {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
                     var student_picture = ""
-                    if let objects = objects {
-                        for object in objects {
-                            student_name = object["username"] as! String
-                            student_picture = object["profilePhotoUrl"] as! String
-                        }
-                    }
+                    student_name = object!["username"] as! String
+                    student_picture = object!["profilePhotoUrl"] as! String
                     cell.inboxTextLabel.text = student_name + " would like feedback on " + song
-                    if let url  = NSURL(string: student_picture),
-                        data = NSData(contentsOfURL: url)
-                    {
-                        cell.avatarImageView.image = UIImage(data: data)
-                    }
+                    cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
                 } else {
-                    print("Error: \(error!) \(error!.userInfo)")
+                    print(error)
                 }
             }
+//            studentQuery.whereKey("facebook_id", equalTo: student_id)
+//            studentQuery.findObjectsInBackgroundWithBlock {
+//                (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error == nil {
+//                    var student_picture = ""
+//                    if let objects = objects {
+//                        for object in objects {
+//                            student_name = object["username"] as! String
+//                            student_picture = object["profilePhotoUrl"] as! String
+//                        }
+//                    }
+//                    cell.inboxTextLabel.text = student_name + " would like feedback on " + song
+//                    if let url  = NSURL(string: student_picture),
+//                        data = NSData(contentsOfURL: url)
+//                    {
+//                        cell.avatarImageView.image = UIImage(data: data)
+//                    }
+//                } else {
+//                    print("Error: \(error!) \(error!.userInfo)")
+//                }
+//            }
         }
         return cell
     }
