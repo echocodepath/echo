@@ -207,16 +207,12 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     private func convertVideoDataToNSURL() {
-        let url: NSURL?
-        let rawData: NSData?
+        var url: NSURL?
         let videoData = entry!["video"] as! PFFile
-        do {
-            rawData = try videoData.getData()
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-            playVideo(url!)
-        } catch {
-            
-        }
+        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            self.playVideo(url!)
+        })
     }
     
     func sliderBeganTracking(slider: UISlider) {
@@ -290,14 +286,11 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     private func convertAudioDataToNSURL(audioClip: PFFile) -> NSURL {
         var url: NSURL = getAudioFilePath()!
-        let rawData: NSData?
-        do {
-            rawData = try audioClip.getData()
-            url = FileProcessor.sharedInstance.writeAudioDataToFile(rawData!, path: url)
-        } catch {
-            
+        audioClip.getDataInBackgroundWithBlock { (data, error) -> Void in
+            FileProcessor.sharedInstance.writeAudioDataToFile(data!, path: url)
         }
         return url
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
