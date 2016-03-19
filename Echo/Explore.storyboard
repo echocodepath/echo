@@ -72,7 +72,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="teacherImage" destination="bYI-DZ-2JY" id="J7M-Tk-Rc5"/>
-                                            <segue destination="yyE-oW-zej" kind="modal" id="7d8-jR-qdq"/>
+                                            <segue destination="yyE-oW-zej" kind="modal" identifier="exploreToProfile" id="7d8-jR-qdq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
