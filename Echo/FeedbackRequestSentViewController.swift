@@ -19,7 +19,6 @@ class FeedbackRequestSentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.teacherLabel.text = self.teacherName
-        self.teacherLabel.textColor = StyleGuide.Colors.echoTeal
     }
 
     override func didReceiveMemoryWarning() {
