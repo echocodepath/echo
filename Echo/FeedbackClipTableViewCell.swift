@@ -30,8 +30,8 @@ class FeedbackClipTableViewCell: UITableViewCell {
         audioClipImageView.image = UIImage(named: "Sound Waves")
         locationImageView.image = UIImage(named: "timestamp_icon")
         contentView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
-        durationLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
-        timestampLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        durationLabel.textColor = StyleGuide.Colors.echoTranslucentClear
+        timestampLabel.textColor = StyleGuide.Colors.echoTranslucentClear
         noteLabel.textColor = UIColor(red: 199/255, green: 161/255, blue: 129/255, alpha: 1.0)
         noteLabel.text = "NOTE \(FeedbackClipTableViewCell.count)"
     }

@@ -30,6 +30,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     var audioTimers = Array<NSTimer>()
 
+    @IBOutlet weak var recordContainerView: UIView!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var timeLeftLabel: UILabel!
@@ -59,8 +60,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func setupViewProperties() {
+        timeLeftLabel.textColor = StyleGuide.Colors.echoTranslucentClear
         controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
         tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
+        recordContainerView.backgroundColor = StyleGuide.Colors.echoBrownGray
         tableView.tableFooterView = UIView()
     }
     
