@@ -69,11 +69,15 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                         self.entries.append(object)
                         self.entriesGridView.reloadData()
                     }
+                    print("These are the entries")
+                    print(self.entries)
                 }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
+
+
         
     }
     func onRefresh(){
@@ -102,6 +106,9 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         if collectionView == teachersGridView {
             let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
             let teacherImage = self.teachers[indexPath.row]["profilePhotoUrl"] as? String
+
+            print(teacherImage)
+            
             if let url  = NSURL(string: teacherImage!),
                 data = NSData(contentsOfURL: url)
             {
