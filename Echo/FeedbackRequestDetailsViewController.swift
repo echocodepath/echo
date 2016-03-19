@@ -21,11 +21,12 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
-    @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
-
+    @IBOutlet weak var teacherAvatar: UIImageView!
+    
+    
     @IBAction func clickedSendFeedback(sender: AnyObject) {
         performSegueWithIdentifier("feedbackSentSegue", sender: nil)
     }
@@ -44,14 +45,21 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
         
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("title") as! String)"
-            songLabel.text = "\(entry!.valueForKey("song") as! String)"
+            entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
             convertVideoDataToNSURL()
         }
         
         if teacher != nil {
             teacherLabel.text = teacher!["username"] as? String
             teacherLabel.textColor = StyleGuide.Colors.echoTeal
+
+            let url  = NSURL(string: (teacher?.objectForKey("profilePhotoUrl") as? String)!)
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.teacherAvatar.setImageWithURL(url!)
+                self.teacherAvatar.layer.cornerRadius = self.teacherAvatar.frame.height/2
+                self.teacherAvatar.clipsToBounds = true
+            })
+            
         }
         
         //text view styling and make text view editable
@@ -60,6 +68,10 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         messageTextView.layer.borderColor = borderColor.CGColor
         messageTextView.layer.cornerRadius = 5.0
         messageTextView.delegate = self
+        
+
+        
+        
         applyPlaceholderStyle(self.messageTextView, placeholderText: MESSAGE_PLACEHOLDER)
     }
     
@@ -152,7 +164,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller!.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
         
 

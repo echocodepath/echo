@@ -253,7 +253,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
         avPlayer = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
@@ -263,10 +263,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
                 self.observeTime(elapsedTime)
         }
-        
-        videoPlayer.player = avPlayer
-        videoPlayer.player!.play()
-        self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
+//        
+//        videoPlayer.player = avPlayer
+//        videoPlayer.player!.play()
+//        self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
     }
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
