@@ -194,9 +194,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if let objects = objects {
                     for object in objects {
                         self.entries.append(object)
+                        self.videosCollectionView.reloadData()
                     }
                 }
-                self.videosCollectionView.reloadData()
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
