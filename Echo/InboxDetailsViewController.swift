@@ -10,6 +10,8 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 import AFNetworking
+import AVKit
+import AVFoundation
 
 class InboxDetailsViewController: UIViewController {
     var inboxUser: PFUser?
@@ -17,12 +19,10 @@ class InboxDetailsViewController: UIViewController {
     var currentEntry : PFObject?
     var entryId: String?
     var userId: String? // id of user who sent request
-    
-    @IBOutlet weak var videoView: UIView!
+    var controller: AVPlayerViewController?
     
     @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -37,9 +37,19 @@ class InboxDetailsViewController: UIViewController {
         super.viewDidLoad()
         inboxUser = PFUser.currentUser()
         inboxUser?.fetchInBackground()
-        entryId = self.request!["entry_id"]! as String
-        self.requestBodyLabel.text = self.request!["request_body"]
-        self.setEntryLabels()
+        
+        usernameLabel.textColor = StyleGuide.Colors.echoTeal
+        
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
+            self.userImageView.clipsToBounds = true
+        })
+        
+        if request != nil {
+            entryId = self.request!["entry_id"]! as String
+            self.requestBodyLabel.text = self.request!["request_body"]
+            self.setEntryLabels()
+        }
     }
     
     func setEntryLabels() {
@@ -48,8 +58,8 @@ class InboxDetailsViewController: UIViewController {
             (currentEntry: PFObject?, error: NSError?) -> Void in
             if error == nil && currentEntry != nil {
                 self.currentEntry = currentEntry
-                self.songTitleLabel.text = self.currentEntry!["title"] as? String
-//                self.dateLabel.text = self.currentEntry!["created_at"] as? String
+                self.convertVideoDataToNSURL()
+                self.titleLabel.text = self.currentEntry!["title"] as? String
                 self.userId = self.currentEntry!["user_id"] as? String
                 self.setUserLabels()
             } else {
@@ -89,6 +99,38 @@ class InboxDetailsViewController: UIViewController {
 //                print("Error: \(error!) \(error!.userInfo)")
 //            }
 //        }
+    }
+    
+    // MARK: Video
+    private func playVideo(url: NSURL){
+        controller = AVPlayerViewController()
+        controller!.willMoveToParentViewController(self)
+        addChildViewController(controller!)
+        view.addSubview(controller!.view)
+        controller!.didMoveToParentViewController(self)
+        controller!.view.translatesAutoresizingMaskIntoConstraints = false
+        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
+        
+        let player = AVPlayer(URL: url)
+        controller!.player = player
+        controller!.player!.play()
+    }
+    
+    private func convertVideoDataToNSURL() {
+        let url: NSURL?
+        let rawData: NSData?
+        let videoData = self.currentEntry!["video"] as! PFFile
+        do {
+            rawData = try videoData.getData()
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
+            playVideo(url!)
+        } catch {
+            
+        }
     }
 
     @IBAction func onBack(sender: AnyObject) {
