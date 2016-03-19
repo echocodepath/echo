@@ -9,5 +9,6 @@
 import UIKit
 
 class TeacherCollectionViewCell: UICollectionViewCell {
+
     @IBOutlet weak var teacherImage: UIImageView!
 }
