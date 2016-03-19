@@ -23,6 +23,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         teachersGridView.delegate   = self
         teachersGridView.dataSource = self
         entriesGridView.delegate    = self
