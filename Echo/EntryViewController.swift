@@ -17,9 +17,14 @@ class EntryViewController: UIViewController {
     var onComplete: ((finished: Bool) -> Void)?
     
     var entry: PFObject?
-    
+    var timeObserver: AnyObject!
     let videoPlayer = AVPlayerViewController()
-
+    var playerRateBeforeSeek: Float = 0
+    var avPlayer: AVPlayer?
+    
+    @IBOutlet weak var timeAgoLabel: UILabel!
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var microphoneImageView: UIImageView!
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
@@ -38,16 +43,48 @@ class EntryViewController: UIViewController {
         }
     }
     
+    func videoPlaybackDidPause() {
+        avPlayer!.pause();
+    }
+    
+    @IBAction func onTogglePlayPause(sender: AnyObject) {
+        let playerIsPlaying:Bool = avPlayer!.rate > 0
+        if playerIsPlaying {
+            playBtn.selected = true
+            videoPlaybackDidPause()
+        } else {
+            playBtn.selected = false
+            avPlayer!.play()
+        }
+    }
+    
+    func bindVideoControlActions() {
+        timeSlider.addTarget(self, action: "sliderBeganTracking:",
+            forControlEvents: UIControlEvents.TouchDown)
+        timeSlider.addTarget(self, action: "sliderEndedTracking:",
+            forControlEvents: [UIControlEvents.TouchUpInside, UIControlEvents.TouchUpOutside])
+        timeSlider.addTarget(self, action: "sliderValueChanged:",
+            forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
     func updateEntry(myEntry: PFObject?) {
         self.entry = myEntry
     }
     
+    func setupButtonToggle() {
+        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Selected)
+        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindVideoControlActions()
+        setupButtonToggle()
+        
         if entry != nil {
             self.title = entry!.valueForKey("title") as! String
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
-            artistLabel.text = "by \(entry!.valueForKey("artist") as! String)"
+            artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
             createdAtLabel.text = DateManager.getFriendlyTime(entry!.createdAt!)
             microphoneImageView.image = UIImage(named: "Artist Icon")
             
@@ -64,7 +101,49 @@ class EntryViewController: UIViewController {
         
     }
     
+    private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
+        let timeRemaining: Float64 = elapsedTime
+        timeSlider.value = Float(elapsedTime/100)
+        timeAgoLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+    }
+    
+    
+    func sliderBeganTracking(slider: UISlider) {
+        playerRateBeforeSeek = avPlayer!.rate
+        avPlayer!.pause()
+    }
+    
+    func sliderEndedTracking(slider: UISlider) {
+        let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
+        let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
+        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
+        
+        
+        avPlayer!.seekToTime(CMTimeMakeWithSeconds(elapsedTime, 10)) { (completed: Bool) -> Void in
+            let playerIsPlaying:Bool = self.avPlayer!.rate > 0
+            if (self.playerRateBeforeSeek > 0 && playerIsPlaying == true) {
+                self.avPlayer!.play()
+            }
+        }
+    }
+    
+    func sliderValueChanged(slider: UISlider) {
+        let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
+        let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
+        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
+    }
+    private func observeTime(elapsedTime: CMTime) {
+        let duration = CMTimeGetSeconds(avPlayer!.currentItem!.duration);
+        timeSlider.maximumValue = Float(duration/100)
+        if (isfinite(duration)) {
+            let elapsedTime = CMTimeGetSeconds(elapsedTime)
+            updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
+        }
+    }
+    
+    
     private func playVideo(url: NSURL){
+        videoPlayer.showsPlaybackControls = false
         videoPlayer.willMoveToParentViewController(self)
         addChildViewController(videoPlayer)
         view.addSubview(videoPlayer.view)
@@ -73,11 +152,16 @@ class EntryViewController: UIViewController {
         videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
-        let player = AVPlayer(URL: url)
-        videoPlayer.player = player
+        avPlayer = AVPlayer(URL: url)
+        videoPlayer.player = avPlayer!
         videoPlayer.player!.play()
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        timeObserver = avPlayer!.addPeriodicTimeObserverForInterval(timeInterval,
+            queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
+                self.observeTime(elapsedTime)
+        }
     }
     
     private func convertVideoDataToNSURL() {
@@ -94,6 +178,9 @@ class EntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        avPlayer!.removeTimeObserver(timeObserver)
+    }
 
     // MARK: - Navigation
 
