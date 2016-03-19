@@ -451,10 +451,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-common" translatesAutoresizingMaskIntoConstraints="NO" id="nFr-dF-hWY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-common" translatesAutoresizingMaskIntoConstraints="NO" id="nFr-dF-hWY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7y-Cs-4Tf" customClass="SpringImageView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7y-Cs-4Tf" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="164" y="190" width="156" height="113"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9q6-Tk-jqQ" userLabel="Upload Photo">
@@ -470,6 +470,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="Cdf-gB-eAM"/>
+                                    <constraint firstAttribute="width" constant="156" id="TLw-ke-6nN"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideLeft"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="force">
@@ -483,7 +487,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-xd-j68" customClass="SpringImageView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-xd-j68" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="128" y="190" width="44" height="109"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-ZJ-SqZ">
@@ -492,6 +496,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="Hx1-sV-Dou"/>
+                                    <constraint firstAttribute="width" constant="44" id="K3s-JS-JGf"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="force">
@@ -505,7 +513,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-pU-deG" customClass="SpringImageView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-pU-deG" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="28" y="197" width="98" height="129"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RECORD VIDEO" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-Uv-xRP">
@@ -521,6 +529,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="NhP-a3-pjo"/>
+                                    <constraint firstAttribute="width" constant="98" id="SUV-Rc-CBO"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideRight"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="force">
@@ -536,6 +548,18 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="top" secondItem="IEX-Zc-mmh" secondAttribute="bottom" constant="126" id="2Qk-y0-8dg"/>
+                            <constraint firstItem="qux-fw-Tzp" firstAttribute="top" secondItem="nFr-dF-hWY" secondAttribute="bottom" id="4n8-q8-BsD"/>
+                            <constraint firstItem="nFr-dF-hWY" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" id="6an-rR-hfq"/>
+                            <constraint firstAttribute="trailing" secondItem="nFr-dF-hWY" secondAttribute="trailing" id="Xih-nI-Zsf"/>
+                            <constraint firstItem="TqA-pU-deG" firstAttribute="top" secondItem="IEX-Zc-mmh" secondAttribute="bottom" constant="133" id="dbd-XM-gIc"/>
+                            <constraint firstItem="TqA-pU-deG" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" constant="28" id="g0v-af-Jjt"/>
+                            <constraint firstAttribute="trailing" secondItem="Q7y-Cs-4Tf" secondAttribute="trailing" id="lhe-IB-eNQ"/>
+                            <constraint firstItem="nFr-dF-hWY" firstAttribute="top" secondItem="Ysv-6w-hdn" secondAttribute="top" id="ofn-51-hwD"/>
+                            <constraint firstItem="DO9-xd-j68" firstAttribute="centerX" secondItem="Ysv-6w-hdn" secondAttribute="centerX" constant="-10" id="uft-gs-Xjg"/>
+                            <constraint firstItem="DO9-xd-j68" firstAttribute="top" secondItem="IEX-Zc-mmh" secondAttribute="bottom" constant="126" id="zjN-Fl-fcg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="J7C-ZE-Ddb">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="zqF-2L-7uW">
@@ -727,7 +751,7 @@
         <image name="settings" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g2V-cb-IKB"/>
+        <segue reference="cCb-aZ-1j6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
 </document>
