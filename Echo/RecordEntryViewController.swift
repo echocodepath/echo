@@ -30,10 +30,6 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.translucent = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,6 +95,9 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.translucent = false
         if segue.identifier == "upload-entry" {
             let controller = segue.destinationViewController as! EntryFormViewController
             controller.video = sender as? NSURL
