@@ -32,6 +32,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var videoContainerView: UIView!
     
     @IBAction func onBack(sender: AnyObject) {
         videoPlayer.player?.pause()
@@ -151,14 +152,13 @@ class EntryViewController: UIViewController {
         videoPlayer.showsPlaybackControls = false
         videoPlayer.willMoveToParentViewController(self)
         addChildViewController(videoPlayer)
-        view.addSubview(videoPlayer.view)
+        videoContainerView.addSubview(videoPlayer.view)
         videoPlayer.didMoveToParentViewController(self)
         videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
+        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
+        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
+        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
         avPlayer = AVPlayer(URL: url)
         videoPlayer.player = avPlayer!
         videoPlayer.player!.play()

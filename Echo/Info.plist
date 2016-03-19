@@ -47,8 +47,6 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>parse.com</key>
-			<string></string>
 			<key>akamaihd.net</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
@@ -70,6 +68,8 @@
 				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>
+			<key>parse.com</key>
+			<string></string>
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
