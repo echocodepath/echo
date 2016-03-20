@@ -22,11 +22,18 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var feedbackLabel: UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        inboxUser = PFUser.currentUser()
+        //inboxUser?.fetchInBackground()
+        do {
+            try inboxUser?.fetch()
+        } catch {
+            print("Error fetching inbox user")
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = "Inbox"
+        
         fetchRequests()
         
         // Add pull to refresh functionality
@@ -41,8 +48,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func fetchRequests(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackground()
         if let requests_received = inboxUser!["requests_received"] {
             self.requestsReceived = requests_received as! Array<Dictionary<String,String>>
         }
