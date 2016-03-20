@@ -378,14 +378,23 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     deinit {
         avPlayer!.removeTimeObserver(timeObserver)
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            videoPlayer.player?.pause()
+            FileProcessor.sharedInstance.deleteVideoFile()
+            switch identifier {
+                case "saveFeedback":
+                    let vc = segue.destinationViewController as! EntryFeedbackViewController
+                    vc.entry = entry
+                default:
+                    return
+            }
+        }
     }
-    */
+    
 
 }

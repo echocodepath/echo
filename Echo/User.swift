@@ -58,10 +58,7 @@ class User: NSObject {
     
     func saveToParse(dict: NSDictionary){
         ParseClient.sharedInstance.setCurrentUserWithDict(dict)
-        do {
-            try PFUser.currentUser()?.fetch()
-        } catch {
-        
-        }
+        let pfUser = PFUser.currentUser()
+        pfUser?.fetchInBackground()
     }
 }

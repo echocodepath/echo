@@ -44,11 +44,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func fetchRequests(){
         inboxUser = PFUser.currentUser()
         inboxUser?.fetchInBackground()
-        do {
-            try inboxUser?.fetch()
-        } catch {
-            print("Error fetching inbox user")
-        }
         if let requests_received = inboxUser!["requests_received"] {
             self.requestsReceived = requests_received as! Array<Dictionary<String,String>>
         }
@@ -75,11 +70,14 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let entry_id = id as String
             var title = ""
             let entryQuery = PFQuery(className:"Entry")
-            do {
-                let entry = try entryQuery.getObjectWithId(entry_id)
-                title = entry["title"] as! String
-            } catch {
-                print("Error getting entry from inbox")
+            entryQuery.getObjectInBackgroundWithId(entry_id) {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
+                    let entry = object
+                    title = entry!["title"] as! String
+                } else {
+                    print(error)
+                }
             }
             
             let student_id = request["user_id"]! as String
