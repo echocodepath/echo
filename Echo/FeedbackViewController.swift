@@ -244,6 +244,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
                 self.invalidateTimersAndFeedback()
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
+            self.playBtn.selected = true
         }
     }
     
@@ -291,7 +292,6 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     private func observeTime(elapsedTime: CMTime) {
         let duration = CMTimeGetSeconds(avPlayer!.currentItem!.duration);
-        timeSlider.maximumValue = Float(duration/100)
         if (isfinite(duration)) {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
