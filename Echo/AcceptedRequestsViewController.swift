@@ -20,18 +20,14 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         inboxUser = PFUser.currentUser()
-        //inboxUser?.fetchInBackground()
-        do {
-            try inboxUser?.fetch()
-        } catch {
-            print("Error fetching inbox user")
-        }
+        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.fetchRequests()
+            }
+        })
         
-        acceptedRequestsTableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         acceptedRequestsTableView.delegate = self
         acceptedRequestsTableView.dataSource = self
-        
-        fetchRequests()
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
@@ -52,8 +48,13 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func onRefresh(){
-        fetchRequests()
-        self.refreshControlTableView.endRefreshing()
+        inboxUser = PFUser.currentUser()
+        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.fetchRequests()
+                self.refreshControlTableView.endRefreshing()
+            }
+        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,16 +70,6 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
             let entry_id = id as String
             var title = ""
             let entryQuery = PFQuery(className:"Entry")
-            entryQuery.getObjectInBackgroundWithId(entry_id) {
-                (object: PFObject?, error: NSError?) -> Void in
-                if error == nil && object != nil {
-                    let entry = object
-                    title = entry!["title"] as! String
-                } else {
-                    print(error)
-                }
-            }
-            
             let student_id = request["user_id"]! as String
             var student_name = ""
             let studentQuery = PFUser.query()!
@@ -89,8 +80,17 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
                     var student_picture = ""
                     student_name = object["username"] as! String
                     student_picture = object["profilePhotoUrl"] as! String
-                    cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + title
                     cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
+                    entryQuery.getObjectInBackgroundWithId(entry_id) {
+                        (object: PFObject?, error: NSError?) -> Void in
+                        if error == nil && object != nil {
+                            let entry = object
+                            title = entry!["title"] as! String
+                            cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + title
+                        } else {
+                            print(error)
+                        }
+                    }
                 } else {
                     print(error)
                 }
