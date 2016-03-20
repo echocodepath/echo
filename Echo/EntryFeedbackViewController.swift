@@ -58,7 +58,8 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let feedbackInstance = feedback[indexPath.row]
-        let feedbackVC = self.storyboard!.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+        let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
+        let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
         feedbackVC.feedback = feedbackInstance
         feedbackVC.entry = entry!
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
