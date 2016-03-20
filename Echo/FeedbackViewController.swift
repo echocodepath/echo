@@ -86,6 +86,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     @IBAction func onBack(sender: AnyObject) {
+        
         dismissViewControllerAnimated(true) { () -> Void in
             self.invalidateTimersAndFeedback()
             self.avPlayer!.pause()
@@ -331,6 +332,17 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if avPlayer != nil {
+            let playerIsPlaying:Bool = avPlayer?.rate > 0
+            if playerIsPlaying == true {
+            } else {
+                playBtn.selected = true
+            }
+        }
+        
     }
     
     deinit {
