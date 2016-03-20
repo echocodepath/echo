@@ -24,17 +24,14 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         inboxUser = PFUser.currentUser()
-        //inboxUser?.fetchInBackground()
-        do {
-            try inboxUser?.fetch()
-        } catch {
-            print("Error fetching inbox user")
-        }
+        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.fetchRequests()
+            }
+        })
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        fetchRequests()
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
@@ -55,9 +52,13 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func onRefresh(){
-        print("I just got refreshed")
-        fetchRequests()
-        self.refreshControlTableView.endRefreshing()
+        inboxUser = PFUser.currentUser()
+        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.fetchRequests()
+                self.refreshControlTableView.endRefreshing()
+            }
+        })
     }
     
     
@@ -74,16 +75,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let entry_id = id as String
             var title = ""
             let entryQuery = PFQuery(className:"Entry")
-            entryQuery.getObjectInBackgroundWithId(entry_id) {
-                (object: PFObject?, error: NSError?) -> Void in
-                if error == nil && object != nil {
-                    let entry = object
-                    title = entry!["title"] as! String
-                } else {
-                    print(error)
-                }
-            }
-            
             let student_id = request["user_id"]! as String
             var student_name = ""
             let studentQuery = PFUser.query()!
@@ -93,8 +84,17 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     var student_picture = ""
                     student_name = object!["username"] as! String
                     student_picture = object!["profilePhotoUrl"] as! String
-                    cell.inboxTextLabel.text = student_name + " would like feedback on " + title
                     cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
+                    entryQuery.getObjectInBackgroundWithId(entry_id) {
+                        (object: PFObject?, error: NSError?) -> Void in
+                        if error == nil && object != nil {
+                            let entry = object
+                            title = entry!["title"] as! String
+                            cell.inboxTextLabel.text = student_name + " would like feedback on " + title
+                        } else {
+                            print(error)
+                        }
+                    }
                 } else {
                     print(error)
                 }
