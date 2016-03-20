@@ -18,8 +18,15 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     var refreshControlTableView: UIRefreshControl!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        inboxUser = PFUser.currentUser()
+        //inboxUser?.fetchInBackground()
+        do {
+            try inboxUser?.fetch()
+        } catch {
+            print("Error fetching inbox user")
+        }
+        
         acceptedRequestsTableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         acceptedRequestsTableView.delegate = self
         acceptedRequestsTableView.dataSource = self
@@ -38,13 +45,6 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func fetchRequests(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackground()
-//        do {
-//            try inboxUser?.fetch()
-//        } catch {
-//            print("Error fetching inbox user")
-//        }
         if let rejected_requests = inboxUser!["requests_accepted"] {
             self.acceptedRequests = rejected_requests as! Array<Dictionary<String,String>>
         }
