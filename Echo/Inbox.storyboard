@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Inbox-->
@@ -381,13 +382,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andrew Yu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKr-Ak-AzQ">
-                                        <rect key="frame" x="80" y="20" width="89" height="20.5"/>
+                                        <rect key="frame" x="80" y="20" width="89" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.16468197337211246" green="0.85046073717948723" blue="0.7326660801557755" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, CA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft0-lG-TDp">
-                                        <rect key="frame" x="80" y="39" width="103" height="14.5"/>
+                                        <rect key="frame" x="80" y="39" width="103" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -396,7 +397,7 @@
                                         <rect key="frame" x="23" y="67" width="368" height="213"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Hey Christine! My Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMf-Rw-yti">
-                                                <rect key="frame" x="23" y="99" width="322" height="14.5"/>
+                                                <rect key="frame" x="13" y="17" width="322" height="15"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,9 +406,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="JMf-Rw-yti" firstAttribute="centerY" secondItem="fXX-ZO-xqC" secondAttribute="centerY" id="a2A-cl-EcF"/>
-                                            <constraint firstAttribute="trailing" secondItem="JMf-Rw-yti" secondAttribute="trailing" constant="23" id="dfI-aq-b0R"/>
-                                            <constraint firstItem="JMf-Rw-yti" firstAttribute="leading" secondItem="fXX-ZO-xqC" secondAttribute="leading" constant="23" id="eg5-NH-hsp"/>
+                                            <constraint firstAttribute="trailing" secondItem="JMf-Rw-yti" secondAttribute="trailing" constant="33" id="dfI-aq-b0R"/>
+                                            <constraint firstItem="JMf-Rw-yti" firstAttribute="leading" secondItem="fXX-ZO-xqC" secondAttribute="leading" constant="13" id="eg5-NH-hsp"/>
+                                            <constraint firstItem="JMf-Rw-yti" firstAttribute="top" secondItem="fXX-ZO-xqC" secondAttribute="top" constant="17" id="lOL-bO-WD2"/>
                                             <constraint firstAttribute="height" constant="213" id="oLk-CG-uhv"/>
                                         </constraints>
                                     </view>
@@ -438,7 +439,7 @@
                                 <rect key="frame" x="0.0" y="293" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRO-9p-1NV">
-                                        <rect key="frame" x="16" y="16" width="65" height="14.5"/>
+                                        <rect key="frame" x="16" y="16" width="65" height="15"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -452,7 +453,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="zqk-Rb-5cB" firstAttribute="centerY" secondItem="4ep-DK-n72" secondAttribute="centerY" id="MqX-uG-PPR"/>
+                                    <constraint firstItem="zqk-Rb-5cB" firstAttribute="top" secondItem="4ep-DK-n72" secondAttribute="top" constant="16" id="1Yt-Us-ZoN"/>
+                                    <constraint firstItem="zqk-Rb-5cB" firstAttribute="baseline" secondItem="tRO-9p-1NV" secondAttribute="baseline" id="Eg3-So-3Ld"/>
+                                    <constraint firstItem="zqk-Rb-5cB" firstAttribute="firstBaseline" secondItem="tRO-9p-1NV" secondAttribute="firstBaseline" id="HZg-4W-G30"/>
                                     <constraint firstItem="tRO-9p-1NV" firstAttribute="centerY" secondItem="4ep-DK-n72" secondAttribute="centerY" id="YJu-Z5-sLz"/>
                                     <constraint firstAttribute="height" constant="46.5" id="pcD-IG-Yv9"/>
                                     <constraint firstAttribute="trailing" secondItem="zqk-Rb-5cB" secondAttribute="trailing" constant="11" id="qc4-Nl-Mdz"/>
@@ -485,7 +488,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="acceptButton" destination="yxn-bY-tCY" id="GZ0-Sw-LvE"/>
-                        <outlet property="createdAtLabel" destination="zqk-Rb-5cB" id="5Ep-RW-dJC"/>
+                        <outlet property="createdAtLabel" destination="zqk-Rb-5cB" id="8I6-hn-vIg"/>
                         <outlet property="locationLabel" destination="ft0-lG-TDp" id="dm5-hr-6jE"/>
                         <outlet property="messageView" destination="3Tw-aX-IiX" id="wMJ-OC-rYa"/>
                         <outlet property="messageWrapperView" destination="fXX-ZO-xqC" id="dLQ-fS-c1C"/>
