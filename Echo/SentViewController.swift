@@ -18,9 +18,15 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     var refreshControlTableView: UIRefreshControl!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        requestsSentTableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
+        inboxUser = PFUser.currentUser()
+        //inboxUser?.fetchInBackground()
+        do {
+            try inboxUser?.fetch()
+        } catch {
+            print("Error fetching inbox user")
+        }
+        
         requestsSentTableView.delegate = self
         requestsSentTableView.dataSource = self
         
@@ -38,8 +44,6 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func fetchRequests(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackground()
         if let requests_sent = inboxUser!["requests_sent"] {
             self.requestsSent = requests_sent as! Array<Dictionary<String,String>>
         }
