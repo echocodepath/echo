@@ -204,6 +204,8 @@ class InboxDetailsViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
+//            videoPlayer.player?.pause()
+//            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "AcceptFeedbackSegue":
                     let navController = segue.destinationViewController as! UINavigationController
