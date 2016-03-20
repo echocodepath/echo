@@ -30,6 +30,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     var audioTimers = Array<NSTimer>()
 
+    @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var recordContainerView: UIView!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var playBtn: UIButton!
@@ -68,8 +69,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func setupButtonToggle() {
-        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Selected)
-        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Selected)
     }
     
     func videoPlaybackDidPause() {

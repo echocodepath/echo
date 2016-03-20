@@ -73,8 +73,8 @@ class EntryViewController: UIViewController {
     }
     
     func setupButtonToggle() {
-        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Selected)
-        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "white_play_button"), forState: .Selected)
     }
     
     override func viewDidLoad() {
