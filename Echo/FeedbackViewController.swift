@@ -12,6 +12,8 @@ import AVKit
 import Parse
 
 class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource {
+    var previousVC: UIViewController?
+    
     let videoPlayer = AVPlayerViewController()
     var audioPlayers = Array<AVAudioPlayer>()
     var avPlayer: AVPlayer?
@@ -86,13 +88,16 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true) { () -> Void in
+        //dismissViewControllerAnimated(true) { () -> Void in
             self.invalidateTimersAndFeedback()
             self.avPlayer!.pause()
             FileProcessor.sharedInstance.deleteVideoFile()
             self.audioClips.forEach({ clip in
                 FileProcessor.sharedInstance.deleteFile(clip.path!)
             })
+        //}
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
         }
     }
     
