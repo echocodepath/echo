@@ -26,7 +26,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+        self.title = "Inbox"
         fetchRequests()
         
         // Add pull to refresh functionality

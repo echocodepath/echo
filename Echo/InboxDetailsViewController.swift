@@ -209,11 +209,15 @@ class InboxDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        controller!.player?.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
 
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-//            videoPlayer.player?.pause()
-//            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "AcceptFeedbackSegue":
                     let navController = segue.destinationViewController as! UINavigationController
