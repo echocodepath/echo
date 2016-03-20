@@ -56,7 +56,7 @@
 		F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */; };
 		F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */; };
 		F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */; };
-		F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */; };
+		F5904AAB1C9E743600829F1B /* FeedbackRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5904AAA1C9E743600829F1B /* FeedbackRecording.storyboard */; };
 		F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E2008E1C8CC64000DECA95 /* Profile.storyboard */; };
 		F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E200901C8CC64800DECA95 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -115,7 +115,7 @@
 		F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestViewController.swift; sourceTree = "<group>"; };
 		F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherFeedbackCell.swift; sourceTree = "<group>"; };
 		F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestSentViewController.swift; sourceTree = "<group>"; };
-		F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRecording.storyboard; sourceTree = "<group>"; };
+		F5904AAA1C9E743600829F1B /* FeedbackRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRecording.storyboard; sourceTree = "<group>"; };
 		F5E2008E1C8CC64000DECA95 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F5E200901C8CC64800DECA95 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,7 +294,7 @@
 				F56D5DF91C855AF6006A7D7A /* Main.storyboard */,
 				F52E1FB01C91F3400052D039 /* Journal.storyboard */,
 				F52E1FB31C91F4440052D039 /* Entry.storyboard */,
-				F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */,
+				F5904AAA1C9E743600829F1B /* FeedbackRecording.storyboard */,
 				F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */,
 				F5E2008E1C8CC64000DECA95 /* Profile.storyboard */,
 				EFDCA1D11C8DE01900BF0393 /* Explore.storyboard */,
@@ -368,7 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */,
+				F5904AAB1C9E743600829F1B /* FeedbackRecording.storyboard in Resources */,
 				EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */,
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
