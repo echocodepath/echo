@@ -14,7 +14,7 @@ struct StyleGuide {
     }
     struct Fonts {
         static func regularFont(size size: CGFloat) -> UIFont {
-            return UIFont(name: "your-font", size: size)!
+            return UIFont(name: "System", size: size)!
         }
         static func demiBoldFont(size size: CGFloat) -> UIFont {
             return UIFont(name: "your-font-demiBold", size: size)!
@@ -28,6 +28,7 @@ struct StyleGuide {
         static let echoLightBrownGray = UIColor(red: 83/255, green: 83/255, blue: 92/255, alpha: 1.0)
         static let echoLightTeal = UIColor(red: 0.3725, green: 0.7137, blue: 0.7804, alpha: 1.0)
         static let echoTranslucentClear = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.7)
+        static let echoDarkerTranslucentClear = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.85)
     }
 }
 
