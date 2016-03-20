@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STO-ih-dpp">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STO-ih-dpp">
                                 <rect key="frame" x="0.0" y="226" width="320" height="51"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxv-DN-e8k">
@@ -42,18 +42,10 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94381953534031415" green="0.94381953534031415" blue="0.94381953534031415" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="2Qn-N9-eld"/>
-                                    <constraint firstAttribute="height" constant="51" id="DfL-Rw-d2w"/>
-                                </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
                                 <rect key="frame" x="0.0" y="277" width="320" height="228"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="bu7-DQ-zYi"/>
-                                    <constraint firstAttribute="height" constant="228" id="usJ-KB-fs1"/>
-                                </constraints>
                                 <color key="separatorColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackClipTableViewCell" rowHeight="45" id="sIf-1u-m2k" customClass="FeedbackClipTableViewCell" customModule="Echo" customModuleProvider="target">
@@ -99,15 +91,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-1p-gYw">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-1p-gYw">
                                 <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVj-Pi-438">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVj-Pi-438">
                                         <rect key="frame" x="135" y="6" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="SFX-tJ-4fd"/>
-                                            <constraint firstAttribute="width" constant="50" id="Y0D-11-uUP"/>
-                                        </constraints>
                                         <state key="normal" title="Record" image="Record Button"/>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtz-7M-SBp">
@@ -116,26 +104,13 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="WrF-Xd-suc"/>
-                                    <constraint firstAttribute="bottom" secondItem="RVj-Pi-438" secondAttribute="bottom" constant="8" id="aYP-lH-gQT"/>
-                                    <constraint firstItem="RVj-Pi-438" firstAttribute="centerX" secondItem="j3a-1p-gYw" secondAttribute="centerX" id="leC-EJ-q80"/>
-                                    <constraint firstAttribute="height" constant="64" id="rjj-jK-XqO"/>
-                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-Pu-gFi">
+                                <rect key="frame" x="0.0" y="64" width="320" height="165"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="STO-ih-dpp" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="6Zi-an-Cki"/>
-                            <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" constant="63" id="DGj-ZJ-N3x"/>
-                            <constraint firstAttribute="trailing" secondItem="AuA-PP-7UM" secondAttribute="trailing" id="DTH-Yn-HoY"/>
-                            <constraint firstItem="j3a-1p-gYw" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="GZR-AT-zFC"/>
-                            <constraint firstAttribute="trailing" secondItem="STO-ih-dpp" secondAttribute="trailing" id="RMv-eQ-4Nx"/>
-                            <constraint firstItem="AuA-PP-7UM" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="SaW-Ev-N1V"/>
-                            <constraint firstItem="AuA-PP-7UM" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="Utc-HH-zPD"/>
-                            <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="j3a-1p-gYw" secondAttribute="bottom" id="ezG-4Q-puc"/>
-                            <constraint firstAttribute="trailing" secondItem="j3a-1p-gYw" secondAttribute="trailing" id="uEf-OF-AJ3"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FEEDBACK MODE" id="fh5-Wy-eBn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5eM-ar-Stn">
@@ -157,6 +132,7 @@
                         <outlet property="tableView" destination="AuA-PP-7UM" id="h8b-jo-cWf"/>
                         <outlet property="timeLeftLabel" destination="mnI-ca-KEb" id="WWw-Xf-bee"/>
                         <outlet property="timeSlider" destination="qCf-Om-VfI" id="YKN-T1-R1p"/>
+                        <outlet property="videoContainerView" destination="w4k-Pu-gFi" id="LjE-E0-lkP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHy-rn-oGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
