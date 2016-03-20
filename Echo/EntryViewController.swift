@@ -32,6 +32,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var videoContainerView: UIView!
     
     @IBAction func onBack(sender: AnyObject) {
         videoPlayer.player?.pause()
@@ -80,6 +81,13 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
         bindVideoControlActions()
         setupButtonToggle()
+        timeSlider.minimumValue = 0
+        timeSlider.maximumValue = 1
+        timeSlider.continuous = true
+//        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
+        
         
         if entry != nil {
             self.title = entry!.valueForKey("title") as! String
@@ -103,7 +111,9 @@ class EntryViewController: UIViewController {
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = elapsedTime
-        timeSlider.value = Float(elapsedTime/100)
+        if !timeSlider.tracking {
+            timeSlider.value = Float(elapsedTime/duration)
+        }
         timeAgoLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
     }
     
@@ -132,9 +142,9 @@ class EntryViewController: UIViewController {
         let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
     }
+    
     private func observeTime(elapsedTime: CMTime) {
         let duration = CMTimeGetSeconds(avPlayer!.currentItem!.duration);
-        timeSlider.maximumValue = Float(duration/100)
         if (isfinite(duration)) {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
@@ -146,14 +156,13 @@ class EntryViewController: UIViewController {
         videoPlayer.showsPlaybackControls = false
         videoPlayer.willMoveToParentViewController(self)
         addChildViewController(videoPlayer)
-        view.addSubview(videoPlayer.view)
+        videoContainerView.addSubview(videoPlayer.view)
         videoPlayer.didMoveToParentViewController(self)
         videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
+        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
+        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
+        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
         avPlayer = AVPlayer(URL: url)
         videoPlayer.player = avPlayer!
         videoPlayer.player!.play()

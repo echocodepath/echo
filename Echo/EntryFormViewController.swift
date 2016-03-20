@@ -94,6 +94,7 @@ class EntryFormViewController: UIViewController {
         super.viewDidLoad()
         generateThumbnail()
         setupIcons()
+        privateSwitch.onTintColor = UIColor.grayColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,7 +102,10 @@ class EntryFormViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     /*
     // MARK: - Navigation
