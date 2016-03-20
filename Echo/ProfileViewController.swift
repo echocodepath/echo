@@ -43,16 +43,23 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }()
         let nameLabel: UILabel = {
             let label = UILabel()
+            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.font = label.font.fontWithSize(14)
+            label.font = UIFont.systemFontOfSize(14, weight: UIFontWeightMedium)
             return label
         }()
         let locationLabel: UILabel = {
             let label = UILabel()
+            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.font = label.font.fontWithSize(10)
             return label
         }()
         let descriptionLabel: UILabel = {
-            let view = UILabel()
-            view.numberOfLines = 0
-            return view
+            let label = UILabel()
+            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.numberOfLines = 0
+            label.font = label.font.fontWithSize(10)
+            return label
         }()
         
         override init(frame: CGRect) {
@@ -65,7 +72,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         let headerHeight: CGFloat = 180
-        let profilePhotoDiameter: CGFloat = 60
+        let profilePhotoDiameter: CGFloat = 100
         let padding: CGFloat = 8
         
         private var scrollConstraint: Constraint?
@@ -79,8 +86,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         private func setupLayout() {
-            backgroundColor = StyleGuide.Colors.echoOrange
-            
+            backgroundColor = UIColor(patternImage: UIImage(named: "bg-common")!)
             addSubview(guideView)
             addSubview(coverPhoto)
             addSubview(profilePhotoFrame)
@@ -105,10 +111,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             profilePhotoFrame.snp_makeConstraints { make in
                 make.centerX.equalTo(self)
                 make.centerY.equalTo(guideView.snp_bottom)
-                make.height.width.equalTo(profilePhotoDiameter + 4)
+                make.height.width.equalTo(profilePhotoDiameter + 6)
             }
             profilePhoto.snp_makeConstraints { make in
-                make.edges.equalTo(profilePhotoFrame).inset(2)
+                make.edges.equalTo(profilePhotoFrame).inset(6)
             }
             nameLabel.snp_makeConstraints { make in
                 make.centerX.equalTo(self)
@@ -116,10 +122,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             locationLabel.snp_makeConstraints { make in
                 make.centerX.equalTo(self)
-                make.top.equalTo(nameLabel.snp_bottom).offset(padding)
+                make.top.equalTo(nameLabel.snp_bottom)
             }
             descriptionLabel.snp_makeConstraints { make in
-                make.top.equalTo(locationLabel.snp_bottom   )
+                make.top.equalTo(locationLabel.snp_bottom).offset(6)
                 make.centerX.equalTo(self)
                 make.left.greaterThanOrEqualTo(self).inset(padding)
                 make.right.lessThanOrEqualTo(self).inset(padding)
@@ -147,6 +153,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             super.layoutSubviews()
             let layer = coverPhoto.layer
             layer.shadowPath = UIBezierPath(rect: coverPhoto.bounds).CGPath
+            profilePhotoFrame.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
+            profilePhotoFrame.layer.borderWidth = 2
+            profilePhotoFrame.layer.masksToBounds = false
+            profilePhotoFrame.layer.borderColor = StyleGuide.Colors.echoLightOrange.CGColor
+            profilePhotoFrame.layer.cornerRadius = profilePhotoFrame.frame.height / 2
+            profilePhoto.clipsToBounds = true
+            
+            profilePhoto.layer.masksToBounds = false
+            profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7).CGColor
+            profilePhoto.layer.cornerRadius = 50
+            profilePhoto.layer.masksToBounds = true
         }
     }
     
@@ -197,7 +214,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: 382 - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+        videosCollectionView.contentInset = UIEdgeInsets(top: 372 - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
     }
     
     override func loadView() {
@@ -254,18 +271,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
             self.header.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
             // Set profile to circle
-            self.header.profilePhotoFrame.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
-            self.header.profilePhotoFrame.layer.borderWidth = 3
-            self.header.profilePhotoFrame.layer.masksToBounds = false
-            self.header.profilePhotoFrame.layer.borderColor = StyleGuide.Colors.echoLightOrange.CGColor
-            self.header.profilePhotoFrame.layer.cornerRadius = self.header.profilePhotoFrame.frame.height / 2
-            self.header.profilePhoto.clipsToBounds = true
 
-//            self.profilePhoto.layer.borderWidth = 4
-            self.header.profilePhoto.layer.masksToBounds = false
-            self.header.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7).CGColor
-            self.header.profilePhoto.layer.cornerRadius = self.header.profilePhoto.frame.height/2
-            self.header.profilePhoto.clipsToBounds = true
         }
         if let coverImage =  self.profileUser!["coverPhotoUrl"] {
             self.header.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
@@ -281,10 +287,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         //if my profile, text view styling and make text view editable
         if isMyProfile == true {
-            let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-            self.header.descriptionLabel.layer.borderWidth = 0.5
-            self.header.descriptionLabel.layer.borderColor = borderColor.CGColor
-            self.header.descriptionLabel.layer.cornerRadius = 5.0
+//            let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+//            self.header.descriptionLabel.layer.borderWidth = 0.5
+//            self.header.descriptionLabel.layer.borderColor = borderColor.CGColor
+//            self.header.descriptionLabel.layer.cornerRadius = 5.0
             if self.profileUser!["description"] == nil {
                 self.header.descriptionLabel.text = DESCRIPTION_PLACEHOLDER
             }
