@@ -187,10 +187,9 @@ class EntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
-        avPlayer!.removeTimeObserver(timeObserver)
+    override func viewWillDisappear(animated: Bool) {
+        avPlayer?.removeTimeObserver(timeObserver)
     }
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

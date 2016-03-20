@@ -558,6 +558,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-nO-XUe">
+                                <rect key="frame" x="20" y="20" width="26" height="24"/>
+                                <state key="normal" image="Back"/>
+                                <connections>
+                                    <action selector="onBack:" destination="Ile-He-cgq" eventType="touchUpInside" id="7yY-ob-DR7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -573,13 +580,8 @@
                             <constraint firstItem="nFr-dF-hWY" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" id="xs4-4b-77A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="J7C-ZE-Ddb">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="zqF-2L-7uW">
-                            <connections>
-                                <action selector="onBack:" destination="Ile-He-cgq" id="7Ku-Bo-PoN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="J7C-ZE-Ddb"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="2I1-lI-8a6" kind="push" identifier="upload-entry" id="cCb-aZ-1j6"/>
                     </connections>
