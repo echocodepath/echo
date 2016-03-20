@@ -91,6 +91,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Echo/FBSDKShareKit.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/SnapKit.framework"
   install_framework "Pods-Echo/Spring.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -101,5 +102,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Echo/FBSDKShareKit.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/SnapKit.framework"
   install_framework "Pods-Echo/Spring.framework"
 fi
