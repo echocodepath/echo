@@ -86,13 +86,17 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true) { () -> Void in
+        //dismissViewControllerAnimated(true) { () -> Void in
             self.invalidateTimersAndFeedback()
             self.avPlayer!.pause()
             FileProcessor.sharedInstance.deleteVideoFile()
             self.audioClips.forEach({ clip in
                 FileProcessor.sharedInstance.deleteFile(clip.path!)
             })
+        //}
+        
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
         }
     }
     
