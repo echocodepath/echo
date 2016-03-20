@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vlD-ZZ-OvJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vlD-ZZ-OvJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -188,7 +188,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32g-uR-r3l" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="159" y="229" width="96" height="66"/>
+                                <rect key="frame" x="159" y="214" width="96" height="66"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaq-ay-P9x" userLabel="Camera Button">
                                         <rect key="frame" x="8" y="0.0" width="80" height="60"/>
@@ -363,7 +363,7 @@
                             <constraint firstAttribute="trailing" secondItem="9sy-PE-HQ8" secondAttribute="trailing" id="BzR-2w-Wc9"/>
                             <constraint firstAttribute="trailing" secondItem="ucB-gB-kbM" secondAttribute="trailing" id="CVu-Mx-PTA"/>
                             <constraint firstItem="ucB-gB-kbM" firstAttribute="top" secondItem="g3l-lI-vt6" secondAttribute="top" id="Fq9-nC-TW4"/>
-                            <constraint firstItem="32g-uR-r3l" firstAttribute="top" secondItem="0lo-AP-h7t" secondAttribute="bottom" constant="65" id="IqA-0x-E6A"/>
+                            <constraint firstItem="32g-uR-r3l" firstAttribute="top" secondItem="0lo-AP-h7t" secondAttribute="bottom" constant="50" id="IqA-0x-E6A"/>
                             <constraint firstItem="0lo-AP-h7t" firstAttribute="top" secondItem="Ls3-At-801" secondAttribute="bottom" constant="8" id="O2e-XJ-a3k"/>
                             <constraint firstItem="9sy-PE-HQ8" firstAttribute="top" secondItem="ucB-gB-kbM" secondAttribute="bottom" id="SHv-gq-lrZ"/>
                             <constraint firstItem="q6e-B4-VFb" firstAttribute="leading" secondItem="g3l-lI-vt6" secondAttribute="leading" constant="20" id="SPt-9Y-DZP"/>
@@ -526,7 +526,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7y-Cs-4Tf" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="237" y="311.5" width="156" height="113"/>
+                                <rect key="frame" x="229" y="311" width="156" height="113"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9q6-Tk-jqQ" userLabel="Upload Photo">
                                         <rect key="frame" x="41" y="15" width="62" height="57"/>
@@ -558,9 +558,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-nO-XUe">
-                                <rect key="frame" x="20" y="20" width="26" height="24"/>
-                                <state key="normal" image="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-nO-XUe">
+                                <rect key="frame" x="374" y="28" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9O0-2F-Dgi"/>
+                                    <constraint firstAttribute="width" constant="20" id="BVB-eZ-pzw"/>
+                                </constraints>
+                                <state key="normal" image="Cancel"/>
                                 <connections>
                                     <action selector="onBack:" destination="Ile-He-cgq" eventType="touchUpInside" id="7yY-ob-DR7"/>
                                 </connections>
@@ -569,13 +573,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="centerX" secondItem="Ysv-6w-hdn" secondAttribute="centerX" id="DC7-sI-Kvu"/>
+                            <constraint firstAttribute="trailing" secondItem="fBv-nO-XUe" secondAttribute="trailing" constant="20" id="F8h-28-d7M"/>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="leading" secondItem="TqA-pU-deG" secondAttribute="trailing" constant="20" id="HjQ-Wa-jTg"/>
                             <constraint firstAttribute="trailing" secondItem="nFr-dF-hWY" secondAttribute="trailing" id="OpN-e9-gRL"/>
                             <constraint firstItem="TqA-pU-deG" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="PAV-45-BhA"/>
                             <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="Rdl-Qc-u4O"/>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="Vyp-Ym-zSE"/>
                             <constraint firstItem="qux-fw-Tzp" firstAttribute="top" secondItem="nFr-dF-hWY" secondAttribute="bottom" id="YjN-Pb-Kn3"/>
-                            <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="leading" secondItem="DO9-xd-j68" secondAttribute="trailing" constant="8" id="fVC-yj-jOT"/>
+                            <constraint firstItem="fBv-nO-XUe" firstAttribute="top" secondItem="IEX-Zc-mmh" secondAttribute="bottom" constant="8" id="egj-aI-O0d"/>
+                            <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="leading" secondItem="DO9-xd-j68" secondAttribute="trailing" id="fVC-yj-jOT"/>
                             <constraint firstItem="nFr-dF-hWY" firstAttribute="top" secondItem="Ysv-6w-hdn" secondAttribute="top" id="o7x-N1-xeF"/>
                             <constraint firstItem="nFr-dF-hWY" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" id="xs4-4b-77A"/>
                         </constraints>
@@ -829,6 +835,7 @@
         <image name="Back" width="26" height="24"/>
         <image name="Camera Big" width="70" height="51"/>
         <image name="Camera Big (Glow)" width="80" height="60"/>
+        <image name="Cancel" width="35" height="35"/>
         <image name="Explore Icon" width="22" height="22"/>
         <image name="Flower" width="100" height="100"/>
         <image name="Inbox Icon" width="22" height="22"/>
