@@ -10,8 +10,147 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 import AFNetworking
+import SnapKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    @IBDesignable
+    class ProfileHeader: UIView {
+        let guideView: UIView = UIView()
+        let favoriteButton: UIButton = {
+            let button = UIButton(type: .System)
+            return button
+        }()
+        let coverPhoto: UIImageView = {
+            let view = UIImageView()
+            view.contentMode = .ScaleAspectFill
+            
+            // TODO: Shadow won't work unless this is set to false
+            // But that will cause the image to not be clipped
+            // Need to add a container view for this for shadowing.
+            view.clipsToBounds = true
+            view.image = UIImage(named: "login_background")
+            return view
+        }()
+        let profilePhotoFrame: UIView = {
+            let view = UIView()
+            return view
+        }()
+        let profilePhoto: UIImageView = {
+            let view = UIImageView()
+            view.contentMode = .ScaleAspectFit
+            return view
+        }()
+        let nameLabel: UILabel = {
+            let label = UILabel()
+            return label
+        }()
+        let locationLabel: UILabel = {
+            let label = UILabel()
+            return label
+        }()
+        let descriptionLabel: UILabel = {
+            let view = UILabel()
+            view.numberOfLines = 0
+            return view
+        }()
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setupLayout()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+        }
+        
+        let headerHeight: CGFloat = 180
+        let profilePhotoDiameter: CGFloat = 60
+        let padding: CGFloat = 8
+        
+        private var scrollConstraint: Constraint?
+        var constraintsToHideFavorite = Array<Constraint>()
+        
+        var scrollOffset: CGFloat = 0 {
+            didSet {
+                scrollConstraint?.updateOffset(scrollOffset)
+                coverPhoto.layer.shadowOpacity = Float(max(0.0, min(0.4, abs(scrollOffset / headerHeight))))
+            }
+        }
+        
+        private func setupLayout() {
+            backgroundColor = StyleGuide.Colors.echoOrange
+            
+            addSubview(guideView)
+            addSubview(coverPhoto)
+            addSubview(profilePhotoFrame)
+            profilePhotoFrame.addSubview(profilePhoto)
+            addSubview(nameLabel)
+            addSubview(locationLabel)
+            addSubview(descriptionLabel)
+            addSubview(favoriteButton)
+            
+            guideView.snp_makeConstraints { make in
+                scrollConstraint = make.top.equalTo(self).constraint
+                make.left.right.equalTo(self)
+                make.height.equalTo(headerHeight)
+            }
+            coverPhoto.snp_makeConstraints { make in
+                make.top.equalTo(self).priority(UILayoutPriorityDefaultHigh - 1)
+                make.height.equalTo(headerHeight).priority(UILayoutPriorityDefaultHigh + 1)
+                make.left.right.equalTo(self)
+                make.bottom.equalTo(guideView).priority(UILayoutPriorityDefaultHigh)
+                make.bottom.greaterThanOrEqualTo(self.snp_top).offset(64).priority(UILayoutPriorityDefaultHigh + 1)
+            }
+            profilePhotoFrame.snp_makeConstraints { make in
+                make.centerX.equalTo(self)
+                make.centerY.equalTo(guideView.snp_bottom)
+                make.height.width.equalTo(profilePhotoDiameter + 4)
+            }
+            profilePhoto.snp_makeConstraints { make in
+                make.edges.equalTo(profilePhotoFrame).inset(2)
+            }
+            nameLabel.snp_makeConstraints { make in
+                make.centerX.equalTo(self)
+                make.top.equalTo(profilePhotoFrame.snp_bottom).offset(padding)
+            }
+            locationLabel.snp_makeConstraints { make in
+                make.centerX.equalTo(self)
+                make.top.equalTo(nameLabel.snp_bottom).offset(padding)
+            }
+            descriptionLabel.snp_makeConstraints { make in
+                make.top.equalTo(locationLabel.snp_bottom   )
+                make.centerX.equalTo(self)
+                make.left.greaterThanOrEqualTo(self).inset(padding)
+                make.right.lessThanOrEqualTo(self).inset(padding)
+                constraintsToHideFavorite.append(make.bottom.equalTo(self).inset(padding).priority(UILayoutPriorityDefaultHigh + 1).constraint)
+            }
+            favoriteButton.snp_makeConstraints { make in
+                make.centerX.equalTo(self)
+                make.top.equalTo(descriptionLabel.snp_bottom).offset(padding)
+                make.bottom.equalTo(self).inset(padding)
+            }
+            
+            constraintsToHideFavorite.forEach({ $0.deactivate() })
+            bringSubviewToFront(coverPhoto)
+            bringSubviewToFront(profilePhotoFrame)
+            
+            let layer = coverPhoto.layer
+            layer.shadowColor = UIColor.blackColor().CGColor
+            layer.shadowOffset = CGSize(width: 0, height: 2)
+            layer.shadowRadius = 5
+            
+            scrollOffset = 0
+        }
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            let layer = coverPhoto.layer
+            layer.shadowPath = UIBezierPath(rect: coverPhoto.bounds).CGPath
+        }
+    }
+    
+    
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
     private var currentUser: PFUser?
@@ -21,32 +160,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var entryQuery: PFQuery?
 
     var entries: [PFObject] = []
-    var headerHeight: CGFloat = 334
-    var bottomHeaderHeight: CGFloat = 178
     var hiddenProfilePhoto = false
     private var lastContentOffset: CGFloat = 0
     
-    @IBOutlet weak var profileBorderView: UIView!
-    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomHeaderHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var profileImageContainerView: UIView!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var topHeaderComponent: UIView!
-    @IBOutlet weak var bottomHeaderComponent: UIView!
-    
     @IBOutlet weak var videosCollectionView: UICollectionView!
-    @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var coverPhoto: UIImageView!
-    @IBOutlet weak var profilePhoto: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    lazy var header: ProfileHeader = ProfileHeader(frame: CGRect.zero)
     
     @IBAction func onBackPress(sender: AnyObject) {
         // Save text to user description
         if let currentUser = self.profileUser {
-            currentUser["description"] = descriptionTextView.text
+            currentUser["description"] = self.header.descriptionLabel.text
             currentUser.saveInBackground()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -74,15 +197,26 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: headerHeight - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+        videosCollectionView.contentInset = UIEdgeInsets(top: 382 - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        view.addSubview(header)
+        header.snp_makeConstraints { make in
+            make.top.left.right.equalTo(view)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let constraint = NSLayoutConstraint(item: topHeaderComponent, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 74)
-        constraint.priority = UILayoutPriorityRequired
-        constraint.active = true
+        videosCollectionView.backgroundColor = UIColor.whiteColor()
+        if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumInteritemSpacing = 2
+            layout.minimumLineSpacing = 2
+        }
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -106,43 +240,40 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         if let name = self.profileUser!["username"] {
-            self.nameLabel.text = name as? String
+            self.header.nameLabel.text = name as? String
         }
         
         if let location = profileUser!["location"] {
-            self.locationLabel.text = location as? String
+            self.header.locationLabel.text = location as? String
         }
         
         if let desc = self.profileUser!["description"] {
-            self.descriptionTextView.text = desc as? String
+            self.header.descriptionLabel.text = desc as? String
         }
         
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
-            self.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
+            self.header.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
             // Set profile to circle
-            self.profileBorderView.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
-            self.profileBorderView.layer.borderWidth = 3
-            self.profileBorderView.layer.masksToBounds = false
-            self.profileBorderView.layer.borderColor = StyleGuide.Colors.echoLightOrange.CGColor
-            self.profileBorderView.layer.cornerRadius = self.profileBorderView.frame.height/2
-            self.profilePhoto.clipsToBounds = true
+            self.header.profilePhotoFrame.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.4)
+            self.header.profilePhotoFrame.layer.borderWidth = 3
+            self.header.profilePhotoFrame.layer.masksToBounds = false
+            self.header.profilePhotoFrame.layer.borderColor = StyleGuide.Colors.echoLightOrange.CGColor
+            self.header.profilePhotoFrame.layer.cornerRadius = self.header.profilePhotoFrame.frame.height / 2
+            self.header.profilePhoto.clipsToBounds = true
 
 //            self.profilePhoto.layer.borderWidth = 4
-            self.profilePhoto.layer.masksToBounds = false
-            self.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7).CGColor
-            self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
-            self.profilePhoto.clipsToBounds = true
+            self.header.profilePhoto.layer.masksToBounds = false
+            self.header.profilePhoto.layer.borderColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.7).CGColor
+            self.header.profilePhoto.layer.cornerRadius = self.header.profilePhoto.frame.height/2
+            self.header.profilePhoto.clipsToBounds = true
         }
         if let coverImage =  self.profileUser!["coverPhotoUrl"] {
-            self.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
+            self.header.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
         }
         
         if isMyProfile! == true || isTeacher! == "false" {
-            favoriteButton.hidden = true
-            headerHeight -= 20
-            bottomHeaderHeight -= 20
-            headerHeightConstraint.constant = headerHeight
-            bottomHeaderHeightConstraint.constant = bottomHeaderHeight
+            self.header.favoriteButton.hidden = true
+            self.header.constraintsToHideFavorite.forEach({ $0.activate() })
         }
         
 //            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
@@ -151,22 +282,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         //if my profile, text view styling and make text view editable
         if isMyProfile == true {
             let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-            descriptionTextView.layer.borderWidth = 0.5
-            descriptionTextView.layer.borderColor = borderColor.CGColor
-            descriptionTextView.layer.cornerRadius = 5.0
-            self.descriptionTextView.delegate = self
+            self.header.descriptionLabel.layer.borderWidth = 0.5
+            self.header.descriptionLabel.layer.borderColor = borderColor.CGColor
+            self.header.descriptionLabel.layer.cornerRadius = 5.0
             if self.profileUser!["description"] == nil {
-                applyPlaceholderStyle(self.descriptionTextView, placeholderText: DESCRIPTION_PLACEHOLDER)
+                self.header.descriptionLabel.text = DESCRIPTION_PLACEHOLDER
             }
-        } else {
-            descriptionTextView.userInteractionEnabled = false
         }
         
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
         fetchEntries()
-        
-        coverPhoto.superview?.sendSubviewToBack(coverPhoto)
     }
     
     // MARK: Entries
@@ -212,10 +338,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-        let kWidth = 100 as! CGFloat
-        let kHeight = 100 as! CGFloat
+        let kWidth = (collectionView.frame.width * 0.3333) - 2
 //        return CGSizeMake(collectionView.bounds.size.width, kHeight)
-        return CGSizeMake(kWidth, kHeight)
+        return CGSizeMake(kWidth, kWidth)
     }
     
     
@@ -237,12 +362,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
-        print(offset)
+        
         if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moving up
             if hiddenProfilePhoto == true && offset > -50 {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.profileBorderView.alpha = 1
+                    self.header.profilePhotoFrame.alpha = 1
                     self.hiddenProfilePhoto = false
                 })
             }
@@ -250,7 +375,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         // moving down
             if hiddenProfilePhoto == false && offset < -125 {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.profileBorderView.alpha = 0
+                    self.header.profilePhotoFrame.alpha = 0
                     self.hiddenProfilePhoto = true
                 })
             }
@@ -258,7 +383,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
         self.lastContentOffset = scrollView.contentOffset.y
         
-        headerHeightConstraint.constant = max(0, min(headerHeight, headerHeight + offset))
+        debugPrint(offset)
+        header.scrollOffset = min(0, offset)
+//        header.scrollConstraint?.updateOffset(max(0, min(headerHeight, headerHeight + offset)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -281,7 +408,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         {
             // check if the only text is the placeholder and remove it if needed
             // unless they've hit the delete button with the placeholder displayed
-            if textView == descriptionTextView && textView.text == DESCRIPTION_PLACEHOLDER
+            if textView == self.header.descriptionLabel && textView.text == DESCRIPTION_PLACEHOLDER
             {
                 if text.utf16.count == 0 // they hit the back button
                 {
@@ -302,7 +429,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func textViewShouldBeginEditing(aTextView: UITextView) -> Bool
     {
-        if aTextView == descriptionTextView && aTextView.text == DESCRIPTION_PLACEHOLDER
+        if aTextView == self.header.descriptionLabel && aTextView.text == DESCRIPTION_PLACEHOLDER
         {
             // move cursor to start
             moveCursorToStart(aTextView)
