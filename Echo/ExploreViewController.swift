@@ -61,10 +61,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private func convertVideoDataToNSURL() {
 
-
-        
         var query = PFQuery(className:"Videos")
-        query.getObjectInBackgroundWithId("7FGlU3Qaw1") {
+        query.getObjectInBackgroundWithId("kh5wfqasij") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
                 print("---------video")
@@ -117,8 +115,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                         self.entries.append(object)
                         self.entriesGridView.reloadData()
                     }
-                    print("These are the entries")
-                    print(self.entries)
+//                    print("These are the entries")
+//                    print(self.entries)
                 }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
@@ -179,6 +177,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
             let teacherImage = self.teachers[indexPath.row]["profilePhotoUrl"] as? String
 
+            print("-------teacher image")
             print(teacherImage)
             
             if let url  = NSURL(string: teacherImage!),
@@ -186,6 +185,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             {
                 cell.teacherImage.alpha = 0
                 cell.teacherImage.image = UIImage(data: data)
+                
+                print(cell.teacherImage.image)
 
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     cell.teacherImage.alpha = 1.0
