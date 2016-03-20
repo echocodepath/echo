@@ -188,7 +188,11 @@ class EntryViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+    }
+    
+    deinit {
         avPlayer?.removeTimeObserver(timeObserver)
+
     }
     // MARK: - Navigation
 
