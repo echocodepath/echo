@@ -22,7 +22,7 @@ class FeedbackSendReceiptViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        studentNameLabel.text = studentName!
+        studentNameLabel.text = "\(studentName!)."
         let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToInbox", userInfo: nil, repeats: true)
         
     }
