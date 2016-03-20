@@ -13,12 +13,20 @@ import AFNetworking
 import SnapKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
+    var videoEdgeInset: CGFloat = 372
     
     @IBDesignable
     class ProfileHeader: UIView {
         let guideView: UIView = UIView()
         let favoriteButton: UIButton = {
             let button = UIButton(type: .System)
+            button.setTitle("Favorite", forState: .Normal)
+            button.backgroundColor = StyleGuide.Colors.echoTeal
+            button.tintColor = UIColor.whiteColor()
+            button.contentEdgeInsets = UIEdgeInsetsMake(4,12,4,12)
+            button.layer.masksToBounds = false
+            button.layer.cornerRadius = 14
+            button.titleLabel?.font = UIFont(name: button.titleLabel!.font.fontName, size: 13)
             return button
         }()
         let coverPhoto: UIImageView = {
@@ -44,21 +52,21 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let nameLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoTranslucentClear
-            label.font = label.font.fontWithSize(14)
-            label.font = UIFont.systemFontOfSize(14, weight: UIFontWeightMedium)
+            label.font = label.font.fontWithSize(18)
+            label.font = UIFont.systemFontOfSize(18, weight: UIFontWeightMedium)
             return label
         }()
         let locationLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoTranslucentClear
-            label.font = label.font.fontWithSize(10)
+            label.font = label.font.fontWithSize(13)
             return label
         }()
         let descriptionLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoTranslucentClear
             label.numberOfLines = 0
-            label.font = label.font.fontWithSize(10)
+            label.font = label.font.fontWithSize(13)
             return label
         }()
         
@@ -101,6 +109,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 make.left.right.equalTo(self)
                 make.height.equalTo(headerHeight)
             }
+            
+            
             coverPhoto.snp_makeConstraints { make in
                 make.top.equalTo(self).priority(UILayoutPriorityDefaultHigh - 1)
                 make.height.equalTo(headerHeight).priority(UILayoutPriorityDefaultHigh + 1)
@@ -131,6 +141,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 make.right.lessThanOrEqualTo(self).inset(padding)
                 constraintsToHideFavorite.append(make.bottom.equalTo(self).inset(padding).priority(UILayoutPriorityDefaultHigh + 1).constraint)
             }
+            
             favoriteButton.snp_makeConstraints { make in
                 make.centerX.equalTo(self)
                 make.top.equalTo(descriptionLabel.snp_bottom).offset(padding)
@@ -214,7 +225,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: 372 - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+        videosCollectionView.contentInset = UIEdgeInsets(top: videoEdgeInset - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
     }
     
     override func loadView() {
@@ -285,7 +296,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 //            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
 //            self.favoriteButton.setImage(UIImage(named: "added-favorite") as UIImage?, forState: .Selected)
         
-        //if my profile, text view styling and make text view editable
         if isMyProfile == true {
 //            let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
 //            self.header.descriptionLabel.layer.borderWidth = 0.5
