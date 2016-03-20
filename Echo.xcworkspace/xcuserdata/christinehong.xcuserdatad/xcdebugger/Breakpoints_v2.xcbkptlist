@@ -90,12 +90,12 @@
                   moduleName = "Echo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/christinehong/Desktop/echo/Echo/InboxDetailsViewController.swift"
-                  timestampString = "480117043.144833"
+                  timestampString = "480122521.570259"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "144"
                   endingLineNumber = "144"
-                  offsetFromSymbolStart = "499">
+                  offsetFromSymbolStart = "408">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "Echo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/christinehong/Desktop/echo/Echo/InboxDetailsViewController.swift"
-                  timestampString = "480117043.14519"
+                  timestampString = "480122521.570444"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "144"
                   endingLineNumber = "144"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
