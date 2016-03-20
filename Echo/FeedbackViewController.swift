@@ -47,7 +47,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
-        timeSlider.tintColor = StyleGuide.Colors.echoTranslucentClear
+        timeSlider.tintColor = UIColor.whiteColor()
         
         tableView.delegate = self
         tableView.dataSource = self
