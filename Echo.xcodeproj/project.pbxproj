@@ -15,6 +15,7 @@
 		B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */; };
 		B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */; };
 		B22EFE061C98B1DC0048EF5E /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */; };
+		B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F21C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -73,6 +74,7 @@
 		B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFeedbackViewController.swift; sourceTree = "<group>"; };
 		B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewCell.swift; sourceTree = "<group>"; };
 		B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		B233F6F21C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSendReceiptViewController.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
 				F52E1FB51C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift */,
 				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
+				B233F6F21C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift */,
 			);
 			name = "Feedback Request Flow";
 			sourceTree = "<group>";
@@ -295,8 +298,8 @@
 			children = (
 				F56D5DF91C855AF6006A7D7A /* Main.storyboard */,
 				F52E1FB01C91F3400052D039 /* Journal.storyboard */,
-				F52E1FB31C91F4440052D039 /* Entry.storyboard */,
 				F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */,
+				F52E1FB31C91F4440052D039 /* Entry.storyboard */,
 				F5904AAA1C9E743600829F1B /* FeedbackRecording.storyboard */,
 				F56D5DFE1C855AF6006A7D7A /* LaunchScreen.storyboard */,
 				F5E2008E1C8CC64000DECA95 /* Profile.storyboard */,
@@ -455,6 +458,7 @@
 				B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */,
+				B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */,
 				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
