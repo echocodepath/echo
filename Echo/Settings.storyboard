@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qoy-R7-xA4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qoy-R7-xA4">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Settings View Controller-->
@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="leM-1W-iTb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jja-3j-BMF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-common" translatesAutoresizingMaskIntoConstraints="NO" id="NAF-7l-rB4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-common" translatesAutoresizingMaskIntoConstraints="NO" id="NAF-7l-rB4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGU-tL-aOi">
                                 <rect key="frame" x="20" y="25" width="20" height="20"/>
@@ -27,8 +27,8 @@
                                     <action selector="onBack:" destination="Qoy-R7-xA4" eventType="touchUpInside" id="AO8-YS-BOb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fF-dO-bxm">
-                                <rect key="frame" x="136" y="240" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fF-dO-bxm">
+                                <rect key="frame" x="183" y="353" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="onLogoutPress:" destination="Qoy-R7-xA4" eventType="touchUpInside" id="Dil-Hd-03C"/>
@@ -36,7 +36,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="leM-1W-iTb" firstAttribute="top" secondItem="NAF-7l-rB4" secondAttribute="bottom" id="5Gw-Yb-j7a"/>
+                            <constraint firstItem="8fF-dO-bxm" firstAttribute="centerX" secondItem="Jja-3j-BMF" secondAttribute="centerX" id="Byc-5z-1fI"/>
+                            <constraint firstAttribute="trailing" secondItem="NAF-7l-rB4" secondAttribute="trailing" id="GQW-ar-QMN"/>
+                            <constraint firstItem="8fF-dO-bxm" firstAttribute="centerY" secondItem="Jja-3j-BMF" secondAttribute="centerY" id="RGH-h8-7ym"/>
+                            <constraint firstItem="NAF-7l-rB4" firstAttribute="top" secondItem="Jja-3j-BMF" secondAttribute="top" id="gyY-2a-ZoL"/>
+                            <constraint firstItem="NAF-7l-rB4" firstAttribute="leading" secondItem="Jja-3j-BMF" secondAttribute="leading" id="tuP-wX-Si6"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAt-Wg-9S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
