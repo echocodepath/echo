@@ -387,9 +387,27 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             videoPlayer.player?.pause()
             FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
-                case "saveFeedback":
-                    let vc = segue.destinationViewController as! EntryFeedbackViewController
-                    vc.entry = entry
+//                case "saveFeedback":
+//                    let nc = segue.destinationViewController as! UINavigationController
+//                    let vc = nc.topViewController as! FeedbackViewController
+//                    vc.entry = self.entry
+//                    let feedbackQuery = PFQuery(className:"Feedback")
+//                    feedbackQuery.whereKey("entry_id", equalTo: self.entry!)
+//                    feedbackQuery.findObjectsInBackgroundWithBlock {
+//                        (objects: [PFObject]?, error: NSError?) -> Void in
+//                        if error == nil {
+//                            if let objects = objects {
+//                                for object in objects {
+//                                    vc.feedback = object
+//                                    self.navigationController?.pushViewController(vc, animated: true)
+//                                    return
+//                                }
+//                            }
+//                        } else {
+//                            print("Error: \(error!) \(error!.userInfo)")
+//                        }
+//                    }
+
                 default:
                     return
             }
