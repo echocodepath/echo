@@ -264,8 +264,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.header.locationLabel.text = location as? String
         }
         
-        if let desc = self.profileUser!["description"] {
-            self.header.descriptionLabel.text = desc as? String
+        if self.profileUser!["description"] != nil {
+            self.header.descriptionLabel.text = self.profileUser!["description"] as? String
         }
         
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
