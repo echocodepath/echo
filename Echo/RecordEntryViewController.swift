@@ -16,16 +16,15 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
 
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.translucent = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -95,9 +94,6 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.translucent = false
         if segue.identifier == "upload-entry" {
             let controller = segue.destinationViewController as! EntryFormViewController
             controller.video = sender as? NSURL
