@@ -12,7 +12,6 @@ class InboxCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var inboxTextLabel: UILabel!
-    @IBOutlet weak var arrowLabel: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
