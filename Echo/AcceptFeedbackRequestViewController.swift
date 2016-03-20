@@ -52,6 +52,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         setupButtonToggle()
         tableView.delegate = self
         tableView.dataSource = self
+        timeSlider.minimumValue = 0
+        timeSlider.maximumValue = 1
+        timeSlider.continuous = true
+        //        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.tintColor = UIColor.whiteColor()
+        
     }
     
     func videoPlaybackDidUnPause() {
@@ -255,6 +262,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 self.avPlayer!.play()
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
+            self.playBtn.selected = true
         }
     }
     
@@ -305,13 +313,14 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = elapsedTime
-        timeSlider.value = Float(elapsedTime/100)
+        if !timeSlider.tracking {
+            timeSlider.value = Float(elapsedTime/duration)
+        }
         timeLeftLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
     }
     
     private func observeTime(elapsedTime: CMTime) {
         let duration = CMTimeGetSeconds(avPlayer!.currentItem!.duration);
-        timeSlider.maximumValue = Float(duration/100)
         if (isfinite(duration)) {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
@@ -387,27 +396,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             videoPlayer.player?.pause()
             FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
-//                case "saveFeedback":
-//                    let nc = segue.destinationViewController as! UINavigationController
-//                    let vc = nc.topViewController as! FeedbackViewController
-//                    vc.entry = self.entry
-//                    let feedbackQuery = PFQuery(className:"Feedback")
-//                    feedbackQuery.whereKey("entry_id", equalTo: self.entry!)
-//                    feedbackQuery.findObjectsInBackgroundWithBlock {
-//                        (objects: [PFObject]?, error: NSError?) -> Void in
-//                        if error == nil {
-//                            if let objects = objects {
-//                                for object in objects {
-//                                    vc.feedback = object
-//                                    self.navigationController?.pushViewController(vc, animated: true)
-//                                    return
-//                                }
-//                            }
-//                        } else {
-//                            print("Error: \(error!) \(error!.userInfo)")
-//                        }
-//                    }
-
+                case "SaveFeedbackReceiptSegue":
+                let destinationvc = segue.destinationViewController as! FeedbackSendReceiptViewController
+                let username = entry?.valueForKey("username")
+                print("NAME HERE!! \(username)")
+                    
                 default:
                     return
             }
