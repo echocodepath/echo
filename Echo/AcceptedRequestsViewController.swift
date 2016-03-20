@@ -40,11 +40,11 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     func fetchRequests(){
         inboxUser = PFUser.currentUser()
         inboxUser?.fetchInBackground()
-        do {
-            try inboxUser?.fetch()
-        } catch {
-            print("Error fetching inbox user")
-        }
+//        do {
+//            try inboxUser?.fetch()
+//        } catch {
+//            print("Error fetching inbox user")
+//        }
         if let rejected_requests = inboxUser!["requests_accepted"] {
             self.acceptedRequests = rejected_requests as! Array<Dictionary<String,String>>
         }
@@ -69,11 +69,14 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
             let entry_id = id as String
             var title = ""
             let entryQuery = PFQuery(className:"Entry")
-            do {
-                let entry = try entryQuery.getObjectWithId(entry_id)
-                title = entry["title"] as! String
-            } catch {
-                print("Error getting entry from inbox")
+            entryQuery.getObjectInBackgroundWithId(entry_id) {
+                (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
+                    let entry = object
+                    title = entry!["title"] as! String
+                } else {
+                    print(error)
+                }
             }
             
             let student_id = request["user_id"]! as String
@@ -116,8 +119,43 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
         }
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedRequest = acceptedRequests[indexPath.row]
+        let selectedId = selectedRequest["entry_id"]
+        let entryQuery = PFQuery(className:"Entry")
+        entryQuery.getObjectInBackgroundWithId(selectedId!) {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil && object != nil {
+                let selectedEntry = object!
+                let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
+                let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+                feedbackVC.entry = selectedEntry
+                
+                let feedbackQuery = PFQuery(className:"Feedback")
+                feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
+                entryQuery.findObjectsInBackgroundWithBlock {
+                    (objects: [PFObject]?, error: NSError?) -> Void in
+                    if error == nil {
+                        if let objects = objects {
+                            for object in objects {
+                                feedbackVC.feedback = object
+                                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                                self.navigationController?.pushViewController(feedbackVC, animated: true)
+                                return
+                            }
+                        }
+                    } else {
+                        print("Error: \(error!) \(error!.userInfo)")
+                    }
+                }
+            } else {
+                print(error)
+            }
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -125,6 +163,6 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

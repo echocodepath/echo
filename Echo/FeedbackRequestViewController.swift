@@ -26,11 +26,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         currentUser = PFUser.currentUser()
-        do {
-            try currentUser!.fetch()
-        } catch {
-            
-        }
+        currentUser?.fetchInBackground()
         
         tableView.dataSource = self
         tableView.delegate = self

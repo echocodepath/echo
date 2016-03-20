@@ -39,11 +39,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         super.viewDidLoad()
         
         currentUser = PFUser.currentUser()
-        do {
-            try currentUser!.fetch()
-        } catch {
-        }
-        
+        currentUser?.fetchInBackground()
+
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
             convertVideoDataToNSURL()
@@ -263,6 +260,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
+//            videoPlayer.player?.pause()
+//            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "feedbackSentSegue":
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController

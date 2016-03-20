@@ -39,11 +39,6 @@ class RejectedRequestsViewController: UIViewController, UITableViewDelegate, UIT
     func fetchRequests(){
         inboxUser = PFUser.currentUser()
         inboxUser?.fetchInBackground()
-        do {
-            try inboxUser?.fetch()
-        } catch {
-            print("Error fetching inbox user")
-        }
         if let rejected_requests = inboxUser!["requests_rejected"] {
             self.rejectedRequests = rejected_requests as! Array<Dictionary<String,String>>
         }
