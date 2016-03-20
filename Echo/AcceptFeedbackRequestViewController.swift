@@ -374,6 +374,16 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if avPlayer != nil {
+            let playerIsPlaying:Bool = avPlayer?.rate > 0
+            if playerIsPlaying == true {
+            } else {
+                playBtn.selected = true
+            }
+        }
+        
+    }
 
     deinit {
         avPlayer!.removeTimeObserver(timeObserver)
