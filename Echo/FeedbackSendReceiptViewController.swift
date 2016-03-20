@@ -9,21 +9,21 @@
 import UIKit
 
 class FeedbackSendReceiptViewController: UIViewController {
-    private var studentName : String?
+    var studentName : String?
 
     @IBOutlet weak var studentNameLabel: UILabel!
 
     func navToInbox(){
         let storyboard = UIStoryboard(name: "Inbox", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("InboxViewController") as! UINavigationController
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc  = storyboard.instantiateInitialViewController()
+        self.presentViewController(vc!, animated: true, completion: nil)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToInbox:", userInfo: nil, repeats: true)
+        studentNameLabel.text = "\(studentName!)."
+        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToInbox", userInfo: nil, repeats: true)
         
     }
 
