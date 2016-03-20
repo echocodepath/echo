@@ -396,7 +396,7 @@
                                         <rect key="frame" x="23" y="67" width="368" height="213"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Hey Christine! My Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMf-Rw-yti">
-                                                <rect key="frame" x="23" y="99.5" width="322" height="14.5"/>
+                                                <rect key="frame" x="23" y="99" width="322" height="14.5"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -440,14 +440,22 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRO-9p-1NV">
                                         <rect key="frame" x="16" y="16" width="65" height="14.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqk-Rb-5cB">
+                                        <rect key="frame" x="340" y="16" width="63" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="zqk-Rb-5cB" firstAttribute="centerY" secondItem="4ep-DK-n72" secondAttribute="centerY" id="MqX-uG-PPR"/>
                                     <constraint firstItem="tRO-9p-1NV" firstAttribute="centerY" secondItem="4ep-DK-n72" secondAttribute="centerY" id="YJu-Z5-sLz"/>
                                     <constraint firstAttribute="height" constant="46.5" id="pcD-IG-Yv9"/>
+                                    <constraint firstAttribute="trailing" secondItem="zqk-Rb-5cB" secondAttribute="trailing" constant="11" id="qc4-Nl-Mdz"/>
                                     <constraint firstItem="tRO-9p-1NV" firstAttribute="leading" secondItem="4ep-DK-n72" secondAttribute="leading" constant="16" id="xSs-OC-aAv"/>
                                 </constraints>
                             </view>
@@ -477,6 +485,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="acceptButton" destination="yxn-bY-tCY" id="GZ0-Sw-LvE"/>
+                        <outlet property="createdAtLabel" destination="zqk-Rb-5cB" id="5Ep-RW-dJC"/>
                         <outlet property="locationLabel" destination="ft0-lG-TDp" id="dm5-hr-6jE"/>
                         <outlet property="messageView" destination="3Tw-aX-IiX" id="wMJ-OC-rYa"/>
                         <outlet property="messageWrapperView" destination="fXX-ZO-xqC" id="dLQ-fS-c1C"/>
@@ -487,6 +496,7 @@
                         <outlet property="userImageView" destination="y7O-Yf-bPp" id="5GT-ek-hSe"/>
                         <outlet property="usernameLabel" destination="HKr-Ak-AzQ" id="z5o-aw-cpY"/>
                         <outlet property="videoContainerView" destination="dsv-iv-OR5" id="8QT-G7-hPI"/>
+                        <outlet property="videoTitleView" destination="4ep-DK-n72" id="cA1-li-DAF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ow6-gr-taZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

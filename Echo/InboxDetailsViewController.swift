@@ -21,9 +21,11 @@ class InboxDetailsViewController: UIViewController {
     var userId: String? // id of user who sent request
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var videoTitleView: UIView!
     @IBOutlet weak var messageWrapperView: UIView!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -31,6 +33,7 @@ class InboxDetailsViewController: UIViewController {
     @IBOutlet weak var requestBodyLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     
+    @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var videoContainerView: UIView!
@@ -66,6 +69,7 @@ class InboxDetailsViewController: UIViewController {
                 self.convertVideoDataToNSURL()
                 self.titleLabel.text = self.currentEntry!["title"] as? String
                 self.userId = self.currentEntry!["user_id"] as? String
+                self.createdAtLabel.text = DateManager.getFriendlyTime(currentEntry?.createdAt)
                 self.setUserLabels()
             } else {
                 print(error)
