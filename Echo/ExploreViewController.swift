@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import AVKit
+import AVFoundation
 
 class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -16,13 +18,16 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var entriesGridView: UICollectionView!
     
     var refreshControlTableView: UIRefreshControl!
+
+    var controller: AVPlayerViewController?
     
     var teachers: [PFUser] = []
     var entries: [PFObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        convertVideoDataToNSURL()
         
         teachersGridView.delegate   = self
         teachersGridView.dataSource = self
@@ -39,6 +44,37 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
         entriesGridView?.insertSubview(refreshControlTableView, atIndex: 0)
     }
+    
+    
+    
+    private func convertVideoDataToNSURL() {
+
+        var url: NSURL?
+        
+        var query = PFQuery(className:"Videos")
+        query.getObjectInBackgroundWithId("7FGlU3Qaw1") {
+            (Video: PFObject?, error: NSError?) -> Void in
+            if error == nil && Video != nil {
+                print("---------video")
+                print(Video)
+
+                let rawData: NSData?
+                let videoData = Video!["video"] as! PFFile
+
+                do {
+                    rawData = try videoData.getData()
+                    url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
+                    self.playVideo(url!)
+                } catch {
+                    
+                }
+                
+            } else {
+                print(error)
+            }
+        }
+    }
+    
     
     func fetchInstructors(){
         let teacherQuery = PFUser.query()!
@@ -84,6 +120,30 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         print("I just got refreshed")
         
         self.refreshControlTableView.endRefreshing()
+    }
+    
+    // MARK: Video
+    private func playVideo(url: NSURL){
+        
+        controller = AVPlayerViewController()
+        controller!.willMoveToParentViewController(self)
+        addChildViewController(controller!)
+        view.addSubview(controller!.view)
+        controller!.didMoveToParentViewController(self)
+        controller!.view.translatesAutoresizingMaskIntoConstraints = false
+        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
+        
+        
+        
+        let player = AVPlayer(URL: url)
+        controller!.player = player
+        controller!.player!.play()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
