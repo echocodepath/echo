@@ -235,19 +235,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Oy-VA-eAC">
                                 <rect key="frame" x="56" y="236" width="209.5" height="96"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hooray!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA3-Cr-srf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hooray!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZA3-Cr-srf">
                                         <rect key="frame" x="78" y="20" width="54" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Christine." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ml-5n-ySx">
-                                        <rect key="frame" x="75" y="59" width="62" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christine." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ml-5n-ySx">
+                                        <rect key="frame" x="74" y="59" width="62" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your feedback was sent to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-ok-vSg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your feedback was sent to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN9-ok-vSg">
                                         <rect key="frame" x="15" y="39" width="181" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,8 +256,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="1Ml-5n-ySx" firstAttribute="centerX" secondItem="0Oy-VA-eAC" secondAttribute="centerX" id="4Fg-Or-5eU"/>
+                                    <constraint firstItem="KN9-ok-vSg" firstAttribute="centerX" secondItem="0Oy-VA-eAC" secondAttribute="centerX" id="6vB-9I-qss"/>
+                                    <constraint firstItem="1Ml-5n-ySx" firstAttribute="top" secondItem="KN9-ok-vSg" secondAttribute="bottom" constant="2" id="Y2j-NH-3o1"/>
+                                    <constraint firstItem="ZA3-Cr-srf" firstAttribute="centerX" secondItem="0Oy-VA-eAC" secondAttribute="centerX" id="crm-dt-ja7"/>
+                                    <constraint firstItem="ZA3-Cr-srf" firstAttribute="top" secondItem="0Oy-VA-eAC" secondAttribute="top" constant="20" id="hu3-et-LGH"/>
                                     <constraint firstAttribute="height" constant="96" id="sDv-pi-D9a"/>
                                     <constraint firstAttribute="width" constant="209.5" id="xvu-Fr-DFb"/>
+                                    <constraint firstItem="KN9-ok-vSg" firstAttribute="top" secondItem="ZA3-Cr-srf" secondAttribute="bottom" constant="1" id="ykJ-Sc-TJf"/>
                                 </constraints>
                             </view>
                         </subviews>
