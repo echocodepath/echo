@@ -228,7 +228,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Send Receipt BG" translatesAutoresizingMaskIntoConstraints="NO" id="wq9-RR-3lQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Send Receipt BG" translatesAutoresizingMaskIntoConstraints="NO" id="wq9-RR-3lQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -263,8 +263,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QxQ-sT-sdS" firstAttribute="top" secondItem="wq9-RR-3lQ" secondAttribute="bottom" id="D3b-Gh-yxQ"/>
                             <constraint firstItem="0Oy-VA-eAC" firstAttribute="centerY" secondItem="nvD-uX-zr2" secondAttribute="centerY" id="Q83-vy-wma"/>
+                            <constraint firstItem="wq9-RR-3lQ" firstAttribute="leading" secondItem="nvD-uX-zr2" secondAttribute="leading" id="Xbi-5Q-XdW"/>
                             <constraint firstItem="0Oy-VA-eAC" firstAttribute="centerX" secondItem="nvD-uX-zr2" secondAttribute="centerX" id="k6U-5d-y0e"/>
+                            <constraint firstAttribute="trailing" secondItem="wq9-RR-3lQ" secondAttribute="trailing" id="lmf-re-Wml"/>
+                            <constraint firstItem="wq9-RR-3lQ" firstAttribute="top" secondItem="nvD-uX-zr2" secondAttribute="top" id="zBV-D0-tuq"/>
                         </constraints>
                     </view>
                     <connections>
