@@ -21,17 +21,22 @@ class InboxDetailsViewController: UIViewController {
     var userId: String? // id of user who sent request
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var videoTitleView: UIView!
+    @IBOutlet weak var messageWrapperView: UIView!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var requestBodyLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     
+    @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var videoContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,9 @@ class InboxDetailsViewController: UIViewController {
         inboxUser?.fetchInBackground()
         
         usernameLabel.textColor = StyleGuide.Colors.echoTeal
+        messageView.backgroundColor = StyleGuide.Colors.echoFormGray
+        messageWrapperView.layer.borderWidth = 1
+        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
@@ -61,6 +69,7 @@ class InboxDetailsViewController: UIViewController {
                 self.convertVideoDataToNSURL()
                 self.titleLabel.text = self.currentEntry!["title"] as? String
                 self.userId = self.currentEntry!["user_id"] as? String
+                self.createdAtLabel.text = DateManager.getFriendlyTime(currentEntry?.createdAt)
                 self.setUserLabels()
             } else {
                 print(error)
@@ -106,14 +115,13 @@ class InboxDetailsViewController: UIViewController {
         controller = AVPlayerViewController()
         controller!.willMoveToParentViewController(self)
         addChildViewController(controller!)
-        view.addSubview(controller!.view)
+        videoContainerView.addSubview(controller!.view)
         controller!.didMoveToParentViewController(self)
         controller!.view.translatesAutoresizingMaskIntoConstraints = false
-        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
+        controller!.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
+        controller!.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
+        controller!.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
+        controller!.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
         
         let player = AVPlayer(URL: url)
         controller!.player = player
@@ -201,11 +209,15 @@ class InboxDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        controller!.player?.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
 
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-//            videoPlayer.player?.pause()
-//            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "AcceptFeedbackSegue":
                     let navController = segue.destinationViewController as! UINavigationController
