@@ -90,7 +90,7 @@
                   moduleName = "Echo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/christinehong/Desktop/echo/Echo/InboxDetailsViewController.swift"
-                  timestampString = "480142719.085928"
+                  timestampString = "480149890.955879"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "144"
@@ -105,7 +105,7 @@
                   moduleName = "Echo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/christinehong/Desktop/echo/Echo/InboxDetailsViewController.swift"
-                  timestampString = "480142719.086105"
+                  timestampString = "480149890.95605"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "144"
@@ -310,7 +310,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Echo/AcceptedRequestsViewController.swift"
@@ -326,7 +326,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Echo/AcceptedRequestsViewController.swift"
@@ -336,6 +336,22 @@
             startingLineNumber = "132"
             endingLineNumber = "132"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Echo/AcceptFeedbackRequestViewController.swift"
+            timestampString = "480148920.909341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
+            landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
