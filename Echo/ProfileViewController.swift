@@ -13,7 +13,7 @@ import AFNetworking
 import SnapKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
-    var videoEdgeInset: CGFloat = 372
+    var videoEdgeInset: CGFloat = 396
     
     @IBDesignable
     class ProfileHeader: UIView {
@@ -225,7 +225,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videosCollectionView.contentInset = UIEdgeInsets(top: videoEdgeInset - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+        if header.scrollOffset == 0 {
+            videosCollectionView.contentInset = UIEdgeInsets(top: header.bounds.height + 2, left: 0, bottom: 0, right: 0)
+        } else {
+            videosCollectionView.contentInset = UIEdgeInsets(top: videoEdgeInset - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
+        }
     }
     
     override func loadView() {
@@ -242,8 +246,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         videosCollectionView.backgroundColor = UIColor.whiteColor()
         if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.minimumInteritemSpacing = 2
-            layout.minimumLineSpacing = 2
+            layout.minimumInteritemSpacing = 1
+            layout.minimumLineSpacing = 1
         }
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -354,7 +358,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-        let kWidth = (collectionView.frame.width * 0.3333) - 2
+        let kWidth = (collectionView.frame.width * 0.3333) - 1
 //        return CGSizeMake(collectionView.bounds.size.width, kHeight)
         return CGSizeMake(kWidth, kWidth)
     }
@@ -399,9 +403,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
         self.lastContentOffset = scrollView.contentOffset.y
         
-        debugPrint(offset)
         header.scrollOffset = min(0, offset)
-//        header.scrollConstraint?.updateOffset(max(0, min(headerHeight, headerHeight + offset)))
     }
     
     override func didReceiveMemoryWarning() {
