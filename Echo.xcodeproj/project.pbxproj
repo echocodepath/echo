@@ -199,7 +199,6 @@
 				F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */,
 				F52E1FB51C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift */,
 				F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */,
-				EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */,
 			);
 			name = "Feedback Request Flow";
 			sourceTree = "<group>";
@@ -283,6 +282,7 @@
 				F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */,
 				EFDCA1D71C8DF58B00BF0393 /* InboxViewController.swift */,
 				F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */,
+				EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */,
 				F501EDB71C97AAC0003581A5 /* SentViewController.swift */,
 				F501EDBC1C97C2EE003581A5 /* AcceptedRequestsViewController.swift */,
 				F501EDBE1C97C2FC003581A5 /* RejectedRequestsViewController.swift */,

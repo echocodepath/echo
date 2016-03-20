@@ -134,7 +134,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
                 
                 let feedbackQuery = PFQuery(className:"Feedback")
                 feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
-                entryQuery.findObjectsInBackgroundWithBlock {
+                feedbackQuery.findObjectsInBackgroundWithBlock {
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     if error == nil {
                         if let objects = objects {
