@@ -120,6 +120,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="onSaveFeedback:" destination="pZo-Ig-Fpy" eventType="touchUpInside" id="hAm-Tq-A2D"/>
+                                    <segue destination="cs4-Wc-VwW" kind="modal" identifier="saveFeedback" id="3te-oI-kKt"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -138,6 +139,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHy-rn-oGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="248"/>
+        </scene>
+        <!--Inbox-->
+        <scene sceneID="EDY-aM-YQq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Inbox" id="cs4-Wc-VwW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jJu-1A-hvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985.5" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sai-j8-oNA">
