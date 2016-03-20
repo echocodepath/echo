@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 
     @IBOutlet weak var teachersGridView: UICollectionView!
     @IBOutlet weak var entriesGridView: UICollectionView!
+    @IBOutlet weak var coverImageView: UIImageView!
     
     var refreshControlTableView: UIRefreshControl!
 
@@ -23,6 +24,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var teachers: [PFUser] = []
     var entries: [PFObject] = []
+    
+    var videoUrl: NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +48,20 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         entriesGridView?.insertSubview(refreshControlTableView, atIndex: 0)
     }
     
+    @IBAction func onImageTap(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            
+            self.coverImageView.alpha = 0.0
+            self.playVideo(self.videoUrl!)
+            
+            }, completion: nil)
+    }
+    
     
     
     private func convertVideoDataToNSURL() {
 
-        var url: NSURL?
+
         
         var query = PFQuery(className:"Videos")
         query.getObjectInBackgroundWithId("7FGlU3Qaw1") {
@@ -63,8 +75,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 
                 do {
                     rawData = try videoData.getData()
-                    url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-                    self.playVideo(url!)
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
+//                    self.playVideo(self.videoUrl!)
                 } catch {
                     
                 }
