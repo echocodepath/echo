@@ -29,6 +29,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var audioUrls:[NSURL] = []
     var playerRateBeforeSeek: Float = 0
 
+    @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -42,6 +43,12 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         loadAudioClips()
         setupViewProperties()
         setupButtonToggle()
+        timeSlider.minimumValue = 0
+        timeSlider.maximumValue = 1
+        timeSlider.continuous = true
+        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.tintColor = StyleGuide.Colors.echoTranslucentClear
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -174,7 +181,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        videoPlayer.player!.play()
+        videoPlayer.player?.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
         playBtn.selected = false
@@ -247,14 +254,14 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         videoPlayer.showsPlaybackControls = false
         videoPlayer.willMoveToParentViewController(self)
         addChildViewController(videoPlayer)
-        view.addSubview(videoPlayer.view)
+        videoContainerView.addSubview(videoPlayer.view)
         videoPlayer.didMoveToParentViewController(self)
         videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
+        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
+        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
+        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
+        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
+
         avPlayer = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
         avPlayer!.replaceCurrentItemWithPlayerItem(playerItem)
@@ -263,15 +270,18 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
                 self.observeTime(elapsedTime)
         }
-//        
-//        videoPlayer.player = avPlayer
-//        videoPlayer.player!.play()
-//        self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
+        
+        videoPlayer.player = avPlayer
+        videoPlayer.player!.play()
+        self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
     }
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = elapsedTime
-        timeSlider.value = Float(elapsedTime/100)
+        if !timeSlider.tracking {
+            timeSlider.value = Float(elapsedTime/duration)
+            print(elapsedTime/duration)
+        }
         timeLeftLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
     }
     
