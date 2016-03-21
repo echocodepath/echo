@@ -277,7 +277,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2N2-v7-h2y">
-                                                    <rect key="frame" x="15" y="9" width="44" height="44.5"/>
+                                                    <rect key="frame" x="17" y="12.5" width="44" height="44.5"/>
                                                     <color key="backgroundColor" red="0.38675820709999997" green="0.38675820709999997" blue="0.38675820709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -286,9 +286,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKh-Mt-D3r">
-                                                    <rect key="frame" x="67" y="4" width="308" height="53"/>
+                                                    <rect key="frame" x="76" y="11" width="308" height="44.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="52.5" id="Shg-a0-nbz"/>
+                                                        <constraint firstAttribute="height" constant="44.5" id="Shg-a0-nbz"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="308" id="bG8-ih-XuM"/>
                                                         <constraint firstAttribute="width" constant="308" id="e1d-bQ-4Eg"/>
                                                     </constraints>
@@ -305,13 +305,13 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="2N2-v7-h2y" firstAttribute="centerY" secondItem="Pt2-te-Cux" secondAttribute="centerY" id="3Qw-Dn-BwL"/>
                                                 <constraint firstAttribute="bottom" secondItem="gQO-QR-scG" secondAttribute="bottom" constant="11" id="BEG-fP-c0J"/>
-                                                <constraint firstItem="2N2-v7-h2y" firstAttribute="top" secondItem="Pt2-te-Cux" secondAttribute="top" constant="9" id="Bd8-ms-7c5"/>
-                                                <constraint firstAttribute="bottom" secondItem="cKh-Mt-D3r" secondAttribute="bottom" constant="12.5" id="JhP-tM-p4Z"/>
+                                                <constraint firstAttribute="bottom" secondItem="cKh-Mt-D3r" secondAttribute="bottom" constant="14" id="JhP-tM-p4Z"/>
                                                 <constraint firstAttribute="trailing" secondItem="gQO-QR-scG" secondAttribute="trailing" constant="5" id="O2u-R6-XBR"/>
-                                                <constraint firstItem="cKh-Mt-D3r" firstAttribute="leading" secondItem="2N2-v7-h2y" secondAttribute="trailing" constant="8" id="X6D-3O-yXw"/>
-                                                <constraint firstItem="2N2-v7-h2y" firstAttribute="leading" secondItem="Pt2-te-Cux" secondAttribute="leading" constant="15" id="ace-BQ-TYy"/>
-                                                <constraint firstItem="cKh-Mt-D3r" firstAttribute="top" secondItem="Pt2-te-Cux" secondAttribute="top" constant="4" id="efm-TT-tl5"/>
+                                                <constraint firstItem="cKh-Mt-D3r" firstAttribute="leading" secondItem="2N2-v7-h2y" secondAttribute="trailing" constant="15" id="X6D-3O-yXw"/>
+                                                <constraint firstItem="2N2-v7-h2y" firstAttribute="leading" secondItem="Pt2-te-Cux" secondAttribute="leading" constant="17" id="crN-Zp-W1r"/>
+                                                <constraint firstItem="cKh-Mt-D3r" firstAttribute="top" secondItem="Pt2-te-Cux" secondAttribute="top" constant="11" id="efm-TT-tl5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

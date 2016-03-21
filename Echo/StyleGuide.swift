@@ -44,19 +44,18 @@ struct Utils {
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
     
-    static func createNormalInboxText(name: String, title: String) -> NSAttributedString{
+    static func createNormalInboxText(name: String, title: String) -> NSAttributedString {
         let nameLength = name.characters.count
         let titleLength = title.characters.count
-        // Create the attributed string
         let startingString = "\(name) would like feedback on\n\(title)."
         let totalLength = startingString.characters.count
-        let startingTitlePoint = totalLength - titleLength
+        let startingTitlePoint = totalLength - titleLength - 1
         let mutableString = NSMutableAttributedString(
             string: startingString,
             attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightMedium),
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
             range: NSRange(
                 location: 0,
                 length: nameLength))
@@ -67,17 +66,52 @@ struct Utils {
                 length: nameLength))
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightMedium),
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
             range: NSRange(
-                location: startingTitlePoint - 1,
+                location: startingTitlePoint,
                 length: titleLength))
 
         mutableString.addAttribute(NSForegroundColorAttributeName,
             value: StyleGuide.Colors.echoDarkGray,
             range: NSRange(
-                location: startingTitlePoint - 1,
+                location: startingTitlePoint,
                 length: titleLength))
     
+        return mutableString
+    }
+    
+    static func createSentInboxText(name: String, title: String) -> NSAttributedString {
+        let nameLength = name.characters.count
+        let titleLength = title.characters.count
+        let startingString = "Awaiting feedback on \(title) from \n\(name)."
+        let totalLength = startingString.characters.count
+        let startingTitlePoint = totalLength - nameLength - 1
+        
+        let mutableString = NSMutableAttributedString(
+            string: startingString,
+            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+        
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            range: NSRange(
+                location: 22,
+                length: titleLength))
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkGray,
+            range: NSRange(
+                location: 22,
+                length: titleLength))
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            range: NSRange(
+                location: startingTitlePoint,
+                length: nameLength))
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkerTeal,
+            range: NSRange(
+                location: startingTitlePoint,
+                length: nameLength))
+        
         return mutableString
     }
 }
