@@ -86,7 +86,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
                         if error == nil && object != nil {
                             let entry = object
                             title = entry!["title"] as! String
-                            cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + title
+                            cell.inboxTextLabel.attributedText = Utils.createAcceptedInboxText(student_name, title: title)
                         } else {
                             print(error)
                         }

@@ -12,11 +12,13 @@ class InboxCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var inboxTextLabel: UILabel!
+    @IBOutlet weak var cellChevron: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         // Make into circle
+        cellChevron.alpha = 0.2
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.masksToBounds = false
         avatarImageView.layer.borderColor = UIColor.blackColor().CGColor
