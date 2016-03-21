@@ -13,7 +13,7 @@ class FeedbackSendReceiptViewController: UIViewController {
 
     @IBOutlet weak var studentNameLabel: UILabel!
 
-    func navToInbox(){
+    func navigateToInbox(){
         let storyboard = UIStoryboard(name: "Inbox", bundle: nil)
         let vc  = storyboard.instantiateInitialViewController()
         self.presentViewController(vc!, animated: true, completion: nil)
@@ -23,7 +23,7 @@ class FeedbackSendReceiptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         studentNameLabel.text = "\(studentName!)."
-        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToInbox", userInfo: nil, repeats: true)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navigateToInbox", userInfo: nil, repeats: true)
         
     }
 

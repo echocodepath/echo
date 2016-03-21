@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hiT-Jr-RY5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hiT-Jr-RY5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--FEEDBACK MODE-->
@@ -23,7 +23,7 @@
                                 <color key="separatorColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackClipTableViewCell" rowHeight="52" id="sIf-1u-m2k" customClass="FeedbackClipTableViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sIf-1u-m2k" id="GIg-iF-XfO">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
@@ -80,7 +80,7 @@
                                             <outlet property="durationLabel" destination="cdf-93-iST" id="yJZ-cX-e43"/>
                                             <outlet property="locationImageView" destination="qUH-g3-nko" id="GxG-I6-gSX"/>
                                             <outlet property="noteLabel" destination="i2P-Go-02F" id="GCo-fY-sIS"/>
-                                            <outlet property="timestampLabel" destination="8XM-zZ-b5e" id="ALO-cH-EyP"/>
+                                            <outlet property="timestampLabel" destination="8XM-zZ-b5e" id="Lag-aY-RYa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -169,20 +169,48 @@
                                     <constraint firstItem="Gxv-DN-e8k" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="top" constant="18" id="xLe-FS-xDH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbf-zF-6pQ">
+                                <rect key="frame" x="0.0" y="446" width="320" height="59"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to feedback mode!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgR-O6-e4x">
+                                        <rect key="frame" x="51" y="-155" width="219" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold down the red button to pause the video and start recording audio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-9R-dpo">
+                                        <rect key="frame" x="24" y="-131" width="272" height="57"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touch up on the button to save the audio clip yoou just recorded and resume the video" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znV-7V-HTk">
+                                        <rect key="frame" x="24" y="-72" width="282" height="70"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="w4k-Pu-gFi" secondAttribute="trailing" id="4FZ-Iq-W5y"/>
+                            <constraint firstItem="Cbf-zF-6pQ" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="6wG-90-dT9"/>
+                            <constraint firstItem="Cbf-zF-6pQ" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="A3Q-F0-vM3"/>
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="top" secondItem="sKw-8t-Rm4" secondAttribute="bottom" id="APU-5B-PUy"/>
                             <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="j3a-1p-gYw" secondAttribute="bottom" id="F9e-Kp-r1p"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" constant="-1" id="KYN-IH-Yep"/>
                             <constraint firstItem="w4k-Pu-gFi" firstAttribute="top" secondItem="Cd1-jn-4NI" secondAttribute="bottom" id="OEr-66-dEL"/>
+                            <constraint firstAttribute="trailing" secondItem="Cbf-zF-6pQ" secondAttribute="trailing" id="OKO-ON-Tez"/>
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="XGT-LE-YB5"/>
                             <constraint firstAttribute="trailing" secondItem="AuA-PP-7UM" secondAttribute="trailing" id="Y9R-0M-fWG"/>
                             <constraint firstItem="w4k-Pu-gFi" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="ZTu-5s-2fd"/>
                             <constraint firstItem="STO-ih-dpp" firstAttribute="top" secondItem="w4k-Pu-gFi" secondAttribute="bottom" constant="-3" id="cvS-MK-mPT"/>
                             <constraint firstAttribute="trailing" secondItem="j3a-1p-gYw" secondAttribute="trailing" id="dbf-qX-sQh"/>
                             <constraint firstItem="STO-ih-dpp" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="kH0-tG-gxQ"/>
+                            <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="Cbf-zF-6pQ" secondAttribute="bottom" constant="-1" id="qJx-jQ-pGM"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="sCs-WN-JAg"/>
                             <constraint firstAttribute="trailing" secondItem="STO-ih-dpp" secondAttribute="trailing" id="vmD-9O-5cB"/>
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="vnP-bh-KQ2"/>
@@ -203,6 +231,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="controlView" destination="STO-ih-dpp" id="bsO-vW-DP8"/>
+                        <outlet property="emptyAudioCellView" destination="Cbf-zF-6pQ" id="pvp-aF-Vxp"/>
                         <outlet property="playBtn" destination="Gxv-DN-e8k" id="fvu-Lm-mFF"/>
                         <outlet property="recordButton" destination="RVj-Pi-438" id="Y9A-fW-anQ"/>
                         <outlet property="recordContainerView" destination="j3a-1p-gYw" id="yEv-HD-jr3"/>

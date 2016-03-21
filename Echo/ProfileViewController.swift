@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         private func setupLayout() {
-            backgroundColor = UIColor(patternImage: UIImage(named: "bg-common")!)
+            backgroundColor = UIColor(patternImage: UIImage(named: "profile_background")!)
             addSubview(guideView)
             addSubview(coverPhoto)
             addSubview(profilePhotoFrame)
