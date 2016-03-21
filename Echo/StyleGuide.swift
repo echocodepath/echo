@@ -31,6 +31,8 @@ struct StyleGuide {
         static let echoDarkerTranslucentClear = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.85)
         static let echoFormGray = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0)
         static let echoBorderGray = UIColor(red: 195/255, green: 195/255, blue: 195/255, alpha: 1.0)
+        static let echoDarkerTeal = UIColor(red: 0.2745, green: 0.6549, blue: 0.7333, alpha: 1.0)
+        static let echoDarkGray = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1.0)
     }
 }
 
@@ -40,5 +42,42 @@ struct Utils {
         navBar.barTintColor = StyleGuide.Colors.echoOrange
         navBar.tintColor = UIColor.whiteColor()
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+    }
+    
+    static func createNormalInboxText(name: String, title: String) -> NSAttributedString{
+        let nameLength = name.characters.count
+        let titleLength = title.characters.count
+        // Create the attributed string
+        let startingString = "\(name) would like feedback on\n\(title)."
+        let totalLength = startingString.characters.count
+        let startingTitlePoint = totalLength - titleLength
+        let mutableString = NSMutableAttributedString(
+            string: startingString,
+            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+        
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightMedium),
+            range: NSRange(
+                location: 0,
+                length: nameLength))
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkerTeal,
+            range: NSRange(
+                location: 0,
+                length: nameLength))
+        
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightMedium),
+            range: NSRange(
+                location: startingTitlePoint - 1,
+                length: titleLength))
+
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkGray,
+            range: NSRange(
+                location: startingTitlePoint - 1,
+                length: titleLength))
+    
+        return mutableString
     }
 }

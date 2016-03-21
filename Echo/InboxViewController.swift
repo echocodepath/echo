@@ -90,7 +90,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         if error == nil && object != nil {
                             let entry = object
                             title = entry!["title"] as! String
-                            cell.inboxTextLabel.text = student_name + " would like feedback on " + title
+                            cell.inboxTextLabel.attributedText = Utils.createNormalInboxText(student_name, title: title)
+//                            cell.inboxTextLabel.text =  + " would like feedback on " +
                         } else {
                             print(error)
                         }
