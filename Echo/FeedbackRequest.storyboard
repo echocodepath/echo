@@ -66,7 +66,6 @@
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="OVo-Ii-9Tv" firstAttribute="centerX" secondItem="AEi-zk-hRF" secondAttribute="centerX" id="HBm-g1-Ots"/>
-                                        <constraint firstAttribute="width" constant="320" id="Pz9-x0-q8j"/>
                                         <constraint firstAttribute="height" constant="50" id="f2j-xz-Sx8"/>
                                         <constraint firstAttribute="bottom" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="2" id="wy8-sN-NYT"/>
                                     </constraints>
@@ -118,7 +117,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-o8-7Zd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHOOSE INSTRUCTOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z6-8m-7Bj">
                                         <rect key="frame" x="11" y="7" width="113" height="12"/>
@@ -129,7 +128,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Mbl-mq-jy5"/>
                                     <constraint firstAttribute="height" constant="25" id="ZBN-JV-mxp"/>
                                 </constraints>
                             </view>
