@@ -9,14 +9,29 @@
 import UIKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
+import AVKit
+import AVFoundation
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var inspirationalQuoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
+    @IBOutlet weak var coverImage: UIImageView!
+
+    @IBAction func onTap(sender: AnyObject) {
+        self.playVideo(self.videoUrl!)
+    }
+    
+    var controller: AVPlayerViewController?
+    var videoUrl: NSURL?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        convertVideoDataToNSURL()
+        
         self.navigationController?.navigationBarHidden = true
         let quoteAndAuthor = InspirationGenerator.pickRandomQuote()
         let quote = quoteAndAuthor[0]
@@ -33,16 +48,69 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    
+    
+    
+    // MARK: Video
+    private func playVideo(url: NSURL){
+        
+        controller = AVPlayerViewController()
+        controller!.willMoveToParentViewController(self)
+        addChildViewController(controller!)
+        view.addSubview(controller!.view)
+        controller!.didMoveToParentViewController(self)
+        controller!.view.translatesAutoresizingMaskIntoConstraints = false
+        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller!.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
+        
+        
+
+        let player = AVPlayer(URL: url)
+        controller!.player = player
+        controller!.player!.play()
+        
+        
+    }
+    
+    private func convertVideoDataToNSURL() {
+        
+        let query = PFQuery(className:"Videos")
+        query.getObjectInBackgroundWithId("EX4cigSdlA") {
+            (Video: PFObject?, error: NSError?) -> Void in
+            if error == nil && Video != nil {
+                
+                let rawData: NSData?
+                let videoData = Video!["video"] as! PFFile
+                
+                do {
+                    rawData = try videoData.getData()
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
+//                    self.playVideo(self.videoUrl!)
+                } catch {
+                    
+                }
+                
+            } else {
+                print(error)
+            }
+        }
+    }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+
+        controller!.player!.pause()
     }
-    */
+
 
 }

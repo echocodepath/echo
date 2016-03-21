@@ -139,40 +139,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-gB-kbM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="545"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-PE-HQ8">
-                                <rect key="frame" x="0.0" y="545" width="414" height="191"/>
+                                <rect key="frame" x="0.0" y="568" width="414" height="168"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home photo" translatesAutoresizingMaskIntoConstraints="NO" id="J2W-fK-mK8" customClass="hom">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
+                                    <imageView alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home photo" translatesAutoresizingMaskIntoConstraints="NO" id="J2W-fK-mK8" customClass="hom">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="168"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YfR-HG-h6e" appends="YES" id="KFc-Ua-IVx"/>
+                                        </connections>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-kG-VsF">
-                                        <rect key="frame" x="186" y="98" width="40.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-play-3-xxl" translatesAutoresizingMaskIntoConstraints="NO" id="d0O-8k-1iR">
+                                        <rect key="frame" x="182" y="50" width="50" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="DsK-EG-CY0"/>
+                                            <constraint firstAttribute="width" constant="50" id="PIG-0t-uSn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST DANCE VIDEOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgP-Nc-EnJ">
+                                        <rect key="frame" x="121" y="108" width="173.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIDEO CAROUSEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-Yk-n1x">
-                                        <rect key="frame" x="132" y="69" width="148.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="n1e-Yk-n1x" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="MMv-to-imS"/>
+                                    <constraint firstItem="TgP-Nc-EnJ" firstAttribute="top" secondItem="d0O-8k-1iR" secondAttribute="bottom" constant="13" id="5K8-kn-pZT"/>
+                                    <constraint firstItem="TgP-Nc-EnJ" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="Hld-dO-RgD"/>
+                                    <constraint firstItem="d0O-8k-1iR" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="LXn-bc-Fay"/>
                                     <constraint firstAttribute="trailing" secondItem="J2W-fK-mK8" secondAttribute="trailing" id="QfD-EJ-FYi"/>
                                     <constraint firstItem="J2W-fK-mK8" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" id="QyE-KN-QtP"/>
                                     <constraint firstItem="J2W-fK-mK8" firstAttribute="leading" secondItem="9sy-PE-HQ8" secondAttribute="leading" id="X4a-FS-vSJ"/>
-                                    <constraint firstAttribute="height" constant="191" id="gbU-3b-aOj"/>
-                                    <constraint firstItem="wSg-kG-VsF" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="kJU-X1-EVn"/>
+                                    <constraint firstItem="d0O-8k-1iR" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" constant="50" id="gO1-Z3-Uen"/>
+                                    <constraint firstAttribute="height" constant="168" id="gbU-3b-aOj"/>
                                     <constraint firstAttribute="bottom" secondItem="J2W-fK-mK8" secondAttribute="bottom" id="nMY-7i-Xgg"/>
-                                    <constraint firstItem="wSg-kG-VsF" firstAttribute="top" secondItem="n1e-Yk-n1x" secondAttribute="bottom" constant="8.5" id="rif-wf-gtH"/>
-                                    <constraint firstItem="n1e-Yk-n1x" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" constant="69" id="zsc-DS-aRi"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;This is an inspirational quote about dance&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls3-At-801">
@@ -230,7 +236,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6e-B4-VFb" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="20" y="477" width="55" height="42"/>
+                                <rect key="frame" x="20" y="500" width="55" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-WE-THI" userLabel="Inbox Button">
                                         <rect key="frame" x="0.0" y="6" width="26" height="28"/>
@@ -264,7 +270,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-7S-zqE" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="179" y="477" width="55" height="42"/>
+                                <rect key="frame" x="179" y="500" width="55" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rp-z3-RiX" userLabel="Journal Button">
                                         <rect key="frame" x="13" y="10" width="29" height="22"/>
@@ -298,7 +304,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnx-1R-JVH" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="353" y="477" width="55" height="42"/>
+                                <rect key="frame" x="353" y="500" width="55" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKK-7t-64R" userLabel="Explore Button">
                                         <rect key="frame" x="16" y="10" width="22" height="22"/>
@@ -401,10 +407,16 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="authorLabel" destination="0lo-AP-h7t" id="Tln-nM-2IA"/>
+                        <outlet property="coverImage" destination="J2W-fK-mK8" id="ist-1x-aUt"/>
                         <outlet property="inspirationalQuoteLabel" destination="Ls3-At-801" id="l7r-ek-6rR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxZ-E6-SkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YfR-HG-h6e">
+                    <connections>
+                        <action selector="onTap:" destination="fNo-NI-33C" id="nbm-uO-RpB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1082" y="-201"/>
         </scene>
@@ -848,6 +860,7 @@
         <image name="home photo" width="640" height="480"/>
         <image name="home-bg" width="640" height="750"/>
         <image name="settings" width="35" height="35"/>
+        <image name="video-play-3-xxl" width="78" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cCb-aZ-1j6"/>
