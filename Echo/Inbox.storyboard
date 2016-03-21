@@ -438,7 +438,7 @@
                                     <constraint firstAttribute="height" constant="398" id="phl-yy-955"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-iv-OR5">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-iv-OR5">
                                 <rect key="frame" x="0.0" y="64" width="414" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
