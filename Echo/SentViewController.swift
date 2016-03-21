@@ -86,7 +86,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if error == nil && object != nil {
                             let entry = object
                             title = entry!["title"] as! String
-                            cell.inboxTextLabel.text = "Awaiting feedback on " + title + " from " + teacher_name
+                            cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title)
                         } else {
                             print(error)
                         }
