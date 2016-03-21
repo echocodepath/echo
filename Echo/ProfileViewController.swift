@@ -51,20 +51,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }()
         let nameLabel: UILabel = {
             let label = UILabel()
-            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
             label.font = label.font.fontWithSize(18)
             label.font = UIFont.systemFontOfSize(18, weight: UIFontWeightMedium)
             return label
         }()
         let locationLabel: UILabel = {
             let label = UILabel()
-            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
             label.font = label.font.fontWithSize(13)
             return label
         }()
         let descriptionLabel: UILabel = {
             let label = UILabel()
-            label.textColor = StyleGuide.Colors.echoTranslucentClear
+            label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
             label.numberOfLines = 0
             label.font = label.font.fontWithSize(13)
             return label
@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         private func setupLayout() {
-            backgroundColor = UIColor(patternImage: UIImage(named: "bg-common")!)
+            backgroundColor = UIColor(patternImage: UIImage(named: "profile_background")!)
             addSubview(guideView)
             addSubview(coverPhoto)
             addSubview(profilePhotoFrame)

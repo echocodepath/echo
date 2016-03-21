@@ -134,6 +134,7 @@ class EntryViewController: UIViewController {
             if (self.playerRateBeforeSeek > 0 && playerIsPlaying == true) {
                 self.avPlayer!.play()
             }
+            self.playBtn.selected = true
         }
     }
     

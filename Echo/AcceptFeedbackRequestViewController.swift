@@ -29,7 +29,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var currentIndexPath: NSIndexPath?
     
     var audioTimers = Array<NSTimer>()
-
+    var hiddenEmptyAudioCellView = false
+    
+    @IBOutlet weak var emptyAudioCellView: UIView!
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var recordContainerView: UIView!
     @IBOutlet weak var controlView: UIView!
@@ -213,6 +215,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         feedback.append(audioClip)
         fileNumber += 1
         avPlayer!.play()
+        if hiddenEmptyAudioCellView == false {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.emptyAudioCellView.alpha = 0
+            })
+        }
         tableView.reloadData()
     }
     
