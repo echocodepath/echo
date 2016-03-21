@@ -91,7 +91,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPLORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROM-Nu-3A0">
-                                <rect key="frame" x="8" y="374" width="204" height="14.5"/>
+                                <rect key="frame" x="8" y="373" width="204" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zvI-MY-fme">
-                                <rect key="frame" x="0.0" y="391" width="414" height="345.5"/>
+                                <rect key="frame" x="0.0" y="395.5" width="414" height="341"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rSC-it-4Id">
                                     <size key="itemSize" width="122" height="127"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -167,7 +167,7 @@
                             <constraint firstAttribute="trailing" secondItem="Hqo-aB-u50" secondAttribute="trailing" constant="200" id="KDK-wp-cy7"/>
                             <constraint firstItem="zvI-MY-fme" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" id="N5T-r3-3e7"/>
                             <constraint firstItem="R4U-0h-rWw" firstAttribute="top" secondItem="li2-I0-hQx" secondAttribute="bottom" id="PU5-Kr-V2R"/>
-                            <constraint firstItem="zvI-MY-fme" firstAttribute="top" secondItem="ROM-Nu-3A0" secondAttribute="bottom" constant="2.5" id="TWl-Gp-uDs"/>
+                            <constraint firstItem="zvI-MY-fme" firstAttribute="top" secondItem="ROM-Nu-3A0" secondAttribute="bottom" constant="8" id="TWl-Gp-uDs"/>
                             <constraint firstItem="5Kj-6b-fef" firstAttribute="top" secondItem="Hqo-aB-u50" secondAttribute="bottom" constant="7.5" id="XUc-CR-U9q"/>
                             <constraint firstItem="ROM-Nu-3A0" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" constant="8" id="aG7-IM-ChA"/>
                             <constraint firstItem="P4B-cL-PoY" firstAttribute="top" secondItem="zvI-MY-fme" secondAttribute="bottom" id="amQ-Av-l2V"/>
@@ -175,7 +175,7 @@
                             <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="10" id="fpS-MO-j4R"/>
                             <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="10" id="ikC-SP-26q"/>
                             <constraint firstItem="Hqo-aB-u50" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" constant="8" id="jga-Hk-Bfs"/>
-                            <constraint firstItem="ROM-Nu-3A0" firstAttribute="top" secondItem="5Kj-6b-fef" secondAttribute="bottom" constant="9" id="qNv-WC-TXS"/>
+                            <constraint firstItem="ROM-Nu-3A0" firstAttribute="top" secondItem="5Kj-6b-fef" secondAttribute="bottom" constant="8" id="qNv-WC-TXS"/>
                             <constraint firstAttribute="trailing" secondItem="5Kj-6b-fef" secondAttribute="trailing" id="qUC-BB-TdH"/>
                             <constraint firstItem="R4U-0h-rWw" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" id="rzY-rx-8ZQ"/>
                         </constraints>
