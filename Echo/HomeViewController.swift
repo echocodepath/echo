@@ -37,13 +37,12 @@ class HomeViewController: UIViewController {
 //        let preferredTimeScale : Int32 = 1
 //        let kCMTimeMake = CMTimeMake(seconds, preferredTimeScale)
 //        controller.player!.seekToTime(kCMTimeMake)
-//        
-        
+//
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         self.view.sendSubviewToBack(controller.view)
         self.view.bringSubviewToFront(self.coverImage)
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -151,7 +150,7 @@ class HomeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-
+        FileProcessor.sharedInstance.deleteVideoFile()
         controller.player!.pause()
     }
 

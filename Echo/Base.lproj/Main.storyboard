@@ -158,29 +158,30 @@
                                             <outletCollection property="gestureRecognizers" destination="YfR-HG-h6e" appends="YES" id="KFc-Ua-IVx"/>
                                         </connections>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-play-3-xxl" translatesAutoresizingMaskIntoConstraints="NO" id="d0O-8k-1iR">
-                                        <rect key="frame" x="182" y="50" width="50" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="DsK-EG-CY0"/>
-                                            <constraint firstAttribute="width" constant="50" id="PIG-0t-uSn"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST DANCE VIDEOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgP-Nc-EnJ">
-                                        <rect key="frame" x="121" y="108" width="173.5" height="18"/>
+                                        <rect key="frame" x="121" y="105" width="173.5" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="video-play-3-xxl" translatesAutoresizingMaskIntoConstraints="NO" id="d0O-8k-1iR">
+                                        <rect key="frame" x="187" y="55" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="DsK-EG-CY0"/>
+                                            <constraint firstAttribute="width" constant="40" id="PIG-0t-uSn"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="TgP-Nc-EnJ" firstAttribute="top" secondItem="d0O-8k-1iR" secondAttribute="bottom" constant="13" id="5K8-kn-pZT"/>
+                                    <constraint firstItem="TgP-Nc-EnJ" firstAttribute="top" secondItem="d0O-8k-1iR" secondAttribute="bottom" constant="8" id="5K8-kn-pZT"/>
                                     <constraint firstItem="TgP-Nc-EnJ" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="Hld-dO-RgD"/>
+                                    <constraint firstItem="d0O-8k-1iR" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="Ijk-qx-xKf"/>
                                     <constraint firstItem="d0O-8k-1iR" firstAttribute="centerX" secondItem="9sy-PE-HQ8" secondAttribute="centerX" id="LXn-bc-Fay"/>
                                     <constraint firstAttribute="trailing" secondItem="J2W-fK-mK8" secondAttribute="trailing" id="QfD-EJ-FYi"/>
                                     <constraint firstItem="J2W-fK-mK8" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" id="QyE-KN-QtP"/>
                                     <constraint firstItem="J2W-fK-mK8" firstAttribute="leading" secondItem="9sy-PE-HQ8" secondAttribute="leading" id="X4a-FS-vSJ"/>
-                                    <constraint firstItem="d0O-8k-1iR" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" constant="50" id="gO1-Z3-Uen"/>
+                                    <constraint firstItem="d0O-8k-1iR" firstAttribute="top" secondItem="9sy-PE-HQ8" secondAttribute="top" constant="57" id="gO1-Z3-Uen"/>
                                     <constraint firstAttribute="height" constant="168" id="gbU-3b-aOj"/>
                                     <constraint firstAttribute="bottom" secondItem="J2W-fK-mK8" secondAttribute="bottom" id="nMY-7i-Xgg"/>
                                 </constraints>
