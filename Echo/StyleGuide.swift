@@ -33,6 +33,7 @@ struct StyleGuide {
         static let echoBorderGray = UIColor(red: 195/255, green: 195/255, blue: 195/255, alpha: 1.0)
         static let echoDarkerTeal = UIColor(red: 0.2745, green: 0.6549, blue: 0.7333, alpha: 1.0)
         static let echoDarkGray = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1.0)
+        static let echoCellSelectedMint = UIColor(red: 0.8824, green: 0.9373, blue: 0.949, alpha: 1.0)
     }
 }
 
