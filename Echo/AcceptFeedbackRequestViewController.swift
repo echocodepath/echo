@@ -184,6 +184,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentIndexPath = indexPath
         let clip = feedback[indexPath.row]
+        invalidateTimersAndFeedback()
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
         }
         jumpAndPlayAudio(clip)
@@ -272,6 +273,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 self.avPlayer!.play()
                 self.videoDidStartPlayback(withOffset: self.avPlayer!.currentTime().seconds)
             }
+            self.invalidateTimersAndFeedback()
             self.playBtn.selected = true
         }
     }
