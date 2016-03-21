@@ -23,13 +23,28 @@ class HomeViewController: UIViewController {
         self.playVideo(self.videoUrl!)
     }
     
-    var controller: AVPlayerViewController?
+    
+    var controller = AVPlayerViewController()
+    
     var videoUrl: NSURL?
     
+//    override func viewDidAppear(animated: Bool) {
+//        print("view did appear")
+//        convertVideoDataToNSURL()
+//        // restart video
+//        let seconds : Int64 = 0
+//        let preferredTimeScale : Int32 = 1
+//        let kCMTimeMake = CMTimeMake(seconds, preferredTimeScale)
+//        controller.player!.seekToTime(kCMTimeMake)
+//        
+//        
+//        self.coverImage.alpha = 1
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.coverImage.alpha = 1
         convertVideoDataToNSURL()
         
         self.navigationController?.navigationBarHidden = true
@@ -49,29 +64,48 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    // MARK: Video
+    private func createVideo(url: NSURL){
+        
+        
+        controller.willMoveToParentViewController(self)
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+        
+        
+        let player = AVPlayer(URL: url)
+        controller.player = player
+        
+        
+    }
     
     
     // MARK: Video
     private func playVideo(url: NSURL){
         
-        controller = AVPlayerViewController()
-        controller!.willMoveToParentViewController(self)
-        addChildViewController(controller!)
-        view.addSubview(controller!.view)
-        controller!.didMoveToParentViewController(self)
-        controller!.view.translatesAutoresizingMaskIntoConstraints = false
-        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller!.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
-        
-        
 
+        controller.willMoveToParentViewController(self)
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+        
+        
         let player = AVPlayer(URL: url)
-        controller!.player = player
-        controller!.player!.play()
+        controller.player = player
+        controller.player!.play()
         
         
     }
@@ -89,7 +123,7 @@ class HomeViewController: UIViewController {
                 do {
                     rawData = try videoData.getData()
                     self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-//                    self.playVideo(self.videoUrl!)
+                    self.createVideo(self.videoUrl!)
                 } catch {
                     
                 }
@@ -109,7 +143,7 @@ class HomeViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
-        controller!.player!.pause()
+        controller.player!.pause()
     }
 
 
