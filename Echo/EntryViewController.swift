@@ -77,11 +77,14 @@ class EntryViewController: UIViewController {
         playBtn.setImage(UIImage(named: "white_play_button"), forState: .Selected)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        timeSlider.minimumValue = 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindVideoControlActions()
         setupButtonToggle()
-        timeSlider.minimumValue = 0
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
@@ -121,7 +124,7 @@ class EntryViewController: UIViewController {
         playerRateBeforeSeek = avPlayer!.rate
         avPlayer!.pause()
     }
-    
+
     func sliderEndedTracking(slider: UISlider) {
         let videoDuration = CMTimeGetSeconds(avPlayer!.currentItem!.duration)
         let elapsedTime: Float64 = videoDuration * Float64(timeSlider.value)

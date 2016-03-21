@@ -18,10 +18,10 @@ class FancyInboxViewController: UIViewController {
         .ScrollMenuBackgroundColor(UIColor.whiteColor()),
         .ViewBackgroundColor(UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)),
         .BottomMenuHairlineColor(StyleGuide.Colors.echoDarkerTeal),
-        .SelectionIndicatorColor(UIColor(red: 18.0/255.0, green: 150.0/255.0, blue: 225.0/255.0, alpha: 1.0)),
+        .SelectionIndicatorColor(StyleGuide.Colors.echoTeal),
         .MenuMargin(20.0),
         .MenuHeight(40.0),
-        .SelectedMenuItemLabelColor(StyleGuide.Colors.echoDarkerTeal),
+        .SelectedMenuItemLabelColor(StyleGuide.Colors.echoTeal),
         .UnselectedMenuItemLabelColor(UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)),
         .MenuItemFont(UIFont(name: "HelveticaNeue-Medium", size: 14.0)!),
         .UseMenuLikeSegmentedControl(true),
@@ -43,7 +43,12 @@ class FancyInboxViewController: UIViewController {
     }
     
     @IBAction func onHomePressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        self.dismissViewControllerAnimated(true, completion: nil)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+        let navController = UINavigationController(rootViewController: vc)
+        self.presentViewController(navController, animated: true, completion: nil)
     }
     
     func setupViewControllers() {
