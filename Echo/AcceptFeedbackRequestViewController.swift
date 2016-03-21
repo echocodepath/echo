@@ -118,6 +118,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             player.play()
             playBtn.selected = true
             tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+            currentIndexPath = indexPath
             clip.hasBeenPlayed = true
             audioPlayers.append(player)
         } else {
@@ -181,6 +182,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        currentIndexPath = indexPath
         let clip = feedback[indexPath.row]
         avPlayer!.seekToTime(CMTimeMakeWithSeconds(clip.offset! + 0.89, 10)) { (completed: Bool) -> Void in
         }
@@ -246,7 +248,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         playBtn.selected = false
