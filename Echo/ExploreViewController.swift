@@ -11,6 +11,7 @@ import Parse
 import ParseFacebookUtilsV4
 import AVKit
 import AVFoundation
+import AFNetworking
 
 class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -176,22 +177,13 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         if collectionView == teachersGridView {
             let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
             let teacherImage = self.teachers[indexPath.row]["profilePhotoUrl"] as? String
-
-            print("-------teacher image")
-            print(teacherImage)
             
-            if let url  = NSURL(string: teacherImage!),
-                data = NSData(contentsOfURL: url)
-            {
-                cell.teacherImage.alpha = 0
-                cell.teacherImage.image = UIImage(data: data)
-                
-                print(cell.teacherImage.image)
-
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    cell.teacherImage.alpha = 1.0
-                })
-            }
+            cell.teacherImage.alpha = 0
+            cell.teacherImage.setImageWithURL(NSURL(string: teacherImage!)!)
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                cell.teacherImage.alpha = 1.0
+            })
+            
             return cell
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell

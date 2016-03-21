@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Profile-->
@@ -144,12 +144,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LE1-7x-5p7">
-                                                    <rect key="frame" x="4" y="8" width="92" height="78"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ku-P0-Sb0">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="94"/>
                                                 </imageView>
@@ -158,7 +152,6 @@
                                         </view>
                                         <size key="customSize" width="100" height="94"/>
                                         <connections>
-                                            <outlet property="entryLabel" destination="LE1-7x-5p7" id="LPK-sf-rpM"/>
                                             <outlet property="thumbnailImageView" destination="2ku-P0-Sb0" id="MOM-6e-0tx"/>
                                             <segue destination="IKP-oG-rqk" kind="modal" identifier="exploreToEntry" id="bB0-0S-f08"/>
                                         </connections>
