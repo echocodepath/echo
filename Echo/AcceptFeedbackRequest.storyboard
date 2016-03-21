@@ -62,13 +62,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="2.5" id="1DW-Ad-4dB"/>
                                                 <constraint firstItem="hR4-H2-8DI" firstAttribute="top" secondItem="i2P-Go-02F" secondAttribute="bottom" constant="4.5" id="2c9-kW-lCL"/>
                                                 <constraint firstItem="qUH-g3-nko" firstAttribute="leading" secondItem="GIg-iF-XfO" secondAttribute="leading" constant="14" id="Act-Gn-Iuf"/>
                                                 <constraint firstItem="cdf-93-iST" firstAttribute="top" secondItem="GIg-iF-XfO" secondAttribute="top" constant="4" id="IFc-sR-bTV"/>
                                                 <constraint firstItem="i2P-Go-02F" firstAttribute="leading" secondItem="GIg-iF-XfO" secondAttribute="leading" constant="14" id="Imx-z3-TIb"/>
                                                 <constraint firstItem="Brm-lh-yvw" firstAttribute="leading" secondItem="hR4-H2-8DI" secondAttribute="trailing" constant="16" id="Jc4-bm-gud"/>
                                                 <constraint firstAttribute="trailing" secondItem="Brm-lh-yvw" secondAttribute="trailing" id="K6P-Vu-oa4"/>
-                                                <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="2" id="MmZ-cj-E4U"/>
+                                                <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="2.5" id="MmZ-cj-E4U"/>
+                                                <constraint firstItem="cdf-93-iST" firstAttribute="top" secondItem="GIg-iF-XfO" secondAttribute="top" constant="4" id="QNE-K9-6nv"/>
                                                 <constraint firstItem="qUH-g3-nko" firstAttribute="top" secondItem="i2P-Go-02F" secondAttribute="bottom" constant="4.5" id="TTO-cP-9oy"/>
                                                 <constraint firstItem="hR4-H2-8DI" firstAttribute="leading" secondItem="qUH-g3-nko" secondAttribute="trailing" constant="5" id="VUB-X4-XtX"/>
                                                 <constraint firstAttribute="bottom" secondItem="Brm-lh-yvw" secondAttribute="bottom" id="WAb-Y9-btp"/>
@@ -85,6 +87,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbf-zF-6pQ">
+                                <rect key="frame" x="0.0" y="277" width="320" height="227"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FB Tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-dK-ETc">
+                                        <rect key="frame" x="23" y="0.0" width="275" height="230"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="centerX" secondItem="Cbf-zF-6pQ" secondAttribute="centerX" id="E9c-Dv-yYU"/>
+                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="centerY" secondItem="Cbf-zF-6pQ" secondAttribute="centerY" constant="1" id="MkP-2C-cSJ"/>
+                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="top" secondItem="Cbf-zF-6pQ" secondAttribute="top" id="SLq-Vu-EbB"/>
+                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="leading" secondItem="Cbf-zF-6pQ" secondAttribute="leading" constant="23" id="l8s-tZ-HK7"/>
+                                    <constraint firstAttribute="trailing" secondItem="9v3-dK-ETc" secondAttribute="trailing" constant="22" id="oxL-YZ-Mel"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-1p-gYw">
                                 <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                                 <subviews>
@@ -112,22 +130,6 @@
                                     <constraint firstItem="xtz-7M-SBp" firstAttribute="leading" secondItem="j3a-1p-gYw" secondAttribute="leading" id="W6w-De-tpY"/>
                                     <constraint firstAttribute="bottom" secondItem="xtz-7M-SBp" secondAttribute="bottom" constant="63" id="mKV-wV-sDV"/>
                                     <constraint firstAttribute="trailing" secondItem="xtz-7M-SBp" secondAttribute="trailing" constant="-6" id="y2Z-2u-ziQ"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbf-zF-6pQ">
-                                <rect key="frame" x="0.0" y="277" width="320" height="227"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FB Tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-dK-ETc">
-                                        <rect key="frame" x="23" y="0.0" width="275" height="230"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="centerX" secondItem="Cbf-zF-6pQ" secondAttribute="centerX" id="E9c-Dv-yYU"/>
-                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="centerY" secondItem="Cbf-zF-6pQ" secondAttribute="centerY" constant="1" id="MkP-2C-cSJ"/>
-                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="top" secondItem="Cbf-zF-6pQ" secondAttribute="top" id="SLq-Vu-EbB"/>
-                                    <constraint firstItem="9v3-dK-ETc" firstAttribute="leading" secondItem="Cbf-zF-6pQ" secondAttribute="leading" constant="23" id="l8s-tZ-HK7"/>
-                                    <constraint firstAttribute="trailing" secondItem="9v3-dK-ETc" secondAttribute="trailing" constant="22" id="oxL-YZ-Mel"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-Pu-gFi">
