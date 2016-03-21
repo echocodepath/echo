@@ -18,6 +18,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var requestsReceived: Array<Dictionary<String,String>> = []
     var refreshControlTableView: UIRefreshControl!
     
+    
+    var parentNavigationController : UINavigationController?
+
     @IBOutlet weak var studentImage: UIImageView!
     @IBOutlet weak var feedbackLabel: UILabel!
     
@@ -29,10 +32,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.fetchRequests()
             }
         })
-        
+        self.title = "Received"
         tableView.delegate = self
         tableView.dataSource = self
-        
+        debugPrint("HIIIIII \(self.navigationController)")
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
@@ -150,11 +153,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         inboxDetailsViewController.request = request
         
-        print("this is the request")
-        print(request)
-        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.pushViewController(inboxDetailsViewController, animated: true)
+        
+        self.parentNavigationController!.pushViewController(inboxDetailsViewController, animated: true)
     }
     
 
