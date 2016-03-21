@@ -13,6 +13,8 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
+    var refreshControlTableView: UIRefreshControl!
+    
     var entries: [PFObject] = []
     @IBOutlet weak var backBtn: UIButton!
     
@@ -23,6 +25,16 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         tableView.delegate = self
         tableView.dataSource = self
         loadEntries()
+        
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControlTableView, atIndex: 0)
+    }
+    
+    func onRefresh(){
+        loadEntries()
+        self.refreshControlTableView.endRefreshing()
     }
     
     @IBAction func onBackBtn(sender: AnyObject) {
@@ -86,15 +98,15 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func loadEntries() {
         let entryQuery = PFQuery(className:"Entry")
         entryQuery.whereKey("user_id", equalTo: (currentUser?.id)!)
-        
         entryQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
+                    self.entries = []
                     for object in objects {
                         self.entries.append(object)
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
                 }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
