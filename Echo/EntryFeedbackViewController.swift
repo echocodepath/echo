@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var refreshControlTableView: UIRefreshControl!
     
     var entry: PFObject?
     var feedback: [PFObject] = []
@@ -21,7 +22,16 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         loadFeedback()
-        // Do any additional setup after loading the view.
+        
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControlTableView, atIndex: 0)
+    }
+    
+    func onRefresh(){
+        loadFeedback()
+        self.refreshControlTableView.endRefreshing()
     }
     
     func loadFeedback() {
@@ -32,6 +42,7 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
+                    self.feedback = []
                     self.feedback = objects
                     print("objects!! \(objects)")
                 }
