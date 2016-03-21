@@ -21,7 +21,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var videoContainerView: UIView!
 
     @IBAction func onTap(sender: AnyObject) {
-        self.playVideo(self.videoUrl!)
+        if let videoUrl = self.videoUrl{
+            playVideo(videoUrl)
+        }
     }
     
     

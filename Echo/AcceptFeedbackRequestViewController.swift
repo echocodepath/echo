@@ -395,9 +395,14 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        videoPlayer.player?.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
+    }
+    
 
     deinit {
-        avPlayer!.removeTimeObserver(timeObserver)
+        avPlayer?.removeTimeObserver(timeObserver)
     }
     
     // MARK: - Navigation
@@ -405,8 +410,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            videoPlayer.player?.pause()
-            FileProcessor.sharedInstance.deleteVideoFile()
+
             switch identifier {
                 case "SaveFeedbackReceiptSegue":
                 let destinationvc = segue.destinationViewController as! FeedbackSendReceiptViewController
