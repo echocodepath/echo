@@ -299,7 +299,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     private func convertAudioDataToNSURL(audioClip: PFFile) -> NSURL {
-        var url: NSURL = getAudioFilePath()!
+        let url: NSURL = getAudioFilePath()!
         audioClip.getDataInBackgroundWithBlock { (data, error) -> Void in
             FileProcessor.sharedInstance.writeAudioDataToFile(data!, path: url)
         }

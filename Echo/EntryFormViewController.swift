@@ -94,7 +94,7 @@ class EntryFormViewController: UIViewController {
         super.viewDidLoad()
         generateThumbnail()
         setupIcons()
-        privateSwitch.onTintColor = UIColor.grayColor()
+        privateSwitch.onTintColor = StyleGuide.Colors.echoBorderGray
     }
 
     override func didReceiveMemoryWarning() {

@@ -29,9 +29,8 @@ class FileProcessor: NSObject {
     }
     
     func writeAudioDataToFile(data: NSData, path: NSURL) -> NSURL {
-        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         do {
-            data.writeToURL(path, atomically: true)
+            try data.writeToURL(path, atomically: true)
         } catch {
             print("error writing data to url")
         }
