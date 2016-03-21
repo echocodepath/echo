@@ -9,8 +9,8 @@ target 'Echo' do
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKShareKit'
 	pod 'FBSDKLoginKit'
+	pod 'PageMenu'
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
-    pod 'SnapKit'
-
+  pod 'SnapKit'
 end
 

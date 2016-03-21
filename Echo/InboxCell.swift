@@ -18,7 +18,7 @@ class InboxCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         // Make into circle
-        cellChevron.alpha = 0.2
+//        cellChevron.alpha = 0.2
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.masksToBounds = false
         avatarImageView.layer.borderColor = UIColor.blackColor().CGColor

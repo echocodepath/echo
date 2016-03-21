@@ -16,7 +16,8 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     var inboxUser: PFUser?
     var requestsSent: Array<Dictionary<String,String>> = []
     var refreshControlTableView: UIRefreshControl!
-    
+    var parentNavigationController : UINavigationController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         inboxUser = PFUser.currentUser()
@@ -25,7 +26,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.fetchRequests()
             }
         })
-        
+        self.title = "Sent"
         requestsSentTableView.delegate = self
         requestsSentTableView.dataSource = self
         

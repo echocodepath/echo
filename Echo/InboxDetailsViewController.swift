@@ -142,7 +142,7 @@ class InboxDetailsViewController: UIViewController {
     }
 
     @IBAction func onBack(sender: AnyObject) {
-        performSegueWithIdentifier("returnInbox", sender: self)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: add rejected request for user
@@ -211,7 +211,7 @@ class InboxDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        controller!.player?.pause()
+        controller?.player?.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
 
     }

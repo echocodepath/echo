@@ -338,7 +338,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     deinit {
-        avPlayer!.removeTimeObserver(timeObserver)
+        avPlayer?.removeTimeObserver(timeObserver)
     }
 
     /*

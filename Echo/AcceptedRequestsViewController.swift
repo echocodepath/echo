@@ -12,7 +12,7 @@ import ParseFacebookUtilsV4
 
 class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var acceptedRequestsTableView: UITableView!
-
+    var parentNavigationController : UINavigationController?
     var inboxUser: PFUser?
     var acceptedRequests: Array<Dictionary<String,String>> = []
     var refreshControlTableView: UIRefreshControl!
@@ -25,7 +25,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
                 self.fetchRequests()
             }
         })
-        
+        self.title = "Accepted"
         acceptedRequestsTableView.delegate = self
         acceptedRequestsTableView.dataSource = self
         
