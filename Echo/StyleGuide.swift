@@ -48,7 +48,7 @@ struct Utils {
     static func createNormalInboxText(name: String, title: String) -> NSAttributedString {
         let nameLength = name.characters.count
         let titleLength = title.characters.count
-        let startingString = "\(name) would like feedback on\n\(title)."
+        let startingString = "\(name) would like feedback on \(title)."
         let totalLength = startingString.characters.count
         let startingTitlePoint = totalLength - titleLength - 1
         let mutableString = NSMutableAttributedString(
@@ -84,7 +84,7 @@ struct Utils {
     static func createSentInboxText(name: String, title: String) -> NSAttributedString {
         let nameLength = name.characters.count
         let titleLength = title.characters.count
-        let startingString = "Awaiting feedback on \(title) from \n\(name)."
+        let startingString = "Awaiting feedback on \(title) from \(name)."
         let totalLength = startingString.characters.count
         let startingTitlePoint = totalLength - nameLength - 1
         
