@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-362" y="26"/>
         </scene>
-        <!--Request Feedback-->
+        <!--REQUEST FEEDBACK-->
         <scene sceneID="w3i-S2-ej7">
             <objects>
                 <viewController id="bKx-De-WoB" customClass="FeedbackRequestViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +143,7 @@
                             <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="YPf-o8-7Zd" secondAttribute="bottom" id="yVV-UB-TSC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Request Feedback" id="Hga-l5-FuN">
+                    <navigationItem key="navigationItem" title="REQUEST FEEDBACK" id="Hga-l5-FuN">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="f82-sw-vUK">
                             <connections>
                                 <action selector="onBack:" destination="bKx-De-WoB" id="YC3-TQ-632"/>

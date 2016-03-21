@@ -108,7 +108,7 @@
                             <constraint firstAttribute="trailing" secondItem="372-ye-luG" secondAttribute="trailing" id="osv-dP-Fjb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="PVf-er-eBV">
+                    <navigationItem key="navigationItem" title="PROFILE" id="PVf-er-eBV">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="oCI-Qw-k7C">
                             <connections>
                                 <action selector="onBackPress:" destination="QSf-33-f4J" id="KG5-0f-02W"/>

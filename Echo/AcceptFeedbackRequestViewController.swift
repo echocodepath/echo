@@ -406,7 +406,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 case "SaveFeedbackReceiptSegue":
                 let destinationvc = segue.destinationViewController as! FeedbackSendReceiptViewController
                 let username = entry?.valueForKey("username")
-                destinationvc.studentName = username! as! String
+                destinationvc.studentName = username! as? String
                 default:
                     return
             }

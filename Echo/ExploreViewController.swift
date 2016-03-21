@@ -61,7 +61,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private func convertVideoDataToNSURL() {
 
-        var query = PFQuery(className:"Videos")
+        let query = PFQuery(className:"Videos")
         query.getObjectInBackgroundWithId("kh5wfqasij") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
