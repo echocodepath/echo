@@ -94,12 +94,12 @@ struct Utils {
         mutableString.addAttribute(NSFontAttributeName,
             value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
             range: NSRange(
-                location: 22,
+                location: 21,
                 length: titleLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
             value: StyleGuide.Colors.echoDarkGray,
             range: NSRange(
-                location: 22,
+                location: 21,
                 length: titleLength))
         mutableString.addAttribute(NSFontAttributeName,
             value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
@@ -111,6 +111,43 @@ struct Utils {
             range: NSRange(
                 location: startingTitlePoint,
                 length: nameLength))
+        
+        return mutableString
+    }
+    
+    static func createAcceptedInboxText(name: String, title: String) -> NSAttributedString {
+        let nameLength = name.characters.count + 2
+        let titleLength = title.characters.count + 1
+        let startingString = "You accepted \(name)'s request for feedback on \(title)"
+        let totalLength = startingString.characters.count
+        let startingTitlePoint = totalLength - titleLength - 1
+        
+        let mutableString = NSMutableAttributedString(
+            string: startingString,
+            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+        
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            range: NSRange(
+                location: 13,
+                length: nameLength))
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkerTeal,
+            range: NSRange(
+                location: 13,
+                length: nameLength))
+        
+        mutableString.addAttribute(NSFontAttributeName,
+            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            range: NSRange(
+                location: startingTitlePoint + 1,
+                length: titleLength))
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+            value: StyleGuide.Colors.echoDarkGray,
+            range: NSRange(
+                location: startingTitlePoint + 1,
+                length: titleLength))
         
         return mutableString
     }
