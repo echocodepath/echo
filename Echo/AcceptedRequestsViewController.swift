@@ -65,6 +65,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AcceptedRequest", forIndexPath: indexPath) as! InboxCell
         let request = self.acceptedRequests[indexPath.row]
+        cell.accessoryType = .DisclosureIndicator
         
         if let id = request["entry_id"] {
             let entry_id = id as String
