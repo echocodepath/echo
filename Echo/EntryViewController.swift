@@ -84,13 +84,12 @@ class EntryViewController: UIViewController {
         timeSlider.minimumValue = 0
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
-//        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
         
         
         if entry != nil {
-            self.title = entry!.valueForKey("title") as! String
+            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
             createdAtLabel.text = DateManager.getFriendlyTime(entry!.createdAt!)
@@ -102,7 +101,7 @@ class EntryViewController: UIViewController {
             
             convertVideoDataToNSURL()
             
-            if entry?.valueForKey("user_id") as! String != currentUser!.id {
+            if entry?.valueForKey("user_id") as? String != currentUser!.id {
                 self.navigationController!.navigationItem.rightBarButtonItem = nil
             }
         }

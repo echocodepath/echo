@@ -294,7 +294,7 @@
                             <constraint firstItem="4VK-D5-SgI" firstAttribute="leading" secondItem="cqd-tf-4Pb" secondAttribute="leading" id="sey-Uq-lVC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Feedback" id="Zip-w0-8xJ"/>
+                    <navigationItem key="navigationItem" title="FEEDBACK" id="Zip-w0-8xJ"/>
                     <connections>
                         <outlet property="tableView" destination="4VK-D5-SgI" id="Sir-tr-tB4"/>
                     </connections>

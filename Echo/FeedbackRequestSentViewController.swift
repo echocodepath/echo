@@ -34,7 +34,7 @@ class FeedbackRequestSentViewController: UIViewController {
         super.viewDidLoad()
         self.teacherLabel.text = self.teacherName
         
-        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToHome", userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToHome", userInfo: nil, repeats: true)
         
         
     }
