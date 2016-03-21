@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     
     @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var videoContainerView: UIView!
 
     @IBAction func onTap(sender: AnyObject) {
         self.playVideo(self.videoUrl!)
@@ -28,8 +29,8 @@ class HomeViewController: UIViewController {
     
     var videoUrl: NSURL?
     
-//    override func viewDidAppear(animated: Bool) {
-//        print("view did appear")
+    override func viewDidAppear(animated: Bool) {
+        print("view did appear")
 //        convertVideoDataToNSURL()
 //        // restart video
 //        let seconds : Int64 = 0
@@ -37,15 +38,21 @@ class HomeViewController: UIViewController {
 //        let kCMTimeMake = CMTimeMake(seconds, preferredTimeScale)
 //        controller.player!.seekToTime(kCMTimeMake)
 //        
-//        
-//        self.coverImage.alpha = 1
-//    }
+        
+        self.view.sendSubviewToBack(controller.view)
+        self.view.bringSubviewToFront(self.coverImage)
+        
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.coverImage.alpha = 1
         convertVideoDataToNSURL()
+        
+        self.view.bringSubviewToFront(self.coverImage)
         
         self.navigationController?.navigationBarHidden = true
         let quoteAndAuthor = InspirationGenerator.pickRandomQuote()
@@ -70,7 +77,7 @@ class HomeViewController: UIViewController {
         
         controller.willMoveToParentViewController(self)
         addChildViewController(controller)
-        view.addSubview(controller.view)
+        videoContainerView.addSubview(controller.view)
         controller.didMoveToParentViewController(self)
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
@@ -82,6 +89,8 @@ class HomeViewController: UIViewController {
         
         let player = AVPlayer(URL: url)
         controller.player = player
+        
+
         
         
     }

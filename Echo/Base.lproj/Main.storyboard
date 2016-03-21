@@ -138,6 +138,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eof-yN-nnf">
+                                <rect key="frame" x="0.0" y="568" width="414" height="168"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-gB-kbM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
                                 <gestureRecognizers/>
@@ -409,6 +413,7 @@
                         <outlet property="authorLabel" destination="0lo-AP-h7t" id="Tln-nM-2IA"/>
                         <outlet property="coverImage" destination="J2W-fK-mK8" id="ist-1x-aUt"/>
                         <outlet property="inspirationalQuoteLabel" destination="Ls3-At-801" id="l7r-ek-6rR"/>
+                        <outlet property="videoContainerView" destination="eof-yN-nnf" id="tJa-i2-0fK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxZ-E6-SkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
