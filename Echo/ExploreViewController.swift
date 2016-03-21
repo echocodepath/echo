@@ -135,10 +135,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-
-
-        
     }
+    
     func onRefresh(){
         print("I just got refreshed")
         

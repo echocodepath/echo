@@ -70,6 +70,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func setupViewProperties() {
+        emptyAudioCellView.backgroundColor = UIColor(red: 39/255, green: 39/255, blue: 45/255, alpha: 1.0)
         timeLeftLabel.textColor = StyleGuide.Colors.echoTranslucentClear
         controlView.backgroundColor = StyleGuide.Colors.echoBrownGray
         tableView.backgroundColor = StyleGuide.Colors.echoLightBrownGray

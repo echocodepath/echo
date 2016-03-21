@@ -15,6 +15,7 @@ class FeedbackClipTableViewCell: UITableViewCell {
         didSet {
             durationLabel.text = "\(Int(audioClip!.duration!))s"
             timestampLabel.text = "\(String(format: "%02d:%02d", ((lround(audioClip!.offset!) / 60) % 60), lround(audioClip!.offset!) % 60))"
+            print("IM RIGHT HERE \(String(format: "%02d:%02d", ((lround(audioClip!.offset!) / 60) % 60), lround(audioClip!.offset!) % 60))")
         }
     }
     
