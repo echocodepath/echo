@@ -43,10 +43,7 @@ class FancyInboxViewController: UIViewController {
     }
     
     @IBAction func onHomePressed(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
-        let navController = UINavigationController(rootViewController: vc)
-        self.presentViewController(navController, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func setupViewControllers() {
