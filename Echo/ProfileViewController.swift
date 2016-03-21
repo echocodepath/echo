@@ -20,9 +20,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let guideView: UIView = UIView()
         let favoriteButton: UIButton = {
             let button = UIButton(type: .System)
-            button.setTitle("Favorite", forState: .Normal)
-            button.backgroundColor = StyleGuide.Colors.echoTeal
-            button.tintColor = UIColor.whiteColor()
+            button.setTitle("Add to Favorites", forState: .Normal)
+            button.setTitle("Added to Favorites", forState: .Selected)
+            if button.selected == true {
+                button.backgroundColor = StyleGuide.Colors.echoTeal
+                button.tintColor = UIColor.whiteColor()
+            } else {
+                button.backgroundColor = UIColor.whiteColor()
+                button.tintColor = StyleGuide.Colors.echoTeal
+            }
             button.contentEdgeInsets = UIEdgeInsetsMake(4,12,4,12)
             button.layer.masksToBounds = false
             button.layer.cornerRadius = 14
@@ -184,6 +190,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     private var currentUser: PFUser?
     private var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
+    private var isMyFavorite: Bool?
     private var isTeacher: String?
     private var entryQuery: PFQuery?
 
@@ -204,18 +211,30 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     
-    @IBAction func addFavorite(sender: AnyObject) {
+    func favoriteUnfavorite(sender: AnyObject) {
         let id = self.profileUser?.objectId as String!
+        var array: Array<String>
         if let favorite_teachers = currentUser!["favorite_teachers"] {
-            var array = favorite_teachers as! Array<String>
-            if !array.contains(id) {
-                array.append(id)
-                currentUser!["favorite_teachers"] = array
-            }
+            array = favorite_teachers as! Array<String>
         } else {
-            let array = [id]
-            currentUser!["favorite_teachers"] = array
+            array = []
         }
+        
+        if isMyFavorite == true {
+            // remove from favorite
+            if let index = array.indexOf(id) {
+                array.removeAtIndex(index)
+            }
+            self.header.favoriteButton.selected = false
+            isMyFavorite = false
+        } else {
+            // add to favorite
+            array.append(id)
+            self.header.favoriteButton.selected = true
+            isMyFavorite = true
+        }
+        
+        currentUser!["favorite_teachers"] = array
         currentUser!.saveInBackground()
     }
     
@@ -263,8 +282,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         if let pfUser = self.profileUser {
+            // TODO: actually say is isMyProfile=true for my profile on Explore page
+            // Current logic is done like this so I can add myself as a favorite
             isMyProfile = false
             isTeacher = pfUser["is_teacher"] as? String
+            isMyFavorite = false
+            if let favorite_teachers = currentUser!["favorite_teachers"] {
+                let id = self.profileUser?.objectId as String!
+                let array = favorite_teachers as! Array<String>
+                if array.contains(id) {
+                    isMyFavorite = true
+                }
+            }
         } else {
             self.profileUser = currentUser
             isMyProfile = true
@@ -285,8 +314,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let profImage =  self.profileUser!["profilePhotoUrl"] {
             self.header.profilePhoto.setImageWithURL(NSURL(string: profImage as! String)!)
-            // Set profile to circle
-
         }
         if let coverImage =  self.profileUser!["coverPhotoUrl"] {
             self.header.coverPhoto.setImageWithURL(NSURL(string: coverImage as! String)!)
@@ -295,20 +322,25 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         if isMyProfile! == true || isTeacher! == "false" {
             self.header.favoriteButton.hidden = true
             self.header.constraintsToHideFavorite.forEach({ $0.activate() })
+        } else {
+            self.header.favoriteButton.addTarget(self, action: "favoriteUnfavorite:", forControlEvents: .TouchUpInside)
+            if isMyFavorite == true {
+                self.header.favoriteButton.selected = true
+            } else {
+                self.header.favoriteButton.selected = false
+            }
         }
-        
-//            self.favoriteButton.setImage(UIImage(named: "add-favorite") as UIImage?, forState: .Normal)
-//            self.favoriteButton.setImage(UIImage(named: "added-favorite") as UIImage?, forState: .Selected)
-        
-        if isMyProfile == true {
+
+        // For editable descriptions
+//        if isMyProfile == true {
 //            let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
 //            self.header.descriptionLabel.layer.borderWidth = 0.5
 //            self.header.descriptionLabel.layer.borderColor = borderColor.CGColor
 //            self.header.descriptionLabel.layer.cornerRadius = 5.0
-            if self.profileUser!["description"] == nil {
-                self.header.descriptionLabel.text = DESCRIPTION_PLACEHOLDER
-            }
-        }
+//            if self.profileUser!["description"] == nil {
+//                self.header.descriptionLabel.text = DESCRIPTION_PLACEHOLDER
+//            }
+//        }
         
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
