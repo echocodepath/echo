@@ -67,6 +67,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("SentRequests", forIndexPath: indexPath) as! InboxCell
 
         var request = self.requestsSent[indexPath.row]
+        cell.accessoryType = .DisclosureIndicator
         
         if let id = request["entry_id"] {
             let entry_id = id as String

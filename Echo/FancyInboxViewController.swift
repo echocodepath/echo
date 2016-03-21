@@ -17,7 +17,7 @@ class FancyInboxViewController: UIViewController {
         .MenuItemSeparatorWidth(4.3),
         .ScrollMenuBackgroundColor(UIColor.whiteColor()),
         .ViewBackgroundColor(UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)),
-        .BottomMenuHairlineColor(UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 0.1)),
+        .BottomMenuHairlineColor(StyleGuide.Colors.echoDarkerTeal),
         .SelectionIndicatorColor(UIColor(red: 18.0/255.0, green: 150.0/255.0, blue: 225.0/255.0, alpha: 1.0)),
         .MenuMargin(20.0),
         .MenuHeight(40.0),
