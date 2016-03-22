@@ -19,10 +19,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     class ProfileHeader: UIView {
         let guideView: UIView = UIView()
         let favoriteButton: UIButton = {
+
             let button = UIButton(type: .System)
+            
             button.setTitle("Add to Favorites", forState: .Normal)
             button.setTitle("Added to Favorites", forState: .Selected)
+            
             if button.selected == true {
+
                 button.backgroundColor = StyleGuide.Colors.echoTeal
                 button.tintColor = UIColor.whiteColor()
             } else {
@@ -31,7 +35,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             button.contentEdgeInsets = UIEdgeInsetsMake(4,12,4,12)
             button.layer.masksToBounds = false
-            button.layer.cornerRadius = 14
+            button.layer.cornerRadius = 10
             button.titleLabel?.font = UIFont(name: button.titleLabel!.font.fontName, size: 13)
             return button
         }()
@@ -231,6 +235,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             // add to favorite
             array.append(id)
             self.header.favoriteButton.selected = true
+            print("--- favorte button selected")
             isMyFavorite = true
         }
         
