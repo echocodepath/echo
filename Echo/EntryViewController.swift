@@ -107,7 +107,7 @@ class EntryViewController: UIViewController {
             self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
-            createdAtLabel.text = DateManager.getFriendlyTime(entry!.createdAt!)
+            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
             titleLabel.text = "\(entry!.valueForKey("title") as! String)"
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
