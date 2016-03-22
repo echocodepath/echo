@@ -205,19 +205,19 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9i-ul-QU4">
-                                        <rect key="frame" x="80" y="30" width="17.5" height="12"/>
+                                        <rect key="frame" x="80" y="34" width="17.5" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
-                                        <rect key="frame" x="276" y="331" width="118" height="39"/>
+                                        <rect key="frame" x="276" y="330" width="118" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="118" id="ULE-cS-Nkr"/>
-                                            <constraint firstAttribute="height" constant="39" id="bG8-pF-KaW"/>
+                                            <constraint firstAttribute="height" constant="36" id="bG8-pF-KaW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" backgroundImage="Send Button-1">
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <state key="normal" title="Send" backgroundImage="favorite-button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -226,7 +226,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-Y4-PTa">
-                                        <rect key="frame" x="80" y="45" width="48.5" height="14.5"/>
+                                        <rect key="frame" x="80" y="49" width="48.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -235,15 +235,15 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="e9i-ul-QU4" secondAttribute="bottom" constant="3" id="7h8-87-ZpC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="20" id="AjY-by-DKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="24" id="AjY-by-DKK"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="BJ7-aX-fmx"/>
                                     <constraint firstItem="e9i-ul-QU4" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="Ezx-BD-EUN"/>
-                                    <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="20" id="dhV-Dc-7LS"/>
+                                    <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="19" id="dhV-Dc-7LS"/>
                                     <constraint firstAttribute="trailing" secondItem="FIO-JS-vHn" secondAttribute="trailing" constant="20" id="esl-ho-ZWV"/>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="gip-sq-6oN"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="top" secondItem="RWl-Ae-dog" secondAttribute="top" constant="20" id="jpW-GO-SH6"/>
                                     <constraint firstItem="HS6-10-oQJ" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="sfK-Sw-Fgc"/>
-                                    <constraint firstItem="e9i-ul-QU4" firstAttribute="top" secondItem="RWl-Ae-dog" secondAttribute="top" constant="30" id="tKL-nK-w5s"/>
+                                    <constraint firstItem="e9i-ul-QU4" firstAttribute="top" secondItem="RWl-Ae-dog" secondAttribute="top" constant="34" id="tKL-nK-w5s"/>
                                     <constraint firstAttribute="trailing" secondItem="HS6-10-oQJ" secondAttribute="trailing" constant="20" id="ubB-Fb-btQ"/>
                                     <constraint firstAttribute="height" constant="390" id="ySN-MC-eZ3"/>
                                     <constraint firstItem="HS6-10-oQJ" firstAttribute="top" secondItem="YgU-BW-kSt" secondAttribute="bottom" constant="20" id="ykq-WN-hjS"/>
@@ -252,8 +252,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-qq-kl3">
                                 <rect key="frame" x="0.0" y="306" width="414" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
-                                        <rect key="frame" x="14" y="8" width="298" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
+                                        <rect key="frame" x="14" y="13" width="65" height="14.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -261,8 +261,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="centerY" secondItem="NkI-qq-kl3" secondAttribute="centerY" id="8nq-Rf-Rw1"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="hWN-nh-Gfx"/>
                                     <constraint firstAttribute="height" constant="40" id="iFN-2M-4Mi"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="14" id="zTZ-CL-GnF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -381,7 +383,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Send Button-1" width="181" height="61"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="favorite-button" width="310" height="80"/>
     </resources>
