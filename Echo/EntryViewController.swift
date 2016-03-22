@@ -65,7 +65,6 @@ class EntryViewController: UIViewController {
     }
     
     func setupIcons() {
-        requestFeedbackBtn.setTitle("Request Feedback", forState: .Normal)
         artistIconImageView.image = UIImage(named: "Artist Icon")
         songIconImageView.image = UIImage(named: "Music Icon")
         titleIconImageView.image = UIImage(named:"Title Icon")
