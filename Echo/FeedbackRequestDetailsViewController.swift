@@ -27,9 +27,18 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     @IBOutlet weak var teacherAvatar: UIImageView!
     
     
-    @IBAction func clickedSendFeedback(sender: AnyObject) {
+    @IBAction func clickSendFeedback(sender: AnyObject) {
+        if messageTextView.text == MESSAGE_PLACEHOLDER{
+            messageTextView.text = "Student did not write anything"
+        }
+        
         performSegueWithIdentifier("feedbackSentSegue", sender: nil)
+
+        
     }
+//    @IBAction func clickedSendFeedback(sender: AnyObject) {
+//        performSegueWithIdentifier("feedbackSentSegue", sender: nil)
+//    }
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -72,7 +81,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         
 
         
-        
         applyPlaceholderStyle(self.messageTextView, placeholderText: MESSAGE_PLACEHOLDER)
     }
     
@@ -89,11 +97,17 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
+
     // MARK: Text View
+    func textViewDidEndEditing(textView: UITextView) {
+        
+    }
+    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         // remove the placeholder text when they start typing
         // first, see if the field is empty
         // if it's not empty, then the text should be black and not italic
+
         // BUT, we also need to remove the placeholder text if that's the only text
         // if it is empty, then the text should be the placeholder
         let newLength = textView.text.utf16.count + text.utf16.count - range.length
@@ -110,6 +124,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                 applyNonPlaceholderStyle(textView)
                 textView.text = ""
             }
+
             return true
         }
         else  // no text, so show the placeholder
@@ -201,7 +216,9 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         var request: [String: String]! = Dictionary<String,String>()
         
         request["entry_id"] = self.entry?.objectId
+
         request["request_body"] = self.messageTextView.text
+        
         let teacherId = teacher.objectId! as String
         request["teacher_id"] = teacherId
         request["user_id"] = currentUser!.objectId! as String
