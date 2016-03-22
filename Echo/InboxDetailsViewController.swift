@@ -14,10 +14,8 @@ import AVKit
 import AVFoundation
 
 class InboxDetailsViewController: UIViewController {
-    var inboxUser: PFUser?
-    var request : [String: String]?
-    var currentEntry : PFObject?
-    var entryId: String?
+    var request : PFObject?
+    var entry : PFObject?
     var userId: String? // id of user who sent request
     var controller: AVPlayerViewController?
     
@@ -45,9 +43,6 @@ class InboxDetailsViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackground()
-        
         usernameLabel.textColor = StyleGuide.Colors.echoTeal
         messageView.backgroundColor = StyleGuide.Colors.echoFormGray
         messageWrapperView.layer.borderWidth = 1
@@ -59,27 +54,23 @@ class InboxDetailsViewController: UIViewController {
         })
         
         if request != nil {
-            entryId = self.request!["entry_id"]! as String
-            self.requestBodyLabel.text = self.request!["request_body"]
+            self.entry = request?.objectForKey("entry") as? PFObject
+            self.requestBodyLabel.text = request?.objectForKey("request_body") as? String
             self.setEntryLabels()
         }
     }
     
     func setEntryLabels() {
-        let query = PFQuery(className:"Entry")
-        query.getObjectInBackgroundWithId(self.entryId!) {
-            (currentEntry: PFObject?, error: NSError?) -> Void in
-            if error == nil && currentEntry != nil {
-                self.currentEntry = currentEntry
+        entry?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.entry = object
                 self.convertVideoDataToNSURL()
-                self.titleLabel.text = self.currentEntry!["title"] as? String
-                self.userId = self.currentEntry!["user_id"] as? String
-                self.createdAtLabel.text = DateManager.getFriendlyTime(currentEntry?.createdAt)
+                self.titleLabel.text = self.entry?.objectForKey("title") as? String
+                self.userId = self.entry?.objectForKey("user_id") as? String
+                self.createdAtLabel.text = DateManager.getFriendlyTime(self.entry?.createdAt)
                 self.setUserLabels()
-            } else {
-                print(error)
             }
-        }
+        })
     }
     
     func setUserLabels(){
@@ -96,23 +87,6 @@ class InboxDetailsViewController: UIViewController {
                 print(error)
             }
         }
-//        query.whereKey("facebook_id", equalTo: "IZwCMs11i9")
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                if let objects = objects {
-//                    for object in objects {
-//                        let user = object as! PFUser
-//                        self.usernameLabel.text = user["username"] as? String
-//                        self.locationLabel.text = user["location"] as? String
-//                        let profUrl = user["profilePhotoUrl"] as? String
-//                        self.userImageView.setImageWithURL(NSURL(string: profUrl!)!)
-//                    }
-//                }
-//            } else {
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//        }
     }
     
     // MARK: Video
@@ -142,7 +116,7 @@ class InboxDetailsViewController: UIViewController {
     private func convertVideoDataToNSURL() {
         let url: NSURL?
         let rawData: NSData?
-        let videoData = self.currentEntry!["video"] as! PFFile
+        let videoData = self.entry!["video"] as! PFFile
         do {
             rawData = try videoData.getData()
             url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
@@ -158,64 +132,21 @@ class InboxDetailsViewController: UIViewController {
     
     // MARK: add rejected request for user
     @IBAction func onReject(sender: AnyObject) {
-        if let requests_received = inboxUser!["requests_received"] {
-            var requestsReceived = requests_received as! Array<Dictionary<String,String>>
-            let index = requestsReceived.indexOf({$0["entry_id"] == self.entryId})
-            requestsReceived.removeAtIndex(index!)
-            // update requests_received for user
-            inboxUser!["requests_received"] = requestsReceived
-            inboxUser!.saveInBackground()
-            // add to requests_rejected for user
-            addReject()
-        }
-        performSegueWithIdentifier("returnInbox", sender: self)
-    }
-
-    func addReject() {
-        // add to requests_rejected array for current user
-        if let requests_rejected = inboxUser!["requests_rejected"] {
-            var array = requests_rejected as! Array<Dictionary<String,String>>
-            array.append(request!)
-            inboxUser!["requests_rejected"] = array
-        } else {
-            let array = [request!]
-            inboxUser!["requests_rejected"] = array
-        }
-        inboxUser!.saveInBackground()
-    }
-    
-    // MARK: Accept feedback request
-    func addAcceptedRequest() {
-        // add to requests_rejected array for current user
-        if let requests_accepted = inboxUser!["requests_accepted"] {
-            var array = requests_accepted as! Array<Dictionary<String,String>>
-            array.append(self.request!)
-            inboxUser!["requests_accepted"] = array
-        } else {
-            let array = [request!]
-            inboxUser!["requests_accepted"] = array
-        }
-        inboxUser!.saveInBackground()
+        request!["rejected"] = "true"
+        request?.saveInBackground()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func onAccept() {
-        if let requests_received = inboxUser!["requests_received"] {
-            var requestsReceived = requests_received as! Array<Dictionary<String,String>>
-            let index = requestsReceived.indexOf({$0["entry_id"] == self.entryId})
-            requestsReceived.removeAtIndex(index!)
-            // update requests_received for user
-            inboxUser!["requests_received"] = requestsReceived
-            inboxUser!.saveInBackground()
-            // add to requests_accepted for user
-            addAcceptedRequest()
-        }
+        request!["accepted"] = "true"
+        request?.saveInBackground()
     }
     
-    // MARK: sets current feedback request
-    func setFeedbackRequest(request: Dictionary<String,String>) {
-        self.request = request
-    }
-    
+//    // MARK: sets current feedback request
+//    func setFeedbackRequest(request: PFObject?) {
+//        self.request = request
+//    }
+//    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -233,7 +164,7 @@ class InboxDetailsViewController: UIViewController {
                 case "AcceptFeedbackSegue":
                     let navController = segue.destinationViewController as! UINavigationController
                     let acceptFeedbackRequestViewController = navController.topViewController as! AcceptFeedbackRequestViewController
-                    acceptFeedbackRequestViewController.entry = currentEntry
+                    acceptFeedbackRequestViewController.entry = self.entry
                     onAccept()
 
                 default:

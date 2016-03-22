@@ -81,10 +81,18 @@ struct Utils {
         return mutableString
     }
     
-    static func createSentInboxText(name: String, title: String) -> NSAttributedString {
+    static func createSentInboxText(name: String, title: String, status: String) -> NSAttributedString {
         let nameLength = name.characters.count
         let titleLength = title.characters.count
-        let startingString = "Awaiting feedback on \(title) from \(name)."
+        var startingString = ""
+        if status == "pending" {
+            startingString = "Awaiting feedback on \(title) from \(name)."
+        } else if status == "accepted" {
+            startingString = "Received feedback on \(title) from \(name)."
+        } else {
+            startingString = "Feedback request on \(title) was rejected by \(name)."
+        }
+        
         let totalLength = startingString.characters.count
         let startingTitlePoint = totalLength - nameLength - 1
         
