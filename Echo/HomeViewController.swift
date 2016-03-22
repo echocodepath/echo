@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.view.sendSubviewToBack(controller.view)
         self.view.bringSubviewToFront(self.coverImage)
+        convertVideoDataToNSURL()
     }
     
     override func viewDidLoad() {
