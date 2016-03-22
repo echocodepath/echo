@@ -29,7 +29,6 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         requestsSentTableView.insertSubview(refreshControlTableView, atIndex: 0)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,15 +69,51 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SentRequests", forIndexPath: indexPath) as! InboxCell
-        cell.accessoryType = .DisclosureIndicator
         let request = self.requestsSent[indexPath.row]
         let teacher_name = request.objectForKey("user_name") as! String
         let title = request.objectForKey("entry_name") as! String
         let teacherPictureUrl = request.objectForKey("user_picture") as! String
         cell.avatarImageView.setImageWithURL(NSURL(string: teacherPictureUrl)!)
-        cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title)
+        
+        let accepted = request.objectForKey("accepted") as! String
+        let rejected = request.objectForKey("rejected") as! String
+        if accepted == "false" && rejected == "false" {
+            cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title, status: "pending")
+        } else if accepted == "true" {
+            cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title, status: "accepted")
+            cell.accessoryType = .DisclosureIndicator
+        } else if rejected == "true" {
+            cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title, status: "rejected")
+        }
 
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedRequest = requestsSent[indexPath.row]
+        let accepted = selectedRequest.objectForKey("accepted") as! String
+        if accepted == "true" {
+            let selectedEntry = selectedRequest.objectForKey("entry") as! PFObject
+            let selectedTeacher = selectedRequest.objectForKey("teacher") as! PFObject
+            
+            selectedEntry.fetchInBackgroundWithBlock({ (entryObject: PFObject?, error:NSError?) -> Void in
+                let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
+                let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+                feedbackVC.entry = entryObject
+                
+                //get feedback for entry from specific teacher
+                let feedbackQuery = PFQuery(className:"Feedback")
+                feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
+                feedbackQuery.whereKey("teacher_id", equalTo: selectedTeacher)
+                feedbackQuery.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                    if error == nil && object != nil {
+                        feedbackVC.feedback = object
+                        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                        self.parentNavigationController!.pushViewController(feedbackVC, animated: true)
+                    }
+                }
+            })
+        }
     }
 
     /*
