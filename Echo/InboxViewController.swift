@@ -40,7 +40,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func fetchRequests(){
         let userId = currentPfUser?.objectId
-        let predicate  = NSPredicate(format:"teacherId = '\(userId!)' AND accepted = 'false'")
+        let predicate  = NSPredicate(format:"teacherId = '\(userId!)' AND accepted = 'false' AND rejected = 'false'")
         let requestQuery = PFQuery(className:"FeedbackRequest", predicate: predicate)
         requestQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -83,11 +83,11 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
-//        let request = requestsReceived[indexPath.row]
-//        inboxDetailsViewController.request = request
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        self.parentNavigationController!.pushViewController(inboxDetailsViewController, animated: true)
+        let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
+        let request = requestsReceived[indexPath.row]
+        inboxDetailsViewController.request = request
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.parentNavigationController!.pushViewController(inboxDetailsViewController, animated: true)
     }
     
     
