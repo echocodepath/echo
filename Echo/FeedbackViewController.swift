@@ -337,6 +337,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        timeSlider.value = 0
+    }
+    
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
     }

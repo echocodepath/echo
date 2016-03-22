@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qHU-ev-9WP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -85,7 +85,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTORS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-aB-u50">
-                                <rect key="frame" x="8" y="243" width="206" height="14.5"/>
+                                <rect key="frame" x="8" y="242" width="206" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -168,12 +168,12 @@
                             <constraint firstItem="zvI-MY-fme" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" id="N5T-r3-3e7"/>
                             <constraint firstItem="R4U-0h-rWw" firstAttribute="top" secondItem="li2-I0-hQx" secondAttribute="bottom" id="PU5-Kr-V2R"/>
                             <constraint firstItem="zvI-MY-fme" firstAttribute="top" secondItem="ROM-Nu-3A0" secondAttribute="bottom" constant="8" id="TWl-Gp-uDs"/>
-                            <constraint firstItem="5Kj-6b-fef" firstAttribute="top" secondItem="Hqo-aB-u50" secondAttribute="bottom" constant="7.5" id="XUc-CR-U9q"/>
+                            <constraint firstItem="5Kj-6b-fef" firstAttribute="top" secondItem="Hqo-aB-u50" secondAttribute="bottom" constant="8.5" id="XUc-CR-U9q"/>
                             <constraint firstItem="ROM-Nu-3A0" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" constant="8" id="aG7-IM-ChA"/>
                             <constraint firstItem="P4B-cL-PoY" firstAttribute="top" secondItem="zvI-MY-fme" secondAttribute="bottom" id="amQ-Av-l2V"/>
                             <constraint firstAttribute="trailing" secondItem="ROM-Nu-3A0" secondAttribute="trailing" constant="202" id="fYz-6Y-V6W"/>
-                            <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="10" id="fpS-MO-j4R"/>
-                            <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="10" id="ikC-SP-26q"/>
+                            <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="9" id="fpS-MO-j4R"/>
+                            <constraint firstItem="Hqo-aB-u50" firstAttribute="top" secondItem="R4U-0h-rWw" secondAttribute="bottom" constant="9" id="ikC-SP-26q"/>
                             <constraint firstItem="Hqo-aB-u50" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" constant="8" id="jga-Hk-Bfs"/>
                             <constraint firstItem="ROM-Nu-3A0" firstAttribute="top" secondItem="5Kj-6b-fef" secondAttribute="bottom" constant="8" id="qNv-WC-TXS"/>
                             <constraint firstAttribute="trailing" secondItem="5Kj-6b-fef" secondAttribute="trailing" id="qUC-BB-TdH"/>
