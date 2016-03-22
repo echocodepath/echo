@@ -95,11 +95,6 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
-        
         bindVideoControlActions()
         setupButtonToggle()
         timeSlider.maximumValue = 1
@@ -126,20 +121,13 @@ class EntryViewController: UIViewController {
         }
         
     }
-
+    
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = elapsedTime
         if !timeSlider.tracking {
             timeSlider.value = Float(elapsedTime/duration)
         }
         timeAgoLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
-    }
-
-    //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        print("dismiss keyboard invoked")
-        view.endEditing(true)
     }
     
     
