@@ -44,6 +44,7 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
+                    self.acceptedRequests = []
                     self.acceptedRequests = objects
                     self.acceptedRequestsTableView.reloadData()
                 }
@@ -56,7 +57,6 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     func onRefresh(){
         currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                self.acceptedRequests = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }
