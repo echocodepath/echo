@@ -221,6 +221,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="clickSendFeedback:" destination="tmx-UA-XdX" eventType="touchUpInside" id="bw6-2z-dcG"/>
                                             <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="h9I-1g-pQR"/>
                                         </connections>
                                     </button>
