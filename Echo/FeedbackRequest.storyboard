@@ -218,10 +218,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
-                                        <rect key="frame" x="276" y="320" width="118" height="36"/>
+                                        <rect key="frame" x="283" y="320" width="111" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="118" id="ULE-cS-Nkr"/>
-                                            <constraint firstAttribute="height" constant="36" id="bG8-pF-KaW"/>
+                                            <constraint firstAttribute="width" constant="111" id="ULE-cS-Nkr"/>
+                                            <constraint firstAttribute="height" constant="31" id="bG8-pF-KaW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                         <state key="normal" title="Send" backgroundImage="favorite-button">
@@ -236,7 +236,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="e9i-ul-QU4" secondAttribute="bottom" constant="3" id="7h8-87-ZpC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="34" id="AjY-by-DKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="39" id="AjY-by-DKK"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="BJ7-aX-fmx"/>
                                     <constraint firstItem="e9i-ul-QU4" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="Ezx-BD-EUN"/>
                                     <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="19" id="dhV-Dc-7LS"/>
