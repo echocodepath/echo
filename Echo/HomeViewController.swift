@@ -154,7 +154,7 @@ class HomeViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         FileProcessor.sharedInstance.deleteVideoFile()
-        controller.player!.pause()
+        controller.player?.pause()
     }
 
 
