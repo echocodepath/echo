@@ -15,7 +15,7 @@ import AVFoundation
 
 class InboxDetailsViewController: UIViewController {
     var inboxUser: PFUser?
-    var request : [String: String]?
+    var request : PFObject?
     var currentEntry : PFObject?
     var entryId: String?
     var userId: String? // id of user who sent request
@@ -59,8 +59,8 @@ class InboxDetailsViewController: UIViewController {
         })
         
         if request != nil {
-            entryId = self.request!["entry_id"]! as String
-            self.requestBodyLabel.text = self.request!["request_body"]
+            entryId = self.request!["entry_id"] as? String
+            self.requestBodyLabel.text = self.request!["request_body"] as? String
             self.setEntryLabels()
         }
     }
@@ -159,8 +159,8 @@ class InboxDetailsViewController: UIViewController {
     // MARK: add rejected request for user
     @IBAction func onReject(sender: AnyObject) {
         if let requests_received = inboxUser!["requests_received"] {
-            var requestsReceived = requests_received as! Array<Dictionary<String,String>>
-            let index = requestsReceived.indexOf({$0["entry_id"] == self.entryId})
+            var requestsReceived = requests_received as! Array<PFObject>
+            let index = requestsReceived.indexOf({$0["entry_id"].objectId == self.entryId})
             requestsReceived.removeAtIndex(index!)
             // update requests_received for user
             inboxUser!["requests_received"] = requestsReceived
@@ -174,7 +174,7 @@ class InboxDetailsViewController: UIViewController {
     func addReject() {
         // add to requests_rejected array for current user
         if let requests_rejected = inboxUser!["requests_rejected"] {
-            var array = requests_rejected as! Array<Dictionary<String,String>>
+            var array = requests_rejected as! Array<PFObject>
             array.append(request!)
             inboxUser!["requests_rejected"] = array
         } else {
@@ -188,7 +188,7 @@ class InboxDetailsViewController: UIViewController {
     func addAcceptedRequest() {
         // add to requests_rejected array for current user
         if let requests_accepted = inboxUser!["requests_accepted"] {
-            var array = requests_accepted as! Array<Dictionary<String,String>>
+            var array = requests_accepted as! Array<PFObject>
             array.append(self.request!)
             inboxUser!["requests_accepted"] = array
         } else {
@@ -211,11 +211,11 @@ class InboxDetailsViewController: UIViewController {
         }
     }
     
-    // MARK: sets current feedback request
-    func setFeedbackRequest(request: Dictionary<String,String>) {
-        self.request = request
-    }
-    
+//    // MARK: sets current feedback request
+//    func setFeedbackRequest(request: PFObject?) {
+//        self.request = request
+//    }
+//    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

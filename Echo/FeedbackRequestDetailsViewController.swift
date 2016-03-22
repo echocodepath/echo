@@ -17,7 +17,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var entry: PFObject?
     var teacher: PFObject?
-    var currentUser: PFUser?
     
     var controller: AVPlayerViewController?
     
@@ -31,14 +30,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         if messageTextView.text == MESSAGE_PLACEHOLDER{
             messageTextView.text = "Student did not write anything"
         }
-        
-        performSegueWithIdentifier("feedbackSentSegue", sender: nil)
-
-        
+        //performSegueWithIdentifier("feedbackSentSegue", sender: nil)
     }
-//    @IBAction func clickedSendFeedback(sender: AnyObject) {
-//        performSegueWithIdentifier("feedbackSentSegue", sender: nil)
-//    }
     
     @IBAction func onBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -50,9 +43,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        currentUser = PFUser.currentUser()
-        currentUser?.fetchInBackground()
 
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
@@ -210,74 +200,48 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
     }
     
-    
     // MARK: send feedback request
-    func sendFeedbackRequest(teacher: PFObject) {
-        var request: [String: String]! = Dictionary<String,String>()
+    func sendFeedbackRequest() {
+        var request: [String: NSObject] = Dictionary<String, NSObject>()
         
-        request["entry_id"] = self.entry?.objectId
-
+        request["entry"] = self.entry
+        request["entry_name"] = self.entry!["title"] as! String
+        request["teacher"] = self.teacher
+        request["teacherId"] = self.teacher?.objectId
+        request["teacher_name"] = self.teacher!["username"] as! String
+        request["teacher_picture"] = self.teacher!["profilePhotoUrl"] as! String
+        request["user"] = currentPfUser
+        request["userId"] = currentPfUser?.objectId
+        request["user_name"] = currentPfUser!["username"] as! String
+        request["user_picture"] = currentPfUser!["profilePhotoUrl"] as! String
         request["request_body"] = self.messageTextView.text
-        
-        let teacherId = teacher.objectId! as String
-        request["teacher_id"] = teacherId
-        request["user_id"] = currentUser!.objectId! as String
         request["accepted"] = "false"
         request["resolved"] = "false"
         
-        // add to requests_sent array for current user
-        if let requests_sent = currentUser!["requests_sent"] {
-            var array = requests_sent as! Array<Dictionary<String,String>>
-            array.append(request)
-            currentUser!["requests_sent"] = array
-        } else {
-            let array = [request]
-            currentUser!["requests_sent"] = array
-        }
-        currentUser!.saveInBackground()
-        
-        // add to requests_received array for selected teacher
-        let query = PFUser.query()!
-        query.getObjectInBackgroundWithId(teacherId) {
-            (userObject: PFObject?, error: NSError?) -> Void in
-            if error == nil && userObject != nil {
-                let teacher = userObject as! PFUser
-                if let requests_received = teacher["requests_received"] {
-                    var array = requests_received as! Array<Dictionary<String,String>>
-                    array.append(request)
-                    teacher["requests_received"] = array
-                } else {
-                    let array = [request]
-                    teacher["requests_received"] = array
-                }
-                teacher.saveInBackground()
-            } else {
-                print(error)
-            }
-        }
-//        query.whereKey("facebook_id", equalTo: teacherId!)
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            
-//            if error == nil {
-//                if let objects = objects {
-//                    for object in objects {
-//                        let teacher = object as! PFUser
-//                        if let requests_received = teacher["requests_received"] {
-//                            var array = requests_received as! Array<Dictionary<String,String>>
-//                            array.append(request)
-//                            teacher["requests_received"] = array
-//                        } else {
-//                            let array = [request]
-//                            teacher["requests_received"] = array
-//                        }
-//                        teacher.saveInBackground()
-//                    }
-//                }
+        ParseClient.sharedInstance.createFeedbackRequestWithCompletion(request) { (feedbackRequest, error) -> () in
+            print("Yay saved feedback!")
+//            // add to requests_sent array for current user
+//            if let requests_sent = self.currentUser!["requests_sent"] {
+//                var array = requests_sent as! Array<PFObject>
+//                array.append(feedbackRequest!)
+//               self.currentUser!["requests_sent"] = array
 //            } else {
-//                print("Error: \(error!) \(error!.userInfo)")
+//                let array = [feedbackRequest!] as Array<PFObject>
+//                self.currentUser!["requests_sent"] = array
 //            }
-//        }
+//            self.currentUser!.saveInBackground()
+//            
+//            // add to requests_received array for selected teacher
+//            if let requests_received = self.teacher!["requests_received"] {
+//                var array = requests_received as! Array<PFObject>
+//                array.append(feedbackRequest!)
+//                self.teacher!["requests_received"] = array
+//            } else {
+//                let array = [feedbackRequest!] as Array<PFObject>
+//                self.teacher!["requests_received"] = array
+//            }
+//            self.teacher!.saveInBackground()
+        }
     }
 
     
@@ -293,7 +257,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teacher!)
                     controller!.player!.pause()
-                    sendFeedbackRequest(self.teacher!)
+                    sendFeedbackRequest()
                     
                 default:
                     return
