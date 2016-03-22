@@ -35,7 +35,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = "Received"
         tableView.delegate = self
         tableView.dataSource = self
-        debugPrint("HIIIIII \(self.navigationController)")
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)

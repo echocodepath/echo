@@ -22,6 +22,7 @@ class EntryViewController: UIViewController {
     var playerRateBeforeSeek: Float = 0
     var avPlayer: AVPlayer?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var playBtn: UIButton!
@@ -33,7 +34,11 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var videoContainerView: UIView!
+    @IBOutlet weak var titleIconImageView: UIImageView!
     
+    @IBOutlet weak var privateSwitch: UISwitch!
+    @IBOutlet weak var artistIconImageView: UIImageView!
+    @IBOutlet weak var songIconImageView: UIImageView!
     @IBAction func onBack(sender: AnyObject) {
         videoPlayer.player?.pause()
         
@@ -57,6 +62,13 @@ class EntryViewController: UIViewController {
             playBtn.selected = false
             avPlayer!.play()
         }
+    }
+    
+    func setupIcons() {
+        artistIconImageView.image = UIImage(named: "Artist Icon")
+        songIconImageView.image = UIImage(named: "Music Icon")
+        titleIconImageView.image = UIImage(named:"Title Icon")
+        privateSwitch.onTintColor = StyleGuide.Colors.echoBorderGray
     }
     
     func bindVideoControlActions() {
@@ -89,15 +101,14 @@ class EntryViewController: UIViewController {
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
-        
+        setupIcons()
         
         if entry != nil {
             self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
             createdAtLabel.text = DateManager.getFriendlyTime(entry!.createdAt!)
-            microphoneImageView.image = UIImage(named: "Artist Icon")
-            
+            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
