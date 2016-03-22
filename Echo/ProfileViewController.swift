@@ -246,9 +246,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLayoutSubviews()
         if header.scrollOffset == 0 {
             videosCollectionView.contentInset = UIEdgeInsets(top: header.bounds.height + 2, left: 0, bottom: 0, right: 0)
-        } else {
-            videosCollectionView.contentInset = UIEdgeInsets(top: videoEdgeInset - topLayoutGuide.length + 10, left: 0, bottom: 0, right: 0)
-        }
+        } 
     }
     
     override func loadView() {

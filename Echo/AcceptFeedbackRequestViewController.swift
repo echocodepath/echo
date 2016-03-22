@@ -400,6 +400,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         FileProcessor.sharedInstance.deleteVideoFile()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        timeSlider.value = 0
+    }
+    
 
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
