@@ -55,6 +55,8 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                 self.teacherAvatar.setImageWithURL(url!)
                 self.teacherAvatar.layer.cornerRadius = self.teacherAvatar.frame.height/2
                 self.teacherAvatar.clipsToBounds = true
+                self.teacherAvatar.layer.borderWidth = 1
+                self.teacherAvatar.layer.borderColor = UIColor.blackColor().CGColor
             })
             
         }
@@ -65,9 +67,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         messageTextView.layer.borderColor = borderColor.CGColor
         messageTextView.layer.cornerRadius = 5.0
         messageTextView.delegate = self
-        
-
-        
         
         applyPlaceholderStyle(self.messageTextView, placeholderText: MESSAGE_PLACEHOLDER)
     }

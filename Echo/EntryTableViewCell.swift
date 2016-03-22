@@ -17,6 +17,7 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    
 //    var entry: PFObject!{
 //        didSet {
 //            titleLabel.text = entry.valueForKey("title") as? String

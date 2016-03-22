@@ -41,35 +41,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="51" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
-                                <rect key="frame" x="0.0" y="25" width="414" height="711"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-o8-7Zd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHOOSE INSTRUCTOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z6-8m-7Bj">
+                                        <rect key="frame" x="11" y="7" width="113" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                        <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="ZBN-JV-mxp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pa-Az-OPC">
+                                <rect key="frame" x="0.0" y="689" width="414" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                        <rect key="frame" x="107" y="0.0" width="200" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="3wn-SM-Zs0"/>
+                                            <constraint firstAttribute="width" constant="200" id="ALk-Wt-Hjv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <state key="normal" title="Find Teachers on Explore Page" backgroundImage="favorite-button">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="AEi-zk-hRF">
-                                    <rect key="frame" x="0.0" y="143" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
-                                            <rect key="frame" x="115" y="14" width="183" height="34"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="34" id="3wn-SM-Zs0"/>
-                                                <constraint firstAttribute="width" constant="183" id="ALk-Wt-Hjv"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                            <state key="normal" title="Find Teachers on Explore Page" backgroundImage="favorite-button">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="OVo-Ii-9Tv" firstAttribute="centerX" secondItem="AEi-zk-hRF" secondAttribute="centerX" id="HBm-g1-Ots"/>
-                                        <constraint firstAttribute="height" constant="50" id="f2j-xz-Sx8"/>
-                                        <constraint firstAttribute="bottom" secondItem="OVo-Ii-9Tv" secondAttribute="bottom" constant="2" id="wy8-sN-NYT"/>
-                                    </constraints>
-                                </view>
+                                <constraints>
+                                    <constraint firstItem="OVo-Ii-9Tv" firstAttribute="top" secondItem="1pa-Az-OPC" secondAttribute="top" id="GdV-hp-kdj"/>
+                                    <constraint firstItem="OVo-Ii-9Tv" firstAttribute="centerX" secondItem="1pa-Az-OPC" secondAttribute="centerX" id="NNn-v1-v0K"/>
+                                    <constraint firstItem="OVo-Ii-9Tv" firstAttribute="centerY" secondItem="1pa-Az-OPC" secondAttribute="centerY" constant="-6.5" id="mce-Si-Cng"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="51" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-rc-djT">
+                                <rect key="frame" x="0.0" y="25" width="414" height="649"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherFeedbackCell" rowHeight="51" id="RBb-en-e2k" customClass="TeacherFeedbackCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="414" height="51"/>
@@ -116,29 +130,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-o8-7Zd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHOOSE INSTRUCTOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z6-8m-7Bj">
-                                        <rect key="frame" x="11" y="7" width="113" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                        <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="ZBN-JV-mxp"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1pa-Az-OPC" secondAttribute="trailing" id="EmW-qC-l3m"/>
+                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="1pa-Az-OPC" secondAttribute="bottom" id="RmP-ex-Waq"/>
                             <constraint firstItem="YPf-o8-7Zd" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="SVL-Ik-sEX"/>
                             <constraint firstAttribute="trailing" secondItem="7ua-rc-djT" secondAttribute="trailing" id="hCE-p3-3MU"/>
+                            <constraint firstItem="1pa-Az-OPC" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="it2-Qk-KLS"/>
                             <constraint firstAttribute="trailing" secondItem="YPf-o8-7Zd" secondAttribute="trailing" id="nHL-3h-CN6"/>
                             <constraint firstItem="YPf-o8-7Zd" firstAttribute="top" secondItem="tfU-aP-JPa" secondAttribute="top" id="nmt-g3-yst"/>
-                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" id="qu8-D2-xjj"/>
+                            <constraint firstItem="3uo-Hg-ULi" firstAttribute="top" secondItem="7ua-rc-djT" secondAttribute="bottom" constant="62" id="qu8-D2-xjj"/>
                             <constraint firstItem="7ua-rc-djT" firstAttribute="leading" secondItem="tfU-aP-JPa" secondAttribute="leading" id="wPp-fK-1cN"/>
                             <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="YPf-o8-7Zd" secondAttribute="bottom" id="yVV-UB-TSC"/>
                         </constraints>
@@ -152,7 +154,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="instructorHeadView" destination="AEi-zk-hRF" id="KeF-4W-HTa"/>
                         <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
                     </connections>
                 </viewController>
@@ -211,13 +212,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
-                                        <rect key="frame" x="276" y="331" width="118" height="39"/>
+                                        <rect key="frame" x="276" y="331" width="118" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="118" id="ULE-cS-Nkr"/>
-                                            <constraint firstAttribute="height" constant="39" id="bG8-pF-KaW"/>
+                                            <constraint firstAttribute="height" constant="34" id="bG8-pF-KaW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" backgroundImage="Send Button-1">
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <state key="normal" title="Send" backgroundImage="favorite-button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -234,7 +235,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="e9i-ul-QU4" secondAttribute="bottom" constant="3" id="7h8-87-ZpC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="20" id="AjY-by-DKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="25" id="AjY-by-DKK"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="BJ7-aX-fmx"/>
                                     <constraint firstItem="e9i-ul-QU4" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="Ezx-BD-EUN"/>
                                     <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="20" id="dhV-Dc-7LS"/>
@@ -251,8 +252,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-qq-kl3">
                                 <rect key="frame" x="0.0" y="306" width="414" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
-                                        <rect key="frame" x="14" y="8" width="298" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siO-tY-TRs">
+                                        <rect key="frame" x="14" y="10" width="65" height="15"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -260,6 +261,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="top" secondItem="NkI-qq-kl3" secondAttribute="top" constant="10" id="1H5-F0-GwF"/>
+                                    <constraint firstItem="siO-tY-TRs" firstAttribute="leading" secondItem="NkI-qq-kl3" secondAttribute="leading" constant="14" id="BxO-cd-Ke9"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="hWN-nh-Gfx"/>
                                     <constraint firstAttribute="height" constant="40" id="iFN-2M-4Mi"/>
                                 </constraints>
@@ -380,7 +383,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Send Button-1" width="181" height="61"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="favorite-button" width="310" height="80"/>
     </resources>
