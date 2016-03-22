@@ -134,7 +134,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-Pu-gFi">
                                 <rect key="frame" x="0.0" y="64" width="320" height="165"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="eAe-kH-cgn"/>
                                     <constraint firstAttribute="height" constant="165" id="wgt-T3-GtJ"/>

@@ -92,6 +92,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         audioTimers.forEach({ $0.invalidate() })
     }
     
+    func invalidateAudioClips() {
+        audioPlayers.forEach({ $0.pause() })
+    }
+    
     func invalidateTimersAndFeedback() {
         invalidateTimers()
         feedback.forEach({ $0.hasBeenPlayed = false })
@@ -386,10 +390,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 params["offset"] = offset
                 
                 
-                print(feedback)
-                ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in
-                    //do nothing
-                    print(audioClip)
+                ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in                     FileProcessor.sharedInstance.deleteFile(clip.path!)
                 }
             }
         }
@@ -398,6 +399,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     override func viewWillDisappear(animated: Bool) {
         videoPlayer.player?.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
+        audioPlayers.forEach({ $0.pause() })
     }
     
     override func viewWillAppear(animated: Bool) {
