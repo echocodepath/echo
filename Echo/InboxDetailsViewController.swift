@@ -44,12 +44,9 @@ class InboxDetailsViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         usernameLabel.textColor = StyleGuide.Colors.echoTeal
-        self.view.backgroundColor = StyleGuide.Colors.echoFormGray
-        messageWrapperView.backgroundColor = UIColor(patternImage: UIImage(named:"speechbubble")!)
-
-
-//        messageWrapperView.layer.borderWidth = 1
-//        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
+        messageView.backgroundColor = StyleGuide.Colors.echoFormGray
+        messageWrapperView.layer.borderWidth = 1
+        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
