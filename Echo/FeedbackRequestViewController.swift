@@ -31,7 +31,6 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
         tableView.dataSource = self
         tableView.delegate = self
 
-        instructorHeadView.backgroundColor = UIColor.clearColor()
         
         let teacher_ids: [String]
         if let favorite_teachers = currentUser!["favorite_teachers"] {
