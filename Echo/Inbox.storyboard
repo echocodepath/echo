@@ -358,7 +358,8 @@
                                             <constraint firstAttribute="height" constant="34" id="Ozn-BG-dmv"/>
                                             <constraint firstAttribute="width" constant="103" id="uxZ-Dd-W6q"/>
                                         </constraints>
-                                        <state key="normal" title="Reject" image="deny-feedback"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <state key="normal" title="Reject" backgroundImage="deny-feedback"/>
                                         <connections>
                                             <action selector="onReject:" destination="QCR-QT-Qu5" eventType="touchUpInside" id="QLs-Ng-pIR"/>
                                         </connections>
@@ -369,7 +370,8 @@
                                             <constraint firstAttribute="height" constant="33.5" id="J4K-us-ClB"/>
                                             <constraint firstAttribute="width" constant="98" id="jkg-Io-OGj"/>
                                         </constraints>
-                                        <state key="normal" title="Accept" image="accept-feedback"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <state key="normal" title="Accept" backgroundImage="send_button"/>
                                         <connections>
                                             <segue destination="Vtk-a1-NBz" kind="modal" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
                                         </connections>
@@ -561,7 +563,7 @@
     </scenes>
     <resources>
         <image name="Back" width="26" height="24"/>
-        <image name="accept-feedback" width="362" height="122"/>
         <image name="deny-feedback" width="181" height="61"/>
+        <image name="send_button" width="181" height="61"/>
     </resources>
 </document>

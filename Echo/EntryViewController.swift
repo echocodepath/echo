@@ -22,6 +22,8 @@ class EntryViewController: UIViewController {
     var playerRateBeforeSeek: Float = 0
     var avPlayer: AVPlayer?
     
+    @IBOutlet weak var playerControlView: UISlider!
+    @IBOutlet weak var entryHeaderView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
@@ -69,6 +71,8 @@ class EntryViewController: UIViewController {
         songIconImageView.image = UIImage(named: "Music Icon")
         titleIconImageView.image = UIImage(named:"Title Icon")
         privateSwitch.onTintColor = UIColor(red: 0.7647, green: 0.7647, blue: 0.7647, alpha: 1.0)
+        entryHeaderView.backgroundColor = StyleGuide.Colors.echoFormGray
+        playerControlView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
     }
     
     func bindVideoControlActions() {
@@ -104,10 +108,10 @@ class EntryViewController: UIViewController {
         setupIcons()
         
         if entry != nil {
-            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
+//            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
-            createdAtLabel.text = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
+            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
             titleLabel.text = "\(entry!.valueForKey("title") as! String)"
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true

@@ -20,6 +20,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var formBackgroundView: UIView!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
@@ -62,10 +63,10 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
             
         }
         
+        formBackgroundView.backgroundColor = StyleGuide.Colors.echoFormGray
         //text view styling and make text view editable
-        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
         messageTextView.layer.borderWidth = 0.5
-        messageTextView.layer.borderColor = borderColor.CGColor
+        messageTextView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
         messageTextView.layer.cornerRadius = 5.0
         messageTextView.delegate = self
         
