@@ -14,11 +14,9 @@ import AFNetworking
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
-    var inboxUser: PFUser?
-    var requestsReceived: Array<Dictionary<String,String>> = []
+    var requestsReceived: Array<PFObject> = []
+    
     var refreshControlTableView: UIRefreshControl!
-    
-    
     var parentNavigationController : UINavigationController?
 
     @IBOutlet weak var studentImage: UIImageView!
@@ -26,20 +24,14 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
-            if error == nil {
-                self.fetchRequests()
-            }
-        })
         self.title = "Received"
         tableView.delegate = self
         tableView.dataSource = self
+        self.fetchRequests()
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControlTableView, atIndex: 0)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,16 +39,26 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func fetchRequests(){
-        if let requests_received = inboxUser!["requests_received"] {
-            self.requestsReceived = requests_received as! Array<Dictionary<String,String>>
+        let userId = currentPfUser?.objectId
+        let predicate  = NSPredicate(format:"teacherId = '\(userId!)' AND accepted = 'false'")
+        let requestQuery = PFQuery(className:"FeedbackRequest", predicate: predicate)
+        requestQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    self.requestsReceived = objects
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
         }
-        tableView.reloadData()
     }
     
     func onRefresh(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+        currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
+                self.requestsReceived = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }
@@ -72,92 +74,24 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ReceivedRequests", forIndexPath: indexPath) as! InboxCell
         let request = self.requestsReceived[indexPath.row]
-        
-        if let id = request["entry_id"] {
-            let entry_id = id as String
-            var title = ""
-            let entryQuery = PFQuery(className:"Entry")
-            let student_id = request["user_id"]! as String
-            var student_name = ""
-            let studentQuery = PFUser.query()!
-            studentQuery.getObjectInBackgroundWithId(student_id) {
-                (object: PFObject?, error: NSError?) -> Void in
-                if error == nil && object != nil {
-                    var student_picture = ""
-                    student_name = object!["username"] as! String
-                    student_picture = object!["profilePhotoUrl"] as! String
-                    cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
-                    entryQuery.getObjectInBackgroundWithId(entry_id) {
-                        (object: PFObject?, error: NSError?) -> Void in
-                        if error == nil && object != nil {
-                            let entry = object
-                            title = entry!["title"] as! String
-                            cell.inboxTextLabel.attributedText = Utils.createNormalInboxText(student_name, title: title)
-//                            cell.inboxTextLabel.text =  + " would like feedback on " +
-                        } else {
-                            print(error)
-                        }
-                    }
-                } else {
-                    print(error)
-                }
-            }
-//            studentQuery.whereKey("facebook_id", equalTo: student_id)
-//            studentQuery.findObjectsInBackgroundWithBlock {
-//                (objects: [PFObject]?, error: NSError?) -> Void in
-//                if error == nil {
-//                    var student_picture = ""
-//                    if let objects = objects {
-//                        for object in objects {
-//                            student_name = object["username"] as! String
-//                            student_picture = object["profilePhotoUrl"] as! String
-//                        }
-//                    }
-//                    cell.inboxTextLabel.text = student_name + " would like feedback on " + song
-//                    if let url  = NSURL(string: student_picture),
-//                        data = NSData(contentsOfURL: url)
-//                    {
-//                        cell.avatarImageView.image = UIImage(data: data)
-//                    }
-//                } else {
-//                    print("Error: \(error!) \(error!.userInfo)")
-//                }
-//            }
-        }
+        let student_name = request.objectForKey("user_name") as! String
+        let title = request.objectForKey("entry_name") as! String
+        let studentPictureUrl = request.objectForKey("user_picture") as! String
+        cell.avatarImageView.setImageWithURL(NSURL(string: studentPictureUrl)!)
+        cell.inboxTextLabel.attributedText = Utils.createNormalInboxText(student_name, title: title)
         return cell
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//
-//        let inboxDetailsViewController = self.storyboard!.instantiateInitialViewController("InboxDetailsViewController") as! InboxDetailsViewController
-//
-//        let request = requestsReceived[indexPath.row]
-////        InboxDetailsViewController.request = request
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        self.navigationController?.pushViewController("InboxDetailsViewController", animated: true)
-//        
-//        
-//
-//        if self.requestsReceived.count > 0 {
-//            performSegueWithIdentifier("inboxDetails", sender: self)
-//        }
-//    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
-//        let entry = entries[indexPath.row]
-//        entryViewController.entry = entry
-        
-        let request = requestsReceived[indexPath.row]
-
-        inboxDetailsViewController.request = request
-        
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        self.parentNavigationController!.pushViewController(inboxDetailsViewController, animated: true)
+//        let inboxDetailsViewController = self.storyboard!.instantiateViewControllerWithIdentifier("InboxDetailsViewController") as! InboxDetailsViewController
+//        let request = requestsReceived[indexPath.row]
+//        inboxDetailsViewController.request = request
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.parentNavigationController!.pushViewController(inboxDetailsViewController, animated: true)
     }
     
-
+    
+    /*
     
     // MARK: - Navigation
 
@@ -177,6 +111,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+    */
     
 
 }

@@ -11,6 +11,7 @@ import Parse
 import ParseFacebookUtilsV4
 
 var currentUser: User?
+var currentPfUser: PFUser?
 
 class User: NSObject {
     var id: String?
@@ -27,11 +28,12 @@ class User: NSObject {
         self.facebook_id = user.valueForKey("facebook_id") as? String
         self.username = user.username
         self.is_teacher = "false"
+        currentPfUser = PFUser.currentUser()
         returnUserData()
     }
     
     func returnUserData() {
-        if PFUser.currentUser()?.valueForKey("profilePhotoUrl") == nil {
+        if currentPfUser?.valueForKey("profilePhotoUrl") == nil {
             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", parameters: nil)
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                 if ((error) != nil) {
@@ -58,7 +60,5 @@ class User: NSObject {
     
     func saveToParse(dict: NSDictionary){
         ParseClient.sharedInstance.setCurrentUserWithDict(dict)
-        let pfUser = PFUser.currentUser()
-        pfUser?.fetchInBackground()
     }
 }

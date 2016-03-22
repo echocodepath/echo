@@ -12,22 +12,18 @@ import ParseFacebookUtilsV4
 
 class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var acceptedRequestsTableView: UITableView!
-    var parentNavigationController : UINavigationController?
-    var inboxUser: PFUser?
-    var acceptedRequests: Array<Dictionary<String,String>> = []
+    
+    var acceptedRequests: Array<PFObject> = []
+    
     var refreshControlTableView: UIRefreshControl!
+    var parentNavigationController : UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
-            if error == nil {
-                self.fetchRequests()
-            }
-        })
         self.title = "Accepted"
         acceptedRequestsTableView.delegate = self
         acceptedRequestsTableView.dataSource = self
+        self.fetchRequests()
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
@@ -41,16 +37,26 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func fetchRequests(){
-        if let rejected_requests = inboxUser!["requests_accepted"] {
-            self.acceptedRequests = rejected_requests as! Array<Dictionary<String,String>>
+        let userId = currentPfUser?.objectId
+        let predicate  = NSPredicate(format:"teacherId = '\(userId!)' AND accepted = 'true'")
+        let requestQuery = PFQuery(className:"FeedbackRequest", predicate: predicate)
+        requestQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    self.acceptedRequests = objects
+                    self.acceptedRequestsTableView.reloadData()
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
         }
-        acceptedRequestsTableView.reloadData()
     }
     
     func onRefresh(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+        currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
+                self.acceptedRequests = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }
@@ -64,96 +70,49 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AcceptedRequest", forIndexPath: indexPath) as! InboxCell
-        let request = self.acceptedRequests[indexPath.row]
         cell.accessoryType = .DisclosureIndicator
-        
-        if let id = request["entry_id"] {
-            let entry_id = id as String
-            var title = ""
-            let entryQuery = PFQuery(className:"Entry")
-            let student_id = request["user_id"]! as String
-            var student_name = ""
-            let studentQuery = PFUser.query()!
-            studentQuery.getObjectInBackgroundWithId(student_id) {
-                (userObject: PFObject?, error: NSError?) -> Void in
-                if error == nil && userObject != nil {
-                    let object = userObject as! PFUser
-                    var student_picture = ""
-                    student_name = object["username"] as! String
-                    student_picture = object["profilePhotoUrl"] as! String
-                    cell.avatarImageView.setImageWithURL(NSURL(string: student_picture)!)
-                    entryQuery.getObjectInBackgroundWithId(entry_id) {
-                        (object: PFObject?, error: NSError?) -> Void in
-                        if error == nil && object != nil {
-                            let entry = object
-                            title = entry!["title"] as! String
-                            cell.inboxTextLabel.attributedText = Utils.createAcceptedInboxText(student_name, title: title)
-                        } else {
-                            print(error)
-                        }
-                    }
-                } else {
-                    print(error)
-                }
-            }
-//            studentQuery.whereKey("facebook_id", equalTo: student_id)
-//            studentQuery.findObjectsInBackgroundWithBlock {
-//                (objects: [PFObject]?, error: NSError?) -> Void in
-//                if error == nil {
-//                    var student_picture = ""
-//                    if let objects = objects {
-//                        for object in objects {
-//                            student_name = object["username"] as! String
-//                            student_picture = object["profilePhotoUrl"] as! String
-//                        }
-//                    }
-//                    cell.inboxTextLabel.text = "You accepted " + student_name + "'s request for feedback on " + song
-//                    if let url  = NSURL(string: student_picture),
-//                        data = NSData(contentsOfURL: url)
-//                    {
-//                        cell.avatarImageView.image = UIImage(data: data)
-//                    }
-//                } else {
-//                    print("Error: \(error!) \(error!.userInfo)")
-//                }
-//            }
-        }
+        let request = self.acceptedRequests[indexPath.row]
+        let student_name = request.objectForKey("user_name") as! String
+        let title = request.objectForKey("entry_name") as! String
+        let studentPictureUrl = request.objectForKey("user_picture") as! String
+        cell.avatarImageView.setImageWithURL(NSURL(string: studentPictureUrl)!)
+        cell.inboxTextLabel.attributedText = Utils.createAcceptedInboxText(student_name, title: title)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedRequest = acceptedRequests[indexPath.row]
-        let selectedId = selectedRequest["entry_id"]
-        let entryQuery = PFQuery(className:"Entry")
-        entryQuery.getObjectInBackgroundWithId(selectedId!) {
-            (object: PFObject?, error: NSError?) -> Void in
-            if error == nil && object != nil {
-                let selectedEntry = object!
-                let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
-                let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
-                feedbackVC.entry = selectedEntry
-                
-                let feedbackQuery = PFQuery(className:"Feedback")
-                feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
-                feedbackQuery.findObjectsInBackgroundWithBlock {
-                    (objects: [PFObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        if let objects = objects {
-                            for object in objects {
-                                feedbackVC.feedback = object
-                                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                                self.navigationController?.pushViewController(feedbackVC, animated: true)
-                                return
-                            }
-                        }
-                    } else {
-                        print("Error: \(error!) \(error!.userInfo)")
-                    }
-                }
-            } else {
-                print(error)
-            }
-        }
+//        let selectedRequest = acceptedRequests[indexPath.row]
+//        let selectedId = selectedRequest["entry_id"]
+//        let entryQuery = PFQuery(className:"Entry")
+//        entryQuery.getObjectInBackgroundWithId(selectedId! as! String) {
+//            (object: PFObject?, error: NSError?) -> Void in
+//            if error == nil && object != nil {
+//                let selectedEntry = object!
+//                let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
+//                let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+//                feedbackVC.entry = selectedEntry
+//                
+//                let feedbackQuery = PFQuery(className:"Feedback")
+//                feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
+//                feedbackQuery.findObjectsInBackgroundWithBlock {
+//                    (objects: [PFObject]?, error: NSError?) -> Void in
+//                    if error == nil {
+//                        if let objects = objects {
+//                            for object in objects {
+//                                feedbackVC.feedback = object
+//                                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//                                self.navigationController?.pushViewController(feedbackVC, animated: true)
+//                                return
+//                            }
+//                        }
+//                    } else {
+//                        print("Error: \(error!) \(error!.userInfo)")
+//                    }
+//                }
+//            } else {
+//                print(error)
+//            }
+//        }
     }
 
     

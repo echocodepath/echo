@@ -85,6 +85,22 @@ class ParseClient: NSObject {
         
     }
     
+    func createFeedbackRequestWithCompletion(dict: NSDictionary, completion: (feedbackRequest: PFObject?, error: NSError?) -> ()) {
+        let feedbackRequest = PFObject(className:"FeedbackRequest")
+        for (key, val) in dict {
+            feedbackRequest[key as! String] = val
+        }
+        
+        feedbackRequest.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(feedbackRequest: feedbackRequest, error: error)
+            } else {
+            }
+        }
+        
+    }
+    
     func createAudioClipWithCompletion(dict: NSDictionary, completion: (audioClip: PFObject?, error: NSError?) -> ()) {
         
         let audioClip = PFObject(className:"AudioClip")

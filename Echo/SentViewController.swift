@@ -13,22 +13,17 @@ import ParseFacebookUtilsV4
 class SentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var requestsSentTableView: UITableView!
     
-    var inboxUser: PFUser?
-    var requestsSent: Array<Dictionary<String,String>> = []
+    var requestsSent: Array<PFObject> = []
+    
     var refreshControlTableView: UIRefreshControl!
     var parentNavigationController : UINavigationController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
-            if error == nil {
-                self.fetchRequests()
-            }
-        })
         self.title = "Sent"
         requestsSentTableView.delegate = self
         requestsSentTableView.dataSource = self
+        self.fetchRequests()
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
@@ -42,16 +37,26 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func fetchRequests(){
-        if let requests_sent = inboxUser!["requests_sent"] {
-            self.requestsSent = requests_sent as! Array<Dictionary<String,String>>
+        let userId = currentPfUser?.objectId
+        let predicate  = NSPredicate(format:"userId = '\(userId!)'")
+        let requestQuery = PFQuery(className:"FeedbackRequest", predicate: predicate)
+        requestQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    self.requestsSent = objects
+                    self.requestsSentTableView.reloadData()
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
         }
-        requestsSentTableView.reloadData()
     }
     
     func onRefresh(){
-        inboxUser = PFUser.currentUser()
-        inboxUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+        currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
+                self.requestsSent = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }
@@ -65,61 +70,14 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SentRequests", forIndexPath: indexPath) as! InboxCell
-
-        var request = self.requestsSent[indexPath.row]
         cell.accessoryType = .DisclosureIndicator
-        
-        if let id = request["entry_id"] {
-            let entry_id = id as String
-            var title = ""
-            let entryQuery = PFQuery(className:"Entry")
-            let teacher_id = request["teacher_id"]! as String
-            let teacherQuery = PFUser.query()!
-            teacherQuery.getObjectInBackgroundWithId(teacher_id) {
-                (object: PFObject?, error: NSError?) -> Void in
-                if error == nil && object != nil {
-                    var teacher_name = ""
-                    var teacher_picture = ""
-                    teacher_name = object!["username"] as! String
-                    teacher_picture = object!["profilePhotoUrl"] as! String
-                    cell.avatarImageView.setImageWithURL(NSURL(string: teacher_picture)!)
-                    entryQuery.getObjectInBackgroundWithId(entry_id) {
-                        (object: PFObject?, error: NSError?) -> Void in
-                        if error == nil && object != nil {
-                            let entry = object
-                            title = entry!["title"] as! String
-                            cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title)
-                        } else {
-                            print(error)
-                        }
-                    }
-                } else {
-                    print(error)
-                }
-            }
-//            teacherQuery.whereKey("facebook_id", equalTo: teacher_id)
-//            teacherQuery.findObjectsInBackgroundWithBlock {
-//                (objects: [PFObject]?, error: NSError?) -> Void in
-//                if error == nil {
-//                    var teacher_name = ""
-//                    var teacher_picture = ""
-//                    if let objects = objects {
-//                        for object in objects {
-//                            teacher_name = object["username"] as! String
-//                            teacher_picture = object["profilePhotoUrl"] as! String
-//                        }
-//                    }
-//                    cell.inboxTextLabel.text = "Awaiting feedback on " + song + " from " + teacher_name
-//                    if let url  = NSURL(string: teacher_picture),
-//                        data = NSData(contentsOfURL: url)
-//                    {
-//                        cell.avatarImageView.image = UIImage(data: data)
-//                    }
-//                } else {
-//                    print("Error: \(error!) \(error!.userInfo)")
-//                }
-//            }
-        }
+        let request = self.requestsSent[indexPath.row]
+        let teacher_name = request.objectForKey("user_name") as! String
+        let title = request.objectForKey("entry_name") as! String
+        let teacherPictureUrl = request.objectForKey("user_picture") as! String
+        cell.avatarImageView.setImageWithURL(NSURL(string: teacherPictureUrl)!)
+        cell.inboxTextLabel.attributedText = Utils.createSentInboxText(teacher_name, title: title)
+
         return cell
     }
 
