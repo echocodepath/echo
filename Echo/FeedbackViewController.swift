@@ -87,12 +87,12 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     @IBAction func onBack(sender: AnyObject) {
         //dismissViewControllerAnimated(true) { () -> Void in
-            self.invalidateTimersAndFeedback()
-            self.avPlayer!.pause()
-            FileProcessor.sharedInstance.deleteVideoFile()
-            self.audioClips.forEach({ clip in
-                FileProcessor.sharedInstance.deleteFile(clip.path!)
-            })
+//            self.invalidateTimersAndFeedback()
+//            self.avPlayer!.pause()
+//            FileProcessor.sharedInstance.deleteVideoFile()
+//            self.audioClips.forEach({ clip in
+//                FileProcessor.sharedInstance.deleteFile(clip.path!)
+//            })
         //}
         
         if let navController = self.navigationController {
@@ -332,6 +332,14 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         audioClips = audioClips.sort({ $0.offset < $1.offset })
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        self.invalidateTimersAndFeedback()
+        self.avPlayer!.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
+        self.audioClips.forEach({ clip in
+            FileProcessor.sharedInstance.deleteFile(clip.path!)
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -344,6 +352,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
     }
+
 
     /*
     // MARK: - Navigation
