@@ -83,35 +83,21 @@ class AcceptedRequestsViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedRequest = acceptedRequests[indexPath.row]
         let selectedEntry = selectedRequest.objectForKey("entry") as! PFObject
-
-        let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
-        let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
-        feedbackVC.entry = selectedEntry
-        
-        //get feedback for entry from specific teacher
-        let feedbackQuery = PFQuery(className:"Feedback")
-        feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
-        feedbackQuery.whereKey("teacher_id", equalTo: currentPfUser!)
-//        feedbackQuery.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
-//            if error == nil && object != nil {
-//                feedbackVC.feedback = object
-//                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//                self.parentNavigationController!.pushViewController(feedbackVC, animated: true)
-//            }
-//        }
-        feedbackQuery.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        feedbackVC.feedback = object
-                        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                        self.parentNavigationController!.pushViewController(feedbackVC, animated: true)
-                        return
-                    }
+        selectedEntry.fetchInBackgroundWithBlock { (entryObject: PFObject?, error: NSError?) -> Void in
+            let feedbackStoryboard = UIStoryboard(name: "FeedbackRecording", bundle: nil)
+            let feedbackVC = feedbackStoryboard.instantiateViewControllerWithIdentifier("FeedbackViewController") as! FeedbackViewController
+            feedbackVC.entry = entryObject
+            
+            //get feedback for entry from specific teacher (me)
+            let feedbackQuery = PFQuery(className:"Feedback")
+            feedbackQuery.whereKey("entry_id", equalTo: selectedEntry)
+            feedbackQuery.whereKey("teacher_id", equalTo: currentPfUser!)
+            feedbackQuery.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
+                    feedbackVC.feedback = object
+                    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    self.parentNavigationController!.pushViewController(feedbackVC, animated: true)
                 }
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }
