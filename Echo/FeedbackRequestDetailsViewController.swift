@@ -217,6 +217,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         request["request_body"] = self.messageTextView.text
         request["accepted"] = "false"
         request["resolved"] = "false"
+        request["rejected"] = "false"
         
         ParseClient.sharedInstance.createFeedbackRequestWithCompletion(request) { (feedbackRequest, error) -> () in
             print("Yay saved feedback!")
