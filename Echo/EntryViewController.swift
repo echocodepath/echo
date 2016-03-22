@@ -90,7 +90,7 @@ class EntryViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        timeSlider.minimumValue = 0
+        timeSlider.value = 0
     }
     
     override func viewDidLoad() {
@@ -201,8 +201,6 @@ class EntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(animated: Bool) {
-    }
     
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
