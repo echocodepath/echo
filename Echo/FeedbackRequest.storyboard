@@ -358,7 +358,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pib-A7-dLt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uWU-SG-MZQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uWU-SG-MZQ" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mTL-68-Ogr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

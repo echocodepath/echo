@@ -17,6 +17,7 @@
 		B22EFE061C98B1DC0048EF5E /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */; };
 		B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F21C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift */; };
 		B233F6F51C9FB900005C2D6F /* FancyInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F41C9FB900005C2D6F /* FancyInboxViewController.swift */; };
+		B233F6F71CA27335005C2D6F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F61CA27335005C2D6F /* NavigationController.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -77,6 +78,7 @@
 		B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		B233F6F21C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSendReceiptViewController.swift; sourceTree = "<group>"; };
 		B233F6F41C9FB900005C2D6F /* FancyInboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyInboxViewController.swift; sourceTree = "<group>"; };
+		B233F6F61CA27335005C2D6F /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				F5904AA71C9E3B3D00829F1B /* Inbox */,
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
 				EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */,
+				B233F6F61CA27335005C2D6F /* NavigationController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			files = (
 				F501EDBF1C97C2FC003581A5 /* RejectedRequestsViewController.swift in Sources */,
 				B233F6F51C9FB900005C2D6F /* FancyInboxViewController.swift in Sources */,
+				B233F6F71CA27335005C2D6F /* NavigationController.swift in Sources */,
 				F52E1FB61C93B9FD0052D039 /* FeedbackRequestDetailsViewController.swift in Sources */,
 				B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */,
 				B22EFE061C98B1DC0048EF5E /* FeedbackViewController.swift in Sources */,
