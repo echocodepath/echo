@@ -15,17 +15,11 @@ class FeedbackRequestSentViewController: UIViewController {
     @IBOutlet weak var teacherLabel: UILabel!
     
     @IBAction func onTapAnywhere(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
-        self.presentViewController(vc, animated: true, completion: nil)
+        navToHome()
     }
     
     func navToHome(){
-        print("Nav to home invoked")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeNavigationController") as! UINavigationController
-        self.presentViewController(vc, animated: true, completion: nil)
-        
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     private var teacherName : String?
@@ -33,10 +27,9 @@ class FeedbackRequestSentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.teacherLabel.text = self.teacherName
-        
+        self.navigationController?.navigationBarHidden = true
+
         _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navToHome", userInfo: nil, repeats: true)
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

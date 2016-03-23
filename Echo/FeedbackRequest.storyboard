@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bKx-De-WoB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -11,23 +11,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Explore" id="eIt-p2-zaS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLa-h6-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-392"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dzQ-t9-Phx">
-            <objects>
-                <navigationController id="TtE-mM-nPE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KvQ-LX-E4X">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="bKx-De-WoB" kind="relationship" relationship="rootViewController" id="xNp-Pu-bX5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Emt-kE-Qic" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-362" y="26"/>
+            <point key="canvasLocation" x="493" y="-342"/>
         </scene>
         <!--REQUEST FEEDBACK-->
         <scene sceneID="w3i-S2-ej7">
@@ -45,11 +29,11 @@
                                 <rect key="frame" x="0.0" y="25" width="414" height="658"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherFeedbackCell" rowHeight="51" id="RBb-en-e2k" customClass="TeacherFeedbackCell" customModule="Echo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TeacherFeedbackCell" rowHeight="51" id="RBb-en-e2k" customClass="TeacherFeedbackCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="414" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RBb-en-e2k" id="mMf-Yf-4Ec">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O3X-EJ-RRO">
@@ -85,7 +69,6 @@
                                             <outlet property="locationLabel" destination="Kz6-KP-U2F" id="Kyr-rR-iPP"/>
                                             <outlet property="profileImageLabel" destination="O3X-EJ-RRO" id="gQ0-BR-iQI"/>
                                             <outlet property="teacherName" destination="H7m-4X-4DE" id="hz7-4d-k9f"/>
-                                            <segue destination="iPd-Dt-VnD" kind="modal" identifier="feedbackDetailsSegue" id="mht-3y-htF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -146,36 +129,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="REQUEST FEEDBACK" id="Hga-l5-FuN">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="f82-sw-vUK">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="f82-sw-vUK">
                             <connections>
-                                <action selector="onBack:" destination="bKx-De-WoB" id="YC3-TQ-632"/>
+                                <action selector="onBack:" destination="bKx-De-WoB" id="5ZD-18-Ong"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="7ua-rc-djT" id="hfH-Z3-Vn6"/>
+                        <segue destination="tmx-UA-XdX" kind="push" identifier="feedbackDetailsSegue" id="X1b-OZ-UUT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNW-Nn-GeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="219"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="h6V-OU-vfG">
-            <objects>
-                <navigationController id="iPd-Dt-VnD" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C1G-dB-GIq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="tmx-UA-XdX" kind="relationship" relationship="rootViewController" id="T4a-yA-2dJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lyv-ev-FUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="755" y="32"/>
+            <point key="canvasLocation" x="129" y="197"/>
         </scene>
         <!--Feedback Request Details View Controller-->
         <scene sceneID="eDf-aS-shN">
@@ -229,7 +198,7 @@
                                         </state>
                                         <connections>
                                             <action selector="clickSendFeedback:" destination="tmx-UA-XdX" eventType="touchUpInside" id="bw6-2z-dcG"/>
-                                            <segue destination="b0G-Yd-x8h" kind="modal" identifier="feedbackSentSegue" id="h9I-1g-pQR"/>
+                                            <segue destination="b0G-Yd-x8h" kind="push" identifier="feedbackSentSegue" id="h9I-1g-pQR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -280,9 +249,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Yg-Yy-ca2">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="7Dy-Hk-mxe">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="7Dy-Hk-mxe">
                             <connections>
-                                <action selector="onBack:" destination="tmx-UA-XdX" id="zRa-tV-BDr"/>
+                                <action selector="onBack:" destination="tmx-UA-XdX" id="ect-qi-DJ9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -297,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohq-yB-Slv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1405" y="73"/>
+            <point key="canvasLocation" x="803" y="225"/>
         </scene>
         <!--Feedback Request Sent View Controller-->
         <scene sceneID="MuR-Qn-xot">
@@ -370,6 +339,7 @@
                             <constraint firstAttribute="trailing" secondItem="b11-eM-1eJ" secondAttribute="trailing" id="yty-Ym-loo"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Qcg-7i-rIV"/>
                     <connections>
                         <outlet property="teacherLabel" destination="SZA-4h-cTD" id="xB1-CZ-KPk"/>
                     </connections>
@@ -381,10 +351,11 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1903" y="110"/>
+            <point key="canvasLocation" x="1437" y="219"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Back" width="26" height="24"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="favorite-button" width="310" height="80"/>
         <image name="send_button" width="181" height="61"/>
