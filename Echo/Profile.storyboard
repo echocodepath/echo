@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QSf-33-f4J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="083-7l-D8S">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -78,7 +78,7 @@
                                         <edgeInsets key="layoutMargins" top="2" left="2" bottom="2" right="2"/>
                                         <connections>
                                             <outlet property="profileThumbnailImageView" destination="Mwy-LU-NWn" id="EOu-LR-PTV"/>
-                                            <segue destination="plc-sB-HGd" kind="modal" identifier="profileToEntry" id="2va-DI-d0a"/>
+                                            <segue destination="plc-sB-HGd" kind="push" identifier="profileToEntry" id="2va-DI-d0a"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -106,15 +106,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ii4-22-5Vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="68"/>
+            <point key="canvasLocation" x="807" y="68"/>
         </scene>
         <!--Entry-->
         <scene sceneID="67y-Rz-qFu">
             <objects>
-                <viewControllerPlaceholder storyboardName="Entry" id="plc-sB-HGd" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Entry" id="plc-sB-HGd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Nd0-K8-Q6v"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26K-A5-PCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608.5" y="147"/>
+            <point key="canvasLocation" x="1140.5" y="147"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cWB-de-M3V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="083-7l-D8S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TNx-6U-dfX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QSf-33-f4J" kind="relationship" relationship="rootViewController" id="e9M-fT-tpK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dn3-hZ-4MV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="275" y="68"/>
         </scene>
     </scenes>
     <resources>
