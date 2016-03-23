@@ -123,8 +123,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
             switch identifier {
                 case "journalToEntrySegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow{
-                        let nc = segue.destinationViewController as! UINavigationController
-                        let vc = nc.topViewController as! EntryViewController
+                        let vc = segue.destinationViewController as! EntryViewController
                         vc.updateEntry(self.entries[indexPath.row])
                     }
                     

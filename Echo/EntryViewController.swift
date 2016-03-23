@@ -47,7 +47,7 @@ class EntryViewController: UIViewController {
         if let handler = onComplete {
             handler(finished: false)
         } else {
-            dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     

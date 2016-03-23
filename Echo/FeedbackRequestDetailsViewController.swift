@@ -65,7 +65,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         
         formBackgroundView.backgroundColor = StyleGuide.Colors.echoFormGray
         //text view styling and make text view editable
-        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderWidth = 1
         messageTextView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
         messageTextView.layer.cornerRadius = 5.0
         messageTextView.delegate = self
