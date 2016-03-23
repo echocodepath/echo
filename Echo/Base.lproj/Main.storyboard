@@ -36,7 +36,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Mtr-Bw-Fv9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vlD-ZZ-OvJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vlD-ZZ-OvJ" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hKI-Xb-bU4">
@@ -435,7 +435,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ohv-a2-a7c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aPu-wO-4Fu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aPu-wO-4Fu" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s2c-Uo-PcX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -450,10 +450,10 @@
             </objects>
             <point key="canvasLocation" x="112" y="-804"/>
         </scene>
-        <!--Home Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="JZX-y4-VRL">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FCh-jL-zxa" customClass="HomeNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FCh-jL-zxa" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9e5-9A-flk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -812,7 +812,7 @@
         <!--Navigation Controller-->
         <scene sceneID="q0h-xk-QJ9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OpJ-hu-KKs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OpJ-hu-KKs" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mlK-NO-Wxb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
