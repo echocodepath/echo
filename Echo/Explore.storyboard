@@ -38,16 +38,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-0h-rWw">
                                 <rect key="frame" x="0.0" y="64" width="414" height="169"/>
                                 <subviews>
-                                    <imageView alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home photo" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-F2-uC3">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="169" id="oBe-LE-8CR"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="VOx-ux-BOs" appends="YES" id="bHE-FN-eeN"/>
-                                        </connections>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STRAIGHT FROM THE STUDIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkg-lM-Wmh">
                                         <rect key="frame" x="84" y="87" width="247" height="21"/>
                                         <constraints>
@@ -70,6 +60,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home photo" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-F2-uC3">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="169" id="oBe-LE-8CR"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VOx-ux-BOs" appends="YES" id="bHE-FN-eeN"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -182,13 +182,7 @@
                             <constraint firstItem="R4U-0h-rWw" firstAttribute="leading" secondItem="Iba-8A-nNE" secondAttribute="leading" id="rzY-rx-8ZQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="INSPIRATION" id="Mqs-oP-cZe">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="0ye-rW-r9I">
-                            <connections>
-                                <action selector="onBack:" destination="xqj-wj-tcV" id="89a-bY-MK8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="INSPIRATION" id="Mqs-oP-cZe"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -208,7 +202,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="26" height="24"/>
         <image name="home photo" width="640" height="480"/>
         <image name="video-play-3-xxl" width="78" height="77"/>
     </resources>
