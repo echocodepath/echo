@@ -164,7 +164,7 @@
                                             <outletCollection property="gestureRecognizers" destination="YfR-HG-h6e" appends="YES" id="KFc-Ua-IVx"/>
                                         </connections>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST DANCE VIDEOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgP-Nc-EnJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST DANCE VIDEOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgP-Nc-EnJ">
                                         <rect key="frame" x="121" y="105" width="173.5" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -707,9 +707,9 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bwS-nL-eFL">
-                                                    <rect key="frame" x="20" y="10" width="20" height="24"/>
+                                                    <rect key="frame" x="20" y="11" width="20" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="QLv-Rb-Kyn"/>
+                                                        <constraint firstAttribute="height" constant="21" id="QLv-Rb-Kyn"/>
                                                         <constraint firstAttribute="width" constant="20" id="acf-dp-VX4"/>
                                                     </constraints>
                                                 </imageView>
