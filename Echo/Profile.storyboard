@@ -121,7 +121,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cWB-de-M3V">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="083-7l-D8S" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="083-7l-D8S" customClass="NavigationController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TNx-6U-dfX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

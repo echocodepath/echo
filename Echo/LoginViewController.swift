@@ -43,14 +43,14 @@ class LoginViewController: UIViewController {
     
     func openSetupPage(){
         let authenticatedSetupViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AuthenticatedSetupViewController") as! AuthenticatedSetupViewController
-        let authSetupPageNav = UINavigationController(rootViewController: authenticatedSetupViewController)
+        let authSetupPageNav = NavigationController(rootViewController: authenticatedSetupViewController)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = authSetupPageNav
     }
     
     func openHomePage(){
         let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        let homePageNav = UINavigationController(rootViewController: homeViewController)
+        let homePageNav = NavigationController(rootViewController: homeViewController)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = homePageNav
     }

@@ -18,23 +18,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBDesignable
     class ProfileHeader: UIView {
         let guideView: UIView = UIView()
-        let favoriteButton: UIButton = {
+        let favButton: UIButton = {
 
             let button = UIButton(type: .System)
             
             button.setTitle("Add to Favorites", forState: .Normal)
-            button.setTitle("Added to Favorites", forState: .Selected)
             
-            if button.selected == true {
-
-                button.backgroundColor = StyleGuide.Colors.echoTeal
-                button.tintColor = UIColor.whiteColor()
-            } else {
-                button.backgroundColor = UIColor.whiteColor()
-                button.tintColor = StyleGuide.Colors.echoTeal
-            }
+            button.backgroundColor = StyleGuide.Colors.echoTeal
+            button.tintColor = UIColor.whiteColor()
+            
             button.contentEdgeInsets = UIEdgeInsetsMake(4,12,4,12)
-            button.layer.masksToBounds = false
             button.layer.cornerRadius = 10
             button.titleLabel?.font = UIFont(name: button.titleLabel!.font.fontName, size: 13)
             return button
@@ -112,7 +105,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             addSubview(nameLabel)
             addSubview(locationLabel)
             addSubview(descriptionLabel)
-            addSubview(favoriteButton)
+            addSubview(favButton)
             
             guideView.snp_makeConstraints { make in
                 scrollConstraint = make.top.equalTo(self).constraint
@@ -152,7 +145,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 constraintsToHideFavorite.append(make.bottom.equalTo(self).inset(padding).priority(UILayoutPriorityDefaultHigh + 1).constraint)
             }
             
-            favoriteButton.snp_makeConstraints { make in
+            favButton.snp_makeConstraints { make in
                 make.centerX.equalTo(self)
                 make.top.equalTo(descriptionLabel.snp_bottom).offset(padding)
                 make.bottom.equalTo(self).inset(padding)
@@ -229,12 +222,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             if let index = array.indexOf(id) {
                 array.removeAtIndex(index)
             }
-            self.header.favoriteButton.selected = false
+            header.favButton.setTitle("Add to Favorites", forState: .Normal)
             isMyFavorite = false
         } else {
             // add to favorite
             array.append(id)
-            self.header.favoriteButton.selected = true
+            header.favButton.setTitle("Added to Favorites", forState: .Normal)
             print("--- favorte button selected")
             isMyFavorite = true
         }
@@ -272,14 +265,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             layout.minimumLineSpacing = 1
         }
         
-        currentUser = PFUser.currentUser()
-        automaticallyAdjustsScrollViewInsets = false
-        do {
-            try currentUser!.fetch()
-        } catch {
-            
-        }
+        currentUser = currentPfUser
         
+        automaticallyAdjustsScrollViewInsets = false
+
         if let pfUser = self.profileUser {
             // TODO: actually say is isMyProfile=true for my profile on Explore page
             // Current logic is done like this so I can add myself as a favorite
@@ -319,14 +308,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         if isMyProfile! == true || isTeacher! == "false" {
-            self.header.favoriteButton.hidden = true
+            self.header.favButton.hidden = true
             self.header.constraintsToHideFavorite.forEach({ $0.activate() })
         } else {
-            self.header.favoriteButton.addTarget(self, action: "favoriteUnfavorite:", forControlEvents: .TouchUpInside)
+            self.header.favButton.addTarget(self, action: "favoriteUnfavorite:", forControlEvents: .TouchUpInside)
             if isMyFavorite == true {
-                self.header.favoriteButton.selected = true
+                self.header.favButton.setTitle("Added to Favorites", forState: .Normal)
             } else {
-                self.header.favoriteButton.selected = false
+                self.header.favButton.setTitle("Add to Favorites", forState: .Normal)
             }
         }
 
@@ -512,7 +501,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.translucent = true
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
