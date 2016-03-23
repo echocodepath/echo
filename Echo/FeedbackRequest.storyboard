@@ -8,10 +8,12 @@
         <!--Explore-->
         <scene sceneID="cIy-Ry-I8T">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Explore" id="eIt-p2-zaS" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Explore" id="eIt-p2-zaS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="syn-Jz-fzB"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLa-h6-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="-342"/>
+            <point key="canvasLocation" x="1223" y="-580"/>
         </scene>
         <!--REQUEST FEEDBACK-->
         <scene sceneID="w3i-S2-ej7">
@@ -102,7 +104,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="eIt-p2-zaS" kind="modal" id="ZnX-H3-bMZ"/>
+                                            <segue destination="uWU-SG-MZQ" kind="modal" id="ZnX-H3-bMZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -352,6 +354,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1437" y="219"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pib-A7-dLt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uWU-SG-MZQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mTL-68-Ogr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eIt-p2-zaS" kind="relationship" relationship="rootViewController" id="HMK-Uo-cuT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAF-5M-Qbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="-610"/>
         </scene>
     </scenes>
     <resources>
