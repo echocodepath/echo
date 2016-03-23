@@ -265,7 +265,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBarHidden = false
         videosCollectionView.backgroundColor = UIColor.whiteColor()
         if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1
@@ -520,8 +520,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 case "profileToEntry":
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.videosCollectionView.indexPathForCell(cell) {
-                        let nc = segue.destinationViewController as! UINavigationController
-                        let vc = nc.topViewController as! EntryViewController
+                        let vc = segue.destinationViewController as! EntryViewController
                         vc.updateEntry(self.entries[indexPath.row])
                     }
                     
