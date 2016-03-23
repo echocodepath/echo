@@ -18,6 +18,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var timeObserver: AnyObject!
     var audioTimers = Array<NSTimer>()
     var currentIndexPath: NSIndexPath?
+    var videoId: String?
     
     var feedback: PFObject?
     var entry: PFObject?
@@ -40,7 +41,8 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
         timeSlider.value = 0
-
+        videoId = entry?.objectId
+        
         bindGestures()
         loadAudioClips()
         setupViewProperties()
@@ -222,12 +224,22 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     private func convertVideoDataToNSURL() {
         var url: NSURL?
         let videoData = entry!["video"] as! PFFile
+        
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
             self.playVideo(url!)
         })
     }
-    
+//    
+//    private func convertVideoDataToNSURL() {
+//        var url: NSURL?
+//        let videoData = entry!["video"] as! PFFile
+//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+//            self.playVideo(url!)
+//        })
+//    }
+//    
     func sliderBeganTracking(slider: UISlider) {
         playerRateBeforeSeek = avPlayer!.rate
         avPlayer!.pause()
@@ -338,7 +350,9 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         super.viewWillDisappear(animated)
         self.invalidateTimersAndFeedback()
         self.avPlayer!.pause()
-        FileProcessor.sharedInstance.deleteVideoFile()
+        if let id = videoId {
+            FileProcessor.sharedInstance.deleteVideoFileWithId(id)
+        }
         self.audioClips.forEach({ clip in
             FileProcessor.sharedInstance.deleteFile(clip.path!)
         })
