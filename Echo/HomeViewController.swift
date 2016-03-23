@@ -53,7 +53,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Back")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Back")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         self.coverImage.alpha = 1
         convertVideoDataToNSURL()
@@ -79,8 +81,6 @@ class HomeViewController: UIViewController {
 
     // MARK: Video
     private func createVideo(url: NSURL){
-        
-        
         controller.willMoveToParentViewController(self)
         addChildViewController(controller)
         videoContainerView.addSubview(controller.view)
@@ -149,7 +149,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-
 
     // MARK: - Navigation
 

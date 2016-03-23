@@ -30,7 +30,11 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.leftBarButtonItem = nil
+        if navigationController?.viewControllers.count == 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .Plain, target: self, action: "onCancel")
+            
+        }
         convertVideoDataToNSURL()
         self.navigationController?.navigationBarHidden = false
         teachersGridView.delegate   = self
@@ -59,6 +63,10 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             entriesLayout.minimumInteritemSpacing = 1
             entriesLayout.minimumLineSpacing = 1
         }
+    }
+    
+    func onCancel() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func onImageTap(sender: AnyObject) {
@@ -166,10 +174,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func onBack(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
