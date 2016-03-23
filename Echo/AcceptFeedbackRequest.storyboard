@@ -211,6 +211,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FEEDBACK MODE" id="fh5-Wy-eBn">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="tX0-73-ElV">
+                            <connections>
+                                <action selector="onBack:" destination="pZo-Ig-Fpy" id="dRY-xA-YEw"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5eM-ar-Stn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A02-7l-KKZ">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
@@ -328,6 +333,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back" width="26" height="24"/>
         <image name="FB Tutorial" width="640" height="583"/>
         <image name="Record Button" width="92" height="92"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
