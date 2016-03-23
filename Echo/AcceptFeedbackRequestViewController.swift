@@ -357,14 +357,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            self.avPlayer?.pause()
-            FileProcessor.sharedInstance.deleteVideoFile()
-
-            self.feedback.forEach({ clip in
-                FileProcessor.sharedInstance.deleteFile(clip.path!)
-            })
-        }
+        self.avPlayer?.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
+        self.feedback.forEach({ clip in
+            FileProcessor.sharedInstance.deleteFile(clip.path!)
+        })
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

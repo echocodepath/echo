@@ -223,7 +223,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="onSaveFeedback:" destination="pZo-Ig-Fpy" eventType="touchUpInside" id="hAm-Tq-A2D"/>
-                                    <segue destination="0pI-jS-m3z" kind="modal" identifier="SaveFeedbackReceiptSegue" id="Dyx-47-NbG"/>
+                                    <segue destination="0pI-jS-m3z" kind="push" identifier="SaveFeedbackReceiptSegue" id="Dyx-47-NbG"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -305,6 +305,7 @@
                             <constraint firstItem="wq9-RR-3lQ" firstAttribute="top" secondItem="nvD-uX-zr2" secondAttribute="top" id="zBV-D0-tuq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ypp-bj-p32"/>
                     <connections>
                         <outlet property="studentNameLabel" destination="1Ml-5n-ySx" id="97g-gG-gZE"/>
                     </connections>
