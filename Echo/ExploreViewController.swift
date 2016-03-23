@@ -78,8 +78,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             }, completion: nil)
     }
     
-    
-    
     private func convertVideoDataToNSURL() {
 
         let query = PFQuery(className:"Videos")
