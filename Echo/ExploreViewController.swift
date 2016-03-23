@@ -32,7 +32,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
 
         convertVideoDataToNSURL()
-        
+        self.navigationController?.navigationBarHidden = false
         teachersGridView.delegate   = self
         teachersGridView.dataSource = self
         entriesGridView.delegate    = self
@@ -78,9 +78,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         query.getObjectInBackgroundWithId("kh5wfqasij") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
-                print("---------video")
-                print(Video)
-
                 let rawData: NSData?
                 let videoData = Video!["video"] as! PFFile
 
@@ -172,7 +169,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -221,7 +218,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             performSegueWithIdentifier("exploreToProfile", sender: cell)
         } else {
             let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-            performSegueWithIdentifier("exploreToEntry", sender: cell)
+//            performSegueWithIdentifier("exploreToEntry", sender: cell)
         }
     }
 
@@ -243,8 +240,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 case "exploreToEntry":
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.entriesGridView.indexPathForCell(cell) {
-                        let nc = segue.destinationViewController as! UINavigationController
-                        let vc = nc.topViewController as! EntryViewController
+                        let vc = segue.destinationViewController as! EntryViewController
                         vc.updateEntry(self.entries[indexPath.row])
                     }
                 

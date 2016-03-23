@@ -35,7 +35,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     }
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {
