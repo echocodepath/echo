@@ -86,6 +86,9 @@ class EntryFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         generateThumbnail()
         setupIcons()
         privateSwitch.onTintColor = StyleGuide.Colors.echoBorderGray
@@ -100,7 +103,12 @@ class EntryFormViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 
