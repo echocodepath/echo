@@ -205,6 +205,10 @@ class EntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        videoPlayer.player?.pause()
+        FileProcessor.sharedInstance.deleteVideoFile()
+    }
     
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
@@ -215,8 +219,6 @@ class EntryViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            videoPlayer.player?.pause()
-            FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "requestFeedback":
                     let vc = segue.destinationViewController  as! FeedbackRequestViewController
