@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
         loginManager.logOut()
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        let loginNav = UINavigationController(rootViewController: loginViewController)
+        let loginNav = NavigationController(rootViewController: loginViewController)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginNav
     }

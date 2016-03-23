@@ -115,16 +115,12 @@ class InboxDetailsViewController: UIViewController {
     }
     
     private func convertVideoDataToNSURL() {
-        let url: NSURL?
-        let rawData: NSData?
-        let videoData = self.entry!["video"] as! PFFile
-        do {
-            rawData = try videoData.getData()
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-            playVideo(url!)
-        } catch {
-            
-        }
+        var url: NSURL?
+        let videoData = entry!["video"] as! PFFile
+        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            self.playVideo(url!)
+        })
     }
 
     @IBAction func onBack(sender: AnyObject) {

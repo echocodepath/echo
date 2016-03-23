@@ -77,25 +77,17 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             
             }, completion: nil)
     }
-    
-    
-    
+
     private func convertVideoDataToNSURL() {
 
         let query = PFQuery(className:"Videos")
         query.getObjectInBackgroundWithId("eoAhWJRrjK") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
-                let rawData: NSData?
                 let videoData = Video!["video"] as! PFFile
-
-                do {
-                    rawData = try videoData.getData()
-                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-//                    self.playVideo(self.videoUrl!)
-                } catch {
-                    
-                }
+                videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+                })
                 
             } else {
                 print(error)
@@ -164,7 +156,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
         
         
-        
         let player = AVPlayer(URL: url)
         controller!.player = player
         controller!.player!.play()
@@ -226,6 +217,12 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        FileProcessor.sharedInstance.deleteVideoFile()
+        controller?.player?.pause()
+    }
+    
     
     // MARK: - Navigation
 
