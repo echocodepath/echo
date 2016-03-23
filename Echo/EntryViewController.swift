@@ -21,6 +21,7 @@ class EntryViewController: UIViewController {
     let videoPlayer = AVPlayerViewController()
     var playerRateBeforeSeek: Float = 0
     var avPlayer: AVPlayer?
+    var videoId: String?
     
     @IBOutlet weak var playerControlView: UISlider!
     @IBOutlet weak var entryHeaderView: UIView!
@@ -125,7 +126,7 @@ class EntryViewController: UIViewController {
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
-            
+            videoId = entry?.objectId
             convertVideoDataToNSURL()
             
             if entry?.valueForKey("user_id") as? String != currentUser!.id {
@@ -203,8 +204,9 @@ class EntryViewController: UIViewController {
     private func convertVideoDataToNSURL() {
         var url: NSURL?
         let videoData = entry!["video"] as! PFFile
+        
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
             self.playVideo(url!)
         })
     }
@@ -217,7 +219,9 @@ class EntryViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         videoPlayer.player?.pause()
-        FileProcessor.sharedInstance.deleteVideoFile()
+        if let id = videoId {
+            FileProcessor.sharedInstance.deleteVideoFileWithId(id)
+        }
     }
     
     deinit {
