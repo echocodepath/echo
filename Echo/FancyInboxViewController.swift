@@ -29,11 +29,15 @@ class FancyInboxViewController: UIViewController {
         .SelectionIndicatorHeight(2.0),
         .MenuItemSeparatorPercentageHeight(0.1)
     ]
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
-        self.navigationController?.navigationBarHidden = false
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
         self.view.addSubview(pageMenu!.view)
     }
