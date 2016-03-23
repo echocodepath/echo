@@ -70,9 +70,9 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SentRequests", forIndexPath: indexPath) as! InboxCell
         let request = self.requestsSent[indexPath.row]
-        let teacher_name = request.objectForKey("user_name") as! String
+        let teacher_name = request.objectForKey("teacher_name") as! String
         let title = request.objectForKey("entry_name") as! String
-        let teacherPictureUrl = request.objectForKey("user_picture") as! String
+        let teacherPictureUrl = request.objectForKey("teacher_picture") as! String
         cell.avatarImageView.setImageWithURL(NSURL(string: teacherPictureUrl)!)
         
         let accepted = request.objectForKey("accepted") as! String
