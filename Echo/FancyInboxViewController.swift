@@ -33,6 +33,7 @@ class FancyInboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
+        self.navigationController?.navigationBarHidden = false
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
         self.view.addSubview(pageMenu!.view)
     }
@@ -43,12 +44,7 @@ class FancyInboxViewController: UIViewController {
     }
     
     @IBAction func onHomePressed(sender: AnyObject) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc  = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
-        let navController = UINavigationController(rootViewController: vc)
-        self.presentViewController(navController, animated: true, completion: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func setupViewControllers() {
