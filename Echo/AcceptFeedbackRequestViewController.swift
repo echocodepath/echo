@@ -311,16 +311,12 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     private func convertVideoDataToNSURL() {
-        let url: NSURL?
-        let rawData: NSData?
+        var url: NSURL?
         let videoData = entry!["video"] as! PFFile
-        do {
-            rawData = try videoData.getData()
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-            playVideo(url!)
-        } catch {
-            
-        }
+        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            self.playVideo(url!)
+        })
     }
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
