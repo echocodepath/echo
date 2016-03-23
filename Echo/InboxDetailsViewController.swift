@@ -137,11 +137,6 @@ class InboxDetailsViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func onAccept() {
-        request!["accepted"] = "true"
-        request?.saveInBackground()
-    }
-    
 //    // MARK: sets current feedback request
 //    func setFeedbackRequest(request: PFObject?) {
 //        self.request = request
@@ -165,7 +160,7 @@ class InboxDetailsViewController: UIViewController {
                     let navController = segue.destinationViewController as! UINavigationController
                     let acceptFeedbackRequestViewController = navController.topViewController as! AcceptFeedbackRequestViewController
                     acceptFeedbackRequestViewController.entry = self.entry
-                    onAccept()
+                    acceptFeedbackRequestViewController.request = self.request
 
                 default:
                     return
