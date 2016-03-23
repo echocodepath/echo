@@ -20,6 +20,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var feedback: [AudioClip] = []
     var entryDuration: Double?
     var entry: PFObject?
+    var request: PFObject?
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
     var recordingSession: AVAudioSession!
@@ -393,7 +394,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in                     FileProcessor.sharedInstance.deleteFile(clip.path!)
                 }
             }
+            self.markAccepted()
         }
+    }
+    
+    func markAccepted() {
+        request!["accepted"] = "true"
+        request?.saveInBackground()
     }
     
     override func viewWillDisappear(animated: Bool) {
