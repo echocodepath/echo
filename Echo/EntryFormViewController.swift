@@ -80,11 +80,7 @@ class EntryFormViewController: UIViewController {
                     appDelegate.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
                 }
             }
-            
-            let entryNav = UINavigationController(rootViewController: entryViewController)
-            self.presentViewController(entryNav, animated: true, completion: { () -> Void in
-                
-            })
+            self.navigationController?.pushViewController(entryViewController, animated: true)
 //            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 //            appDelegate.window?.rootViewController = entryNav
         }
