@@ -44,6 +44,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeSlider.value = 0
         FeedbackClipTableViewCell.count = 0
         if entry != nil {
             timeSlider.value = 0.0
@@ -399,14 +400,24 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         videoPlayer.player?.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
         audioPlayers.forEach({ $0.pause() })
     }
     
     override func viewWillAppear(animated: Bool) {
-        timeSlider.value = 0
+        super.viewWillAppear(animated)
+        if avPlayer != nil {
+            let playerIsPlaying:Bool = avPlayer?.rate > 0
+            if playerIsPlaying == true {
+            } else {
+                playBtn.selected = true
+            }
+        }
+        
     }
+
     
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
