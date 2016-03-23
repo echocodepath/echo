@@ -14,7 +14,6 @@ class EntryFormViewController: UITableViewController {
     var video: NSURL?
     var thumbnail: NSData?
     
-    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var privateSwitch: UISwitch!
     @IBOutlet weak var entryThumbnailImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
