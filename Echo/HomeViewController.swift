@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var inspirationalQuoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
+    @IBOutlet weak var videoView: UIWebView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var videoContainerView: UIView!
 
@@ -52,6 +53,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+
         self.coverImage.alpha = 1
         convertVideoDataToNSURL()
         
@@ -125,7 +128,7 @@ class HomeViewController: UIViewController {
     private func convertVideoDataToNSURL() {
         
         let query = PFQuery(className:"Videos")
-        query.getObjectInBackgroundWithId("EX4cigSdlA") {
+        query.getObjectInBackgroundWithId("FLajZA8B6W") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
                 
