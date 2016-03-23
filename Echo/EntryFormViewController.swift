@@ -74,16 +74,14 @@ class EntryFormViewController: UIViewController {
             let entryStoryBoard = UIStoryboard(name: "Entry", bundle: nil)
             let entryViewController = entryStoryBoard.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
             entryViewController.entry = entry
-            entryViewController.onComplete = { [weak self] finished in
-                if !finished {
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    appDelegate.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-                }
-            }
+            entryViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "entryDoneButtonTapped:")
             self.navigationController?.pushViewController(entryViewController, animated: true)
-//            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//            appDelegate.window?.rootViewController = entryNav
+
         }
+    }
+    
+    func entryDoneButtonTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
