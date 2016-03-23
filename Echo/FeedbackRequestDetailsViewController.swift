@@ -20,6 +20,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
+
     @IBOutlet weak var formBackgroundView: UIView!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!

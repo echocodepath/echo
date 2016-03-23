@@ -191,7 +191,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
-    private var currentUser: PFUser?
     private var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
     private var isMyFavorite: Bool?
@@ -207,40 +206,40 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBAction func onBackPress(sender: AnyObject) {
         // Save text to user description
-        if let currentUser = self.profileUser {
-            currentUser["description"] = self.header.descriptionLabel.text
-            currentUser.saveInBackground()
+        if let currentPfUser = self.profileUser {
+            currentPfUser["description"] = self.header.descriptionLabel.text
+            currentPfUser.saveInBackground()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     func favoriteUnfavorite(sender: AnyObject) {
-        let id = self.profileUser?.objectId as String!
-        var array: Array<String>
-        if let favorite_teachers = currentUser!["favorite_teachers"] {
-            array = favorite_teachers as! Array<String>
+        var array: Array<PFUser>
+        if let favorite_teachers = currentPfUser!["favorite_teachers"] {
+            array = favorite_teachers as! Array<PFUser>
         } else {
             array = []
         }
         
         if isMyFavorite == true {
             // remove from favorite
-            if let index = array.indexOf(id) {
-                array.removeAtIndex(index)
-            }
+            array = array.filter() { $0 !== self.profileUser }
+//            if let index = array.indexOf(id) {
+//                array.removeAtIndex(index)
+//            }
             self.header.favoriteButton.selected = false
             isMyFavorite = false
         } else {
             // add to favorite
-            array.append(id)
+            //array.append(id)
+            array.append(self.profileUser!)
             self.header.favoriteButton.selected = true
-            print("--- favorte button selected")
             isMyFavorite = true
         }
         
-        currentUser!["favorite_teachers"] = array
-        currentUser!.saveInBackground()
+        currentPfUser!["favorite_teachers"] = array
+        currentPfUser!.saveInBackground()
     }
     
     func setProfile(user: PFUser?) {
@@ -276,13 +275,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.translucent = true
         
-        currentUser = PFUser.currentUser()
         automaticallyAdjustsScrollViewInsets = false
-        do {
-            try currentUser!.fetch()
-        } catch {
-            
-        }
         
         if let pfUser = self.profileUser {
             // TODO: actually say is isMyProfile=true for my profile on Explore page
@@ -290,15 +283,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             isMyProfile = false
             isTeacher = pfUser["is_teacher"] as? String
             isMyFavorite = false
-            if let favorite_teachers = currentUser!["favorite_teachers"] {
-                let id = self.profileUser?.objectId as String!
-                let array = favorite_teachers as! Array<String>
-                if array.contains(id) {
+            if let favorite_teachers = currentPfUser!["favorite_teachers"] {
+                //let id = self.profileUser?.objectId as String!
+                let array = favorite_teachers as! Array<PFUser>
+                if array.contains({ $0 === self.profileUser }) {
                     isMyFavorite = true
                 }
             }
         } else {
-            self.profileUser = currentUser
+            self.profileUser = currentPfUser
             isMyProfile = true
             isTeacher = self.profileUser!["is_teacher"] as? String
         }

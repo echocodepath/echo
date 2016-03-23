@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TtE-mM-nPE">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Explore-->
@@ -289,6 +289,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="entryLabel" destination="siO-tY-TRs" id="fai-rb-xyA"/>
+                        <outlet property="formBackgroundView" destination="RWl-Ae-dog" id="6cn-hb-PKc"/>
                         <outlet property="messageTextView" destination="HS6-10-oQJ" id="Hk1-CP-fk6"/>
                         <outlet property="teacherAvatar" destination="YgU-BW-kSt" id="feY-c9-1ma"/>
                         <outlet property="teacherLabel" destination="tes-Y4-PTa" id="ccQ-9f-a2f"/>

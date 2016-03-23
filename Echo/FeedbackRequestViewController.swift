@@ -13,9 +13,9 @@ import ParseFacebookUtilsV4
 class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var instructorHeadView: UIView!
+    var refreshControlTableView: UIRefreshControl!
     
-    var currentUser: PFUser?
-    var teachers: [PFObject] = []
+    var teachers: Array<PFUser> = []
     var entry: PFObject?
     
     @IBAction func onBack(sender: AnyObject) {
@@ -25,45 +25,32 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentUser = PFUser.currentUser()
-        currentUser?.fetchInBackground()
-        
         tableView.dataSource = self
         tableView.delegate = self
 
+        fetchTeachers()
         
-        let teacher_ids: [String]
-        if let favorite_teachers = currentUser!["favorite_teachers"] {
-            teacher_ids = favorite_teachers as! [String]
-            // TODO: Find better way to reload tableView
-            for id in teacher_ids {
-                let query = PFUser.query()!
-                query.getObjectInBackgroundWithId(id) {
-                    (userObject: PFObject?, error: NSError?) -> Void in
-                    if error == nil && userObject != nil {
-                        self.teachers.append(userObject!)
-                        self.tableView.reloadData()
-                    } else {
-                        print(error)
-                    }
-                }
-//                query.whereKey("facebook_id", equalTo: id)
-//                query.findObjectsInBackgroundWithBlock {
-//                    (objects: [PFObject]?, error: NSError?) -> Void in
-//                    
-//                    if error == nil {
-//                        if let objects = objects {
-//                            for object in objects {
-//                                self.teachers.append(object)
-//                            }
-//                        }
-//                        self.tableView.reloadData()
-//                    } else {
-//                        print("Error: \(error!) \(error!.userInfo)")
-//                    }
-//                }
-            }
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControlTableView, atIndex: 0)
+    }
+    
+    func fetchTeachers() {
+        if let favorite_teachers = currentPfUser!["favorite_teachers"] {
+            self.teachers = []
+            self.teachers = favorite_teachers as! Array<PFUser>
+            self.tableView.reloadData()
         }
+    }
+    
+    func onRefresh(){
+        currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                self.fetchTeachers()
+                self.refreshControlTableView.endRefreshing()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
