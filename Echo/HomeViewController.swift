@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
         self.view.sendSubviewToBack(controller.view)
         self.view.bringSubviewToFront(self.coverImage)
         convertVideoDataToNSURL()

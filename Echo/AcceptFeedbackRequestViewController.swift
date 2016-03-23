@@ -363,7 +363,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             FileProcessor.sharedInstance.deleteFile(clip.path!)
         })
         
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

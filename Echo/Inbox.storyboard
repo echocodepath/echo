@@ -250,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wD-nD-CU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="1562"/>
+            <point key="canvasLocation" x="693" y="1695"/>
         </scene>
         <!--Sent-->
         <scene sceneID="rOp-7Z-JeT">
@@ -374,7 +374,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <state key="normal" title="Accept" backgroundImage="send_button"/>
                                         <connections>
-                                            <segue destination="Vtk-a1-NBz" kind="modal" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
+                                            <segue destination="Vtk-a1-NBz" kind="push" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y7O-Yf-bPp">
@@ -511,7 +511,9 @@
         <!--AcceptFeedbackRequest-->
         <scene sceneID="bqu-sh-hC0">
             <objects>
-                <viewControllerPlaceholder storyboardName="AcceptFeedbackRequest" id="Vtk-a1-NBz" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AcceptFeedbackRequest" id="Vtk-a1-NBz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bkv-w8-gxn"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6p-VG-H2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1658.5" y="-549"/>

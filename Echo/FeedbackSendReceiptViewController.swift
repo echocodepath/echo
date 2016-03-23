@@ -14,7 +14,8 @@ class FeedbackSendReceiptViewController: UIViewController {
     @IBOutlet weak var studentNameLabel: UILabel!
 
     func navigateToInbox(){
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        let vc = self.navigationController?.viewControllers[1]
+        self.navigationController?.popToViewController(vc!, animated: true)
     }
     
     
@@ -31,7 +32,6 @@ class FeedbackSendReceiptViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

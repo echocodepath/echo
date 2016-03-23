@@ -157,8 +157,8 @@ class InboxDetailsViewController: UIViewController {
         if let identifier = segue.identifier {
             switch identifier {
                 case "AcceptFeedbackSegue":
-                    let navController = segue.destinationViewController as! UINavigationController
-                    let acceptFeedbackRequestViewController = navController.topViewController as! AcceptFeedbackRequestViewController
+                    let acceptFeedbackRequestViewController = segue.destinationViewController as! AcceptFeedbackRequestViewController
+                    
                     acceptFeedbackRequestViewController.entry = self.entry
                     acceptFeedbackRequestViewController.request = self.request
 
