@@ -265,14 +265,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             layout.minimumLineSpacing = 1
         }
         
-        currentUser = PFUser.currentUser()
-        automaticallyAdjustsScrollViewInsets = false
-        do {
-            try currentUser!.fetch()
-        } catch {
-            
-        }
+        currentUser = currentPfUser
         
+        automaticallyAdjustsScrollViewInsets = false
+
         if let pfUser = self.profileUser {
             // TODO: actually say is isMyProfile=true for my profile on Explore page
             // Current logic is done like this so I can add myself as a favorite
