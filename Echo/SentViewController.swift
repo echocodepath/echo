@@ -43,6 +43,7 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
+                    self.requestsSent = []
                     self.requestsSent = objects
                     self.requestsSentTableView.reloadData()
                 }
@@ -55,7 +56,6 @@ class SentViewController: UIViewController, UITableViewDelegate, UITableViewData
     func onRefresh(){
         currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                self.requestsSent = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }

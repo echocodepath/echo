@@ -46,6 +46,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects {
+                    self.requestsReceived = []
                     self.requestsReceived = objects
                     self.tableView.reloadData()
                 }
@@ -58,7 +59,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func onRefresh(){
         currentPfUser?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                self.requestsReceived = []
                 self.fetchRequests()
                 self.refreshControlTableView.endRefreshing()
             }

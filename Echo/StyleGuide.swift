@@ -85,16 +85,21 @@ struct Utils {
         let nameLength = name.characters.count
         let titleLength = title.characters.count
         var startingString = ""
+        var titleIndex = 0
+        //TODO: use indexOf instead of hard coding numbers
         if status == "pending" {
             startingString = "Awaiting feedback on \(title) from \(name)."
+            titleIndex = 21
         } else if status == "accepted" {
             startingString = "Received feedback on \(title) from \(name)."
+            titleIndex = 21
         } else {
             startingString = "Feedback request on \(title) was rejected by \(name)."
+            titleIndex = 20
         }
         
         let totalLength = startingString.characters.count
-        let startingTitlePoint = totalLength - nameLength - 1
+        let nameIndex = totalLength - nameLength - 1
         
         let mutableString = NSMutableAttributedString(
             string: startingString,
@@ -103,22 +108,22 @@ struct Utils {
         mutableString.addAttribute(NSFontAttributeName,
             value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
             range: NSRange(
-                location: 21,
+                location: titleIndex,
                 length: titleLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
             value: StyleGuide.Colors.echoDarkGray,
             range: NSRange(
-                location: 21,
+                location: titleIndex,
                 length: titleLength))
         mutableString.addAttribute(NSFontAttributeName,
             value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
             range: NSRange(
-                location: startingTitlePoint,
+                location: nameIndex,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
             value: StyleGuide.Colors.echoDarkerTeal,
             range: NSRange(
-                location: startingTitlePoint,
+                location: nameIndex,
                 length: nameLength))
         
         return mutableString
