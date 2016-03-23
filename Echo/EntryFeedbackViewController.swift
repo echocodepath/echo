@@ -29,6 +29,9 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.insertSubview(refreshControlTableView, atIndex: 0)
     }
     
+    @IBAction func onBack(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     func onRefresh(){
         loadFeedback()
         self.refreshControlTableView.endRefreshing()
