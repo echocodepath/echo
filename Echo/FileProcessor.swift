@@ -19,6 +19,7 @@ class FileProcessor: NSObject {
     func writeVideoDataToFile(data: NSData) -> NSURL {
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let path = (documents as NSString).stringByAppendingPathComponent("sweet-dance-moves.mov")
+        deleteFile(NSURL(fileURLWithPath: path))
         let url = NSURL(fileURLWithPath: path)
         do {
             try data.writeToURL(url, atomically: true)
