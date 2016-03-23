@@ -39,6 +39,8 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
+        timeSlider.value = 0
+
         bindGestures()
         loadAudioClips()
         setupViewProperties()
@@ -333,6 +335,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
 
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         self.invalidateTimersAndFeedback()
         self.avPlayer!.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
@@ -346,7 +349,15 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
-        timeSlider.value = 0
+        super.viewWillAppear(animated)
+        if avPlayer != nil {
+            let playerIsPlaying:Bool = avPlayer?.rate > 0
+            if playerIsPlaying == true {
+            } else {
+                playBtn.selected = true
+            }
+        }
+        
     }
     
     deinit {
