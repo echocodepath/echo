@@ -272,10 +272,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             layout.minimumLineSpacing = 1
         }
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.translucent = true
-        
         currentUser = PFUser.currentUser()
         automaticallyAdjustsScrollViewInsets = false
         do {
@@ -412,7 +408,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-        performSegueWithIdentifier("profileToEntry", sender: cell)
+//        performSegueWithIdentifier("profileToEntry", sender: cell)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -440,7 +436,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         header.scrollOffset = min(0, offset)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -511,6 +507,21 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         aTextview.alpha = 1.0
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.translucent = true
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.translucent = false
+        
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -356,7 +356,7 @@
                                 </constraints>
                                 <state key="normal" image="User Icon"/>
                                 <connections>
-                                    <segue destination="aWM-aw-WD4" kind="push" id="z2Y-pe-Cct"/>
+                                    <segue destination="aWM-aw-WD4" kind="modal" id="z2Y-pe-Cct"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhF-ZW-xhj">
