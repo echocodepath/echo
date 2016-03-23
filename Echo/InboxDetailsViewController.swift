@@ -145,6 +145,7 @@ class InboxDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         controller?.player?.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
 

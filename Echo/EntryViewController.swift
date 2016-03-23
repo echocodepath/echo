@@ -94,13 +94,22 @@ class EntryViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        timeSlider.value = 0
+        super.viewWillAppear(animated)
+        if avPlayer != nil {
+            let playerIsPlaying:Bool = avPlayer?.rate > 0
+            if playerIsPlaying == true {
+            } else {
+                playBtn.selected = true
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindVideoControlActions()
         setupButtonToggle()
+        timeSlider.value = 0
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
