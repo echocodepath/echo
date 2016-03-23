@@ -86,9 +86,8 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             if error == nil && Video != nil {
                 let videoData = Video!["video"] as! PFFile
                 videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: "eoAhWJRrjK")
                 })
-                
             } else {
                 print(error)
             }
@@ -219,7 +218,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        FileProcessor.sharedInstance.deleteVideoFile()
+        FileProcessor.sharedInstance.deleteVideoFileWithId("eoAhWJRrjK")
         controller?.player?.pause()
     }
     

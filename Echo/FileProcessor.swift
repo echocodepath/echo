@@ -16,6 +16,20 @@ class FileProcessor: NSObject {
         return Static.instance
     }
     
+    func writeVideoDataToFileWithId(data: NSData, id: String) -> NSURL {
+        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let path = (documents as NSString).stringByAppendingPathComponent("sweet-dance-moves-\(id).mov")
+        deleteFile(NSURL(fileURLWithPath: path))
+        let url = NSURL(fileURLWithPath: path)
+        do {
+            try data.writeToURL(url, atomically: true)
+        } catch {
+            print("error writing data to url")
+        }
+        return url
+    }
+    
+    
     func writeVideoDataToFile(data: NSData) -> NSURL {
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let path = (documents as NSString).stringByAppendingPathComponent("sweet-dance-moves.mov")
@@ -37,6 +51,19 @@ class FileProcessor: NSObject {
         }
         return path
     }
+    
+    func deleteVideoFileWithId(id: String) {
+        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let path = (documents as NSString).stringByAppendingPathComponent("sweet-dance-moves-\(id).mov")
+        let filemgr = NSFileManager.defaultManager()
+        do {
+            try filemgr.removeItemAtPath(path)
+            print("Remove successful")
+        } catch {
+            print("Remove unsuccessful")
+        }
+    }
+    
     
     func deleteFile(path: NSURL) {
         let filemgr = NSFileManager.defaultManager()

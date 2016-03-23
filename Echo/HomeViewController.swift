@@ -127,7 +127,7 @@ class HomeViewController: UIViewController {
             if error == nil && Video != nil {
                 let videoData = Video!["video"] as! PFFile
                 videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: "FLajZA8B6W")
                 })
                 
             } else {
@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        FileProcessor.sharedInstance.deleteVideoFile()
+        FileProcessor.sharedInstance.deleteVideoFileWithId("FLajZA8B6W")
         controller.player?.pause()
     }
     
