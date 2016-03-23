@@ -183,13 +183,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-10-oQJ">
-                                        <rect key="frame" x="20" y="80" width="374" height="211"/>
+                                        <rect key="frame" x="20" y="80" width="374" height="237"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIO-JS-vHn">
-                                        <rect key="frame" x="283" y="310" width="111" height="31"/>
+                                        <rect key="frame" x="290" y="331" width="111" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="111" id="ULE-cS-Nkr"/>
                                             <constraint firstAttribute="height" constant="31" id="bG8-pF-KaW"/>
@@ -207,11 +207,11 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="top" secondItem="e9i-ul-QU4" secondAttribute="bottom" constant="3" id="7h8-87-ZpC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="63" id="AjY-by-DKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIO-JS-vHn" secondAttribute="bottom" constant="42" id="AjY-by-DKK"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="BJ7-aX-fmx"/>
                                     <constraint firstItem="e9i-ul-QU4" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="Ezx-BD-EUN"/>
-                                    <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="19" id="dhV-Dc-7LS"/>
-                                    <constraint firstAttribute="trailing" secondItem="FIO-JS-vHn" secondAttribute="trailing" constant="20" id="esl-ho-ZWV"/>
+                                    <constraint firstItem="FIO-JS-vHn" firstAttribute="top" secondItem="HS6-10-oQJ" secondAttribute="bottom" constant="14" id="dhV-Dc-7LS"/>
+                                    <constraint firstAttribute="trailing" secondItem="FIO-JS-vHn" secondAttribute="trailing" constant="13" id="esl-ho-ZWV"/>
                                     <constraint firstItem="tes-Y4-PTa" firstAttribute="leading" secondItem="YgU-BW-kSt" secondAttribute="trailing" constant="10" id="gip-sq-6oN"/>
                                     <constraint firstItem="YgU-BW-kSt" firstAttribute="top" secondItem="RWl-Ae-dog" secondAttribute="top" constant="14" id="jpW-GO-SH6"/>
                                     <constraint firstItem="HS6-10-oQJ" firstAttribute="leading" secondItem="RWl-Ae-dog" secondAttribute="leading" constant="20" id="sfK-Sw-Fgc"/>
