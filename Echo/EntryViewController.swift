@@ -206,6 +206,7 @@ class EntryViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         videoPlayer.player?.pause()
         FileProcessor.sharedInstance.deleteVideoFile()
     }

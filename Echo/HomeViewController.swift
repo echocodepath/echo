@@ -92,19 +92,14 @@ class HomeViewController: UIViewController {
         controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
         
-        
         let player = AVPlayer(URL: url)
         controller.player = player
-        
-
-        
         
     }
     
     
     // MARK: Video
     private func playVideo(url: NSURL){
-        
 
         controller.willMoveToParentViewController(self)
         addChildViewController(controller)
@@ -116,7 +111,6 @@ class HomeViewController: UIViewController {
         controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
-        
         
         let player = AVPlayer(URL: url)
         controller.player = player
@@ -131,22 +125,21 @@ class HomeViewController: UIViewController {
         query.getObjectInBackgroundWithId("FLajZA8B6W") {
             (Video: PFObject?, error: NSError?) -> Void in
             if error == nil && Video != nil {
-                
-                let rawData: NSData?
                 let videoData = Video!["video"] as! PFFile
-                
-                do {
-                    rawData = try videoData.getData()
-                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(rawData!)
-                    self.createVideo(self.videoUrl!)
-                } catch {
-                    
-                }
+                videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+                })
                 
             } else {
                 print(error)
             }
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        FileProcessor.sharedInstance.deleteVideoFile()
+        controller.player?.pause()
     }
     
 
@@ -156,8 +149,6 @@ class HomeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        FileProcessor.sharedInstance.deleteVideoFile()
-        controller.player?.pause()
     }
 
 
