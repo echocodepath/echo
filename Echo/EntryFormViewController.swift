@@ -47,6 +47,17 @@ class EntryFormViewController: UIViewController {
         titleIconImageView.image = UIImage(named:"Title Icon")
     }
     
+    
+    @IBAction func onTap(sender: AnyObject) {
+         dismissKeyboard()
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func onEntrySave(sender: AnyObject) {
         let user_id = currentUser!.id
         let username =  currentUser!.username
