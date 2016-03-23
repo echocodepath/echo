@@ -119,7 +119,7 @@
                     <connections>
                         <outlet property="backBtn" destination="iko-SF-Ezt" id="1fc-uW-vDV"/>
                         <outlet property="tableView" destination="is6-P7-adi" id="h3J-xY-V7L"/>
-                        <segue destination="eBj-dr-xmM" kind="modal" identifier="journalToEntrySegue" id="jle-jq-Zja"/>
+                        <segue destination="eBj-dr-xmM" kind="push" identifier="journalToEntrySegue" id="jle-jq-Zja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujd-y8-OA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,7 +129,9 @@
         <!--Entry-->
         <scene sceneID="Luy-ML-Ajh">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="EntryViewController" storyboardName="Entry" id="eBj-dr-xmM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="EntryViewController" storyboardName="Entry" id="eBj-dr-xmM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="I8H-39-AHa"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqv-kt-Ygk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2122" y="-39"/>

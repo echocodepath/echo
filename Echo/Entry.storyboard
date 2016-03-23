@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ku6-jb-8OT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3ew-MU-BKc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="8PL-WB-RUh">
-            <objects>
-                <navigationController id="ku6-jb-8OT" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1YR-J9-7yF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="3ew-MU-BKc" kind="relationship" relationship="rootViewController" id="5Tn-7N-F5X"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4iS-Lc-5ZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1641" y="-70"/>
-        </scene>
         <!--EntryViewController-->
         <scene sceneID="Jgr-Cn-Ihc">
             <objects>
@@ -138,7 +122,7 @@
                                             <constraint firstAttribute="width" constant="22" id="U5o-uR-TZz"/>
                                             <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                         </constraints>
-                                        <state key="normal" image="6ED0793E-D894-4164-98DE-F71C782045C0"/>
+                                        <state key="normal" image="1F750635-3BAD-418E-862A-DA71944C5B0E"/>
                                         <connections>
                                             <action selector="onTogglePlayPause:" destination="3ew-MU-BKc" eventType="touchUpInside" id="Dlp-dC-4SD"/>
                                         </connections>
@@ -341,7 +325,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackTableViewCell" rowHeight="53" id="9yq-Uz-7QP" customClass="FeedbackTableViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="53"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9yq-Uz-7QP" id="iLn-A7-azi">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="52.5"/>
@@ -421,7 +405,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6ED0793E-D894-4164-98DE-F71C782045C0" width="13" height="16">
+        <image name="1F750635-3BAD-418E-862A-DA71944C5B0E" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
