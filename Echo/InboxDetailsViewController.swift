@@ -45,8 +45,9 @@ class InboxDetailsViewController: UIViewController {
         
         usernameLabel.textColor = StyleGuide.Colors.echoTeal
         messageView.backgroundColor = StyleGuide.Colors.echoFormGray
-        messageWrapperView.layer.borderWidth = 1
-        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
+//        messageWrapperView.layer.borderWidth = 1
+//        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
+        messageWrapperView.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
