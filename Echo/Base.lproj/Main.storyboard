@@ -113,7 +113,9 @@
         <!--Explore-->
         <scene sceneID="G2A-wz-MxN">
             <objects>
-                <viewControllerPlaceholder storyboardName="Explore" id="ccZ-BY-QqA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Explore" id="ccZ-BY-QqA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cfE-nP-CWr"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfq-V4-A9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1403.5" y="-196"/>
@@ -317,7 +319,7 @@
                                         <rect key="frame" x="16" y="10" width="22" height="22"/>
                                         <state key="normal" image="Explore Icon"/>
                                         <connections>
-                                            <segue destination="ccZ-BY-QqA" kind="modal" id="LYj-qa-9Ii"/>
+                                            <segue destination="ccZ-BY-QqA" kind="push" id="LYj-qa-9Ii"/>
                                         </connections>
                                     </button>
                                 </subviews>

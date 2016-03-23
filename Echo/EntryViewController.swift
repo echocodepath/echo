@@ -219,8 +219,7 @@ class EntryViewController: UIViewController {
             FileProcessor.sharedInstance.deleteVideoFile()
             switch identifier {
                 case "requestFeedback":
-                    let nc = segue.destinationViewController as! UINavigationController
-                    let vc = nc.topViewController as! FeedbackRequestViewController
+                    let vc = segue.destinationViewController  as! FeedbackRequestViewController
                     vc.setFeedbackEntry(self.entry)
                 case "allFeedback":
                     let vc = segue.destinationViewController as! EntryFeedbackViewController

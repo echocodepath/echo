@@ -250,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wD-nD-CU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="1562"/>
+            <point key="canvasLocation" x="693" y="1695"/>
         </scene>
         <!--Sent-->
         <scene sceneID="rOp-7Z-JeT">
@@ -374,7 +374,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <state key="normal" title="Accept" backgroundImage="send_button"/>
                                         <connections>
-                                            <segue destination="Vtk-a1-NBz" kind="modal" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
+                                            <segue destination="Vtk-a1-NBz" kind="push" identifier="AcceptFeedbackSegue" id="sQe-BE-fHz"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y7O-Yf-bPp">
@@ -434,7 +434,7 @@
                                     <constraint firstAttribute="height" constant="398" id="phl-yy-955"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-iv-OR5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-iv-OR5">
                                 <rect key="frame" x="0.0" y="64" width="414" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -481,12 +481,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feedback Request" id="yVZ-fA-lIn">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="26l-eC-JUK">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="26l-eC-JUK">
                             <connections>
                                 <action selector="onBack:" destination="QCR-QT-Qu5" id="xP1-RD-39j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="acceptButton" destination="yxn-bY-tCY" id="GZ0-Sw-LvE"/>
@@ -511,7 +512,9 @@
         <!--AcceptFeedbackRequest-->
         <scene sceneID="bqu-sh-hC0">
             <objects>
-                <viewControllerPlaceholder storyboardName="AcceptFeedbackRequest" id="Vtk-a1-NBz" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AcceptFeedbackRequest" id="Vtk-a1-NBz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bkv-w8-gxn"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6p-VG-H2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1658.5" y="-549"/>

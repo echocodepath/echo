@@ -19,7 +19,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     var entry: PFObject?
     
     @IBAction func onBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {
@@ -112,8 +112,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
             switch identifier {
                 case "feedbackDetailsSegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow {
-                        let nc = segue.destinationViewController as! UINavigationController
-                        let vc = nc.topViewController as! FeedbackRequestDetailsViewController
+                        let vc = segue.destinationViewController as! FeedbackRequestDetailsViewController
                         vc.updateTeacher(self.teachers[indexPath.row])
                         vc.updateEntry(self.entry!)
                     }
