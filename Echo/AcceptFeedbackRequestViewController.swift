@@ -45,15 +45,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeSlider.value = 0
         FeedbackClipTableViewCell.count = 0
-        if entry != nil {
-            timeSlider.value = 0.0
-            convertVideoDataToNSURL()
-            bindRecordOptions()
-            startRecordingSession()
-            videoId = entry!.objectId
-        }
+
         
         setupViewProperties()
         setupButtonToggle()
@@ -423,6 +416,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if entry != nil {
+            timeSlider.value = 0.0
+            videoId = entry!.objectId
+            convertVideoDataToNSURL()
+            bindRecordOptions()
+            startRecordingSession()
+        }
         if avPlayer != nil {
             let playerIsPlaying:Bool = avPlayer?.rate > 0
             if playerIsPlaying == true {
