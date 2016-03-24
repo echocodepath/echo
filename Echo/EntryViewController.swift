@@ -96,6 +96,10 @@ class EntryViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if entry != nil {
+            videoId = entry?.objectId
+            convertVideoDataToNSURL()
+        }
         if avPlayer != nil {
             let playerIsPlaying:Bool = avPlayer?.rate > 0
             if playerIsPlaying == true {
@@ -126,8 +130,6 @@ class EntryViewController: UIViewController {
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
-            videoId = entry?.objectId
-            convertVideoDataToNSURL()
             
             if entry?.valueForKey("user_id") as? String != currentUser!.id {
                 self.navigationController!.navigationItem.rightBarButtonItem = nil
