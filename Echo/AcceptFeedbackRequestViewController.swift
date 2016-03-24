@@ -28,6 +28,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var fileNumber = 0
     var currentUrl: NSURL?
     var currentIndexPath: NSIndexPath?
+    var videoId: String?
     
     var audioTimers = Array<NSTimer>()
     var hiddenEmptyAudioCellView = false
@@ -51,7 +52,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             convertVideoDataToNSURL()
             bindRecordOptions()
             startRecordingSession()
+            videoId = entry!.objectId
         }
+        
         setupViewProperties()
         setupButtonToggle()
         tableView.delegate = self
@@ -319,12 +322,22 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     private func convertVideoDataToNSURL() {
         var url: NSURL?
         let videoData = entry!["video"] as! PFFile
+        
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
             self.playVideo(url!)
         })
     }
-    
+//    
+//    private func convertVideoDataToNSURL() {
+//        var url: NSURL?
+//        let videoData = entry!["video"] as! PFFile
+//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+//            self.playVideo(url!)
+//        })
+//    }
+//    
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
         let timeRemaining: Float64 = elapsedTime
         if !timeSlider.tracking {
@@ -402,7 +415,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         videoPlayer.player?.pause()
-        FileProcessor.sharedInstance.deleteVideoFile()
+        if let id = videoId {
+            FileProcessor.sharedInstance.deleteVideoFileWithId(id)
+        }
         audioPlayers.forEach({ $0.pause() })
     }
     
