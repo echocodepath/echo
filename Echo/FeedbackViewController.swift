@@ -40,11 +40,8 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
-        timeSlider.value = 0
-        videoId = entry?.objectId
-        
+
         bindGestures()
-        loadAudioClips()
         setupViewProperties()
         setupButtonToggle()
         timeSlider.minimumValue = 0
@@ -365,6 +362,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        timeSlider.value = 0
+        videoId = entry?.objectId
+        loadAudioClips()
+
         if avPlayer != nil {
             let playerIsPlaying:Bool = avPlayer?.rate > 0
             if playerIsPlaying == true {

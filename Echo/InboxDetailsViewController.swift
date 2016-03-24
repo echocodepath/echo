@@ -66,12 +66,12 @@ class InboxDetailsViewController: UIViewController {
         entry?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 self.entry = object
+                self.videoId = self.entry?.objectId
                 self.convertVideoDataToNSURL()
                 self.titleLabel.text = self.entry?.objectForKey("title") as? String
                 self.userId = self.entry?.objectForKey("user_id") as? String
                 self.createdAtLabel.text = DateManager.getFriendlyTime(self.entry?.createdAt)
                 self.setUserLabels()
-                self.videoId = self.entry?.objectId
             }
         })
     }
