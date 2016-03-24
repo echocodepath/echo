@@ -249,8 +249,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6e-B4-VFb" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="20" y="500" width="55" height="42"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-WE-THI" userLabel="Inbox Button">
-                                        <rect key="frame" x="0.0" y="6" width="26" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-WE-THI" userLabel="Inbox Button">
+                                        <rect key="frame" x="0.0" y="1" width="40" height="40"/>
                                         <state key="normal" image="Inbox Icon"/>
                                         <connections>
                                             <segue destination="oiS-Jp-7le" kind="push" id="6Tl-Gj-8jh"/>
@@ -260,7 +260,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="1lp-mT-S9u"/>
+                                    <constraint firstAttribute="bottom" secondItem="6dH-WE-THI" secondAttribute="bottom" constant="1" id="PIx-sk-iuT"/>
+                                    <constraint firstAttribute="trailing" secondItem="6dH-WE-THI" secondAttribute="trailing" constant="15" id="V8T-HS-15j"/>
+                                    <constraint firstItem="6dH-WE-THI" firstAttribute="top" secondItem="q6e-B4-VFb" secondAttribute="top" constant="1" id="aHX-e6-Gk0"/>
                                     <constraint firstAttribute="width" constant="55" id="oG3-T6-u3e"/>
+                                    <constraint firstItem="6dH-WE-THI" firstAttribute="leading" secondItem="q6e-B4-VFb" secondAttribute="leading" id="sHH-OR-pbk"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
@@ -284,7 +288,7 @@
                                 <rect key="frame" x="179" y="500" width="55" height="42"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rp-z3-RiX" userLabel="Journal Button">
-                                        <rect key="frame" x="13" y="10" width="29" height="22"/>
+                                        <rect key="frame" x="10" y="1" width="40" height="40"/>
                                         <state key="normal" image="Journal Icon"/>
                                         <connections>
                                             <segue destination="wic-0d-feJ" kind="push" id="CdQ-Vr-Hrn"/>
@@ -317,8 +321,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnx-1R-JVH" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="353" y="500" width="55" height="42"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKK-7t-64R" userLabel="Explore Button">
-                                        <rect key="frame" x="16" y="10" width="22" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKK-7t-64R" userLabel="Explore Button">
+                                        <rect key="frame" x="6" y="4" width="40" height="40"/>
                                         <state key="normal" image="Explore Icon"/>
                                         <connections>
                                             <segue destination="ccZ-BY-QqA" kind="push" id="LYj-qa-9Ii"/>
@@ -328,7 +332,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="15h-aj-Nhx"/>
+                                    <constraint firstItem="JKK-7t-64R" firstAttribute="top" secondItem="mnx-1R-JVH" secondAttribute="top" constant="4" id="3vD-V2-HAE"/>
                                     <constraint firstAttribute="width" constant="55" id="5nh-O6-3IO"/>
+                                    <constraint firstAttribute="trailing" secondItem="JKK-7t-64R" secondAttribute="trailing" constant="9" id="GNT-dy-sGm"/>
+                                    <constraint firstItem="JKK-7t-64R" firstAttribute="leading" secondItem="mnx-1R-JVH" secondAttribute="leading" constant="6" id="Hed-2F-6gO"/>
+                                    <constraint firstAttribute="bottom" secondItem="JKK-7t-64R" secondAttribute="bottom" constant="-2" id="pgh-L2-qiY"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
