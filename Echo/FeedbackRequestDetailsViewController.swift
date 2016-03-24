@@ -17,6 +17,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var entry: PFObject?
     var teacher: PFObject?
+    var videoId: String?
     
     var controller: AVPlayerViewController?
     
@@ -48,6 +49,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
             convertVideoDataToNSURL()
+            self.videoId = entry!.objectId
         }
         
         if teacher != nil {
@@ -191,12 +193,22 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     private func convertVideoDataToNSURL() {
         var url: NSURL?
         let videoData = entry!["video"] as! PFFile
+        
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
             self.playVideo(url!)
         })
     }
     
+//    private func convertVideoDataToNSURL() {
+//        var url: NSURL?
+//        let videoData = entry!["video"] as! PFFile
+//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+//            self.playVideo(url!)
+//        })
+//    }
+//    
     // MARK: send feedback request
     func sendFeedbackRequest() {
         var request: [String: NSObject] = Dictionary<String, NSObject>()
@@ -241,7 +253,14 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
 //            self.teacher!.saveInBackground()
         }
     }
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let id = videoId {
+            FileProcessor.sharedInstance.deleteVideoFileWithId(id)
+        }
+        controller!.player?.pause()
+    }
     
     // MARK: - Navigation
 
@@ -254,7 +273,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                 case "feedbackSentSegue":
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teacher!)
-                    controller!.player!.pause()
+                    controller!.player?.pause()
                     sendFeedbackRequest()
                     
                 default:

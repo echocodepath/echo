@@ -357,6 +357,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
             FileProcessor.sharedInstance.deleteFile(clip.path!)
         })
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
