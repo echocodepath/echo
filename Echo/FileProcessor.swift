@@ -20,6 +20,7 @@ class FileProcessor: NSObject {
         let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let path = (documents as NSString).stringByAppendingPathComponent("sweet-dance-moves-\(id).mov")
         let url = NSURL(fileURLWithPath: path)
+        deleteVideoFileWithId(id)
         do {
             try data.writeToURL(url, atomically: true)
         } catch {
