@@ -18,6 +18,7 @@ class InboxDetailsViewController: UIViewController {
     var entry : PFObject?
     var userId: String? // id of user who sent request
     var controller: AVPlayerViewController?
+    var videoId: String?
     
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleView: UIView!
@@ -70,6 +71,7 @@ class InboxDetailsViewController: UIViewController {
                 self.userId = self.entry?.objectForKey("user_id") as? String
                 self.createdAtLabel.text = DateManager.getFriendlyTime(self.entry?.createdAt)
                 self.setUserLabels()
+                self.videoId = self.entry?.objectId
             }
         })
     }
@@ -117,11 +119,21 @@ class InboxDetailsViewController: UIViewController {
     private func convertVideoDataToNSURL() {
         var url: NSURL?
         let videoData = entry!["video"] as! PFFile
+        
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+            url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
             self.playVideo(url!)
         })
     }
+    
+//    private func convertVideoDataToNSURL() {
+//        var url: NSURL?
+//        let videoData = entry!["video"] as! PFFile
+//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
+//            self.playVideo(url!)
+//        })
+//    }
 
     @IBAction func onBack(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -147,7 +159,9 @@ class InboxDetailsViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         controller?.player?.pause()
-        FileProcessor.sharedInstance.deleteVideoFile()
+        if let id = videoId {
+            FileProcessor.sharedInstance.deleteVideoFileWithId(id)
+        }
 
     }
     
