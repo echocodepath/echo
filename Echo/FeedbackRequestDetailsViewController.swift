@@ -48,8 +48,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
 
         if entry != nil {
             entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
-            convertVideoDataToNSURL()
-            self.videoId = entry!.objectId
         }
         
         if teacher != nil {
@@ -254,6 +252,13 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if entry != nil {
+            convertVideoDataToNSURL()
+            self.videoId = entry!.objectId
+        }
+        
+    }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if let id = videoId {
