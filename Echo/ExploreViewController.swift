@@ -35,7 +35,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .Plain, target: self, action: "onCancel")
             
         }
-        convertVideoDataToNSURL()
         self.navigationController?.navigationBarHidden = false
         teachersGridView.delegate   = self
         teachersGridView.dataSource = self
@@ -215,7 +214,12 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 //            performSegueWithIdentifier("exploreToEntry", sender: cell)
         }
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        convertVideoDataToNSURL()
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         FileProcessor.sharedInstance.deleteVideoFileWithId("eoAhWJRrjK")

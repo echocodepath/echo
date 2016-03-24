@@ -58,7 +58,6 @@ class HomeViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         self.coverImage.alpha = 1
-        convertVideoDataToNSURL()
         
         self.view.bringSubviewToFront(self.coverImage)
         
