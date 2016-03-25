@@ -10,9 +10,11 @@ import UIKit
 import Parse
 import AVKit
 import AVFoundation
+import SnapKit
 
-
-class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
+class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate, VideoPlayerContainable {
+    var videoPlayerHeight: Constraint?
+    var videoURL: NSURL?
     
     let videoPlayer = AVPlayerViewController()
     var audioPlayers = Array<AVAudioPlayer>()
@@ -287,17 +289,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     private func playVideo(url: NSURL){
+        videoPlayer(addToView: videoContainerView, videoURL: url)
+        
         videoPlayer.showsPlaybackControls = false
-        videoPlayer.willMoveToParentViewController(self)
-        addChildViewController(videoPlayer)
-        view.addSubview(videoPlayer.view)
-        videoPlayer.didMoveToParentViewController(self)
-        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        videoPlayer.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-        videoPlayer.view.heightAnchor.constraintEqualToAnchor(videoPlayer.view.widthAnchor, multiplier: 1, constant: 1)
         avPlayer = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
         avPlayer!.replaceCurrentItemWithPlayerItem(playerItem)
