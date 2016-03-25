@@ -61,38 +61,57 @@
                         <viewControllerLayoutGuide type="bottom" id="4W6-eF-dgd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jP7-Ap-ORB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEa-gA-XmK">
-                                <rect key="frame" x="108" y="328" width="103" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Dance Teacher"/>
-                                <connections>
-                                    <action selector="onSelectDanceTeacher:" destination="yn0-mm-zPt" eventType="touchUpInside" id="tM4-hx-OSy"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-OX-hf7">
-                                <rect key="frame" x="110" y="175" width="100" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Teacher BG" translatesAutoresizingMaskIntoConstraints="NO" id="gxn-2n-JAT">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you a teacher?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-OX-hf7">
+                                <rect key="frame" x="116" y="121" width="183" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teachers have the ability to send feedack to their students." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-j5-U8D">
+                                <rect key="frame" x="41" y="357" width="335" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Teacher Hero" translatesAutoresizingMaskIntoConstraints="NO" id="3e3-Fq-Waz">
+                                <rect key="frame" x="133" y="184" width="150" height="150"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unsure? No sweat! You can activate teacher privilages any time in settings." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-di-OTX">
+                                <rect key="frame" x="78" y="416" width="261" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiK-AP-VTm">
-                                <rect key="frame" x="109" y="378" width="102" height="30"/>
-                                <state key="normal" title="Dance Student"/>
+                                <rect key="frame" x="126" y="575" width="164" height="40"/>
+                                <state key="normal" backgroundImage="Register Button"/>
                                 <connections>
                                     <action selector="onSelectDanceStudent:" destination="yn0-mm-zPt" eventType="touchUpInside" id="PO3-n8-jyq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEa-gA-XmK">
+                                <rect key="frame" x="126" y="516" width="164" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Yes I am!" backgroundImage="favorite-button"/>
+                                <connections>
+                                    <action selector="onSelectDanceTeacher:" destination="yn0-mm-zPt" eventType="touchUpInside" id="tM4-hx-OSy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="glU-SH-fh0"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wga-KM-JvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="-804"/>
+            <point key="canvasLocation" x="607" y="-928"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kaC-gY-J61">
@@ -871,9 +890,13 @@
         <image name="Journal Icon" width="29" height="22"/>
         <image name="Line" width="65" height="295"/>
         <image name="RECORD VIDEO" width="138" height="15"/>
+        <image name="Register Button" width="310" height="80"/>
+        <image name="Teacher BG" width="640" height="1136"/>
+        <image name="Teacher Hero" width="267" height="267"/>
         <image name="UPLOAD FROM ALBUM" width="208" height="15"/>
         <image name="User Icon" width="14" height="35"/>
         <image name="bg-common" width="640" height="750"/>
+        <image name="favorite-button" width="310" height="80"/>
         <image name="home photo" width="640" height="480"/>
         <image name="home-bg" width="640" height="750"/>
         <image name="settings" width="35" height="35"/>

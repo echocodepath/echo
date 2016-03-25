@@ -12,6 +12,9 @@ import ParseFacebookUtilsV4
 
 class AuthenticatedSetupViewController: UIViewController {
 
+    
+    
+    
     @IBAction func onLogout(sender: AnyObject) {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
