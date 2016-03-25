@@ -10,12 +10,13 @@ import UIKit
 import Parse
 import AVKit
 import AVFoundation
+import SnapKit
 
-
-class EntryViewController: UIViewController {
+class EntryViewController: UITableViewController, VideoPlayerContainable {
     
     var onComplete: ((finished: Bool) -> Void)?
-    
+    var videoPlayerHeight: Constraint?
+
     var entry: PFObject?
     var timeObserver: AnyObject!
     let videoPlayer = AVPlayerViewController()
@@ -23,13 +24,14 @@ class EntryViewController: UIViewController {
     var avPlayer: AVPlayer?
     var videoId: String?
     
+    var videoURL: NSURL?
+    
     @IBOutlet weak var playerControlView: UISlider!
     @IBOutlet weak var entryHeaderView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var playBtn: UIButton!
-    @IBOutlet weak var microphoneImageView: UIImageView!
     @IBOutlet weak var requestFeedbackBtn: UIButton!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var feedbackIcon: UINavigationItem!
@@ -73,7 +75,7 @@ class EntryViewController: UIViewController {
         titleIconImageView.image = UIImage(named:"Title Icon")
         privateSwitch.onTintColor = UIColor(red: 0.7647, green: 0.7647, blue: 0.7647, alpha: 1.0)
         entryHeaderView.backgroundColor = StyleGuide.Colors.echoFormGray
-        playerControlView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
+//        playerControlView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
     }
     
     func bindVideoControlActions() {
@@ -120,6 +122,9 @@ class EntryViewController: UIViewController {
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
         setupIcons()
+
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         if entry != nil {
 //            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
@@ -136,6 +141,18 @@ class EntryViewController: UIViewController {
             }
         }
         
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.item == 0 {
+            return videoPlayerHeight(forWidth: tableView.frame.width)
+        } else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
     }
     
     private func updateTimeLabel(elapsedTime elapsedTime: Float64, duration: Float64) {
@@ -183,16 +200,10 @@ class EntryViewController: UIViewController {
     
     
     private func playVideo(url: NSURL){
+        tableView.reloadData()
+        videoPlayer(addToView: videoContainerView, videoURL: url)
+        
         videoPlayer.showsPlaybackControls = false
-        videoPlayer.willMoveToParentViewController(self)
-        addChildViewController(videoPlayer)
-        videoContainerView.addSubview(videoPlayer.view)
-        videoPlayer.didMoveToParentViewController(self)
-        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
-        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
         avPlayer = AVPlayer(URL: url)
         videoPlayer.player = avPlayer!
         videoPlayer.player!.play()
@@ -209,6 +220,7 @@ class EntryViewController: UIViewController {
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
             self.playVideo(url!)
         })
     }
