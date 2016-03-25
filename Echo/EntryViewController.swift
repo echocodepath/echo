@@ -70,15 +70,17 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     }
     
     func setupIcons() {
-        artistIconImageView.image = UIImage(named: "Artist Icon")
+        tableView.separatorStyle = .None
+//        artistIconImageView.image = UIImage(named: "Artist Icon")
         songIconImageView.image = UIImage(named: "Music Icon")
-        titleIconImageView.image = UIImage(named:"Title Icon")
-        privateSwitch.onTintColor = UIColor(red: 0.7647, green: 0.7647, blue: 0.7647, alpha: 1.0)
+//        titleIconImageView.image = UIImage(named:"Title Icon")
+//        privateSwitch.onTintColor = UIColor(red: 0.7647, green: 0.7647, blue: 0.7647, alpha: 1.0)
         entryHeaderView.backgroundColor = StyleGuide.Colors.echoFormGray
 //        playerControlView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
     }
     
     func bindVideoControlActions() {
+        
         timeSlider.addTarget(self, action: "sliderBeganTracking:",
             forControlEvents: UIControlEvents.TouchDown)
         timeSlider.addTarget(self, action: "sliderEndedTracking:",
@@ -127,11 +129,11 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         if entry != nil {
-//            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
+            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
-            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
-            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
+//            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
+//            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
             if entry!["user_id"] as? String != currentUser?.id{
                 requestFeedbackBtn.hidden = true
             }
