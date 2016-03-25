@@ -267,6 +267,16 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         controller!.player?.pause()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("JELLO!")
+        if entry != nil {
+            self.videoId = entry!.objectId
+            convertVideoDataToNSURL()
+        }
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
