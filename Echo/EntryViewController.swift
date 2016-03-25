@@ -10,12 +10,13 @@ import UIKit
 import Parse
 import AVKit
 import AVFoundation
+import SnapKit
 
-
-class EntryViewController: UIViewController {
+class EntryViewController: UIViewController, VideoPlayerContainable {
     
     var onComplete: ((finished: Bool) -> Void)?
-    
+    var videoPlayerHeight: Constraint?
+
     var entry: PFObject?
     var timeObserver: AnyObject!
     let videoPlayer = AVPlayerViewController()
@@ -120,7 +121,7 @@ class EntryViewController: UIViewController {
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
         setupIcons()
-        
+
         if entry != nil {
 //            self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
@@ -183,16 +184,9 @@ class EntryViewController: UIViewController {
     
     
     private func playVideo(url: NSURL){
+        videoPlayer(addToView: videoContainerView, videoURL: url)
+        
         videoPlayer.showsPlaybackControls = false
-        videoPlayer.willMoveToParentViewController(self)
-        addChildViewController(videoPlayer)
-        videoContainerView.addSubview(videoPlayer.view)
-        videoPlayer.didMoveToParentViewController(self)
-        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
-        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
         avPlayer = AVPlayer(URL: url)
         videoPlayer.player = avPlayer!
         videoPlayer.player!.play()
