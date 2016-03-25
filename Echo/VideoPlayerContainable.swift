@@ -18,10 +18,14 @@ protocol VideoPlayerContainable: class {
     
     var videoPlayer: AVPlayerViewController { get }
     
+    var videoURL: NSURL? { get }
+    
     /// Add the video player controller as a subview
     /// :param: view     Superview of the video player
     /// :param: videoURL The URL of the video. Used to determine aspect ratio
     func videoPlayer(addToView view: UIView, videoURL: NSURL?)
+    
+    func videoPlayerHeight(forWidth width: CGFloat) -> CGFloat
 }
 
 extension VideoPlayerContainable where Self : UIViewController {
@@ -47,6 +51,17 @@ extension VideoPlayerContainable where Self : UIViewController {
             make.height.equalTo(videoPlayer.view.snp_width).multipliedBy(size.height / size.width)
         }
         videoPlayer.didMoveToParentViewController(self)
+    }
+    
+    func videoPlayerHeight(forWidth width: CGFloat) -> CGFloat {
+        let size: CGSize = {
+            if let url = videoURL, size = resolutionForLocalVideo(url) {
+                return size
+            } else {
+                return self.dynamicType.videoPlayerDefaultAspectRatio
+            }
+        }()
+        return width * size.height / size.width
     }
     
     func resolutionForLocalVideo(url:NSURL) -> CGSize? {
