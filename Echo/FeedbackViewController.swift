@@ -342,7 +342,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.invalidateTimersAndFeedback()
-        self.avPlayer!.pause()
+        self.avPlayer?.pause()
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
