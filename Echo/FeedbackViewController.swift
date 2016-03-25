@@ -10,8 +10,12 @@ import UIKit
 import AVFoundation
 import AVKit
 import Parse
+import SnapKit
 
-class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource {
+class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource, VideoPlayerContainable {
+    var videoPlayerHeight: Constraint?
+    var videoURL: NSURL?
+    
     let videoPlayer = AVPlayerViewController()
     var audioPlayers = Array<AVAudioPlayer>()
     var avPlayer: AVPlayer?
@@ -267,17 +271,9 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     
     private func playVideo(url: NSURL){
-        videoPlayer.showsPlaybackControls = false
-        videoPlayer.willMoveToParentViewController(self)
-        addChildViewController(videoPlayer)
-        videoContainerView.addSubview(videoPlayer.view)
-        videoPlayer.didMoveToParentViewController(self)
-        videoPlayer.view.translatesAutoresizingMaskIntoConstraints = false
-        videoPlayer.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
-        videoPlayer.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
-        videoPlayer.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
-        videoPlayer.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
+        videoPlayer(addToView: videoContainerView, videoURL: url)
 
+        videoPlayer.showsPlaybackControls = false
         avPlayer = AVPlayer(URL: url)
         let playerItem = AVPlayerItem(URL: url)
         avPlayer!.replaceCurrentItemWithPlayerItem(playerItem)
