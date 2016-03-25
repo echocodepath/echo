@@ -19,6 +19,7 @@
 		B233F6F51C9FB900005C2D6F /* FancyInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F41C9FB900005C2D6F /* FancyInboxViewController.swift */; };
 		B233F6F71CA27335005C2D6F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F61CA27335005C2D6F /* NavigationController.swift */; };
 		B233F6F91CA4F8A0005C2D6F /* VideoPlayerContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */; };
+		B233F6FB1CA505A2005C2D6F /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233F6FA1CA505A2005C2D6F /* VideoCell.swift */; };
 		B26D5EA11C879E4D00528F2D /* AuthenticatedSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */; };
 		B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EA91C8A403400528F2D /* HomeViewController.swift */; };
 		B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26D5EAC1C8A44AE00528F2D /* User.swift */; };
@@ -81,6 +82,7 @@
 		B233F6F41C9FB900005C2D6F /* FancyInboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyInboxViewController.swift; sourceTree = "<group>"; };
 		B233F6F61CA27335005C2D6F /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerContainable.swift; sourceTree = "<group>"; };
+		B233F6FA1CA505A2005C2D6F /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		B26D5EA01C879E4D00528F2D /* AuthenticatedSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedSetupViewController.swift; sourceTree = "<group>"; };
 		B26D5EA91C8A403400528F2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B26D5EAC1C8A44AE00528F2D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */,
 				B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */,
 				B22EFE031C98A5160048EF5E /* FeedbackTableViewCell.swift */,
+				B233F6FA1CA505A2005C2D6F /* VideoCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				B26D5EB61C8CFDB900528F2D /* EntryViewController.swift in Sources */,
 				F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */,
 				B22EFE021C989B1F0048EF5E /* EntryFeedbackViewController.swift in Sources */,
+				B233F6FB1CA505A2005C2D6F /* VideoCell.swift in Sources */,
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */,
 				B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */,
