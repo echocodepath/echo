@@ -15,7 +15,6 @@ import SnapKit
 class EntryViewController: UITableViewController, VideoPlayerContainable {
     
     var onComplete: ((finished: Bool) -> Void)?
-    var videoPlayerHeight: Constraint?
 
     var entry: PFObject?
     var timeObserver: AnyObject!
@@ -24,6 +23,7 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     var avPlayer: AVPlayer?
     var videoId: String?
     
+    var videoPlayerHeight: Constraint?
     var videoURL: NSURL?
     
     @IBOutlet weak var playerControlView: UISlider!

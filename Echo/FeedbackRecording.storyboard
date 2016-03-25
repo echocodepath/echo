@@ -89,7 +89,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="0Dz-Wy-Nsf"/>
+                                    <constraint firstAttribute="height" constant="170" placeholder="YES" id="0Dz-Wy-Nsf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuI-X4-6Dv">
