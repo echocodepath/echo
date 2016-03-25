@@ -252,13 +252,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        if entry != nil {
-            convertVideoDataToNSURL()
-            self.videoId = entry!.objectId
-        }
-        
-    }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if let id = videoId {
@@ -269,7 +262,6 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("JELLO!")
         if entry != nil {
             self.videoId = entry!.objectId
             convertVideoDataToNSURL()
