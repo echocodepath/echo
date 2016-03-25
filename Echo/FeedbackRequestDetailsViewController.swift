@@ -11,8 +11,13 @@ import Parse
 import ParseFacebookUtilsV4
 import AVKit
 import AVFoundation
+import SnapKit
 
-class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate {
+class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDelegate, VideoPlayerContainable {
+    var videoPlayerHeight: Constraint?
+    var videoURL: NSURL?
+    var videoPlayer = AVPlayerViewController()
+    
     let MESSAGE_PLACEHOLDER = "Add a message for instructor"
     
     var entry: PFObject?
@@ -21,6 +26,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     var controller: AVPlayerViewController?
     
+    @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var formBackgroundView: UIView!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
@@ -37,6 +43,14 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     @IBAction func onBack(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.item == 0 {
+            return videoPlayerHeight(forWidth: tableView.frame.width)
+        } else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
     }
     
     override func viewDidLoad() {
@@ -166,26 +180,11 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     // MARK: Video
     private func playVideo(url: NSURL){
-
-        controller = AVPlayerViewController()
-        controller!.willMoveToParentViewController(self)
-        addChildViewController(controller!)
-        view.addSubview(controller!.view)
-        controller!.didMoveToParentViewController(self)
-        controller!.view.translatesAutoresizingMaskIntoConstraints = false
-        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
-        
-
+        videoPlayer(addToView: videoContainerView, videoURL: url)
         
         let player = AVPlayer(URL: url)
-        controller!.player = player
-        controller!.player!.play()
-        
-        
+        videoPlayer.player = player
+        videoPlayer.player!.play()
     }
     
     private func convertVideoDataToNSURL() {
