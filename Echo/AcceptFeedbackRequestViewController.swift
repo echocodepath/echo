@@ -13,6 +13,8 @@ import AVFoundation
 import SnapKit
 
 class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate, VideoPlayerContainable {
+    lazy var carousel = CarouselView()
+    
     var videoPlayerHeight: Constraint?
     var videoURL: NSURL?
     
@@ -45,10 +47,32 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    func generateRandomColor() -> UIColor {
+        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
+        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
+        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
-
+        
+        emptyAudioCellView.addSubview(carousel)
+        let views = ["carousel" : carousel]
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
+        
+        for index in 0...3 {
+            let view = UIImageView(image: UIImage(named: "help_\(index)"))
+            view.contentMode = .ScaleAspectFit
+            view.backgroundColor = generateRandomColor()
+            carousel.views.append(view)
+        }
+        
         
         setupViewProperties()
         setupButtonToggle()
