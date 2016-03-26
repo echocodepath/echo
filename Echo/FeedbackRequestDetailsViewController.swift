@@ -24,7 +24,6 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     var teacher: PFObject?
     var videoId: String?
     
-    var controller: AVPlayerViewController?
     
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var formBackgroundView: UIView!
@@ -256,7 +255,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
-        controller!.player?.pause()
+        videoPlayer.player?.pause()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -279,7 +278,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
                 case "feedbackSentSegue":
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teacher!)
-                    controller!.player?.pause()
+                    videoPlayer.player?.pause()
                     sendFeedbackRequest()
                     
                 default:
