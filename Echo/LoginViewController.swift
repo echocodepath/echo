@@ -13,11 +13,32 @@ import Parse
 
 class LoginViewController: UIViewController {
 //, FBSDKLoginButtonDelegate
+    lazy var carousel = CarouselView()
+
+    func generateRandomColor() -> UIColor {
+        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
+        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
+        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "login_background.png")!)
-
+        view.addSubview(carousel)
+        let views = ["carousel" : carousel]
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
+        
+        for index in 0...3 {
+            let view = UIImageView(image: UIImage(named: "help_\(index)"))
+            view.contentMode = .ScaleAspectFit
+            view.backgroundColor = generateRandomColor()
+            carousel.views.append(view)
+        }
+        
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {
