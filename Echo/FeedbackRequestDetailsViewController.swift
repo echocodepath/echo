@@ -11,16 +11,21 @@ import Parse
 import ParseFacebookUtilsV4
 import AVKit
 import AVFoundation
+import SnapKit
 
-class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate {
+class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDelegate, VideoPlayerContainable {
+    var videoPlayerHeight: Constraint?
+    var videoURL: NSURL?
+    var videoPlayer = AVPlayerViewController()
+    
     let MESSAGE_PLACEHOLDER = "Add a message for instructor"
     
     var entry: PFObject?
     var teacher: PFObject?
     var videoId: String?
     
-    var controller: AVPlayerViewController?
     
+    @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var formBackgroundView: UIView!
     @IBOutlet weak var entryLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
@@ -39,8 +44,18 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.item == 0 {
+            return videoPlayerHeight(forWidth: tableView.frame.width)
+        } else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -166,26 +181,11 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
     
     // MARK: Video
     private func playVideo(url: NSURL){
-
-        controller = AVPlayerViewController()
-        controller!.willMoveToParentViewController(self)
-        addChildViewController(controller!)
-        view.addSubview(controller!.view)
-        controller!.didMoveToParentViewController(self)
-        controller!.view.translatesAutoresizingMaskIntoConstraints = false
-        controller!.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller!.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller!.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller!.view.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        controller!.view.heightAnchor.constraintEqualToAnchor(controller!.view.widthAnchor, multiplier: 1, constant: 1)
-        
-
+        videoPlayer(addToView: videoContainerView, videoURL: url)
         
         let player = AVPlayer(URL: url)
-        controller!.player = player
-        controller!.player!.play()
-        
-        
+        videoPlayer.player = player
+        videoPlayer.player!.play()
     }
     
     private func convertVideoDataToNSURL() {
@@ -194,19 +194,12 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
+            self.tableView.reloadData()
             self.playVideo(url!)
         })
     }
-    
-//    private func convertVideoDataToNSURL() {
-//        var url: NSURL?
-//        let videoData = entry!["video"] as! PFFile
-//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
-//            self.playVideo(url!)
-//        })
-//    }
-//    
+
     // MARK: send feedback request
     func sendFeedbackRequest() {
         var request: [String: NSObject] = Dictionary<String, NSObject>()
@@ -257,7 +250,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
-        controller!.player?.pause()
+        videoPlayer.player?.pause()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -280,7 +273,7 @@ class FeedbackRequestDetailsViewController: UIViewController, UITextViewDelegate
                 case "feedbackSentSegue":
                     let vc = segue.destinationViewController as! FeedbackRequestSentViewController
                     vc.setTeacher(self.teacher!)
-                    controller!.player?.pause()
+                    videoPlayer.player?.pause()
                     sendFeedbackRequest()
                     
                 default:
