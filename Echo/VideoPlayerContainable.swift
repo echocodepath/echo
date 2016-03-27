@@ -61,6 +61,8 @@ extension VideoPlayerContainable where Self : UIViewController {
                 return self.dynamicType.videoPlayerDefaultAspectRatio
             }
         }()
+        
+        print("size is \(size)")
         return width * size.height / size.width
     }
     
