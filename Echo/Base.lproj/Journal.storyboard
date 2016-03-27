@@ -17,40 +17,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-cz-dUy">
-                                <rect key="frame" x="0.0" y="348" width="414" height="388"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-cz-dUy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="siF-EF-M5o">
-                                    <size key="itemSize" width="125" height="125"/>
+                                    <size key="itemSize" width="202" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JournalCollectionViewCell" id="p5W-YJ-v4c" customClass="JournalCollectionViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        <rect key="frame" x="0.0" y="64" width="202" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-pt-hHS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="202" height="204"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2:44 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNu-lZ-JqX">
-                                                    <rect key="frame" x="73" y="66" width="45" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3x-vY-w8t">
+                                                    <rect key="frame" x="116" y="116" width="78" height="72"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3x-vY-w8t">
-                                                    <rect key="frame" x="86" y="76" width="32" height="29"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEDNESDAY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-dr-Rit">
+                                                    <rect key="frame" x="77" y="175" width="114" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 27, 2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-dr-Rit">
-                                                    <rect key="frame" x="37" y="102" width="81" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:44 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNu-lZ-JqX">
+                                                    <rect key="frame" x="118" y="107" width="72.5" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -58,12 +58,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="kk3-dr-Rit" secondAttribute="bottom" constant="9" id="Oa1-XA-XDR"/>
-                                            <constraint firstItem="kk3-dr-Rit" firstAttribute="top" secondItem="g3x-vY-w8t" secondAttribute="bottom" constant="-3" id="Txp-Jh-6uh"/>
-                                            <constraint firstAttribute="trailing" secondItem="iNu-lZ-JqX" secondAttribute="trailing" constant="7" id="Vbe-Eu-SZp"/>
-                                            <constraint firstAttribute="trailing" secondItem="kk3-dr-Rit" secondAttribute="trailing" constant="7" id="pQg-U9-i9k"/>
-                                            <constraint firstItem="g3x-vY-w8t" firstAttribute="top" secondItem="iNu-lZ-JqX" secondAttribute="bottom" constant="-4" id="tfc-dp-Dqb"/>
-                                            <constraint firstAttribute="trailing" secondItem="g3x-vY-w8t" secondAttribute="trailing" constant="7" id="yWx-CW-8WL"/>
+                                            <constraint firstAttribute="bottom" secondItem="kk3-dr-Rit" secondAttribute="bottom" constant="6" id="Oa1-XA-XDR"/>
+                                            <constraint firstItem="kk3-dr-Rit" firstAttribute="top" secondItem="g3x-vY-w8t" secondAttribute="bottom" constant="-13" id="Txp-Jh-6uh"/>
+                                            <constraint firstAttribute="trailing" secondItem="iNu-lZ-JqX" secondAttribute="trailing" constant="11.5" id="Vbe-Eu-SZp"/>
+                                            <constraint firstAttribute="trailing" secondItem="kk3-dr-Rit" secondAttribute="trailing" constant="11" id="pQg-U9-i9k"/>
+                                            <constraint firstItem="g3x-vY-w8t" firstAttribute="top" secondItem="iNu-lZ-JqX" secondAttribute="bottom" constant="-14" id="tfc-dp-Dqb"/>
+                                            <constraint firstAttribute="trailing" secondItem="g3x-vY-w8t" secondAttribute="trailing" constant="8" id="yWx-CW-8WL"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateNumberLabel" destination="g3x-vY-w8t" id="3Iv-td-etT"/>
@@ -80,7 +80,7 @@
                                 <color key="separatorColor" red="0.74398828080000001" green="0.74398828080000001" blue="0.74398828080000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryTableViewCell" rowHeight="73" id="9pn-v9-4Ua" customClass="EntryTableViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="414" height="73"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9pn-v9-4Ua" id="9wN-wZ-Zbl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="72.5"/>
@@ -109,7 +109,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goodies" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaX-6F-VdW">
-                                                    <rect key="frame" x="75" y="26.5" width="47" height="14.5"/>
+                                                    <rect key="frame" x="75" y="26" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="highlightedColor" red="0.74398828080000001" green="0.74398828080000001" blue="0.74398828080000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
@@ -119,7 +119,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Ciera" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXq-aF-z6i">
-                                                    <rect key="frame" x="75" y="37" width="47" height="15"/>
+                                                    <rect key="frame" x="75" y="37" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="highlightedColor" red="0.74398828080000001" green="0.74398828080000001" blue="0.74398828080000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
@@ -182,7 +182,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="Cqv-2p-gYF">
                             <connections>
-                                <action selector="onToggleGridListView:" destination="klE-Bi-xnV" id="lse-ta-46Z"/>
+                                <action selector="onToggleGridListView:" destination="klE-Bi-xnV" id="j75-jj-7E8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -212,6 +212,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="26" height="24"/>
+        <image name="Back" width="17" height="14"/>
     </resources>
 </document>
