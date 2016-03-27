@@ -31,6 +31,8 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var teacherAvatar: UIImageView!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var artistIconImageView: UIImageView!
     
     
     @IBAction func clickSendFeedback(sender: AnyObject) {
@@ -45,7 +47,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.item == 0 {
+        if indexPath.item == 1 {
             return videoPlayerHeight(forWidth: tableView.frame.width)
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -60,9 +62,11 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-
+        artistIconImageView.image = UIImage(named: "Music Icon")
         if entry != nil {
-            entryLabel.text = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
+            self.entryLabel.text = "\(entry!.valueForKey("song") as! String)"
+            self.title = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
+            artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
         }
         
         if teacher != nil {
