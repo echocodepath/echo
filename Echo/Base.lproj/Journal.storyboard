@@ -113,11 +113,40 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-pt-hHS">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2:44 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNu-lZ-JqX">
+                                                    <rect key="frame" x="73" y="66" width="45" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3x-vY-w8t">
+                                                    <rect key="frame" x="86" y="76" width="32" height="29"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 27, 2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-dr-Rit">
+                                                    <rect key="frame" x="37" y="102" width="81" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="kk3-dr-Rit" secondAttribute="bottom" constant="9" id="Oa1-XA-XDR"/>
+                                            <constraint firstItem="kk3-dr-Rit" firstAttribute="top" secondItem="g3x-vY-w8t" secondAttribute="bottom" constant="-3" id="Txp-Jh-6uh"/>
+                                            <constraint firstAttribute="trailing" secondItem="iNu-lZ-JqX" secondAttribute="trailing" constant="7" id="Vbe-Eu-SZp"/>
+                                            <constraint firstAttribute="trailing" secondItem="kk3-dr-Rit" secondAttribute="trailing" constant="7" id="pQg-U9-i9k"/>
+                                            <constraint firstItem="g3x-vY-w8t" firstAttribute="top" secondItem="iNu-lZ-JqX" secondAttribute="bottom" constant="-4" id="tfc-dp-Dqb"/>
+                                            <constraint firstAttribute="trailing" secondItem="g3x-vY-w8t" secondAttribute="trailing" constant="7" id="yWx-CW-8WL"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="dateNumberLabel" destination="g3x-vY-w8t" id="3Iv-td-etT"/>
+                                            <outlet property="fullDateLabel" destination="kk3-dr-Rit" id="94h-KL-o7d"/>
                                             <outlet property="thumbnailImageView" destination="tgy-pt-hHS" id="bGq-ON-LhR"/>
+                                            <outlet property="timeLabel" destination="iNu-lZ-JqX" id="Z3e-Er-xjs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
