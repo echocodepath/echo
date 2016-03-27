@@ -66,10 +66,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
         
-        for index in 0...3 {
-            let view = UIImageView(image: UIImage(named: "help_\(index)"))
+        for index in 1...3 {
+            let view = UIImageView(image: UIImage(named: "tut_\(index)"))
             view.contentMode = .ScaleAspectFit
-            view.backgroundColor = generateRandomColor()
+            view.backgroundColor = UIColor(red: 0.1529, green: 0.1529, blue: 0.1765, alpha: 1.0)
             carousel.views.append(view)
         }
         
