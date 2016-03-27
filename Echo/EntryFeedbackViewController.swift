@@ -20,7 +20,8 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
+        tableView.tableFooterView = UIView()
+
         loadFeedback()
         
         // Add pull to refresh functionality
@@ -32,9 +33,27 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func onBack(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     func onRefresh(){
         loadFeedback()
         self.refreshControlTableView.endRefreshing()
+    }
+    
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView,
+        titleForHeaderInSection section: Int) -> String? {
+            return entry!.objectForKey("Title") as? String
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = StyleGuide.Fonts.mediumFont(size: 14.0)
+        header.textLabel?.textColor = StyleGuide.Colors.echoDarkerGray
+        
     }
     
     func loadFeedback() {

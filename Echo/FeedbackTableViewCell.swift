@@ -50,12 +50,19 @@ class FeedbackTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.clearColor()
-        self.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.3)
-        createdAtLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
-        teacherLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
-        fromLabel.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.8)
+        createdAtLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        createdAtLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
+
+        teacherLabel.textColor = StyleGuide.Colors.echoDarkerTeal
+        teacherLabel.font = StyleGuide.Fonts.semiBoldFont(size: 13.0)
         
+        fromLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        fromLabel.font = StyleGuide.Fonts.mediumFont(size: 10.0)
+        
+        teacherProfileImageView.layer.masksToBounds = false
+        teacherProfileImageView.layer.cornerRadius = teacherProfileImageView.frame.height/2
+        teacherProfileImageView.clipsToBounds = true
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
