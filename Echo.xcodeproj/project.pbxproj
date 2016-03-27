@@ -235,9 +235,9 @@
 			isa = PBXGroup;
 			children = (
 				B26D5EB11C8CFBB300528F2D /* RecordEntryViewController.swift */,
+				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 				B2B111571C8E4B68009695A6 /* EntryFormViewController.swift */,
 				B26D5EB51C8CFDB900528F2D /* EntryViewController.swift */,
-				B26D5EB31C8CFBCB00528F2D /* JournalEntriesViewController.swift */,
 				B22EFE011C989B1F0048EF5E /* EntryFeedbackViewController.swift */,
 				B22EFE051C98B1DC0048EF5E /* FeedbackViewController.swift */,
 			);
