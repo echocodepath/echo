@@ -14,21 +14,21 @@
                         <viewControllerLayoutGuide type="bottom" id="jNp-h1-gLt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5A3-2U-YKp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="is6-P7-adi">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryTableViewCell" rowHeight="61" id="9pn-v9-4Ua" customClass="EntryTableViewCell" customModule="Echo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="61"/>
+                                        <rect key="frame" x="0.0" y="92" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9pn-v9-4Ua" id="9wN-wZ-Zbl">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Butts by" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaX-6F-VdW">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Butts by" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaX-6F-VdW">
                                                     <rect key="frame" x="260" y="15" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +54,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rihanna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-08-MDB">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rihanna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-08-MDB">
                                                     <rect key="frame" x="261" y="31" width="45.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,19 +94,51 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-cz-dUy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="737"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="siF-EF-M5o">
+                                    <size key="itemSize" width="125" height="125"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JournalCollectionViewCell" id="p5W-YJ-v4c" customClass="JournalCollectionViewCell" customModule="Echo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-pt-hHS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="thumbnailImageView" destination="tgy-pt-hHS" id="bGq-ON-LhR"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jNp-h1-gLt" firstAttribute="top" secondItem="is6-P7-adi" secondAttribute="bottom" id="Bfl-9U-4il"/>
-                            <constraint firstItem="is6-P7-adi" firstAttribute="top" secondItem="5A3-2U-YKp" secondAttribute="top" id="FbQ-Wc-6WI"/>
-                            <constraint firstItem="is6-P7-adi" firstAttribute="leading" secondItem="5A3-2U-YKp" secondAttribute="leading" id="fyb-JM-AfS"/>
-                            <constraint firstAttribute="trailing" secondItem="is6-P7-adi" secondAttribute="trailing" id="rTO-ss-ZAg"/>
+                            <constraint firstAttribute="bottom" secondItem="1nD-cz-dUy" secondAttribute="bottom" id="8cg-Rd-ScV"/>
+                            <constraint firstItem="1nD-cz-dUy" firstAttribute="top" secondItem="5A3-2U-YKp" secondAttribute="top" id="EMw-Oo-F8V"/>
+                            <constraint firstItem="jNp-h1-gLt" firstAttribute="top" secondItem="is6-P7-adi" secondAttribute="bottom" id="Ihj-7V-iT8"/>
+                            <constraint firstAttribute="trailing" secondItem="1nD-cz-dUy" secondAttribute="trailing" id="Q5s-EU-bbp"/>
+                            <constraint firstItem="is6-P7-adi" firstAttribute="leading" secondItem="5A3-2U-YKp" secondAttribute="leading" id="QWf-Mz-Xhw"/>
+                            <constraint firstItem="1nD-cz-dUy" firstAttribute="leading" secondItem="5A3-2U-YKp" secondAttribute="leading" id="ZJB-25-XmG"/>
+                            <constraint firstItem="is6-P7-adi" firstAttribute="top" secondItem="5A3-2U-YKp" secondAttribute="top" id="jqT-7y-YdM"/>
+                            <constraint firstAttribute="trailing" secondItem="is6-P7-adi" secondAttribute="trailing" id="m6L-Ek-af3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MY JOURNAL" id="Xu4-hQ-fo6">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="t2c-ac-c1h">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iko-SF-Ezt">
-                                <rect key="frame" x="16" y="10" width="26" height="24"/>
+                                <rect key="frame" x="20" y="10" width="26" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Back"/>
                                 <connections>
@@ -114,10 +146,18 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="Cqv-2p-gYF">
+                            <connections>
+                                <action selector="onToggleGridListView:" destination="klE-Bi-xnV" id="lse-ta-46Z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="backBtn" destination="iko-SF-Ezt" id="1fc-uW-vDV"/>
+                        <outlet property="collectionView" destination="1nD-cz-dUy" id="yFe-FW-Yhz"/>
+                        <outlet property="gridIcon" destination="Cqv-2p-gYF" id="zy1-Hp-e0p"/>
                         <outlet property="tableView" destination="is6-P7-adi" id="h3J-xY-V7L"/>
                         <segue destination="eBj-dr-xmM" kind="push" identifier="journalToEntrySegue" id="jle-jq-Zja"/>
                     </connections>
