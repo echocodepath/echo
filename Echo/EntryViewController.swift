@@ -256,9 +256,9 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
                 case "allFeedback":
                     let vc = segue.destinationViewController as! EntryFeedbackViewController
                     vc.entry = entry
-                case "dualHome":
-                    let vc = segue.destinationViewController as! DualHomeViewController
-                    vc.studentEntry = entry
+//                case "dualHome":
+//                    let vc = segue.destinationViewController as! DualHomeViewController
+//                    vc.studentEntry = entry
                 default:
                     return
             }

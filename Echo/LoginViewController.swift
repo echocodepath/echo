@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
 //, FBSDKLoginButtonDelegate
     lazy var carousel = CarouselView()
 
+    @IBOutlet weak var loginButton: UIButton!
     func generateRandomColor() -> UIColor {
         let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
         let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
@@ -38,7 +39,7 @@ class LoginViewController: UIViewController {
             view.backgroundColor = generateRandomColor()
             carousel.views.append(view)
         }
-        
+        view.bringSubviewToFront(loginButton)
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {

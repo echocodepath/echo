@@ -37,6 +37,16 @@ class DateManager {
         return Static.instance
     }
     
+    class var wordDayFormatter: NSDateFormatter {
+        struct Static {
+            static let instance: NSDateFormatter = NSDateFormatter()
+        }
+        Static.instance.dateFormat = "EEEE"
+        
+        return Static.instance
+    }
+    
+    
     class var onlyDayFormatter: NSDateFormatter {
         struct Static {
             static let instance: NSDateFormatter = NSDateFormatter()
