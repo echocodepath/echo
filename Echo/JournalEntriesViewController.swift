@@ -27,11 +27,11 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         collectionView.backgroundColor = UIColor.whiteColor()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
-        self.gridIcon.image = UIImage(named: "Grid View")
+//        collectionView.contentInset = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
 
         self.navigationController?.navigationBarHidden = false
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
+        collectionView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
         tableView.dataSource = self
         loadEntries()
@@ -43,7 +43,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1
-            layout.minimumLineSpacing = 2
+            layout.minimumLineSpacing = 1
         }
     }
     
@@ -174,7 +174,13 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
 
-    
+    override func viewWillAppear(animated: Bool) {
+        if gridViewEnabled == false {
+            self.gridIcon.image = UIImage(named: "List View")
+        } else {
+            self.gridIcon.image = UIImage(named: "Grid View")
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class JournalCollectionViewCell: UICollectionViewCell {
+    
     var entry: PFObject? {
         didSet {
             let thumbnailData = entry!["thumbnail"] as! PFFile
@@ -22,13 +23,31 @@ class JournalCollectionViewCell: UICollectionViewCell {
                     self.thumbnailImageView?.alpha = 1
                 })
             })
+            
+            fullDateLabel.text =
+                DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
+            dateNumberLabel.text = DateManager.onlyDayFormatter.stringFromDate(entry!.createdAt!)
+            timeLabel.text = DateManager.timeOnlyFormatter.stringFromDate(entry!.createdAt!)
         }
     }
     
     
+    @IBOutlet weak var fullDateLabel: UILabel!
+    @IBOutlet weak var dateNumberLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let labels = [fullDateLabel, dateNumberLabel, timeLabel]
+        labels.forEach({ formatName($0) })
+    }
+    
+    func formatName(label: UILabel){
+        label.layer.shadowColor = UIColor.blackColor().CGColor
+        label.layer.shadowOffset = CGSizeMake(2, 2)
+        label.layer.shadowRadius = 2
+        label.layer.shadowOpacity = 0.8
     }
     
     override func prepareForReuse() {

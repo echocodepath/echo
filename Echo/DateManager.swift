@@ -37,6 +37,23 @@ class DateManager {
         return Static.instance
     }
     
+    class var onlyDayFormatter: NSDateFormatter {
+        struct Static {
+            static let instance: NSDateFormatter = NSDateFormatter()
+        }
+        Static.instance.dateFormat = "dd"
+        
+        return Static.instance
+    }
+    
+    class var timeOnlyFormatter: NSDateFormatter {
+        struct Static {
+            static let instance: NSDateFormatter = NSDateFormatter()
+        }
+        Static.instance.dateFormat = "h:mm a"
+        
+        return Static.instance
+    }
     
     class func getFriendlyTime(fromDate: NSDate!) -> String {
         let interval = fromDate.timeIntervalSinceNow
