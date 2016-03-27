@@ -262,7 +262,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         videosCollectionView.backgroundColor = UIColor.whiteColor()
         if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1
-            layout.minimumLineSpacing = 1
+            layout.minimumLineSpacing = 2
         }
         
         currentUser = currentPfUser

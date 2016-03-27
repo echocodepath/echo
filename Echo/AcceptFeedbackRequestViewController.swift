@@ -317,7 +317,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
         
         videoPlayer.player = avPlayer
-        videoPlayer.player!.play()
+//        videoPlayer.player!.play()
+        playBtn.selected = true
+
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
     }
     
