@@ -255,7 +255,7 @@
                                                                 <constraint firstAttribute="width" constant="22" id="Z3h-kR-WDM"/>
                                                                 <constraint firstAttribute="height" constant="22" id="s2o-lW-F2C"/>
                                                             </constraints>
-                                                            <state key="normal" image="3AC9570F-D0D4-4CF2-9CEA-2FF1D911598D"/>
+                                                            <state key="normal" image="CBDE8AA8-B31D-4FEC-8ED7-F84EE18047E4"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="hN1-35-bLo" eventType="touchUpInside" id="zqU-Sc-upo"/>
                                                             </connections>
@@ -501,7 +501,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3AC9570F-D0D4-4CF2-9CEA-2FF1D911598D" width="13" height="16">
+        <image name="Back" width="17" height="14"/>
+        <image name="CBDE8AA8-B31D-4FEC-8ED7-F84EE18047E4" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -584,7 +585,6 @@ hwCSAJQAlgCYAJ0AoACiAKQApgCoAK0AxADGAMgRGhEfESoRMxFGEUoRVRFeEWMRaxFuEXMRghGGEY0R
 lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
-        <image name="Back" width="26" height="24"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="favorite-button" width="310" height="80"/>
         <image name="send_button" width="181" height="61"/>
