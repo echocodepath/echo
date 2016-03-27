@@ -272,7 +272,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        controller?.player?.pause()
+        videoPlayer.player?.pause()
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
