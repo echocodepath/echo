@@ -43,6 +43,8 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -65,6 +67,11 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
             self.setEntryLabels()
         }
     }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
     
     func setEntryLabels() {
         entry?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
@@ -95,6 +102,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
             }
         }
     }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.item == 0 {
             return videoPlayerHeight(forWidth: tableView.frame.width)
@@ -106,7 +114,6 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     // MARK: Video
     private func playVideo(url: NSURL){
         videoPlayer(addToView: videoContainerView, videoURL: url)
-
         let player = AVPlayer(URL: url)
         videoPlayer.player = player
         videoPlayer.player!.play()
@@ -124,6 +131,8 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
+            self.tableView.reloadData()
             self.playVideo(url!)
         })
     }

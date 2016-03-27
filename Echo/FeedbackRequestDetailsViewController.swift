@@ -54,6 +54,8 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -192,19 +194,12 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
+            self.tableView.reloadData()
             self.playVideo(url!)
         })
     }
-    
-//    private func convertVideoDataToNSURL() {
-//        var url: NSURL?
-//        let videoData = entry!["video"] as! PFFile
-//        videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-//            url = FileProcessor.sharedInstance.writeVideoDataToFile(data!)
-//            self.playVideo(url!)
-//        })
-//    }
-//    
+
     // MARK: send feedback request
     func sendFeedbackRequest() {
         var request: [String: NSObject] = Dictionary<String, NSObject>()

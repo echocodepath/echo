@@ -360,6 +360,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeR-k9-OwC">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="232" placeholder="YES" id="exk-7u-7Os"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -386,7 +389,7 @@
                                                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8V-wz-7E0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8V-wz-7E0">
                                                             <rect key="frame" x="340" y="11" width="63" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -397,6 +400,7 @@
                                                     <constraints>
                                                         <constraint firstItem="8Ob-eN-6g3" firstAttribute="leading" secondItem="1Ch-Sg-bfD" secondAttribute="leading" constant="28" id="1Dr-NF-5sl"/>
                                                         <constraint firstItem="a8V-wz-7E0" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8Ob-eN-6g3" secondAttribute="trailing" constant="248.5" id="7uw-FK-abX"/>
+                                                        <constraint firstItem="a8V-wz-7E0" firstAttribute="top" secondItem="1Ch-Sg-bfD" secondAttribute="top" constant="11" id="AZY-qU-3bg"/>
                                                         <constraint firstItem="8Ob-eN-6g3" firstAttribute="centerY" secondItem="1Ch-Sg-bfD" secondAttribute="centerY" constant="2.5" id="aEp-Vd-wel"/>
                                                         <constraint firstAttribute="height" constant="33.5" id="wx9-yd-eYz"/>
                                                         <constraint firstAttribute="trailing" secondItem="a8V-wz-7E0" secondAttribute="trailing" constant="11" id="xOK-OG-XoQ"/>
