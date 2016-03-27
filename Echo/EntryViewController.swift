@@ -150,7 +150,7 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.item == 0 {
+        if indexPath.item == 1 {
             return videoPlayerHeight(forWidth: tableView.frame.width)
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)

@@ -13,6 +13,8 @@ import AVFoundation
 import SnapKit
 
 class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate, VideoPlayerContainable {
+    lazy var carousel = CarouselView()
+    
     var videoPlayerHeight: Constraint?
     var videoURL: NSURL?
     
@@ -48,7 +50,20 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     override func viewDidLoad() {
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
-
+        
+        emptyAudioCellView.addSubview(carousel)
+        let views = ["carousel" : carousel]
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
+        
+        for index in 1...3 {
+            let view = UIImageView(image: UIImage(named: "tut_\(index)"))
+            view.contentMode = .ScaleAspectFit
+            view.backgroundColor = UIColor(red: 0.1529, green: 0.1529, blue: 0.1765, alpha: 1.0)
+            carousel.views.append(view)
+        }
+        
         
         setupViewProperties()
         setupButtonToggle()
@@ -312,6 +327,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
             self.playVideo(url!)
         })
     }

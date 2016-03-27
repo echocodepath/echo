@@ -12,8 +12,12 @@ import ParseFacebookUtilsV4
 import AFNetworking
 import AVKit
 import AVFoundation
-
-class InboxDetailsViewController: UIViewController {
+import SnapKit
+class InboxDetailsViewController: UITableViewController, VideoPlayerContainable {
+    var videoPlayerHeight: Constraint?
+    var videoURL: NSURL?
+    var videoPlayer = AVPlayerViewController()
+    
     var request : PFObject?
     var entry : PFObject?
     var userId: String? // id of user who sent request
@@ -39,6 +43,8 @@ class InboxDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -61,6 +67,11 @@ class InboxDetailsViewController: UIViewController {
             self.setEntryLabels()
         }
     }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
     
     func setEntryLabels() {
         entry?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
@@ -92,22 +103,20 @@ class InboxDetailsViewController: UIViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.item == 0 {
+            return videoPlayerHeight(forWidth: tableView.frame.width)
+        } else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+    }
+    
     // MARK: Video
     private func playVideo(url: NSURL){
-        controller = AVPlayerViewController()
-        controller!.willMoveToParentViewController(self)
-        addChildViewController(controller!)
-        videoContainerView.addSubview(controller!.view)
-        controller!.didMoveToParentViewController(self)
-        controller!.view.translatesAutoresizingMaskIntoConstraints = false
-        controller!.view.leadingAnchor.constraintEqualToAnchor(videoContainerView.leadingAnchor).active = true
-        controller!.view.trailingAnchor.constraintEqualToAnchor(videoContainerView.trailingAnchor).active = true
-        controller!.view.topAnchor.constraintEqualToAnchor(videoContainerView.topAnchor).active = true
-        controller!.view.bottomAnchor.constraintEqualToAnchor(videoContainerView.bottomAnchor).active = true
-        
+        videoPlayer(addToView: videoContainerView, videoURL: url)
         let player = AVPlayer(URL: url)
-        controller!.player = player
-        controller!.player!.play()
+        videoPlayer.player = player
+        videoPlayer.player!.play()
     }
     
     //Calls this function when the tap is recognized.
@@ -122,6 +131,8 @@ class InboxDetailsViewController: UIViewController {
         
         videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
             url = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.videoId!)
+            self.videoURL = url
+            self.tableView.reloadData()
             self.playVideo(url!)
         })
     }
