@@ -310,7 +310,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="26" height="24"/>
+        <image name="Back" width="17" height="14"/>
         <image name="Record Button" width="92" height="92"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="white_play_button" width="13" height="16"/>
