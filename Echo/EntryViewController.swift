@@ -140,9 +140,9 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
 //            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
 //            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
-            if entry!["user_id"] as? String != currentUser?.id{
-                requestFeedbackBtn.hidden = true
-            }
+//            if entry!["user_id"] as? String != currentUser?.id{
+//                requestFeedbackBtn.hidden = true
+//            }
             
             if entry?.valueForKey("user_id") as? String != currentUser!.id {
                 self.navigationController!.navigationItem.rightBarButtonItem = nil
@@ -167,6 +167,11 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         if indexPath.item == 1 {
             return videoPlayerHeight(forWidth: tableView.frame.width)
         } else {
+            if entry!["user_id"] as? String != currentUser?.id {
+                if indexPath.item == 3 || indexPath.item == 4 {
+                    return 0
+                }
+            }
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
     }
