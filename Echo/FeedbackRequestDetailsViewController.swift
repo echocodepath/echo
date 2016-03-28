@@ -24,7 +24,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     let MESSAGE_PLACEHOLDER = "Add a message for instructor"
     
     var entry: PFObject?
-    var teacher: PFObject?
+    var teacher: PFUser?
     var videoId: String?
     
     
@@ -160,16 +160,18 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         }
         
         if teacher != nil {
-            teacherLabel.text = teacher!["username"] as? String
-            teacherLabel.textColor = StyleGuide.Colors.echoTeal
-
-            let url  = NSURL(string: (teacher?.objectForKey("profilePhotoUrl") as? String)!)
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.teacherAvatar.setImageWithURL(url!)
-                self.teacherAvatar.layer.cornerRadius = self.teacherAvatar.frame.height/2
-                self.teacherAvatar.clipsToBounds = true
+            teacher?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+                self.teacher = object as? PFUser
+                self.teacherLabel.text = self.teacher!["username"] as? String
+                self.teacherLabel.textColor = StyleGuide.Colors.echoTeal
+                
+                let url  = NSURL(string: (self.teacher?.objectForKey("profilePhotoUrl") as? String)!)
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.teacherAvatar.setImageWithURL(url!)
+                    self.teacherAvatar.layer.cornerRadius = self.teacherAvatar.frame.height/2
+                    self.teacherAvatar.clipsToBounds = true
+                })
             })
-            
         }
         
         formBackgroundView.backgroundColor = StyleGuide.Colors.echoFormGray
@@ -188,7 +190,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         self.entry = entry
     }
     
-    func updateTeacher(teacher: PFObject) {
+    func updateTeacher(teacher: PFUser) {
         self.teacher = teacher
     }
 
