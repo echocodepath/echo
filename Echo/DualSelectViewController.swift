@@ -21,8 +21,8 @@ class DualSelectViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.title = "Choose video to compare"
+//        self.navigationController?.navigationBarHidden = false
+//        self.navigationController?.title = "Choose video to compare"
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
         tableView.dataSource = self
