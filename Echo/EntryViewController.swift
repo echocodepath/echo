@@ -26,6 +26,9 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     var videoPlayerHeight: Constraint?
     var videoURL: NSURL?
     
+    let COMPLIMENTS = ["LOOKIN GOOD!", "WERK!", "YASSS SLAY"]
+    
+    @IBOutlet weak var inspirationalLabel: UILabel!
     @IBOutlet weak var playerControlView: UISlider!
     @IBOutlet weak var entryHeaderView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -124,9 +127,12 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
         setupIcons()
-
+        generateRandomCompliment()
+        
+        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+
         
         if entry != nil {
             self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
@@ -143,6 +149,14 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
             }
         }
         
+    }
+    
+    func generateRandomCompliment() {
+        let maxLength = COMPLIMENTS.count - 1
+        let randomIndex = Int(arc4random_uniform(UInt32(maxLength)) + 1)
+        let compliment = COMPLIMENTS[randomIndex]
+        inspirationalLabel.font = StyleGuide.Fonts.boldFont(size: 40.0)
+        inspirationalLabel.text = compliment
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
