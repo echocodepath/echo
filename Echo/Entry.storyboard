@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ojq-4h-W5Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ojq-4h-W5Y">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -103,7 +103,7 @@
                                                                 <constraint firstAttribute="width" constant="22" id="U5o-uR-TZz"/>
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
-                                                            <state key="normal" image="A21D0B90-8B2C-424E-BB00-D1336550FAAD"/>
+                                                            <state key="normal" image="49672B16-673C-4A9A-AA5E-2444781EACC6"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -154,8 +154,8 @@
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="Edit Button"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u63-K9-bom">
-                                                                    <rect key="frame" x="30" y="10" width="355" height="55"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u63-K9-bom">
+                                                                    <rect key="frame" x="30" y="8" width="355" height="55"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="355" id="400-GZ-M59"/>
                                                                         <constraint firstAttribute="height" constant="55" id="GTL-x8-dON"/>
@@ -164,14 +164,9 @@
                                                                     <state key="normal" image="Request Feedback Button">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZT-ZX-uwe">
-                                                                    <rect key="frame" x="30" y="71" width="114" height="114"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="114" id="toI-P7-HQY"/>
-                                                                        <constraint firstAttribute="width" constant="114" id="vj6-c8-ZMG"/>
-                                                                    </constraints>
-                                                                    <state key="normal" title="Button" image="Dual Button"/>
+                                                                    <connections>
+                                                                        <segue destination="FV8-a5-ZiI" kind="push" identifier="requestFeedback" id="SSu-od-J8s"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-so-SQP">
                                                                     <rect key="frame" x="150" y="71" width="114" height="114"/>
@@ -180,6 +175,17 @@
                                                                         <constraint firstAttribute="width" constant="114" id="dRb-V7-0NE"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="Notes Button"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZT-ZX-uwe">
+                                                                    <rect key="frame" x="30" y="71" width="114" height="114"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="114" id="toI-P7-HQY"/>
+                                                                        <constraint firstAttribute="width" constant="114" id="vj6-c8-ZMG"/>
+                                                                    </constraints>
+                                                                    <state key="normal" title="Button" image="Dual Button"/>
+                                                                    <connections>
+                                                                        <segue destination="grk-qO-n9T" kind="push" identifier="dualHome" id="E13-cU-Wd3"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -356,7 +362,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sassy Tuesdays" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-Oi-Ooi">
                                         <rect key="frame" x="12" y="12" width="90" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8g-n5-McX">
@@ -413,11 +419,21 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvC-D9-aWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261.5" y="76"/>
+            <point key="canvasLocation" x="2214.5" y="188"/>
+        </scene>
+        <!--DualVideo-->
+        <scene sceneID="OZu-ye-ZHy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DualVideo" id="grk-qO-n9T" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uut-Uu-hZq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABO-0U-243" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190.5" y="264"/>
         </scene>
     </scenes>
     <resources>
-        <image name="A21D0B90-8B2C-424E-BB00-D1336550FAAD" width="13" height="16">
+        <image name="49672B16-673C-4A9A-AA5E-2444781EACC6" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
