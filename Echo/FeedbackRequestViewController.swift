@@ -13,8 +13,8 @@ import ParseFacebookUtilsV4
 class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var instructorHeadView: UIView!
+    var refreshControlTableView: UIRefreshControl!
     
-    var currentUser: PFUser?
     var teachers: [PFObject] = []
     var entry: PFObject?
     
@@ -25,45 +25,39 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentUser = PFUser.currentUser()
-        currentUser?.fetchInBackground()
-        
         tableView.dataSource = self
         tableView.delegate = self
 
+        fetchTeachers()
+        // Add pull to refresh functionality
+        refreshControlTableView = UIRefreshControl()
+        refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControlTableView, atIndex: 0)
+    }
+    
+    func fetchTeachers() {
+        let entryQuery = PFQuery(className:"Favorite")
+        entryQuery.whereKey("favoriter", equalTo: currentPfUser!)
         
-        let teacher_ids: [String]
-        if let favorite_teachers = currentUser!["favorite_teachers"] {
-            teacher_ids = favorite_teachers as! [String]
-            // TODO: Find better way to reload tableView
-            for id in teacher_ids {
-                let query = PFUser.query()!
-                query.getObjectInBackgroundWithId(id) {
-                    (userObject: PFObject?, error: NSError?) -> Void in
-                    if error == nil && userObject != nil {
-                        self.teachers.append(userObject!)
-                        self.tableView.reloadData()
-                    } else {
-                        print(error)
-                    }
+        entryQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    self.teachers = []
+                    self.teachers = objects
                 }
-//                query.whereKey("facebook_id", equalTo: id)
-//                query.findObjectsInBackgroundWithBlock {
-//                    (objects: [PFObject]?, error: NSError?) -> Void in
-//                    
-//                    if error == nil {
-//                        if let objects = objects {
-//                            for object in objects {
-//                                self.teachers.append(object)
-//                            }
-//                        }
-//                        self.tableView.reloadData()
-//                    } else {
-//                        print("Error: \(error!) \(error!.userInfo)")
-//                    }
-//                }
+                self.tableView.reloadData()
+                
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
+        
+    }
+    
+    func onRefresh(){
+        fetchTeachers()
+        self.refreshControlTableView.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,7 +81,15 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeacherFeedbackCell", forIndexPath: indexPath) as! TeacherFeedbackCell
         if self.teachers.count > 0 {
-            cell.teacher = self.teachers[indexPath.row]
+            let teacher = self.teachers[indexPath.row]
+            cell.profileImageLabel.alpha = 0
+            let url = NSURL(string: (teacher.objectForKey("profileUrl") as? String)!)
+            cell.teacherName.text = teacher.objectForKey("username") as? String
+            cell.locationLabel.text = teacher.objectForKey("location") as? String
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                cell.profileImageLabel.setImageWithURL(url!)
+                cell.profileImageLabel.alpha = 1
+            })
         } else {
             cell.teacherName.text = "Please add some favorite teachers"
         }
@@ -113,7 +115,8 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                 case "feedbackDetailsSegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow {
                         let vc = segue.destinationViewController as! FeedbackRequestDetailsViewController
-                        vc.updateTeacher(self.teachers[indexPath.row])
+                        let favorite = self.teachers[indexPath.row].objectForKey("favorited") as! PFUser
+                        vc.updateTeacher(favorite)
                         vc.updateEntry(self.entry!)
                     }
                     
