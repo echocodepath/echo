@@ -40,17 +40,15 @@ class FeedbackTableViewCell: UITableViewCell {
 
         }
     }
-    
-    
-    
-    
+
+
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var teacherProfileImageView: UIImageView!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        createdAtLabel.textColor = StyleGuide.Colors.echoDarkerGray
+//        createdAtLabel.textColor = StyleGuide.Colors.echoBorderGray
         createdAtLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
 
         teacherLabel.textColor = StyleGuide.Colors.echoDarkerTeal
