@@ -183,7 +183,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
-    private var currentUser: PFUser?
     var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
     private var isMyFavorite: Bool?
@@ -199,40 +198,42 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBAction func onBackPress(sender: AnyObject) {
         // Save text to user description
-        if let currentUser = self.profileUser {
-            currentUser["description"] = self.header.descriptionLabel.text
-            currentUser.saveInBackground()
-        }
+//        if let currentUser = self.profileUser {
+//            currentUser["description"] = self.header.descriptionLabel.text
+//            currentUser.saveInBackground()
+//        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     func favoriteUnfavorite(sender: AnyObject) {
-        let id = self.profileUser?.objectId as String!
-        var array: Array<String>
-        if let favorite_teachers = currentUser!["favorite_teachers"] {
-            array = favorite_teachers as! Array<String>
-        } else {
-            array = []
-        }
-        
         if isMyFavorite == true {
             // remove from favorite
-            if let index = array.indexOf(id) {
-                array.removeAtIndex(index)
+            let query = PFQuery(className:"Favorite")
+            query.whereKey("favorited", equalTo: profileUser!)
+            query.whereKey("favoriter", equalTo: currentPfUser!)
+            query.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
+                    object?.deleteInBackground()
+                    self.header.favButton.setTitle("Add to Favorites", forState: .Normal)
+                    self.isMyFavorite = false
+                }
             }
-            header.favButton.setTitle("Add to Favorites", forState: .Normal)
-            isMyFavorite = false
         } else {
             // add to favorite
-            array.append(id)
-            header.favButton.setTitle("Added to Favorites", forState: .Normal)
-            print("--- favorte button selected")
-            isMyFavorite = true
+            var request: [String: NSObject] = Dictionary<String, NSObject>()
+            
+            request["favorited"] = profileUser
+            request["favoriter"] = currentPfUser
+            request["username"] = profileUser?.objectForKey("username") as! String
+            request["location"] = profileUser?.objectForKey("location") as! String
+            request["profileUrl"] = profileUser?.objectForKey("profilePhotoUrl") as! String
+            
+            ParseClient.sharedInstance.createFavoriteWithCompletion(request) { (favorite, error) -> () in
+                print("Yay saved favorite!")
+                self.header.favButton.setTitle("Added to Favorites", forState: .Normal)
+                self.isMyFavorite = true
+            }
         }
-        
-        currentUser!["favorite_teachers"] = array
-        currentUser!.saveInBackground()
     }
     
 //    func setProfile(user: PFUser?) {
@@ -264,8 +265,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             layout.minimumLineSpacing = 1
         }
         
-        currentUser = currentPfUser
-        
         automaticallyAdjustsScrollViewInsets = false
 
         if let pfUser = self.profileUser {
@@ -274,15 +273,22 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             isMyProfile = false
             isTeacher = pfUser["is_teacher"] as? String
             isMyFavorite = false
-            if let favorite_teachers = currentUser!["favorite_teachers"] {
-                let id = self.profileUser?.objectId as String!
-                let array = favorite_teachers as! Array<String>
-                if array.contains(id) {
-                    isMyFavorite = true
+            //TODO: Is there a better way to do this?
+            let query = PFQuery(className:"Favorite")
+            query.whereKey("favorited", equalTo: profileUser!)
+            query.whereKey("favoriter", equalTo: currentPfUser!)
+            query.getFirstObjectInBackgroundWithBlock { (object: PFObject?, error: NSError?) -> Void in
+                if error == nil && object != nil {
+                    self.isMyFavorite = true
+                    if self.isMyFavorite == true {
+                        self.header.favButton.setTitle("Added to Favorites", forState: .Normal)
+                    } else {
+                        self.header.favButton.setTitle("Add to Favorites", forState: .Normal)
+                    }
                 }
             }
         } else {
-            self.profileUser = currentUser
+            self.profileUser = currentPfUser
             isMyProfile = true
             isTeacher = self.profileUser!["is_teacher"] as? String
         }
@@ -311,11 +317,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.header.constraintsToHideFavorite.forEach({ $0.activate() })
         } else {
             self.header.favButton.addTarget(self, action: "favoriteUnfavorite:", forControlEvents: .TouchUpInside)
-            if isMyFavorite == true {
-                self.header.favButton.setTitle("Added to Favorites", forState: .Normal)
-            } else {
-                self.header.favButton.setTitle("Add to Favorites", forState: .Normal)
-            }
         }
 
         // For editable descriptions
