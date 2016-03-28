@@ -41,6 +41,7 @@ class DualVideoViewController: UIViewController {
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
+        dualControlView.backgroundColor = StyleGuide.Colors.echoFormGray
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -227,21 +228,22 @@ class DualVideoViewController: UIViewController {
         studentAvPlayer?.removeTimeObserver(timeObserver)
     }
     
-    @IBAction func saveDual(sender: AnyObject) {
-        var paramDict: [String: NSObject] = Dictionary<String, NSObject>()
-        paramDict["student_entry"] = studentEntry
-        paramDict["teacher_entry"] = teacherEntry
-        paramDict["teacher_title"] = teacherEntry?.objectForKey("title") as! String
-        paramDict["teacher_song"] = teacherEntry?.objectForKey("song") as! String
-        paramDict["teacher_thumbnail"] = teacherEntry?.objectForKey("thumbnail") as! PFFile
-        paramDict["teacher_artist"] = teacherEntry?.objectForKey("artist") as! String
-        paramDict["teacher_createdAt"] = teacherEntry!.createdAt! as NSDate
-        
-        ParseClient.sharedInstance.createDualFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
-            print("Yay saved dual feedback!")
-            self.navigationController?.popToRootViewControllerAnimated(true)
-        }
-    }
+//    @IBAction func saveDual(sender: AnyObject) {
+//        var paramDict: [String: NSObject] = Dictionary<String, NSObject>()
+//        paramDict["student_entry"] = studentEntry
+//        paramDict["teacher_entry"] = teacherEntry
+//        paramDict["teacher_title"] = teacherEntry?.objectForKey("title") as! String
+//        paramDict["teacher_song"] = teacherEntry?.objectForKey("song") as! String
+//        paramDict["teacher_thumbnail"] = teacherEntry?.objectForKey("thumbnail") as! PFFile
+//        paramDict["teacher_artist"] = teacherEntry?.objectForKey("artist") as! String
+//        paramDict["teacher_createdAt"] = teacherEntry!.createdAt! as NSDate
+//        
+//        ParseClient.sharedInstance.createDualFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
+//            print("Yay saved dual feedback!")
+//            self.navigationController?.popToRootViewControllerAnimated(true)
+//        }
+//    }
+
     
     /*
     // MARK: - Navigation
