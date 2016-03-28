@@ -85,23 +85,6 @@ class ParseClient: NSObject {
         
     }
     
-    func createDualFeedbackWithCompletion(dict: NSDictionary, completion: (feedback: PFObject?, error: NSError?) -> ()) {
-        
-        let feedback = PFObject(className:"DualFeedback")
-        for (key, val) in dict {
-            feedback[key as! String] = val
-        }
-        
-        feedback.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                completion(feedback: feedback, error: error)
-            } else {
-            }
-        }
-        
-    }
-    
     func createFeedbackRequestWithCompletion(dict: NSDictionary, completion: (feedbackRequest: PFObject?, error: NSError?) -> ()) {
         let feedbackRequest = PFObject(className:"FeedbackRequest")
         for (key, val) in dict {
@@ -117,6 +100,39 @@ class ParseClient: NSObject {
         }
         
     }
+    
+    func createFavoriteWithCompletion(dict: NSDictionary, completion: (favorite: PFObject?, error: NSError?) -> ()) {
+        let favorite = PFObject(className:"Favorite")
+        for (key, val) in dict {
+            favorite[key as! String] = val
+        }
+        
+        favorite.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(favorite: favorite, error: error)
+            } else {
+            }
+        }
+        
+    }
+    
+//    func createDualFeedbackWithCompletion(dict: NSDictionary, completion: (feedback: PFObject?, error: NSError?) -> ()) {
+//        
+//        let feedback = PFObject(className:"DualFeedback")
+//        for (key, val) in dict {
+//            feedback[key as! String] = val
+//        }
+//        
+//        feedback.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                completion(feedback: feedback, error: error)
+//            } else {
+//            }
+//        }
+//        
+//    }
     
     func createAudioClipWithCompletion(dict: NSDictionary, completion: (audioClip: PFObject?, error: NSError?) -> ()) {
         
