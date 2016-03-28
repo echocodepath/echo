@@ -278,6 +278,9 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
                 case "dualHome":
                     let vc = segue.destinationViewController as! DualSelectViewController
                     vc.studentEntry = entry
+                case "notes":
+                    let vc = segue.destinationViewController as! NotesViewController
+                    vc.entry = entry
                 default:
                     return
             }

@@ -48,6 +48,8 @@
 		F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */; };
 		F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBC1C97C2EE003581A5 /* AcceptedRequestsViewController.swift */; };
 		F501EDBF1C97C2FC003581A5 /* RejectedRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501EDBE1C97C2FC003581A5 /* RejectedRequestsViewController.swift */; };
+		F51262DA1CA92CA600D942D6 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51262D91CA92CA600D942D6 /* Notes.storyboard */; };
+		F51262DC1CA931A900D942D6 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51262DB1CA931A900D942D6 /* NotesViewController.swift */; };
 		F515CDFC1C8EC7BE00EC7CED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFB1C8EC7BE00EC7CED /* Entry.swift */; };
 		F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */; };
 		F515CE021C8EF38D00EC7CED /* TeacherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */; };
@@ -117,6 +119,8 @@
 		F501EDBA1C97C006003581A5 /* InboxTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxTabBarController.swift; sourceTree = "<group>"; };
 		F501EDBC1C97C2EE003581A5 /* AcceptedRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptedRequestsViewController.swift; sourceTree = "<group>"; };
 		F501EDBE1C97C2FC003581A5 /* RejectedRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejectedRequestsViewController.swift; sourceTree = "<group>"; };
+		F51262D91CA92CA600D942D6 /* Notes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
+		F51262DB1CA931A900D942D6 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		F515CDFB1C8EC7BE00EC7CED /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F515CDFF1C8EE1C300EC7CED /* InboxDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxDetailsViewController.swift; sourceTree = "<group>"; };
 		F515CE011C8EF38D00EC7CED /* TeacherCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */,
 				B233F6F61CA27335005C2D6F /* NavigationController.swift */,
 				B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */,
+				F51262DB1CA931A900D942D6 /* NotesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 				EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */,
 				EFDDB5081C9B5ED70021DF36 /* Settings.storyboard */,
 				F53274CF1CA8D89E00F88F37 /* DualVideo.storyboard */,
+				F51262D91CA92CA600D942D6 /* Notes.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */,
 				F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */,
 				F52E1FB41C91F4440052D039 /* Entry.storyboard in Resources */,
+				F51262DA1CA92CA600D942D6 /* Notes.storyboard in Resources */,
 				EFDCA1D61C8DF53C00BF0393 /* Inbox.storyboard in Resources */,
 				F52E1FB21C91F3400052D039 /* Journal.storyboard in Resources */,
 			);
@@ -530,6 +537,7 @@
 				F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */,
 				B26D5EAD1C8A44AE00528F2D /* User.swift in Sources */,
 				F5355F9A1CA769DE00BA707E /* DualVideoViewController.swift in Sources */,
+				F51262DC1CA931A900D942D6 /* NotesViewController.swift in Sources */,
 				EFDCA1DD1C8E019100BF0393 /* InboxCell.swift in Sources */,
 				EFDCA1D41C8DE35600BF0393 /* ExploreViewController.swift in Sources */,
 				B26D5EAA1C8A403400528F2D /* HomeViewController.swift in Sources */,
