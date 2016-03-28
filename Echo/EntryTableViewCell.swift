@@ -23,12 +23,45 @@ class EntryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var weekDayLabel: UILabel!
     
-//    var entry: PFObject!{
-//        didSet {
-//            titleLabel.text = entry.valueForKey("title") as? String
-//            songLabel.text = entry.valueForKey("song") as? String
-//        }
-//    }
+    var entry: PFObject!{
+        didSet {
+// For saving dual feedback
+//            let createdAtDate: NSDate
+//            if entry.objectForKey("teacher_createdAt") != nil {
+//                createdAtDate = entry.objectForKey("teacher_createdAt") as! NSDate
+//            } else {
+//                createdAtDate = entry.createdAt!
+//            }
+//            let createdAt = DateManager.defaultFormatter.stringFromDate(createdAtDate)
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.titleLabel.text = self.entry.valueForKey("title") as? String
+                self.songLabel.text = self.entry.valueForKey("song") as? String
+                let artist = self.entry.valueForKey("artist") as? String
+                self.byLabel.text = "by \(artist!)"
+                let dayWord = DateManager.wordDayFormatter.stringFromDate(self.entry.createdAt!)
+                let onlyDay = DateManager.onlyDayFormatter.stringFromDate(self.entry.createdAt!)
+                
+                self.dayOnlyLabel.text = onlyDay
+                self.timeLabel.text = DateManager.timeOnlyFormatter.stringFromDate(self.entry.createdAt!)
+                self.createdAtLabel.text = "\(dayWord.uppercaseString)"
+                
+                let thumbnailData = self.entry["thumbnail"] as! PFFile
+                thumbnailData.getDataInBackgroundWithBlock({ (data
+                    , error) -> Void in
+                    let thumbnailImage = UIImage(data: data!)
+                    self.thumbnailImageView.image = thumbnailImage
+                    self.titleLabel.alpha = 1
+                    self.songLabel.alpha = 1
+                    self.byLabel.alpha = 1
+                    self.dayOnlyLabel.alpha = 1
+                    self.songLabel.alpha = 1
+                    self.thumbnailImageView.alpha = 1
+                    self.createdAtLabel.alpha = 1
+                })
+                
+            })
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +82,14 @@ class EntryTableViewCell: UITableViewCell {
         titleLabel.textColor = StyleGuide.Colors.echoDarkerGray
         createdAtLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
         createdAtLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        
+        titleLabel.alpha = 0
+        songLabel.alpha = 0
+        thumbnailImageView.alpha = 0
+        createdAtLabel.alpha = 0
+        byLabel.alpha = 0
+        dayOnlyLabel.alpha = 0
+        weekDayLabel.alpha = 0
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
