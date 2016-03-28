@@ -324,27 +324,6 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         
         ParseClient.sharedInstance.createFeedbackRequestWithCompletion(request) { (feedbackRequest, error) -> () in
             print("Yay saved feedback!")
-//            // add to requests_sent array for current user
-//            if let requests_sent = self.currentUser!["requests_sent"] {
-//                var array = requests_sent as! Array<PFObject>
-//                array.append(feedbackRequest!)
-//               self.currentUser!["requests_sent"] = array
-//            } else {
-//                let array = [feedbackRequest!] as Array<PFObject>
-//                self.currentUser!["requests_sent"] = array
-//            }
-//            self.currentUser!.saveInBackground()
-//            
-//            // add to requests_received array for selected teacher
-//            if let requests_received = self.teacher!["requests_received"] {
-//                var array = requests_received as! Array<PFObject>
-//                array.append(feedbackRequest!)
-//                self.teacher!["requests_received"] = array
-//            } else {
-//                let array = [feedbackRequest!] as Array<PFObject>
-//                self.teacher!["requests_received"] = array
-//            }
-//            self.teacher!.saveInBackground()
         }
     }
     

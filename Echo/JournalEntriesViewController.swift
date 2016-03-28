@@ -145,44 +145,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
         let entry = self.entries[indexPath.row]
-        let createdAt = DateManager.defaultFormatter.stringFromDate(entry.createdAt!)
-        let artist = entry.valueForKey("artist") as? String
-        let song = entry.valueForKey("song") as? String
-        cell.titleLabel.alpha = 0
-        cell.songLabel.alpha = 0
-        cell.thumbnailImageView.alpha = 0
-        cell.createdAtLabel.alpha = 0
-        cell.byLabel.alpha = 0
-        cell.dayOnlyLabel.alpha = 0
-        cell.weekDayLabel.alpha = 0
-        
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            cell.titleLabel.text = entry.valueForKey("title") as? String
-            cell.songLabel.text = song!
-            cell.byLabel.text = "by \(artist!)"
-            let dayWord = DateManager.wordDayFormatter.stringFromDate(entry.createdAt!)
-            let onlyDay = DateManager.onlyDayFormatter.stringFromDate(entry.createdAt!)
-
-            cell.dayOnlyLabel.text = onlyDay
-            cell.timeLabel.text = DateManager.timeOnlyFormatter.stringFromDate(entry.createdAt!)
-            cell.createdAtLabel.text = "\(dayWord.uppercaseString)"
-            
-            let thumbnailData = entry["thumbnail"] as! PFFile
-            thumbnailData.getDataInBackgroundWithBlock({ (data
-                , error) -> Void in
-                let thumbnailImage = UIImage(data: data!)
-                cell.thumbnailImageView.image = thumbnailImage
-                cell.titleLabel.alpha = 1
-                cell.songLabel.alpha = 1
-                cell.byLabel.alpha = 1
-                cell.dayOnlyLabel.alpha = 1
-                cell.thumbnailImageView.alpha = 1
-                cell.createdAtLabel.alpha = 1
-            })
-            
-        })
-
-        //cell.entry = entry
+        cell.entry = entry
         return cell
     }
     
@@ -259,7 +222,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                 case "journalToEntrySegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow{
                         let vc = segue.destinationViewController as! EntryViewController
-                        vc.updateEntry(self.entries[indexPath.row])
+                        vc.entry = self.entries[indexPath.row]
                     }
         
                     

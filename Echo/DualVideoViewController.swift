@@ -54,8 +54,7 @@ class DualVideoViewController: UIViewController {
         // Just one play button for both av players
         if studentAvPlayer != nil {
             let playerIsPlaying:Bool = studentAvPlayer?.rate > 0
-            if playerIsPlaying == true {
-            } else {
+            if playerIsPlaying == false {
                 playBtn.selected = true
             }
         }
@@ -94,16 +93,20 @@ class DualVideoViewController: UIViewController {
         teacherAvPlayer!.pause();
     }
     
+    func videoPlaybackDidPlay() {
+        studentAvPlayer!.play()
+        teacherAvPlayer!.play()
+    }
+    
     @IBAction func onTogglePlayPause(sender: AnyObject) {
-        // Just one play button for both av palyers
+        // Just one play button for both av players
         let playerIsPlaying:Bool = studentAvPlayer!.rate > 0
         if playerIsPlaying {
             playBtn.selected = true
             videoPlaybackDidPause()
         } else {
             playBtn.selected = false
-            studentAvPlayer!.play()
-            teacherAvPlayer!.play()
+            videoPlaybackDidPlay()
         }
     }
     
@@ -222,9 +225,23 @@ class DualVideoViewController: UIViewController {
     
     deinit {
         studentAvPlayer?.removeTimeObserver(timeObserver)
-        
     }
     
+    @IBAction func saveDual(sender: AnyObject) {
+        var paramDict: [String: NSObject] = Dictionary<String, NSObject>()
+        paramDict["student_entry"] = studentEntry
+        paramDict["teacher_entry"] = teacherEntry
+        paramDict["teacher_title"] = teacherEntry?.objectForKey("title") as! String
+        paramDict["teacher_song"] = teacherEntry?.objectForKey("song") as! String
+        paramDict["teacher_thumbnail"] = teacherEntry?.objectForKey("thumbnail") as! PFFile
+        paramDict["teacher_artist"] = teacherEntry?.objectForKey("artist") as! String
+        paramDict["teacher_createdAt"] = teacherEntry!.createdAt! as NSDate
+        
+        ParseClient.sharedInstance.createDualFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
+            print("Yay saved dual feedback!")
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+    }
     
     /*
     // MARK: - Navigation

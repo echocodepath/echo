@@ -184,7 +184,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     let DESCRIPTION_PLACEHOLDER = "Add a description"
     
     private var currentUser: PFUser?
-    private var profileUser: PFUser? // user depicted in profile NOT current user
+    var profileUser: PFUser? // user depicted in profile NOT current user
     private var isMyProfile: Bool?
     private var isMyFavorite: Bool?
     private var isTeacher: String?
@@ -235,9 +235,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         currentUser!.saveInBackground()
     }
     
-    func setProfile(user: PFUser?) {
-        self.profileUser = user
-    }
+//    func setProfile(user: PFUser?) {
+//        self.profileUser = user
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -393,11 +393,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
-        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+//    {
+//        let cell = videosCollectionView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
 //        performSegueWithIdentifier("profileToEntry", sender: cell)
-    }
+ //   }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = -1 * (scrollView.contentOffset.y + scrollView.contentInset.top)
@@ -520,7 +520,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.videosCollectionView.indexPathForCell(cell) {
                         let vc = segue.destinationViewController as! EntryViewController
-                        vc.updateEntry(self.entries[indexPath.row])
+                        vc.entry = self.entries[indexPath.row]
                     }
                     
                 default:
