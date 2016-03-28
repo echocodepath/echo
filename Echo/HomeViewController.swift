@@ -66,8 +66,11 @@ class HomeViewController: UIViewController {
         let quote = quoteAndAuthor[0]
         let author = quoteAndAuthor[1]
         
+        inspirationalQuoteLabel.font = StyleGuide.Fonts.regularFont(size: 14.0)
         inspirationalQuoteLabel.text = quote
         authorLabel.text = "- \(author)"
+        authorLabel.font = StyleGuide.Fonts.mediumFont(size: 14.0)
+
         if currentUser == nil {
             currentUser = User(user: PFUser.currentUser()!)
         }

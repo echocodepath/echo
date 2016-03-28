@@ -55,21 +55,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let nameLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
-            label.font = label.font.fontWithSize(18)
-            label.font = UIFont.systemFontOfSize(18, weight: UIFontWeightMedium)
+            label.font = StyleGuide.Fonts.mediumFont(size: 16.0)
             return label
         }()
         let locationLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
-            label.font = label.font.fontWithSize(13)
+            label.font = StyleGuide.Fonts.regularFont(size: 13.0)
             return label
         }()
         let descriptionLabel: UILabel = {
             let label = UILabel()
             label.textColor = StyleGuide.Colors.echoDarkerTranslucentClear
             label.numberOfLines = 0
-            label.font = label.font.fontWithSize(13)
+            label.font = StyleGuide.Fonts.regularFont(size: 13.0)
             return label
         }()
         
@@ -243,7 +242,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if header.scrollOffset == 0 {
-            videosCollectionView.contentInset = UIEdgeInsets(top: header.bounds.height + 2, left: 0, bottom: 0, right: 0)
+            videosCollectionView.contentInset = UIEdgeInsets(top: header.bounds.height + 0.3, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -262,7 +261,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         videosCollectionView.backgroundColor = UIColor.whiteColor()
         if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1
-            layout.minimumLineSpacing = 2
+            layout.minimumLineSpacing = 1
         }
         
         currentUser = currentPfUser
@@ -378,7 +377,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-        let kWidth = (collectionView.frame.width * 0.3333) - 1
+        let kWidth = (collectionView.frame.width * 0.3333) - 0.7
 //        return CGSizeMake(collectionView.bounds.size.width, kHeight)
         return CGSizeMake(kWidth, kWidth)
     }

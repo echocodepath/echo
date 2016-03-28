@@ -26,6 +26,7 @@ struct StyleGuide {
             return UIFont(name: "Avenir-Heavy", size: size)!
         }
     }
+    
     struct Colors {
         static let echoOrange = UIColor(red:0.96, green:0.65, blue:0.14, alpha:1.0)
         static let echoLightOrange = UIColor(red: 0.9922, green: 0.8039, blue: 0.302, alpha: 1.0)
