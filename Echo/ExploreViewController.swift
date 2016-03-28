@@ -204,16 +204,16 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
-        if collectionView == teachersGridView {
-            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
-            performSegueWithIdentifier("exploreToProfile", sender: cell)
-        } else {
-            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-//            performSegueWithIdentifier("exploreToEntry", sender: cell)
-        }
-    }
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+//    {
+//        if collectionView == teachersGridView {
+//            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
+//            //performSegueWithIdentifier("exploreToProfile", sender: cell)
+//        } else {
+//            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+////            performSegueWithIdentifier("exploreToEntry", sender: cell)
+//        }
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -238,14 +238,14 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                     if let indexPath = self.teachersGridView.indexPathForCell(cell) {
                         let nc = segue.destinationViewController as! UINavigationController
                         let vc = nc.topViewController as! ProfileViewController
-                        vc.setProfile(self.teachers[indexPath.row])
+                        vc.profileUser = self.teachers[indexPath.row]
                     }
                 
                 case "exploreToEntry":
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.entriesGridView.indexPathForCell(cell) {
                         let vc = segue.destinationViewController as! EntryViewController
-                        vc.updateEntry(self.entries[indexPath.row])
+                        vc.entry = self.entries[indexPath.row]
                     }
                 
                 default:

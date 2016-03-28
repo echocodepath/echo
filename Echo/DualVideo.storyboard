@@ -8,7 +8,7 @@
         <!--Dual Feedback-->
         <scene sceneID="zNW-ZT-Hqc">
             <objects>
-                <viewController storyboardIdentifier="FeedbackViewController" id="LOc-DS-2Mh" userLabel="Dual Feedback" customClass="DualVideoViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DualVideoViewController" id="LOc-DS-2Mh" userLabel="Dual Feedback" customClass="DualVideoViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PFn-Iq-dyD"/>
                         <viewControllerLayoutGuide type="bottom" id="fJA-h3-oQJ"/>
@@ -153,6 +153,11 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="0kX-Ov-4VY">
+                            <connections>
+                                <action selector="saveDual:" destination="LOc-DS-2Mh" id="Bnr-3R-okS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -169,7 +174,7 @@
             </objects>
             <point key="canvasLocation" x="2235" y="104"/>
         </scene>
-        <!--Dual Home View Controller-->
+        <!--Dual Feedback Mode-->
         <scene sceneID="baz-Kk-tQb">
             <objects>
                 <viewController id="XVB-6d-mQD" customClass="DualHomeViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,41 +186,130 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Existing Dual Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfJ-Yr-eY8">
-                                <rect key="frame" x="16" y="376" width="156" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Existing Dual Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfJ-Yr-eY8">
+                                <rect key="frame" x="7" y="80" width="155.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-Ph-ais">
-                                <rect key="frame" x="0.0" y="405" width="414" height="331"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNQ-Y9-eQh">
+                                <rect key="frame" x="57" y="35" width="300" height="30"/>
+                                <state key="normal" title="Compare entry with another video in journal"/>
+                                <connections>
+                                    <segue destination="UcE-Mu-y8b" kind="show" identifier="selectDualVideo" id="Xir-pT-U1t"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-Ph-ais">
+                                <rect key="frame" x="0.0" y="115.5" width="414" height="620.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BQq-ge-bf8">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BQq-ge-bf8" id="nmY-hw-b1i">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryTableViewCell" rowHeight="65" id="ma8-jv-ayc" customClass="EntryTableViewCell" customModule="Echo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ma8-jv-ayc" id="fWi-ZF-17L">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Butts by" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGP-W9-IMo">
+                                                    <rect key="frame" x="354" y="15" width="47" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUP-1h-HbA">
+                                                    <rect key="frame" x="14" y="12" width="37" height="37"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="37" id="nps-Ub-H1C"/>
+                                                        <constraint firstAttribute="height" constant="37" id="v9H-9A-gmC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 10, 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-zp-t4C">
+                                                    <rect key="frame" x="59" y="29" width="109" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rihanna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWh-DU-gL4">
+                                                    <rect key="frame" x="355" y="31" width="45.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vt2-NR-clX">
+                                                    <rect key="frame" x="59" y="13" width="27.5" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Plr-qV-G9F">
+                                                    <rect key="frame" x="23" y="20" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="UWm-Pj-oL0"/>
+                                                        <constraint firstAttribute="height" constant="20" id="y8P-S9-ZHy"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Plr-qV-G9F" firstAttribute="top" secondItem="fWi-ZF-17L" secondAttribute="top" constant="20" id="24S-2q-kMK"/>
+                                                <constraint firstAttribute="trailing" secondItem="WWh-DU-gL4" secondAttribute="trailing" constant="13" id="6Mq-y7-MyI"/>
+                                                <constraint firstItem="Bjl-zp-t4C" firstAttribute="leading" secondItem="xUP-1h-HbA" secondAttribute="trailing" constant="8" id="7Yz-PC-I4L"/>
+                                                <constraint firstItem="Bjl-zp-t4C" firstAttribute="top" secondItem="vt2-NR-clX" secondAttribute="bottom" id="7sU-Ij-MdK"/>
+                                                <constraint firstAttribute="trailing" secondItem="iGP-W9-IMo" secondAttribute="trailing" constant="13" id="BCV-2R-PdH"/>
+                                                <constraint firstItem="vt2-NR-clX" firstAttribute="leading" secondItem="xUP-1h-HbA" secondAttribute="trailing" constant="8" id="MOY-57-BEE"/>
+                                                <constraint firstItem="xUP-1h-HbA" firstAttribute="leading" secondItem="fWi-ZF-17L" secondAttribute="leading" constant="14" id="Ywn-jS-atF"/>
+                                                <constraint firstItem="vt2-NR-clX" firstAttribute="top" secondItem="fWi-ZF-17L" secondAttribute="top" constant="13" id="iNN-7o-ztv"/>
+                                                <constraint firstItem="Plr-qV-G9F" firstAttribute="leading" secondItem="fWi-ZF-17L" secondAttribute="leading" constant="23" id="kdE-A2-ETw"/>
+                                                <constraint firstItem="iGP-W9-IMo" firstAttribute="top" secondItem="fWi-ZF-17L" secondAttribute="top" constant="15" id="pBc-JG-zZr"/>
+                                                <constraint firstItem="xUP-1h-HbA" firstAttribute="top" secondItem="fWi-ZF-17L" secondAttribute="top" constant="12" id="pOP-CV-eTG"/>
+                                                <constraint firstItem="WWh-DU-gL4" firstAttribute="top" secondItem="iGP-W9-IMo" secondAttribute="bottom" constant="2" id="rZk-fx-q6W"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artistLabel" destination="WWh-DU-gL4" id="Qfs-Dc-aAV"/>
+                                            <outlet property="contentView" destination="fWi-ZF-17L" id="9Vm-Ly-dVd"/>
+                                            <outlet property="createdAtLabel" destination="Bjl-zp-t4C" id="zh8-Km-9Rx"/>
+                                            <outlet property="songLabel" destination="iGP-W9-IMo" id="1XJ-nu-YKN"/>
+                                            <outlet property="thumbnailIconImageView" destination="Plr-qV-G9F" id="Vc6-Zl-CzM"/>
+                                            <outlet property="thumbnailImageView" destination="xUP-1h-HbA" id="a1v-Vj-HmV"/>
+                                            <outlet property="titleLabel" destination="vt2-NR-clX" id="4uE-qD-uw5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNQ-Y9-eQh">
-                                <rect key="frame" x="46" y="175" width="300" height="30"/>
-                                <state key="normal" title="Compare entry with another video in journal"/>
-                                <connections>
-                                    <segue destination="UcE-Mu-y8b" kind="show" identifier="selectedDualVideo" id="Xir-pT-U1t"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fNQ-Y9-eQh" firstAttribute="top" secondItem="TLh-jr-0Sq" secondAttribute="bottom" constant="15" id="4il-JD-dOl"/>
+                            <constraint firstItem="8NR-Ph-ais" firstAttribute="top" secondItem="bfJ-Yr-eY8" secondAttribute="bottom" constant="15" id="8ks-Wi-1qq"/>
+                            <constraint firstItem="bfJ-Yr-eY8" firstAttribute="leading" secondItem="BUY-XP-2T1" secondAttribute="leading" constant="7" id="Pz5-n0-f20"/>
+                            <constraint firstItem="bfJ-Yr-eY8" firstAttribute="top" secondItem="fNQ-Y9-eQh" secondAttribute="bottom" constant="15" id="UW9-sO-ujN"/>
+                            <constraint firstItem="Jwp-Cp-poZ" firstAttribute="top" secondItem="8NR-Ph-ais" secondAttribute="bottom" id="VjQ-E2-zX1"/>
+                            <constraint firstItem="bfJ-Yr-eY8" firstAttribute="top" secondItem="fNQ-Y9-eQh" secondAttribute="bottom" constant="15" id="kVK-y2-QbP"/>
+                            <constraint firstAttribute="trailing" secondItem="8NR-Ph-ais" secondAttribute="trailing" id="mYQ-bl-z6f"/>
+                            <constraint firstItem="fNQ-Y9-eQh" firstAttribute="centerX" secondItem="BUY-XP-2T1" secondAttribute="centerX" id="pWf-Nj-yq9"/>
+                            <constraint firstItem="8NR-Ph-ais" firstAttribute="leading" secondItem="BUY-XP-2T1" secondAttribute="leading" id="uB7-EM-mev"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UW9-sO-ujN"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Dual Feedback Mode" id="nh2-fo-k2K">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="HPo-UO-idX">
+                            <connections>
+                                <action selector="onBack:" destination="XVB-6d-mQD" id="jBE-Br-yNK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="tableView" destination="8NR-Ph-ais" id="Bcb-oB-wwj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G24-cj-dGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109" y="104"/>
+            <point key="canvasLocation" x="1127" y="534"/>
         </scene>
         <!--Dual Select View Controller-->
         <scene sceneID="Z7p-zZ-muJ">
@@ -301,7 +395,7 @@
                                             <outlet property="thumbnailIconImageView" destination="bmo-3J-szA" id="3wf-Qo-nsO"/>
                                             <outlet property="thumbnailImageView" destination="RCn-Fx-zB2" id="6Bb-2y-NsO"/>
                                             <outlet property="titleLabel" destination="KhV-NI-VmJ" id="5UG-MW-CE2"/>
-                                            <segue destination="LOc-DS-2Mh" kind="show" identifier="selectedDualVideo" id="ct2-hO-Kh2"/>
+                                            <segue destination="LOc-DS-2Mh" kind="show" identifier="playDualVideo" id="ct2-hO-Kh2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -324,6 +418,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16a-79-UWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1684" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UQC-Y1-eRn">
+            <objects>
+                <navigationController id="kii-t2-is6" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ru7-HS-phs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XVB-6d-mQD" kind="relationship" relationship="rootViewController" id="C5a-h2-dSP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfl-6x-3rw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="574" y="571"/>
         </scene>
     </scenes>
     <resources>
