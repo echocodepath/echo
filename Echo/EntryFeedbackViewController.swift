@@ -14,6 +14,7 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
     
     var entry: PFObject?
     var feedback: [PFObject] = []
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -21,7 +22,12 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        let title = entry!.objectForKey("title") as? String
 
+        titleLabel.text = title?.uppercaseString
+        titleLabel.font = StyleGuide.Fonts.semiBoldFont(size: 11.0)
+        titleLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        
         loadFeedback()
         
         // Add pull to refresh functionality

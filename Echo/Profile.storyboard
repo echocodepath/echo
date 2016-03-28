@@ -138,6 +138,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="26" height="24"/>
+        <image name="Back" width="17" height="14"/>
     </resources>
 </document>
