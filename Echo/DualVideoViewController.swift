@@ -199,6 +199,8 @@ class DualVideoViewController: UIViewController {
         teacherAvPlayer = AVPlayer(URL: teacherUrl)
         teacherVideoPlayer.player = teacherAvPlayer!
         teacherVideoPlayer.player!.play()
+        // Mute teacher video
+        teacherAvPlayer?.muted = true
         
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = studentAvPlayer!.addPeriodicTimeObserverForInterval(timeInterval,
