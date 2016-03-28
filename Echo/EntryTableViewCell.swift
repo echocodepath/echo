@@ -35,15 +35,15 @@ class EntryTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = StyleGuide.Colors.echoNewGray
 
-        weekDayLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
+        weekDayLabel.font = StyleGuide.Fonts.regularFont(size: 11.0)
         weekDayLabel.textColor = StyleGuide.Colors.echoDarkerGray
         dayOnlyLabel.font = StyleGuide.Fonts.boldFont(size: 27.0)
         dayOnlyLabel.textColor = StyleGuide.Colors.echoDarkerGray
-        timeLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
+        timeLabel.font = StyleGuide.Fonts.regularFont(size: 11.0)
         timeLabel.textColor = StyleGuide.Colors.echoDarkerGray
-        songLabel.font = StyleGuide.Fonts.mediumFont(size: 10.0)
+        songLabel.font = StyleGuide.Fonts.semiBoldFont(size: 11.0)
         songLabel.textColor = StyleGuide.Colors.echoDarkerGray
-        byLabel.font = StyleGuide.Fonts.mediumFont(size: 10.0)
+        byLabel.font = StyleGuide.Fonts.mediumFont(size: 11.0)
         byLabel.textColor = StyleGuide.Colors.echoDarkerGray
         titleLabel.font = StyleGuide.Fonts.semiBoldFont(size: 14.0)
         titleLabel.textColor = StyleGuide.Colors.echoDarkerGray
