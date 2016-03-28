@@ -22,6 +22,7 @@ class DualSelectViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        self.navigationController?.title = "Choose video to compare"
         tableView.backgroundView = UIImageView(image: UIImage(named: "journal_bg_1x_1024"))
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,31 +48,7 @@ class DualSelectViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SelectEntryCell", forIndexPath: indexPath) as! EntryTableViewCell
         let entry = self.entries[indexPath.row]
-        let createdAt = DateManager.defaultFormatter.stringFromDate(entry.createdAt!)
-        cell.titleLabel.alpha = 0
-        cell.songLabel.alpha = 0
-        cell.thumbnailImageView.alpha = 0
-        cell.createdAtLabel.alpha = 0
-        cell.artistLabel.alpha = 0
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            cell.titleLabel.text = entry.valueForKey("title") as? String
-            cell.songLabel.text = entry.valueForKey("song") as? String
-            cell.artistLabel.text = entry.valueForKey("artist") as? String
-            cell.createdAtLabel.text = createdAt
-            let thumbnailData = entry["thumbnail"] as! PFFile
-            thumbnailData.getDataInBackgroundWithBlock({ (data
-                , error) -> Void in
-                let thumbnailImage = UIImage(data: data!)
-                cell.thumbnailImageView.image = thumbnailImage
-                cell.thumbnailIconImageView.image = UIImage(named: "Play Icon")
-                cell.titleLabel.alpha = 1
-                cell.songLabel.alpha = 1
-                cell.thumbnailImageView.alpha = 1
-                cell.artistLabel.alpha = 1
-                cell.createdAtLabel.alpha = 1
-            })
-            
-        })
+        cell.entry = entry
         
         return cell
     }
@@ -81,8 +58,7 @@ class DualSelectViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("selectedDualVideo", sender: self)
-        
+        //performSegueWithIdentifier("playDualVideo", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -117,7 +93,7 @@ class DualSelectViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "selectedDualVideo":
+            case "playDualVideo":
                 if let indexPath = self.tableView.indexPathForSelectedRow{
                     let vc = segue.destinationViewController as! DualVideoViewController
                     vc.teacherEntry = self.entries[indexPath.row]
