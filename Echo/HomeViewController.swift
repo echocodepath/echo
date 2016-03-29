@@ -31,21 +31,10 @@ class HomeViewController: UIViewController, VideoPlayerContainable {
     let videoPlayer = AVPlayerViewController()
     var videoURL: NSURL?
     
-    override func viewDidAppear(animated: Bool) {
-        print("view did appear")
-//        convertVideoDataToNSURL()
-//        // restart video
-//        let seconds : Int64 = 0
-//        let preferredTimeScale : Int32 = 1
-//        let kCMTimeMake = CMTimeMake(seconds, preferredTimeScale)
-//        controller.player!.seekToTime(kCMTimeMake)
-//
-    }
-    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
-        self.view.sendSubviewToBack(videoPlayer.view)
-        self.view.bringSubviewToFront(self.coverImage)
+        videoContainerView.sendSubviewToBack(videoPlayer.view)
+        videoContainerView.bringSubviewToFront(self.coverImage)
         convertVideoDataToNSURL()
     }
     
