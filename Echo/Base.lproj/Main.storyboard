@@ -848,6 +848,7 @@
                         <outlet property="artistTextField" destination="oyP-53-sHq" id="41x-pF-5fe"/>
                         <outlet property="entryThumbnailImageView" destination="9Ua-Fr-kQP" id="xck-y3-uyD"/>
                         <outlet property="privateSwitch" destination="s7Y-VQ-dCG" id="ZN8-r5-rP5"/>
+                        <outlet property="saveButton" destination="ZEm-3T-QgN" id="dAU-5B-930"/>
                         <outlet property="songIconImageView" destination="bwS-nL-eFL" id="GNO-Wl-DFC"/>
                         <outlet property="songTextField" destination="DXZ-mh-bb1" id="0kk-fc-H7v"/>
                         <outlet property="tableView" destination="34a-h7-ZAj" id="rLk-7b-kaB"/>
