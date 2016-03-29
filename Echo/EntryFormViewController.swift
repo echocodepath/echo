@@ -14,6 +14,8 @@ class EntryFormViewController: UITableViewController {
     var video: NSURL?
     var thumbnail: NSData?
     
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var privateSwitch: UISwitch!
     @IBOutlet weak var entryThumbnailImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -60,6 +62,8 @@ class EntryFormViewController: UITableViewController {
     }
     
     @IBAction func onEntrySave(sender: AnyObject) {
+        LoadingOverlay.shared.showOverlay(self.view)
+        saveButton.enabled = false
         let user_id = currentUser!.id
         let username =  currentUser!.username
         let title = titleTextField.text
@@ -87,6 +91,7 @@ class EntryFormViewController: UITableViewController {
             let entryViewController = entryStoryBoard.instantiateViewControllerWithIdentifier("EntryViewController") as! EntryViewController
             entryViewController.entry = entry
             entryViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "entryDoneButtonTapped:")
+            LoadingOverlay.shared.hideOverlayView()
             self.navigationController?.pushViewController(entryViewController, animated: true)
 
         }
