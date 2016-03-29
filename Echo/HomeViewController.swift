@@ -12,7 +12,7 @@ import ParseFacebookUtilsV4
 import AVKit
 import AVFoundation
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, VideoPlayerContainable {
     
     @IBOutlet weak var inspirationalQuoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -22,15 +22,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var videoContainerView: UIView!
 
     @IBAction func onTap(sender: AnyObject) {
-        if let videoUrl = self.videoUrl{
+        if let videoUrl = self.videoURL{
+            self.view.bringSubviewToFront(videoPlayer.view)
             playVideo(videoUrl)
         }
     }
     
-    
-    var controller = AVPlayerViewController()
-    
-    var videoUrl: NSURL?
+    let videoPlayer = AVPlayerViewController()
+    var videoURL: NSURL?
     
     override func viewDidAppear(animated: Bool) {
         print("view did appear")
@@ -45,7 +44,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
-        self.view.sendSubviewToBack(controller.view)
+        self.view.sendSubviewToBack(videoPlayer.view)
         self.view.bringSubviewToFront(self.coverImage)
         convertVideoDataToNSURL()
     }
@@ -80,43 +79,33 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: Video
-    private func createVideo(url: NSURL){
-        controller.willMoveToParentViewController(self)
-        addChildViewController(controller)
-        videoContainerView.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
-        
-        let player = AVPlayer(URL: url)
-        controller.player = player
-        
-    }
-    
-    
+//    private func playVideo(url: NSURL){
+//        
+//        controller.willMoveToParentViewController(self)
+//        addChildViewController(controller)
+//        view.addSubview(controller.view)
+//        controller.didMoveToParentViewController(self)
+//        controller.view.translatesAutoresizingMaskIntoConstraints = false
+//        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+//        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+//        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+//        controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+//        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+//        
+//        let player = AVPlayer(URL: url)
+//        controller.player = player
+//        controller.player!.play()
+//        
+//        
+//    }
+//    
     // MARK: Video
     private func playVideo(url: NSURL){
-
-        controller.willMoveToParentViewController(self)
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        controller.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        controller.view.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        controller.view.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        controller.view.heightAnchor.constraintEqualToAnchor(controller.view.widthAnchor, multiplier: 1, constant: 1)
+        videoPlayer(addToView: videoContainerView, videoURL: url)
         
         let player = AVPlayer(URL: url)
-        controller.player = player
-        controller.player!.play()
+        videoPlayer.player = player
+        videoPlayer.player!.play()
         
         
     }
@@ -129,7 +118,7 @@ class HomeViewController: UIViewController {
             if error == nil && Video != nil {
                 let videoData = Video!["video"] as! PFFile
                 videoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    self.videoUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: "FLajZA8B6W")
+                    self.videoURL = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: "FLajZA8B6W")
                 })
                 
             } else {
@@ -141,7 +130,7 @@ class HomeViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         FileProcessor.sharedInstance.deleteVideoFileWithId("FLajZA8B6W")
-        controller.player?.pause()
+        videoPlayer.player?.pause()
     }
     
 
