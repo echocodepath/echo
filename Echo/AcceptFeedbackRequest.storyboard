@@ -60,6 +60,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bk3-2R-hwL" customClass="SCWaveformView">
+                                                    <rect key="frame" x="65" y="21.5" width="255" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.57800521816150585" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="2.5" id="1DW-Ad-4dB"/>
@@ -83,6 +87,7 @@
                                             <outlet property="locationImageView" destination="qUH-g3-nko" id="GxG-I6-gSX"/>
                                             <outlet property="noteLabel" destination="i2P-Go-02F" id="GCo-fY-sIS"/>
                                             <outlet property="timestampLabel" destination="hR4-H2-8DI" id="E1d-T8-ufz"/>
+                                            <outlet property="waveformView" destination="bk3-2R-hwL" id="HrI-pK-8tQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,7 +96,7 @@
                                 <rect key="frame" x="0.0" y="233" width="320" height="258"/>
                                 <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YS5-52-zOn" customClass="EZAudioPlotGL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YS5-52-zOn" customClass="Waver">
                                 <rect key="frame" x="0.0" y="232" width="320" height="258"/>
                                 <color key="backgroundColor" red="0.90574023601709253" green="0.20714466726032688" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -231,11 +236,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="audioWaveContainerView" destination="YS5-52-zOn" id="AKp-q8-jye"/>
+                        <outlet property="audioWaveContainerView" destination="YS5-52-zOn" id="YbW-GV-14Z"/>
                         <outlet property="controlView" destination="STO-ih-dpp" id="bsO-vW-DP8"/>
                         <outlet property="emptyAudioCellView" destination="Cbf-zF-6pQ" id="pvp-aF-Vxp"/>
                         <outlet property="playBtn" destination="Gxv-DN-e8k" id="fvu-Lm-mFF"/>
-                        <outlet property="plot" destination="YS5-52-zOn" id="6Xg-Ni-jqE"/>
                         <outlet property="recordButton" destination="RVj-Pi-438" id="Y9A-fW-anQ"/>
                         <outlet property="recordContainerView" destination="j3a-1p-gYw" id="yEv-HD-jr3"/>
                         <outlet property="tableView" destination="AuA-PP-7UM" id="h8b-jo-cWf"/>

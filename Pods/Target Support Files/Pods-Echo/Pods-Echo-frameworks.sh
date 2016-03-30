@@ -92,8 +92,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Echo/PageMenu.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/SCWaveformView.framework"
   install_framework "Pods-Echo/SnapKit.framework"
   install_framework "Pods-Echo/Spring.framework"
+  install_framework "Pods-Echo/Waver.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Echo/AFNetworking.framework"
@@ -104,6 +106,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Echo/PageMenu.framework"
   install_framework "Pods-Echo/Parse.framework"
   install_framework "Pods-Echo/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Echo/SCWaveformView.framework"
   install_framework "Pods-Echo/SnapKit.framework"
   install_framework "Pods-Echo/Spring.framework"
+  install_framework "Pods-Echo/Waver.framework"
 fi
