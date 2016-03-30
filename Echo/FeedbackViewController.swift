@@ -144,7 +144,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     }
     
     func playAudio(timer: NSTimer){
-        let clip = timer.userInfo!["clip"] as! AudioClip
+        let clip = (timer.userInfo as! [String : AnyObject])["clip"] as! AudioClip
         let index = timer.userInfo!["index"] as! Int
         let indexPath = NSIndexPath(forRow: index, inSection: 0)
         
