@@ -11,13 +11,18 @@ import Parse
 import AVKit
 import AVFoundation
 import SnapKit
+import EZAudioiOS
 
-class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate, VideoPlayerContainable {
+class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate, VideoPlayerContainable, EZMicrophoneDelegate {
     lazy var carousel = CarouselView()
+    lazy var microphone: EZMicrophone = EZMicrophone(delegate: self, startsImmediately: false)
+    let plotType: EZPlotType = EZPlotType(rawValue: 0)!;
+    
+    @IBOutlet weak var plot: EZAudioPlotGL!
+
     
     var videoPlayerHeight: Constraint?
     var videoURL: NSURL?
-    
     let videoPlayer = AVPlayerViewController()
     var audioPlayers = Array<AVAudioPlayer>()
     var avPlayer: AVPlayer?
@@ -37,6 +42,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var audioTimers = Array<NSTimer>()
     var hiddenEmptyAudioCellView = false
     
+    
+    
+    @IBOutlet weak var audioWaveContainerView: UIView!
     @IBOutlet weak var emptyAudioCellView: UIView!
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var recordContainerView: UIView!
@@ -49,8 +57,15 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FeedbackClipTableViewCell.count = 0
+        plot?.shouldFill = false
+        plot?.shouldMirror = false
         
+        plot.gain = 8
+        plot.backgroundColor = UIColor(red: 83/255, green: 83/255, blue: 92/255, alpha: 1.0)
+        plot.color = StyleGuide.Colors.echoTranslucentClear
+        audioWaveContainerView.alpha = 0
+        
+        FeedbackClipTableViewCell.count = 0
         emptyAudioCellView.addSubview(carousel)
         let views = ["carousel" : carousel]
         carousel.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +90,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         //        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = UIColor.whiteColor()
+        
+        
         
     }
     
@@ -127,8 +144,9 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
 
     func playAudio(timer: NSTimer){
         avPlayer!.pause()
-        let clip = timer.userInfo!["clip"] as! AudioClip
-        let index = timer.userInfo!["index"] as! Int
+        let params = timer.userInfo as! [String : AnyObject]
+        let clip = params["clip"] as! AudioClip
+        let index = params["index"] as! Int
         let indexPath = NSIndexPath(forRow: index, inSection: 0)
         
         if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
@@ -233,10 +251,14 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         let timestamp = avPlayer!.currentTime()
         let duration = audioRecorder.currentTime
         let audioClip = AudioClip(path: currentUrl!, offset: timestamp.seconds, duration: duration)
+        self.microphone.stopFetchingAudio()
         audioRecorder.stop()
         audioRecorder = nil
         feedback.append(audioClip)
         fileNumber += 1
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.audioWaveContainerView.alpha = 0
+        }
         avPlayer!.play()
         if hiddenEmptyAudioCellView == false {
             UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -247,6 +269,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func handleTouchDown(sender: AnyObject) {
+
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.audioWaveContainerView.alpha = 1
+        }
+        self.microphone.startFetchingAudio()
+
+        
         let audioURL = directoryURL()
         
         let settings = [
@@ -445,6 +474,11 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         
     }
 
+    func microphone(microphone: EZMicrophone!, hasAudioReceived buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.plot?.updateBuffer(buffer[0], withBufferSize: bufferSize);
+        });
+    }
     
     deinit {
         avPlayer?.removeTimeObserver(timeObserver)
