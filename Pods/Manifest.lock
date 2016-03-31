@@ -35,8 +35,10 @@ PODS:
     - FBSDKLoginKit (~> 4.10)
     - FBSDKTVOSKit (~> 4.10)
     - Parse (~> 1.12)
+  - SCWaveformView (2.0.6)
   - SnapKit (0.19.1)
   - Spring (1.0.3)
+  - Waver (0.3.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -47,8 +49,10 @@ DEPENDENCIES:
   - PageMenu
   - Parse
   - ParseFacebookUtilsV4 (~> 1.11.0)
+  - SCWaveformView
   - SnapKit
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - Waver
 
 EXTERNAL SOURCES:
   Spring:
@@ -69,7 +73,9 @@ SPEC CHECKSUMS:
   PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
+  SCWaveformView: 78b3503675aafcdaf9c283d68cb45c9fc735af87
   SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  Waver: d81cff527411747698621223299102ac661258ae
 
 COCOAPODS: 0.39.0

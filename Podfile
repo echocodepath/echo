@@ -6,11 +6,14 @@ target 'Echo' do
 	pod 'ParseFacebookUtilsV4','~>1.11.0'
 	pod 'Parse'
 	pod 'Bolts'
+	pod 'SCWaveformView'
+	pod 'Waver'
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKShareKit'
 	pod 'FBSDKLoginKit'
 	pod 'PageMenu'
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
   pod 'SnapKit'
+
 end
 
