@@ -34,7 +34,6 @@
 		B2B1115C1C8F501A009695A6 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */; };
 		B2EFB6BC1C9B97B50037E888 /* InspirationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EFB6BB1C9B97B50037E888 /* InspirationGenerator.swift */; };
 		B2FE9E311CAA1BBC0086DDE5 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE9E301CAA1BBC0086DDE5 /* LoadingOverlay.swift */; };
-		B2FE9E411CAB854A0086DDE5 /* EZAudioiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE9E371CAB81C30086DDE5 /* EZAudioiOS.framework */; };
 		EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */; };
 		EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */; };
 		EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE10B31C9A14500018C251 /* StyleGuide.swift */; };
@@ -171,7 +170,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */,
-				B2FE9E411CAB854A0086DDE5 /* EZAudioiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,8 +386,6 @@
 				F56D5DEF1C855AF6006A7D7A /* Frameworks */,
 				F56D5DF01C855AF6006A7D7A /* Resources */,
 				F3A56B43F32A975B3BED8732 /* Embed Pods Frameworks */,
-				2B5E341F166138564FF0B509 /* Copy Pods Resources */,
-				B2FE9E391CAB81CE0086DDE5 /* Carthage */,
 				B2FE9E401CAB84D40086DDE5 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -476,36 +472,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2B5E341F166138564FF0B509 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Echo/Pods-Echo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2FE9E391CAB81CE0086DDE5 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/EZAudioiOS.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		F3A56B43F32A975B3BED8732 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Echo/Pods-Echo-frameworks.sh\"\n";
+			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
