@@ -54,8 +54,8 @@
                                     <constraint firstAttribute="trailing" secondItem="xtz-7M-SBp" secondAttribute="trailing" constant="-6" id="y2Z-2u-ziQ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
-                                <rect key="frame" x="0.0" y="262" width="320" height="228"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedbackClipTableViewCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AuA-PP-7UM">
+                                <rect key="frame" x="0.0" y="233" width="320" height="257"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -206,7 +206,7 @@
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="top" secondItem="sKw-8t-Rm4" secondAttribute="bottom" id="APU-5B-PUy"/>
                             <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="j3a-1p-gYw" secondAttribute="bottom" id="F9e-Kp-r1p"/>
                             <constraint firstItem="YS5-52-zOn" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="JY8-4H-bxA"/>
-                            <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" constant="-14" id="KYN-IH-Yep"/>
+                            <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" constant="1" id="KYN-IH-Yep"/>
                             <constraint firstItem="Cbf-zF-6pQ" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="NCc-n7-erR"/>
                             <constraint firstAttribute="trailing" secondItem="YS5-52-zOn" secondAttribute="trailing" id="NRq-ck-LSl"/>
                             <constraint firstItem="w4k-Pu-gFi" firstAttribute="top" secondItem="Cd1-jn-4NI" secondAttribute="bottom" id="OEr-66-dEL"/>
