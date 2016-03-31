@@ -7,18 +7,27 @@
 //
 
 import UIKit
+import SCWaveformView
 
 class FeedbackClipTableViewCell: UITableViewCell {
     static var count = 0
     
     var audioClip: AudioClip? {
         didSet {
-            durationLabel.text = "\(Int(audioClip!.duration!))s"
-            timestampLabel.text = "\(String(format: "%02d:%02d", ((lround(audioClip!.offset!) / 60) % 60), lround(audioClip!.offset!) % 60))"
-            print("IM RIGHT HERE \(String(format: "%02d:%02d", ((lround(audioClip!.offset!) / 60) % 60), lround(audioClip!.offset!) % 60))")
+            guard let audioClip = audioClip else {
+                return
+            }
+            
+            let asset = AVURLAsset(URL: audioClip.path!)
+            waveformView.asset = asset
+            
+            durationLabel.text = "\(Int(audioClip.duration!))s"
+            timestampLabel.text = "\(String(format: "%02d:%02d", ((lround(audioClip.offset!) / 60) % 60), lround(audioClip.offset!) % 60))"
+
         }
     }
     
+    @IBOutlet weak var waveformView: SCWaveformView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var audioClipImageView: UIImageView!
@@ -35,6 +44,8 @@ class FeedbackClipTableViewCell: UITableViewCell {
         timestampLabel.textColor = StyleGuide.Colors.echoTranslucentClear
         noteLabel.textColor = UIColor(red: 199/255, green: 161/255, blue: 129/255, alpha: 1.0)
         noteLabel.text = "NOTE \(FeedbackClipTableViewCell.count)"
+        
+        selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
