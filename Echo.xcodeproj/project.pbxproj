@@ -73,6 +73,7 @@
 		F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */; };
 		F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */; };
 		F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */; };
+		F5C5C63C1CAB75E700A32E82 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */; };
 		F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E2008E1C8CC64000DECA95 /* Profile.storyboard */; };
 		F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E200901C8CC64800DECA95 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -161,6 +162,7 @@
 		F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherFeedbackCell.swift; sourceTree = "<group>"; };
 		F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestSentViewController.swift; sourceTree = "<group>"; };
 		F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRecording.storyboard; sourceTree = "<group>"; };
+		F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5E2008E1C8CC64000DECA95 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F5E200901C8CC64800DECA95 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +214,7 @@
 				B233F6F61CA27335005C2D6F /* NavigationController.swift */,
 				B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */,
 				F51262DB1CA931A900D942D6 /* NotesViewController.swift */,
+				F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -413,7 +416,7 @@
 				TargetAttributes = {
 					F56D5DF11C855AF6006A7D7A = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = WQ432KC599;
+						DevelopmentTeam = 38WNHT2TM4;
 					};
 				};
 			};
@@ -546,6 +549,7 @@
 				B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */,
 				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
 				F5355F961CA769B000BA707E /* DualHomeViewController.swift in Sources */,
+				F5C5C63C1CAB75E700A32E82 /* VideoViewController.swift in Sources */,
 				B26D5EB41C8CFBCB00528F2D /* JournalEntriesViewController.swift in Sources */,
 				B26D5EB21C8CFBB300528F2D /* RecordEntryViewController.swift in Sources */,
 				EF0AF2441C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift in Sources */,
@@ -709,7 +713,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo38;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -729,7 +733,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo38;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
