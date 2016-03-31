@@ -47,6 +47,10 @@ class FeedbackClipTableViewCell: UITableViewCell {
         waveformView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         waveformView.normalColor = StyleGuide.Colors.echoTranslucentClear
         waveformView.progressColor = StyleGuide.Colors.echoOrange
+//        waveformView.precision = 0.25
+        waveformView.precision = 0.2
+
+        waveformView.lineWidthRatio = 0.35
         
         selectionStyle = .None
     }
