@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EZAudioiOS
 import SCWaveformView
 
 class FeedbackClipTableViewCell: UITableViewCell {
