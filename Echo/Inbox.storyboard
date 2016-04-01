@@ -525,13 +525,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andrew Yu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-wG-ph1">
-                                                                    <rect key="frame" x="16" y="14" width="77.5" height="18"/>
+                                                                    <rect key="frame" x="16" y="15" width="77.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                     <color key="textColor" red="0.040759272309231799" green="0.5881860012649287" blue="0.85046073720000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Christine! My Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-3x-JDK">
-                                                                    <rect key="frame" x="18" y="53" width="154.5" height="14.5"/>
+                                                                    <rect key="frame" x="18" y="62" width="154.5" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.29432652452564101" green="0.29432652452564101" blue="0.29432652452564101" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -547,18 +547,18 @@
                                                             <constraints>
                                                                 <constraint firstItem="jPP-wG-ph1" firstAttribute="leading" secondItem="G6Z-Jc-3fg" secondAttribute="leading" constant="16" id="2fO-fK-tK8"/>
                                                                 <constraint firstItem="mnz-dt-8dc" firstAttribute="leading" secondItem="jPP-wG-ph1" secondAttribute="trailing" constant="4.5" id="4EF-GV-U9j"/>
-                                                                <constraint firstItem="jPP-wG-ph1" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="14" id="5hL-Nx-bJc"/>
+                                                                <constraint firstItem="jPP-wG-ph1" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="15" id="5hL-Nx-bJc"/>
                                                                 <constraint firstItem="mnz-dt-8dc" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="17" id="9oI-B7-dJw"/>
                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iRi-3x-JDK" secondAttribute="trailing" constant="22" id="Bbe-ou-dpC"/>
                                                                 <constraint firstAttribute="width" constant="317" id="CsB-xK-zE2"/>
                                                                 <constraint firstItem="iRi-3x-JDK" firstAttribute="leading" secondItem="G6Z-Jc-3fg" secondAttribute="leading" constant="18" id="FVK-ys-tU7"/>
                                                                 <constraint firstAttribute="height" constant="119" id="WSN-Nn-Dz8"/>
-                                                                <constraint firstItem="iRi-3x-JDK" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="53" id="Xdy-gG-Hft"/>
+                                                                <constraint firstItem="iRi-3x-JDK" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="62" id="Xdy-gG-Hft"/>
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iRi-3x-JDK" secondAttribute="bottom" id="Yvr-VO-TPa"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-dJ-PUS">
-                                                            <rect key="frame" x="357" y="145" width="41" height="41"/>
+                                                            <rect key="frame" x="357" y="148" width="41" height="41"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="41" id="MD9-Si-kOB"/>
                                                                 <constraint firstAttribute="height" constant="41" id="e3Q-yY-bvT"/>
@@ -567,7 +567,7 @@
                                                             <state key="normal" image="Reject"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icv-mK-Qlw">
-                                                            <rect key="frame" x="303" y="145" width="41" height="41"/>
+                                                            <rect key="frame" x="303" y="148" width="41" height="41"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="41" id="2Jx-Ez-5b2"/>
                                                                 <constraint firstAttribute="height" constant="41" id="UiP-gH-fs4"/>
@@ -589,9 +589,9 @@
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="icv-mK-Qlw" secondAttribute="trailing" constant="70" id="0Ha-5n-Rjl"/>
-                                                        <constraint firstItem="fLh-dJ-PUS" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="bottom" constant="11" id="0qC-Ub-QnG"/>
+                                                        <constraint firstItem="fLh-dJ-PUS" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="bottom" constant="14" id="0qC-Ub-QnG"/>
                                                         <constraint firstItem="icv-mK-Qlw" firstAttribute="leading" secondItem="fLh-dJ-PUS" secondAttribute="trailing" constant="-95" id="HeK-mt-Xeh"/>
-                                                        <constraint firstItem="icv-mK-Qlw" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="bottom" constant="11" id="N9w-6Z-CVy"/>
+                                                        <constraint firstItem="icv-mK-Qlw" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="bottom" constant="14" id="N9w-6Z-CVy"/>
                                                         <constraint firstItem="G6Z-Jc-3fg" firstAttribute="top" secondItem="Fpe-Mr-2sL" secondAttribute="top" constant="15" id="OhA-Bp-bGR"/>
                                                         <constraint firstItem="jva-rA-Uib" firstAttribute="leading" secondItem="Fpe-Mr-2sL" secondAttribute="leading" constant="17" id="hfW-hl-ruD"/>
                                                         <constraint firstItem="G6Z-Jc-3fg" firstAttribute="leading" secondItem="Fpe-Mr-2sL" secondAttribute="leading" constant="81" id="htF-sS-87Y"/>
@@ -632,11 +632,13 @@
                         <outlet property="artistLabel" destination="aqf-Uv-MBz" id="7nZ-MW-5j1"/>
                         <outlet property="authorLabel" destination="jPP-wG-ph1" id="7ky-Q9-MOf"/>
                         <outlet property="createdAtLabel" destination="a8V-wz-7E0" id="VR9-8W-VgS"/>
+                        <outlet property="messageBodyView" destination="G6Z-Jc-3fg" id="Ui9-fN-iTd"/>
                         <outlet property="messageView" destination="Fpe-Mr-2sL" id="oLL-aJ-UsS"/>
                         <outlet property="messageWrapperView" destination="Fpe-Mr-2sL" id="7Fe-RE-QYi"/>
                         <outlet property="playBtn" destination="SHn-IU-83h" id="RQz-4O-m8A"/>
                         <outlet property="rejectButton" destination="fLh-dJ-PUS" id="uTv-RJ-1Mj"/>
                         <outlet property="requestBodyLabel" destination="iRi-3x-JDK" id="t6O-xZ-I1q"/>
+                        <outlet property="semanticTimeAgoLabel" destination="p5V-zk-hT2" id="5na-zn-W3X"/>
                         <outlet property="songIconImageView" destination="F4k-41-kpH" id="mBL-a4-7T4"/>
                         <outlet property="songLabel" destination="AfO-ze-MfO" id="z1k-F9-pro"/>
                         <outlet property="timeAgoLabel" destination="oUa-Ml-pTB" id="ua4-fx-bRl"/>
