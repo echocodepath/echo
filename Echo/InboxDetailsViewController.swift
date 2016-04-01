@@ -41,6 +41,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var requestBodyLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var wouldLikeFeedbackLabel: UILabel!
     
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var rejectButton: UIButton!
@@ -50,6 +51,13 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     @IBOutlet weak var timeAgoLabel: UILabel!
     
     @IBOutlet weak var playBtn: UIButton!
+    
+    func setupFonts() {
+        authorLabel.font = StyleGuide.Fonts.mediumFont(size: 16)
+        wouldLikeFeedbackLabel.font = StyleGuide.Fonts.regularFont(size: 12)
+        requestBodyLabel.font = StyleGuide.Fonts.regularFont(size: 12)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 44
@@ -61,8 +69,9 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
-        timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
+        timeSlider.tintColor = StyleGuide.Colors.echoBlue
         setupIcons()
+        setupFonts()
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -70,6 +79,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         
         usernameLabel.textColor = StyleGuide.Colors.echoTeal
         messageView.backgroundColor = StyleGuide.Colors.echoFormGray
+        view.backgroundColor = StyleGuide.Colors.echoFormGray
 //        messageWrapperView.layer.borderWidth = 1
 //        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
 //        messageWrapperView.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
@@ -190,7 +200,6 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
             if error == nil && userObject != nil {
                 let user = userObject as! PFUser
                 self.usernameLabel.text = user["username"] as? String
-                self.locationLabel.text = user["location"] as? String
                 let profUrl = user["profilePhotoUrl"] as? String
                 self.userImageView.setImageWithURL(NSURL(string: profUrl!)!)
             } else {
