@@ -94,6 +94,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = CollectionHeaderFooterView()
+        view.backgroundColor = UIColor.whiteColor()
         view.label.text = {
             if entryDict[section] != nil {
                 if entryDict[section]?.count == 0 {

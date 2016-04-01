@@ -34,6 +34,9 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songIconImageView: UIImageView!
     
+    @IBOutlet weak var semanticTimeAgoLabel: UILabel!
+
+    @IBOutlet weak var messageBodyView: UIView!
     @IBOutlet weak var videoTitleView: UIView!
     @IBOutlet weak var messageWrapperView: UIView!
     @IBOutlet weak var messageView: UIView!
@@ -53,11 +56,18 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     @IBOutlet weak var playBtn: UIButton!
     
     func setupFonts() {
-        authorLabel.font = StyleGuide.Fonts.mediumFont(size: 16)
-        wouldLikeFeedbackLabel.font = StyleGuide.Fonts.regularFont(size: 12)
-        requestBodyLabel.font = StyleGuide.Fonts.regularFont(size: 12)
-        
+        authorLabel.font = StyleGuide.Fonts.mediumFont(size: 15)
+        wouldLikeFeedbackLabel.font = StyleGuide.Fonts.mediumFont(size: 12)
+        requestBodyLabel.font = StyleGuide.Fonts.mediumFont(size: 12)
+        semanticTimeAgoLabel.font = StyleGuide.Fonts.mediumFont(size: 10)
+        semanticTimeAgoLabel.textColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0)
     }
+    
+    func setupViewElements() {
+        messageBodyView.layer.cornerRadius = 10.0
+        messageBodyView.clipsToBounds = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 44
@@ -68,10 +78,11 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         timeSlider.value = 0
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
-        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
+        timeSlider.setThumbImage(UIImage(named: "grey_slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBlue
         setupIcons()
         setupFonts()
+        setupViewElements()
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
