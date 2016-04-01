@@ -9,7 +9,11 @@
 import UIKit
 import Parse
 
-class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegate {
+class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    struct Constants {
+        static let collectionHeaderViewID = "headerViewId"
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -43,6 +47,8 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         collectionView.delegate = self
         collectionView.dataSource = self
 
+        collectionView.registerClass(CollectionHeaderFooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: Constants.collectionHeaderViewID)
+        
         self.navigationController?.navigationBarHidden = false
 
         tableView.delegate = self
@@ -60,6 +66,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1
             layout.minimumLineSpacing = 1
+            layout.headerReferenceSize = CGSize(width: 0, height: 30)
         }
     }
     
@@ -67,15 +74,13 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         return 12
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = StyleGuide.Fonts.mediumFont(size: 14.0)
-        header.textLabel?.textColor = StyleGuide.Colors.echoDarkerGray
-        
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (entryDict[section] != nil && entryDict[section]?.count > 0) ? 30 : 0
     }
     
-    func tableView(tableView: UITableView,
-        titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = CollectionHeaderFooterView()
+        view.label.text = {
             if entryDict[section] != nil {
                 if entryDict[section]?.count == 0 {
                     return nil
@@ -85,6 +90,8 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
             } else {
                 return nil
             }
+            }()
+        return view
     }
 
     func onRefresh(){
@@ -113,6 +120,26 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         cell.entry = entry
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.collectionHeaderViewID, forIndexPath: indexPath) as! CollectionHeaderFooterView
+        view.label.text = {
+            if entryDict[indexPath.section] != nil {
+                if entryDict[indexPath.section]?.count == 0 {
+                    return nil
+                } else {
+                    return "\(months[indexPath.section]!) 2016"
+                }
+            } else {
+                return nil
+            }
+        }()
+        return view
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return (entryDict[section] != nil && entryDict[section]?.count > 0) ? CGSize(width: 0, height: 30) : CGSize.zero
     }
     
     @IBAction func onToggleGridListView(sender: AnyObject) {

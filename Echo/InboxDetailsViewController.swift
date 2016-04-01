@@ -77,7 +77,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        usernameLabel.textColor = StyleGuide.Colors.echoTeal
+        usernameLabel.textColor = StyleGuide.Colors.echoBlue
         messageView.backgroundColor = StyleGuide.Colors.echoFormGray
         view.backgroundColor = StyleGuide.Colors.echoFormGray
 //        messageWrapperView.layer.borderWidth = 1
