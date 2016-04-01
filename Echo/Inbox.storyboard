@@ -368,12 +368,6 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-3r-TIQ">
                                                             <rect key="frame" x="1" y="3" width="414" height="29"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5V-zk-hT2">
-                                                                    <rect key="frame" x="352" y="9" width="55" height="12"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Formation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfO-ze-MfO">
                                                                     <rect key="frame" x="36" y="2" width="65" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
@@ -402,12 +396,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="p5V-zk-hT2" secondAttribute="trailing" constant="7" id="2Sl-92-iJr"/>
                                                                 <constraint firstItem="F4k-41-kpH" firstAttribute="leading" secondItem="8G5-3r-TIQ" secondAttribute="leading" constant="8" id="9e8-iO-IEj"/>
                                                                 <constraint firstItem="aqf-Uv-MBz" firstAttribute="top" secondItem="8G5-3r-TIQ" secondAttribute="top" constant="17" id="CNT-t9-vDE"/>
                                                                 <constraint firstItem="rMl-UB-YJh" firstAttribute="leading" secondItem="F4k-41-kpH" secondAttribute="trailing" constant="6" id="GSh-jg-1Ge"/>
                                                                 <constraint firstAttribute="height" constant="29" id="Gqb-84-9Lu"/>
-                                                                <constraint firstItem="p5V-zk-hT2" firstAttribute="top" secondItem="8G5-3r-TIQ" secondAttribute="top" constant="9" id="JRK-fk-ofM"/>
                                                                 <constraint firstItem="aqf-Uv-MBz" firstAttribute="leading" secondItem="rMl-UB-YJh" secondAttribute="trailing" constant="3" id="McO-aL-YeF"/>
                                                                 <constraint firstItem="F4k-41-kpH" firstAttribute="top" secondItem="8G5-3r-TIQ" secondAttribute="top" constant="7" id="cJq-rL-7Yi"/>
                                                                 <constraint firstItem="rMl-UB-YJh" firstAttribute="top" secondItem="8G5-3r-TIQ" secondAttribute="top" constant="17" id="nVm-dh-xsC"/>
@@ -539,9 +531,15 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Christine! My Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-3x-JDK">
-                                                                    <rect key="frame" x="18" y="40" width="155" height="15"/>
+                                                                    <rect key="frame" x="18" y="53" width="155" height="15"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5V-zk-hT2">
+                                                                    <rect key="frame" x="17" y="32" width="55" height="12"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -555,7 +553,7 @@
                                                                 <constraint firstAttribute="width" constant="317" id="CsB-xK-zE2"/>
                                                                 <constraint firstItem="iRi-3x-JDK" firstAttribute="leading" secondItem="G6Z-Jc-3fg" secondAttribute="leading" constant="18" id="FVK-ys-tU7"/>
                                                                 <constraint firstAttribute="height" constant="119" id="WSN-Nn-Dz8"/>
-                                                                <constraint firstItem="iRi-3x-JDK" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="40" id="Xdy-gG-Hft"/>
+                                                                <constraint firstItem="iRi-3x-JDK" firstAttribute="top" secondItem="G6Z-Jc-3fg" secondAttribute="top" constant="53" id="Xdy-gG-Hft"/>
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iRi-3x-JDK" secondAttribute="bottom" id="Yvr-VO-TPa"/>
                                                             </constraints>
                                                         </view>
