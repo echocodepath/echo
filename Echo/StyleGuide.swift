@@ -36,7 +36,7 @@ struct StyleGuide {
         static let echoLightTeal = UIColor(red: 0.3725, green: 0.7137, blue: 0.7804, alpha: 1.0)
         static let echoTranslucentClear = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.7)
         static let echoDarkerTranslucentClear = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 0.85)
-        static let echoFormGray = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0)
+        static let echoFormGray = UIColor(red: 232/255, green: 233/255, blue: 235/255, alpha: 1.0)
         static let echoBorderGray = UIColor(red: 195/255, green: 195/255, blue: 195/255, alpha: 1.0)
         static let echoDarkerTeal = UIColor(red: 0.2745, green: 0.6549, blue: 0.7333, alpha: 1.0)
         static let echoDarkGray = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1.0)
@@ -44,6 +44,7 @@ struct StyleGuide {
         static let echoNewGray = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0)
         static let echoCellSelectedMint = UIColor(red: 0.8824, green: 0.9373, blue: 0.949, alpha: 1.0)
         static let echoBlue = UIColor(red: 0.2902, green: 0.5647, blue: 0.8863, alpha: 1.0)
+        static let echoCharcoal = UIColor(red: 59/255, green: 59/255, blue: 67/255, alpha: 1.0)
     }
 }
 
