@@ -35,7 +35,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var videoId: String?
     
     var audioTimers = Array<NSTimer>()
-    var hiddenEmptyAudioCellView = false
     
     
     
@@ -49,6 +48,30 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    enum ViewState {
+        case Tutorial, Record, Timeline
+    }
+    
+    var state: ViewState = .Tutorial {
+        didSet {
+            switch state {
+            case .Tutorial:
+                emptyAudioCellView.alpha = 1
+                audioWaveContainerView.alpha = 0
+                tableView.alpha = 0
+            case .Record:
+                emptyAudioCellView.alpha = 0
+                audioWaveContainerView.alpha = 1
+                tableView.alpha = 1
+            case .Timeline:
+                emptyAudioCellView.alpha = 0
+                audioWaveContainerView.alpha = 0
+                tableView.alpha = 1
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +100,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         //        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.tintColor = StyleGuide.Colors.echoBlue
+        
+        state = .Tutorial
     }
     
     func videoPlaybackDidUnPause() {
@@ -255,15 +280,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         audioRecorder = nil
         feedback.append(audioClip)
         fileNumber += 1
-        UIView.animateWithDuration(0.3) { () -> Void in
-            self.audioWaveContainerView.alpha = 0
-        }
         avPlayer!.play()
-        if hiddenEmptyAudioCellView == false {
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.emptyAudioCellView.alpha = 0
-            })
-        }
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.state = .Timeline
+        })
         tableView.reloadData()
     }
     
@@ -271,7 +291,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         self.view.bringSubviewToFront(audioWaveContainerView)
         
         UIView.animateWithDuration(0.3) { () -> Void in
-            self.audioWaveContainerView.alpha = 1
+            self.state = .Record
         }
 
         let audioURL = directoryURL()
