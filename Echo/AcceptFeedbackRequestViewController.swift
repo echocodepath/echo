@@ -284,7 +284,10 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.state = .Timeline
         })
-        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: feedback.count - 1, inSection: 0)], withRowAnimation: .Top)
+        tableView.endUpdates()
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: feedback.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
     }
     
     func handleTouchDown(sender: AnyObject) {
