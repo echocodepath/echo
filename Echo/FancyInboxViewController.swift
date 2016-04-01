@@ -14,7 +14,7 @@ class FancyInboxViewController: UIViewController {
     var pageMenu : CAPSPageMenu?
     var controllerArray : [UIViewController] = []
     let parameters: [CAPSPageMenuOption] = [
-        .MenuItemSeparatorWidth(4.3),
+        .MenuItemSeparatorWidth(0),
         .ScrollMenuBackgroundColor(UIColor.whiteColor()),
         .ViewBackgroundColor(UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)),
         .BottomMenuHairlineColor(StyleGuide.Colors.echoDarkerTeal),

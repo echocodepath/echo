@@ -46,11 +46,10 @@ class FeedbackClipTableViewCell: UITableViewCell {
         noteLabel.text = "NOTE \(FeedbackClipTableViewCell.count)"
         waveformView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         waveformView.normalColor = StyleGuide.Colors.echoTranslucentClear
-        waveformView.progressColor = StyleGuide.Colors.echoOrange
-//        waveformView.precision = 0.25
+        waveformView.progressColor = StyleGuide.Colors.echoDarkerTeal
         waveformView.precision = 0.2
-
-        waveformView.lineWidthRatio = 0.35
+        waveformView.lineWidthRatio = 0.65
+        waveformView.alpha = 0.8
         
         selectionStyle = .None
     }

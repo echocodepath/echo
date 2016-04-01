@@ -52,8 +52,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        audioWaveContainerView.backgroundColor = StyleGuide.Colors.echoLightTeal
-        
         FeedbackClipTableViewCell.count = 0
         emptyAudioCellView.addSubview(carousel)
         let views = ["carousel" : carousel]
@@ -78,7 +76,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         timeSlider.continuous = true
         //        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
-        timeSlider.tintColor = UIColor.whiteColor()
+        timeSlider.tintColor = StyleGuide.Colors.echoBlue
     }
     
     func videoPlaybackDidUnPause() {
@@ -270,7 +268,8 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func handleTouchDown(sender: AnyObject) {
-
+        self.view.bringSubviewToFront(audioWaveContainerView)
+        
         UIView.animateWithDuration(0.3) { () -> Void in
             self.audioWaveContainerView.alpha = 1
         }
@@ -288,7 +287,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             audioRecorder.delegate = self
             audioRecorder.meteringEnabled = true
             audioRecorder.record()
-
+            audioWaveContainerView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
             audioWaveContainerView.waverLevelCallback = { [weak self] waver in
                 if let recorder = self?.audioRecorder {
                     recorder.updateMeters()
