@@ -74,6 +74,20 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         return 12
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .Default, title: "Delete") { (_, indexPath) -> Void in
+
+            // Delete from parse
+            // Remove from journals collection
+            
+            // ANIMATE!
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.endUpdates()
+        }
+        return [delete]
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return (entryDict[section] != nil && entryDict[section]?.count > 0) ? 30 : 0
     }
