@@ -66,7 +66,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             carousel.views.append(view)
         }
         
-        
+              
         setupViewProperties()
         setupButtonToggle()
         tableView.delegate = self
