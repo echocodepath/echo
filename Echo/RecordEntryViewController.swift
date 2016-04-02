@@ -17,13 +17,13 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBarHidden = true
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.navigationBarHidden = true
 
     }
     
