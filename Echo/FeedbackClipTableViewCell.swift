@@ -30,14 +30,12 @@ class FeedbackClipTableViewCell: UITableViewCell {
     @IBOutlet weak var waveformView: SCWaveformView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var locationImageView: UIImageView!
-    @IBOutlet weak var audioClipImageView: UIImageView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         FeedbackClipTableViewCell.count += 1
-        audioClipImageView.image = UIImage(named: "Sound Waves")
         locationImageView.image = UIImage(named: "timestamp_icon")
         contentView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         durationLabel.textColor = StyleGuide.Colors.echoTranslucentClear
@@ -47,11 +45,11 @@ class FeedbackClipTableViewCell: UITableViewCell {
         waveformView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
         waveformView.normalColor = StyleGuide.Colors.echoTranslucentClear
         waveformView.progressColor = StyleGuide.Colors.echoDarkerTeal
-        waveformView.precision = 0.2
-        waveformView.lineWidthRatio = 0.65
+        waveformView.precision = 0.7
+        waveformView.lineWidthRatio = 1
         waveformView.alpha = 0.8
         
-        selectionStyle = .None
+//        selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
