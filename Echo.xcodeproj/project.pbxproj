@@ -212,8 +212,8 @@
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
 				EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */,
 				B233F6F61CA27335005C2D6F /* NavigationController.swift */,
-				B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */,
 				F51262DB1CA931A900D942D6 /* NotesViewController.swift */,
+				B233F6F81CA4F89F005C2D6F /* VideoPlayerContainable.swift */,
 				F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */,
 			);
 			name = "View Controllers";
