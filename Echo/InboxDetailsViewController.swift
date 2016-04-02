@@ -84,6 +84,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         setupFonts()
         setupViewElements()
         
+        
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -198,7 +199,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     }
     
     func setupButtonToggle() {
-        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "pause_button"), forState: .Normal)
         playBtn.setImage(UIImage(named: "white_play_button"), forState: .Selected)
     }
     

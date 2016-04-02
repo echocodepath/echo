@@ -49,7 +49,7 @@ class FeedbackClipTableViewCell: UITableViewCell {
         waveformView.lineWidthRatio = 1
         waveformView.alpha = 0.8
         
-        selectionStyle = .None
+//        selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
