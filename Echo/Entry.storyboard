@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="7D22F141-7D3C-4134-9F80-6FB4CD9F5FC4"/>
+                                                            <state key="normal" image="B3E652B2-44EC-495B-A87C-AD19F5701996"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -459,7 +459,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7D22F141-7D3C-4134-9F80-6FB4CD9F5FC4" width="13" height="16">
+        <image name="B3E652B2-44EC-495B-A87C-AD19F5701996" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
