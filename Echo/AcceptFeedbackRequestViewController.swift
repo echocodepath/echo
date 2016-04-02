@@ -152,6 +152,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     var currentPlayerUpdateToken: AnyObject?
     var currentPlayer: AVPlayer?
+    
     func playAudio(timer: NSTimer){
         avPlayer!.pause()
         let params = timer.userInfo as! [String : AnyObject]
@@ -238,7 +239,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         player.play()
         clip.hasBeenPlayed = true
         audioPlayers.append(player)
-        
         
     }
     

@@ -17,7 +17,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var videoURL: NSURL?
     
     let videoPlayer = AVPlayerViewController()
-    var audioPlayers = Array<AVAudioPlayer>()
+    var audioPlayers = Array<AVPlayer>()
     var avPlayer: AVPlayer?
     var timeObserver: AnyObject!
     var audioTimers = Array<NSTimer>()
@@ -121,17 +121,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     func jumpAndPlayAudio(clip: AudioClip) {
         avPlayer!.pause()
-        playBtn.selected = true
-        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
-            player.delegate = self
-            player.prepareToPlay()
-            player.play()
-            invalidateTimersAndFeedback()
-            clip.hasBeenPlayed = true
-            audioPlayers.append(player)
-        } else {
-            print("Something went wrong")
-        }
+        let player = AVPlayer(URL: clip.path!)
+        player.play()
+        clip.hasBeenPlayed = true
+        audioPlayers.append(player)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -143,24 +136,46 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         jumpAndPlayAudio(clip)
     }
     
+    var currentPlayerUpdateToken: AnyObject?
+    var currentPlayer: AVPlayer?
+    
     func playAudio(timer: NSTimer){
         let clip = (timer.userInfo as! [String : AnyObject])["clip"] as! AudioClip
         let index = timer.userInfo!["index"] as! Int
         let indexPath = NSIndexPath(forRow: index, inSection: 0)
         
         avPlayer!.pause()
-        if let player = try? AVAudioPlayer(contentsOfURL: clip.path!) {
-            player.delegate = self
-            player.prepareToPlay()
-            player.play()
-            playBtn.selected = true
-            clip.hasBeenPlayed = true
-            tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            currentIndexPath = indexPath
-            audioPlayers.append(player)
-        } else {
-            print("Something went wrong")
+        let player = AVPlayer(URL: clip.path!)
+        player.play()
+
+        playBtn.selected = true
+        clip.hasBeenPlayed = true
+        tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+        currentIndexPath = indexPath
+        audioPlayers.append(player)
+        
+        currentPlayerUpdateToken = player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 60), queue: dispatch_get_main_queue()) { [weak self] (time) -> Void in
+            if let cell = self?.tableView.cellForRowAtIndexPath(indexPath) as? FeedbackClipTableViewCell {
+                cell.waveformView.progressTime = time
+            }
         }
+        
+        currentPlayer = player
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioPlaybackDidEnd:", name: AVPlayerItemDidPlayToEndTimeNotification, object: player.currentItem!)
+    }
+    
+    func audioPlaybackDidEnd(notification: NSNotification) {
+        guard let player = currentPlayer else {
+            return
+        }
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        player.removeTimeObserver(currentPlayerUpdateToken!)
+        
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        videoPlayer.player!.play()
+        videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
+        playBtn.selected = false
     }
     
     func videoDidStartPlayback(withOffset offset: CFTimeInterval) {
