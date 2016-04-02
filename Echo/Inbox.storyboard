@@ -342,7 +342,7 @@
         <scene sceneID="aj7-6e-LQw">
             <objects>
                 <tableViewController storyboardIdentifier="InboxDetailsViewController" id="1AO-Dm-Uni" customClass="InboxDetailsViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kie-z2-Lcc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kie-z2-Lcc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -471,7 +471,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="IVY-86-USV"/>
                                                                 <constraint firstAttribute="width" constant="22" id="qgo-yj-YgP"/>
                                                             </constraints>
-                                                            <color key="tintColor" red="0.67629997951794874" green="0.67629997951794874" blue="0.67629997951794874" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="tintColor" red="0.45560687054358995" green="0.45560687054358995" blue="0.45560687054358995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" image="Play Icon"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="1AO-Dm-Uni" eventType="touchUpInside" id="25E-SV-exW"/>
@@ -512,8 +512,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-Mr-2sL">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="203.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Triangle 91" translatesAutoresizingMaskIntoConstraints="NO" id="9Ws-2x-sgW">
-                                                            <rect key="frame" x="58" y="13" width="47" height="27"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle 91" translatesAutoresizingMaskIntoConstraints="NO" id="9Ws-2x-sgW">
+                                                            <rect key="frame" x="58" y="15" width="47" height="27"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6Z-Jc-3fg">
                                                             <rect key="frame" x="81" y="15" width="317" height="119"/>

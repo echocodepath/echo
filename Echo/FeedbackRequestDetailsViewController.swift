@@ -28,6 +28,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     var videoId: String?
     
     
+    @IBOutlet weak var messageWrapperView: UIView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var timeAgoLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
@@ -52,12 +53,13 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     }
     
     func setupIcons() {
+        view.backgroundColor = StyleGuide.Colors.echoFormGray
         tableView.separatorStyle = .None
         artistIconImageView.image = UIImage(named: "Music Icon")
     }
     
     func setupButtonToggle() {
-        playBtn.setImage(UIImage(named: "white_pause_button"), forState: .Normal)
+        playBtn.setImage(UIImage(named: "pause_button"), forState: .Normal)
         playBtn.setImage(UIImage(named: "white_play_button"), forState: .Selected)
     }
     
@@ -141,8 +143,8 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         timeSlider.value = 0
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
-        timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
-        timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
+        timeSlider.setThumbImage(UIImage(named: "grey_slider_thumb"), forState: .Normal)
+        timeSlider.tintColor = StyleGuide.Colors.echoBlue
         setupIcons()
 
         
@@ -163,7 +165,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
             teacher?.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
                 self.teacher = object as? PFUser
                 self.teacherLabel.text = self.teacher!["username"] as? String
-                self.teacherLabel.textColor = StyleGuide.Colors.echoTeal
+                self.teacherLabel.textColor = StyleGuide.Colors.echoBlue
                 
                 let url  = NSURL(string: (self.teacher?.objectForKey("profilePhotoUrl") as? String)!)
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -175,10 +177,8 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         }
         
         formBackgroundView.backgroundColor = StyleGuide.Colors.echoFormGray
-        //text view styling and make text view editable
-        messageTextView.layer.borderWidth = 1
-        messageTextView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
-        messageTextView.layer.cornerRadius = 5.0
+        messageWrapperView.layer.cornerRadius = 10.0
+        messageWrapperView.clipsToBounds = true
         messageTextView.delegate = self
         
 
