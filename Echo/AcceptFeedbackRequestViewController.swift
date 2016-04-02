@@ -163,7 +163,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         let player = AVPlayer(URL: clip.path!)
         player.play()
         playBtn.selected = true
-        tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
         currentIndexPath = indexPath
         clip.hasBeenPlayed = true
         audioPlayers.append(player)
@@ -186,7 +186,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         NSNotificationCenter.defaultCenter().removeObserver(self)
         player.removeTimeObserver(currentPlayerUpdateToken!)
         
-        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: false)
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         playBtn.selected = false
@@ -327,7 +327,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: false)
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         playBtn.selected = false

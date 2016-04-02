@@ -150,7 +150,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
 
         playBtn.selected = true
         clip.hasBeenPlayed = true
-        tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
         currentIndexPath = indexPath
         audioPlayers.append(player)
         
@@ -172,7 +172,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         NSNotificationCenter.defaultCenter().removeObserver(self)
         player.removeTimeObserver(currentPlayerUpdateToken!)
         
-        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: false)
         videoPlayer.player!.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
         playBtn.selected = false
@@ -207,7 +207,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         videoPlayer.player?.play()
         videoDidStartPlayback(withOffset: avPlayer!.currentTime().seconds)
-        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: true)
+        tableView.deselectRowAtIndexPath(currentIndexPath!, animated: false)
         playBtn.selected = false
     }
 
