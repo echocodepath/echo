@@ -43,8 +43,7 @@ class LoginViewController: UIViewController {
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
         } else {
-            //openHomePage()
-            openHomeTab()
+            openHomePage()
         }
     }
     
@@ -57,8 +56,7 @@ class LoginViewController: UIViewController {
                 if user.isNew {
                     self.openSetupPage()
                 } else {
-                    //self.openHomePage()
-                    self.openHomeTab()
+                    self.openHomePage()
                 }
             } else {
             }
@@ -77,13 +75,6 @@ class LoginViewController: UIViewController {
         let homePageNav = NavigationController(rootViewController: homeViewController)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = homePageNav
-    }
-    
-    func openHomeTab(){
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeTabViewController") as! HomeTabViewController
-        //let homePageNav = NavigationController(rootViewController: homeViewController)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homeViewController
     }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!){
