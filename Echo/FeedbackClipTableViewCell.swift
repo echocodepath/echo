@@ -54,6 +54,10 @@ class FeedbackClipTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        let view = UIView()
+        view.backgroundColor = StyleGuide.Colors.echoHighlightGray
+        selectedBackgroundView = view
     }
+
 
 }

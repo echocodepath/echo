@@ -45,6 +45,7 @@ struct StyleGuide {
         static let echoCellSelectedMint = UIColor(red: 0.8824, green: 0.9373, blue: 0.949, alpha: 1.0)
         static let echoBlue = UIColor(red: 0.2902, green: 0.5647, blue: 0.8863, alpha: 1.0)
         static let echoCharcoal = UIColor(red: 59/255, green: 59/255, blue: 67/255, alpha: 1.0)
+        static let echoHighlightGray = UIColor(red: 117/255, green: 117/255, blue: 125/255, alpha: 1.0)
     }
 }
 
