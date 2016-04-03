@@ -48,15 +48,15 @@ class FeedbackClipTableViewCell: UITableViewCell {
         waveformView.precision = 0.7
         waveformView.lineWidthRatio = 1
         waveformView.alpha = 0.8
-        
+        let view = UIView()
+        view.backgroundColor = StyleGuide.Colors.echoHighlightGray
+        selectedBackgroundView = view
 //        selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        let view = UIView()
-        view.backgroundColor = StyleGuide.Colors.echoHighlightGray
-        selectedBackgroundView = view
+
     }
 
 
