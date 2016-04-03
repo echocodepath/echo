@@ -48,6 +48,7 @@ struct StyleGuide {
         static let echoCharcoal = UIColor(red: 59/255, green: 59/255, blue: 67/255, alpha: 1.0)
         static let echoHighlightGray = UIColor(red: 117/255, green: 117/255, blue: 125/255, alpha: 1.0)
         static let echoDarkBlue = UIColor(red: 49/255, green: 103/255, blue: 166/255, alpha: 1.0)
+        static let echoGray = UIColor(red: 139/255, green: 144/255, blue: 150/255, alpha: 1.0)
     }
 }
 
@@ -94,7 +95,7 @@ struct Utils {
                 location: 0,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkBlue,
+            value: StyleGuide.Colors.echoDarkerTeal,
             range: NSRange(
                 location: 0,
                 length: nameLength))
@@ -154,7 +155,7 @@ struct Utils {
                 location: nameIndex,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkBlue,
+            value: StyleGuide.Colors.echoDarkerTeal,
             range: NSRange(
                 location: nameIndex,
                 length: nameLength))
@@ -179,7 +180,7 @@ struct Utils {
                 location: 13,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkBlue,
+            value: StyleGuide.Colors.echoDarkerTeal,
             range: NSRange(
                 location: 13,
                 length: nameLength))

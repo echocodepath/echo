@@ -22,7 +22,7 @@ class FancyInboxViewController: UIViewController {
         .MenuMargin(20.0),
         .MenuHeight(40.0),
         .SelectedMenuItemLabelColor(StyleGuide.Colors.echoBlue),
-        .UnselectedMenuItemLabelColor(UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)),
+        .UnselectedMenuItemLabelColor(StyleGuide.Colors.echoCharcoal),
         .MenuItemFont(UIFont(name: "HelveticaNeue-Medium", size: 14.0)!),
         .UseMenuLikeSegmentedControl(true),
         .MenuItemSeparatorRoundEdges(true),

@@ -30,7 +30,7 @@ protocol VideoPlayerContainable: class {
 
 extension VideoPlayerContainable where Self : UIViewController {
     static var videoPlayerDefaultAspectRatio: CGSize {
-        return CGSize(width: 1, height: 1) // Default to square
+        return CGSize(width: 4, height: 3) // Default to square
     }
     
     func videoPlayer(addToView view: UIView, videoURL: NSURL?) {
