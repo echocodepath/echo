@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--MY JOURNAL-->
+        <!--My Journal-->
         <scene sceneID="T4M-9j-Jt0">
             <objects>
                 <viewController storyboardIdentifier="UIViewController-klE-Bi-xnV" id="klE-Bi-xnV" customClass="JournalEntriesViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +169,7 @@
                             <constraint firstAttribute="trailing" secondItem="is6-P7-adi" secondAttribute="trailing" id="m6L-Ek-af3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="MY JOURNAL" id="Xu4-hQ-fo6">
+                    <navigationItem key="navigationItem" title="My Journal" id="Xu4-hQ-fo6">
                         <barButtonItem key="rightBarButtonItem" id="Cqv-2p-gYF">
                             <connections>
                                 <action selector="onToggleGridListView:" destination="klE-Bi-xnV" id="j75-jj-7E8"/>

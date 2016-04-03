@@ -21,10 +21,10 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     var refreshControlTableView: UIRefreshControl!
     var entryDict = [Int: [PFObject]]()
     let months = [
-        1: "January",
-        2: "Februrary",
-        3: "March",
         4: "April",
+        3: "March",
+        2: "Februrary",
+        1: "January",
         5: "May",
         6: "June",
         7: "July",
@@ -267,7 +267,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                 case "journalToEntrySegue":
                     if let indexPath = self.tableView.indexPathForSelectedRow{
                         let vc = segue.destinationViewController as! EntryViewController
-                        vc.entry = self.entries[indexPath.row]
+                        vc.entry = self.entryDict[indexPath.section]![indexPath.row]
                     }
         
                     
