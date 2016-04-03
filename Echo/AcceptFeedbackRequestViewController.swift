@@ -77,6 +77,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         super.viewDidLoad()
         FeedbackClipTableViewCell.count = 0
         emptyAudioCellView.addSubview(carousel)
+        self.tabBarController?.tabBar.hidden = true
         let views = ["carousel" : carousel]
         carousel.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))

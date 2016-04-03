@@ -42,7 +42,7 @@ class HomeTabViewController: UITabBarController {
         tabBar.frame.origin.x = -2
         
         let tabItems = self.tabBar.items! as [UITabBarItem]
-        let iconImages = ["Journal - Selected", "Inbox", "White Camera", "Find Teacher Icon", "Explore Icon"]
+        let iconImages = ["Journal - Selected", "inbox", "White Camera", "Find Teacher Icon", "Explore Icon"]
         for index in 0...4  {
             let item = tabItems[index] as UITabBarItem
             item.image = UIImage(named: iconImages[index])

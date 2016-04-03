@@ -13,9 +13,8 @@ class FeedbackSendReceiptViewController: UIViewController {
 
     @IBOutlet weak var studentNameLabel: UILabel!
 
-    func navigateToInbox(){
-        let vc = self.navigationController?.viewControllers[1]
-        self.navigationController?.popToViewController(vc!, animated: true)
+    func navigateToJournal(){
+        performSegueWithIdentifier("navigateToJournal", sender: nil)
     }
     
     
@@ -23,7 +22,7 @@ class FeedbackSendReceiptViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         studentNameLabel.text = "\(studentName!)."
-        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navigateToInbox", userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navigateToJournal", userInfo: nil, repeats: false)
         
     }
 

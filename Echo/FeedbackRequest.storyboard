@@ -261,7 +261,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="s2o-lW-F2C"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.45560687054358995" green="0.45560687054358995" blue="0.45560687054358995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="51323CD1-0935-44FC-9B27-53EFF4B8A9CB">
+                                                            <state key="normal" image="AA9C1084-AED0-4D29-AB7D-D11E9D258D1E">
                                                                 <color key="titleColor" red="0.93277243589743586" green="0.93277243589743586" blue="0.93277243589743586" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
@@ -496,6 +496,7 @@
                     <navigationItem key="navigationItem" id="Qcg-7i-rIV"/>
                     <connections>
                         <outlet property="teacherLabel" destination="SZA-4h-cTD" id="xB1-CZ-KPk"/>
+                        <segue destination="cH1-4G-a2t" kind="push" identifier="navigateToJournal" id="7Jm-6u-0zn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMO-T5-Dt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -505,7 +506,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1955" y="187"/>
+            <point key="canvasLocation" x="1855" y="27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pib-A7-dLt">
@@ -525,9 +526,19 @@
             </objects>
             <point key="canvasLocation" x="803" y="-610"/>
         </scene>
+        <!--Journal-->
+        <scene sceneID="ZMe-ra-F9F">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQN-bV-btS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="EntryViewController" storyboardName="Journal" id="cH1-4G-a2t" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="veU-tB-zN6"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="2338" y="-105"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="51323CD1-0935-44FC-9B27-53EFF4B8A9CB" width="13" height="16">
+        <image name="AA9C1084-AED0-4D29-AB7D-D11E9D258D1E" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
