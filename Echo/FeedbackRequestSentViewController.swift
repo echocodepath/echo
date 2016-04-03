@@ -26,6 +26,7 @@ class FeedbackRequestSentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.hidden = true
         self.teacherLabel.text = self.teacherName
         self.navigationController?.navigationBarHidden = true
 

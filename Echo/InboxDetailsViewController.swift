@@ -318,6 +318,11 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
     deinit {
         videoPlayer.player?.removeTimeObserver(timeObserver)
         
