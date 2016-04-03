@@ -15,7 +15,7 @@
             </objects>
             <point key="canvasLocation" x="1223" y="-580"/>
         </scene>
-        <!--REQUEST FEEDBACK-->
+        <!--Request Feedback-->
         <scene sceneID="w3i-S2-ej7">
             <objects>
                 <viewController id="bKx-De-WoB" customClass="FeedbackRequestViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,14 +93,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJr-QO-7qW">
                                 <rect key="frame" x="0.0" y="681" width="414" height="55"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
-                                        <rect key="frame" x="96" y="11" width="222" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVo-Ii-9Tv">
+                                        <rect key="frame" x="96" y="7" width="222" height="41"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="3wn-SM-Zs0"/>
+                                            <constraint firstAttribute="height" constant="41" id="3wn-SM-Zs0"/>
                                             <constraint firstAttribute="width" constant="222" id="ALk-Wt-Hjv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                        <state key="normal" title="Find Teachers on Inspiration Page" backgroundImage="favorite-button">
+                                        <state key="normal" image="More Teachers Button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -130,7 +129,7 @@
                             <constraint firstItem="7ua-rc-djT" firstAttribute="top" secondItem="YPf-o8-7Zd" secondAttribute="bottom" id="yVV-UB-TSC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="REQUEST FEEDBACK" id="Hga-l5-FuN">
+                    <navigationItem key="navigationItem" title="Request Feedback" id="Hga-l5-FuN">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="f82-sw-vUK">
                             <connections>
                                 <action selector="onBack:" destination="bKx-De-WoB" id="5ZD-18-Ong"/>
@@ -261,7 +260,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="s2o-lW-F2C"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.45560687054358995" green="0.45560687054358995" blue="0.45560687054358995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="AA9C1084-AED0-4D29-AB7D-D11E9D258D1E">
+                                                            <state key="normal" image="04BF0F31-9775-4E2F-AB2C-3BE0A504B3DD">
                                                                 <color key="titleColor" red="0.93277243589743586" green="0.93277243589743586" blue="0.93277243589743586" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
@@ -538,7 +537,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AA9C1084-AED0-4D29-AB7D-D11E9D258D1E" width="13" height="16">
+        <image name="04BF0F31-9775-4E2F-AB2C-3BE0A504B3DD" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -622,9 +621,9 @@ lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
         <image name="Back" width="17" height="14"/>
+        <image name="More Teachers Button" width="500" height="94"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="Triangle 91" width="47" height="27"/>
-        <image name="favorite-button" width="310" height="80"/>
         <image name="send_button" width="41" height="41"/>
     </resources>
 </document>
