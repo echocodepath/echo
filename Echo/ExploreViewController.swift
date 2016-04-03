@@ -236,8 +236,7 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 case "exploreToProfile":
                     let cell = sender as! TeacherCollectionViewCell
                     if let indexPath = self.teachersGridView.indexPathForCell(cell) {
-                        let nc = segue.destinationViewController as! UINavigationController
-                        let vc = nc.topViewController as! ProfileViewController
+                        let vc = segue.destinationViewController as! ProfileViewController
                         vc.profileUser = self.teachers[indexPath.row]
                     }
                 

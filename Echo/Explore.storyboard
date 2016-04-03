@@ -8,10 +8,12 @@
         <!--Profile-->
         <scene sceneID="PB5-1U-s4T">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="yyE-oW-zej" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="yyE-oW-zej" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cKa-6n-seJ"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxN-Yd-hFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="342"/>
+            <point key="canvasLocation" x="1505" y="342"/>
         </scene>
         <!--Entry-->
         <scene sceneID="rQx-Xv-Kla">
@@ -21,12 +23,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqj-95-KGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="235"/>
+            <point key="canvasLocation" x="1508.5" y="235"/>
         </scene>
-        <!--INSPIRATION-->
+        <!--Explore-->
         <scene sceneID="G5M-La-kEI">
             <objects>
-                <viewController id="xqj-wj-tcV" customClass="ExploreViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xqj-wj-tcV" userLabel="Explore" customClass="ExploreViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="li2-I0-hQx"/>
                         <viewControllerLayoutGuide type="bottom" id="P4B-cL-PoY"/>
@@ -36,10 +38,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4U-0h-rWw">
-                                <rect key="frame" x="0.0" y="64" width="414" height="169"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="169"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STRAIGHT FROM THE STUDIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkg-lM-Wmh">
-                                        <rect key="frame" x="84" y="87" width="247" height="21"/>
+                                        <rect key="frame" x="84" y="87" width="247" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="247" id="71s-7B-lFg"/>
                                         </constraints>
@@ -54,8 +56,8 @@
                                             <constraint firstAttribute="width" constant="40" id="rUi-4g-9ux"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPLORE VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZm-gP-ugO">
-                                        <rect key="frame" x="156.5" y="110" width="101.5" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EXPLORE VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZm-gP-ugO">
+                                        <rect key="frame" x="156" y="109" width="101.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,19 +89,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTORS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-aB-u50">
-                                <rect key="frame" x="8" y="242" width="206" height="14.5"/>
+                                <rect key="frame" x="8" y="198" width="206" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPLORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROM-Nu-3A0">
-                                <rect key="frame" x="8" y="373" width="204" height="14.5"/>
+                                <rect key="frame" x="8" y="329" width="204" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Kj-6b-fef">
-                                <rect key="frame" x="0.0" y="265" width="414" height="100"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Kj-6b-fef">
+                                <rect key="frame" x="0.0" y="220" width="414" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="aPj-gB-7sx"/>
                                 </constraints>
@@ -125,13 +127,13 @@
                                         </view>
                                         <connections>
                                             <outlet property="teacherImage" destination="bYI-DZ-2JY" id="J7M-Tk-Rc5"/>
-                                            <segue destination="yyE-oW-zej" kind="modal" identifier="exploreToProfile" id="7d8-jR-qdq"/>
+                                            <segue destination="yyE-oW-zej" kind="push" identifier="exploreToProfile" id="7d8-jR-qdq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zvI-MY-fme">
-                                <rect key="frame" x="0.0" y="395.5" width="414" height="341"/>
+                                <rect key="frame" x="0.0" y="351" width="414" height="384.5"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rSC-it-4Id">
                                     <size key="itemSize" width="122" height="127"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -183,7 +185,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="INSPIRATION" id="Mqs-oP-cZe"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="coverImageView" destination="y9f-F2-uC3" id="jvA-yQ-hdG"/>
@@ -197,6 +199,24 @@
                         <action selector="onImageTap:" destination="xqj-wj-tcV" id="fyd-8Y-Fm1"/>
                     </connections>
                 </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1138" y="369"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="whV-dX-Fdl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Krp-B1-PSA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J5h-bL-QZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xqj-wj-tcV" kind="relationship" relationship="rootViewController" id="Zhn-sh-Mql"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6U1-nb-UGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="369"/>
         </scene>
