@@ -62,7 +62,7 @@ extension VideoPlayerContainable where Self : UIViewController {
             }
         }()
         
-        print("size is \(size)")
+        print("size is \(size.width) \(size.height)")
         return width * size.height / size.width
     }
     

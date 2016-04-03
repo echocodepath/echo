@@ -57,34 +57,29 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bk3-2R-hwL" customClass="SCWaveformView">
-                                                    <rect key="frame" x="73" y="0.0" width="247" height="45.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdf-93-iST">
-                                                            <rect key="frame" x="220.5" y="9" width="18" height="13.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
+                                                    <rect key="frame" x="73" y="0.0" width="242" height="45.5"/>
                                                     <color key="backgroundColor" red="0.0" green="0.57800521816150585" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="8.5" id="dwV-tF-2Ff"/>
-                                                        <constraint firstItem="cdf-93-iST" firstAttribute="top" secondItem="bk3-2R-hwL" secondAttribute="top" constant="9" id="kcL-Qr-Aej"/>
-                                                    </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdf-93-iST">
+                                                    <rect key="frame" x="297" y="9" width="18" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bk3-2R-hwL" secondAttribute="trailing" constant="5" id="4Ce-3Z-1fb"/>
                                                 <constraint firstItem="qUH-g3-nko" firstAttribute="leading" secondItem="GIg-iF-XfO" secondAttribute="leading" constant="16" id="Act-Gn-Iuf"/>
                                                 <constraint firstAttribute="bottom" secondItem="bk3-2R-hwL" secondAttribute="bottom" id="Fvp-xQ-mJj"/>
                                                 <constraint firstItem="i2P-Go-02F" firstAttribute="leading" secondItem="GIg-iF-XfO" secondAttribute="leading" constant="16" id="Imx-z3-TIb"/>
+                                                <constraint firstAttribute="trailing" secondItem="cdf-93-iST" secondAttribute="trailing" constant="5" id="QjA-HQ-AhG"/>
                                                 <constraint firstItem="bk3-2R-hwL" firstAttribute="top" secondItem="GIg-iF-XfO" secondAttribute="top" id="R81-f5-Wxy"/>
                                                 <constraint firstItem="bk3-2R-hwL" firstAttribute="leading" secondItem="i2P-Go-02F" secondAttribute="trailing" constant="18" id="Snm-6I-F8b"/>
                                                 <constraint firstItem="qUH-g3-nko" firstAttribute="top" secondItem="i2P-Go-02F" secondAttribute="bottom" constant="1.5" id="TTO-cP-9oy"/>
-                                                <constraint firstAttribute="trailing" secondItem="bk3-2R-hwL" secondAttribute="trailing" id="bx1-Lv-IFw"/>
+                                                <constraint firstItem="cdf-93-iST" firstAttribute="top" secondItem="GIg-iF-XfO" secondAttribute="top" constant="9" id="Uqr-xe-AF4"/>
                                                 <constraint firstItem="hR4-H2-8DI" firstAttribute="leading" secondItem="qUH-g3-nko" secondAttribute="trailing" constant="5" id="fYo-5z-Hhd"/>
                                                 <constraint firstAttribute="bottom" secondItem="bk3-2R-hwL" secondAttribute="bottom" id="hBq-is-Iyf"/>
                                                 <constraint firstItem="i2P-Go-02F" firstAttribute="top" secondItem="GIg-iF-XfO" secondAttribute="top" constant="9" id="nRp-Ol-GQ9"/>
-                                                <constraint firstAttribute="trailing" secondItem="bk3-2R-hwL" secondAttribute="trailing" id="nav-sf-RsY"/>
                                                 <constraint firstItem="hR4-H2-8DI" firstAttribute="top" secondItem="i2P-Go-02F" secondAttribute="bottom" constant="3" id="tNq-5b-Lae"/>
                                             </constraints>
                                         </tableViewCellContentView>
