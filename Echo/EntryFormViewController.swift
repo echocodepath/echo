@@ -120,7 +120,7 @@ class EntryFormViewController: UITableViewController, VideoPlayerContainable {
     }
     
     func entryDoneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("navigateToUpload", sender: nil)
     }
     
     override func viewDidLoad() {
