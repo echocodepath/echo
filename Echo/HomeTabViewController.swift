@@ -28,14 +28,14 @@ class HomeTabViewController: UITabBarController {
         if currentUser == nil {
             currentUser = User(user: PFUser.currentUser()!)
         }
-        
-        self.tabBar.barTintColor = UIColor.darkGrayColor()
+
+        self.tabBar.barTintColor = StyleGuide.Colors.echoDarkBrownGray
         self.tabBar.tintColor = UIColor.whiteColor()
         
         // set black as selected background color
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(UIColor.blackColor(), size: tabBarItemSize).resizableImageWithCapInsets(UIEdgeInsetsZero)
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(StyleGuide.Colors.echoDarkDarkGray, size: tabBarItemSize).resizableImageWithCapInsets(UIEdgeInsetsZero)
         
         // remove default border
         tabBar.frame.size.width = self.view.frame.width + 4
@@ -49,6 +49,12 @@ class HomeTabViewController: UITabBarController {
             item.title = nil
             item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         }
+        
+//        for item in self.tabBar.items! as [UITabBarItem] {
+//            if let image = item.image {
+//                item.image = image.imageWithColor(StyleGuide.Colors.iconGray).imageWithRenderingMode(.AlwaysOriginal)
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {

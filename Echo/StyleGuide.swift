@@ -49,23 +49,12 @@ struct StyleGuide {
         static let echoHighlightGray = UIColor(red: 117/255, green: 117/255, blue: 125/255, alpha: 1.0)
         static let echoDarkBlue = UIColor(red: 49/255, green: 103/255, blue: 166/255, alpha: 1.0)
         static let echoGray = UIColor(red: 139/255, green: 144/255, blue: 150/255, alpha: 1.0)
+        static let echoDarkDarkGray = UIColor(red: 28/255, green: 28/255, blue: 32/255, alpha: 1.0)
+        static let echoDarkBrownGray = UIColor(red: 59/255, green: 59/255, blue: 67/255, alpha: 1.0)
+        static let iconGray = UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1.0)
+        
     }
 }
-
-
-
-//static func regularFont(size size: CGFloat) -> UIFont {
-//    return UIFont(name: "Avenir Next", size: size)!
-//}
-//static func boldFont(size size: CGFloat) -> UIFont {
-//    return UIFont(name: "Avenir-Black", size: size)!
-//}
-//static func mediumFont(size size: CGFloat) -> UIFont {
-//    return UIFont(name: "Avenir-Medium", size: size)!
-//}
-//static func semiBoldFont(size size: CGFloat) -> UIFont {
-//    return UIFont(name: "Avenir-Heavy", size: size)!
-//}
 
 struct Utils {
     static func configureDefaultNavigationBar(navBar: UINavigationBar) {
@@ -198,5 +187,26 @@ struct Utils {
                 length: titleLength))
         
         return mutableString
+    }
+}
+
+extension UIImage {
+    func imageWithColor(tintColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        
+        let context = UIGraphicsGetCurrentContext()! as CGContextRef
+        CGContextTranslateCTM(context, 0, self.size.height)
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        
+        let rect = CGRectMake(0, 0, self.size.width, self.size.height) as CGRect
+        CGContextClipToMask(context, rect, self.CGImage)
+        tintColor.setFill()
+        CGContextFillRect(context, rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }
