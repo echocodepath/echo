@@ -70,19 +70,34 @@ class EntryTableViewCell: UITableViewCell {
 
         weekDayLabel.font = StyleGuide.Fonts.regularFont(size: 11.0)
         weekDayLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        weekDayLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
         dayOnlyLabel.font = StyleGuide.Fonts.boldFont(size: 27.0)
         dayOnlyLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        dayOnlyLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
         timeLabel.font = StyleGuide.Fonts.regularFont(size: 11.0)
         timeLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        timeLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
         songLabel.font = StyleGuide.Fonts.semiBoldFont(size: 11.0)
         songLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        songLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
+        
         byLabel.font = StyleGuide.Fonts.mediumFont(size: 11.0)
         byLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        byLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
+        
         titleLabel.font = StyleGuide.Fonts.semiBoldFont(size: 14.0)
         titleLabel.textColor = StyleGuide.Colors.echoDarkerGray
+        titleLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
         createdAtLabel.font = StyleGuide.Fonts.regularFont(size: 10.0)
         createdAtLabel.textColor = StyleGuide.Colors.echoDarkerGray
-        
+        createdAtLabel.highlightedTextColor = StyleGuide.Colors.echoDarkerGray
+
         titleLabel.alpha = 0
         songLabel.alpha = 0
         thumbnailImageView.alpha = 0
