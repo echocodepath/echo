@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OpJ-hu-KKs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ile-He-cgq">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -164,7 +164,17 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ua-Fr-kQP">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="218.5"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIi-Rg-pjZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="218.5"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EIi-Rg-pjZ" secondAttribute="bottom" id="6kd-cD-AB6"/>
+                                                <constraint firstItem="EIi-Rg-pjZ" firstAttribute="leading" secondItem="Auz-xb-qjn" secondAttribute="leading" id="CE6-ov-PGU"/>
+                                                <constraint firstAttribute="trailing" secondItem="EIi-Rg-pjZ" secondAttribute="trailing" id="LIp-I0-CCf"/>
+                                                <constraint firstItem="EIi-Rg-pjZ" firstAttribute="top" secondItem="Auz-xb-qjn" secondAttribute="top" id="V7y-Vz-7Jn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="32" id="oTa-Wk-NIe">
@@ -341,6 +351,7 @@
                         <outlet property="tableView" destination="34a-h7-ZAj" id="rLk-7b-kaB"/>
                         <outlet property="titleIconImageView" destination="6Od-Jb-cMx" id="yxp-BJ-1DA"/>
                         <outlet property="titleTextField" destination="S7k-6V-Zf3" id="GBk-pJ-2cH"/>
+                        <outlet property="videoPlayerContainer" destination="EIi-Rg-pjZ" id="Kh8-aw-dnJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31p-Qf-hdT" userLabel="First Responder" sceneMemberID="firstResponder"/>

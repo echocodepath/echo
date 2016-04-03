@@ -16,19 +16,25 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationController?.navigationBarHidden = true
+        
+        
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.translucent = true
+//        self.navigationController!.view.backgroundColor = UIColor.clearColor()
 
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.shadowImage = nil
+        self.navigationController!.navigationBar.translucent = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,6 +103,7 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
         if segue.identifier == "upload-entry" {
             let controller = segue.destinationViewController as! EntryFormViewController
             controller.video = sender as? NSURL
+            print("SENDER HSSSS \(sender as? NSURL)")
         }
     }
 
