@@ -513,19 +513,19 @@
                                                             <rect key="frame" x="81" y="15" width="317" height="119"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="would like feedback." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnz-dt-8dc">
-                                                                    <rect key="frame" x="98" y="17" width="115.5" height="14.5"/>
+                                                                    <rect key="frame" x="20.5" y="17" width="115.5" height="14.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.57317497951794882" green="0.57317497951794882" blue="0.57317497951794882" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andrew Yu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-wG-ph1">
-                                                                    <rect key="frame" x="16" y="15" width="77.5" height="18"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-wG-ph1">
+                                                                    <rect key="frame" x="16" y="14" width="0.0" height="0.0"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                     <color key="textColor" red="0.040759272309231799" green="0.5881860012649287" blue="0.85046073720000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Christine! My Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-3x-JDK">
-                                                                    <rect key="frame" x="18" y="62" width="154.5" height="14.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-3x-JDK">
+                                                                    <rect key="frame" x="18" y="62" width="0.0" height="0.0"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.29432652452564101" green="0.29432652452564101" blue="0.29432652452564101" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -625,6 +625,7 @@
                         <outlet property="acceptButton" destination="icv-mK-Qlw" id="dLx-dO-ioP"/>
                         <outlet property="artistLabel" destination="aqf-Uv-MBz" id="7nZ-MW-5j1"/>
                         <outlet property="authorLabel" destination="jPP-wG-ph1" id="7ky-Q9-MOf"/>
+                        <outlet property="byLabel" destination="rMl-UB-YJh" id="6C8-uO-HV6"/>
                         <outlet property="createdAtLabel" destination="a8V-wz-7E0" id="VR9-8W-VgS"/>
                         <outlet property="messageBodyView" destination="G6Z-Jc-3fg" id="Ui9-fN-iTd"/>
                         <outlet property="messageView" destination="Fpe-Mr-2sL" id="oLL-aJ-UsS"/>
@@ -641,6 +642,7 @@
                         <outlet property="userImageView" destination="jva-rA-Uib" id="B4u-CZ-X4D"/>
                         <outlet property="usernameLabel" destination="jPP-wG-ph1" id="xQN-OO-PXn"/>
                         <outlet property="videoContainerView" destination="GeR-k9-OwC" id="iXx-eE-5K9"/>
+                        <outlet property="wordTimeAgoLabel" destination="p5V-zk-hT2" id="Kz7-vo-HD9"/>
                         <outlet property="wouldLikeFeedbackLabel" destination="mnz-dt-8dc" id="h8U-VF-76H"/>
                     </connections>
                 </tableViewController>

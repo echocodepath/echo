@@ -27,6 +27,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     var controller: AVPlayerViewController?
     var videoId: String?
     
+    @IBOutlet weak var byLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -52,6 +53,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var timeAgoLabel: UILabel!
+    @IBOutlet weak var wordTimeAgoLabel: UILabel!
     
     @IBOutlet weak var playBtn: UIButton!
     
@@ -61,6 +63,14 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         requestBodyLabel.font = StyleGuide.Fonts.mediumFont(size: 12)
         semanticTimeAgoLabel.font = StyleGuide.Fonts.mediumFont(size: 10)
         semanticTimeAgoLabel.textColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0)
+        self.songLabel.alpha = 0
+        self.artistLabel.alpha = 0
+        self.createdAtLabel.alpha = 0
+        self.usernameLabel.alpha = 0
+        self.wouldLikeFeedbackLabel.alpha = 0
+        self.requestBodyLabel.alpha = 0
+        self.byLabel.alpha = 0
+        self.wordTimeAgoLabel.alpha = 0
     }
     
     func setupViewElements() {
@@ -92,10 +102,7 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         usernameLabel.textColor = StyleGuide.Colors.echoBlue
         messageView.backgroundColor = StyleGuide.Colors.echoFormGray
         view.backgroundColor = StyleGuide.Colors.echoFormGray
-//        messageWrapperView.layer.borderWidth = 1
-//        messageWrapperView.layer.borderColor = StyleGuide.Colors.echoBorderGray.CGColor
-//        messageWrapperView.backgroundColor = UIColor(patternImage: UIImage(named: "speechbubble")!)
-        
+
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
             self.userImageView.clipsToBounds = true
@@ -210,10 +217,21 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         query.getObjectInBackgroundWithId(self.userId!) {
             (userObject: PFObject?, error: NSError?) -> Void in
             if error == nil && userObject != nil {
+                
                 let user = userObject as! PFUser
                 self.usernameLabel.text = user["username"] as? String
                 let profUrl = user["profilePhotoUrl"] as? String
                 self.userImageView.setImageWithURL(NSURL(string: profUrl!)!)
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.songLabel.alpha = 1
+                    self.artistLabel.alpha = 1
+                    self.createdAtLabel.alpha = 1
+                    self.usernameLabel.alpha = 1
+                    self.wouldLikeFeedbackLabel.alpha = 1
+                    self.requestBodyLabel.alpha = 1
+                    self.byLabel.alpha = 1
+                    self.wordTimeAgoLabel.alpha = 1
+                })
             } else {
                 print(error)
             }
