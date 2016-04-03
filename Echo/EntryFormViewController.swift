@@ -143,6 +143,11 @@ class EntryFormViewController: UITableViewController, VideoPlayerContainable {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        videoPlayer.player?.pause()
+    }
 
     /*
     // MARK: - Navigation
