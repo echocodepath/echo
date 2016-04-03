@@ -54,7 +54,7 @@ class FancyInboxViewController: UIViewController {
     
     func setupViewControllers() {
         let inboxVc = self.storyboard?.instantiateViewControllerWithIdentifier("InboxViewController") as! InboxViewController
-        inboxVc.title = "RECIEVED"
+        inboxVc.title = "RECEIVED"
         inboxVc.parentNavigationController = self.navigationController
         let sentVc = self.storyboard?.instantiateViewControllerWithIdentifier("SentViewController") as! SentViewController
         sentVc.title = "SENT"
