@@ -132,7 +132,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("JournalCollectionViewCell", forIndexPath: indexPath) as! JournalCollectionViewCell
         
-        let entry = self.entries[indexPath.row]
+        let entry = self.entryDict[indexPath.section]![indexPath.row]
         cell.entry = entry
         
         return cell
@@ -187,7 +187,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EntryTableViewCell", forIndexPath: indexPath) as! EntryTableViewCell
-        let entry = self.entries[indexPath.row]
+        let entry = self.entryDict[indexPath.section]![indexPath.row]
         cell.entry = entry
         return cell
     }
@@ -237,10 +237,11 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                         let date = object.createdAt!
                         let month = calendar.components([.Month], fromDate: date).month
                         self.entryDict[month]!.append(object)
-                        self.entries.append(object)
+//                        self.entries.append(object)
                         self.tableView.reloadData()
                         self.collectionView.reloadData()
                     }
+                    print("COUNT", objects.count)
                 }
                 // TODO SORT DICTIONARY BASED ON DATE HERE
             } else {
