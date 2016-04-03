@@ -352,6 +352,7 @@
                         <outlet property="titleIconImageView" destination="6Od-Jb-cMx" id="yxp-BJ-1DA"/>
                         <outlet property="titleTextField" destination="S7k-6V-Zf3" id="GBk-pJ-2cH"/>
                         <outlet property="videoPlayerContainer" destination="EIi-Rg-pjZ" id="Kh8-aw-dnJ"/>
+                        <segue destination="dkr-qc-5L2" kind="push" identifier="navigateToUpload" id="QRf-ee-1jc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31p-Qf-hdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,6 +377,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nix-0i-Bzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1053" y="753"/>
+        </scene>
+        <!--Upload-->
+        <scene sceneID="BDd-Ta-hQf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Upload" id="dkr-qc-5L2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Eju-xt-ola"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fym-w3-2Yb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2252.5" y="1458"/>
         </scene>
     </scenes>
     <resources>

@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="2CD5D0AC-0562-4929-9CC3-069995E23D10"/>
+                                                            <state key="normal" image="8B9A8205-1F34-40C3-BB40-79490FBE58C5"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -466,11 +466,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgX-0h-TnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028.5" y="348"/>
+            <point key="canvasLocation" x="2014.5" y="496"/>
         </scene>
     </scenes>
     <resources>
-        <image name="2CD5D0AC-0562-4929-9CC3-069995E23D10" width="13" height="16">
+        <image name="8B9A8205-1F34-40C3-BB40-79490FBE58C5" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
