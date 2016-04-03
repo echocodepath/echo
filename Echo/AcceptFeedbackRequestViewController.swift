@@ -12,6 +12,7 @@ import AVKit
 import AVFoundation
 import SnapKit
 import Waver
+import PulsingHalo
 
 class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource, VideoPlayerContainable{
     lazy var carousel = CarouselView()
@@ -22,6 +23,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     var audioPlayers = Array<AVPlayer>()
     var avPlayer: AVPlayer?
     var feedback: [AudioClip] = []
+    var pulses: [Pulse] = []
     var entryDuration: Double?
     var entry: PFObject?
     var request: PFObject?
@@ -72,6 +74,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             }
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +106,24 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         timeSlider.tintColor = StyleGuide.Colors.echoBlue
         
         state = .Tutorial
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let position :CGPoint = touch.locationInView(view)
+            print(position.x)
+            print(position.y)
+            
+            let halo = PulsingHaloLayer()
+            halo.repeatCount = 0
+            halo.position = position
+            view.layer.addSublayer(halo)
+            
+            let time = avPlayer!.currentTime().seconds
+            let pulse = Pulse(location: position, time: time)
+            pulses.append(pulse)
+            
+        }
     }
     
     func videoPlaybackDidUnPause() {
@@ -324,7 +345,6 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         }
         
         avPlayer!.pause()
-
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
@@ -453,6 +473,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         paramDict["teacher_username"] = currentUser?.username
 
         ParseClient.sharedInstance.createFeedbackWithCompletion(paramDict) { (feedback, error) -> () in
+            // save audio feedback clips
             self.feedback.forEach { clip in
                 var params = Dictionary<String, NSObject>()
                 let audioData = NSData(contentsOfURL: clip.path!)
@@ -464,10 +485,23 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
                 params["duration"] = duration
                 params["offset"] = offset
                 
-                
                 ParseClient.sharedInstance.createAudioClipWithCompletion(params){ (audioClip, error) -> () in                     FileProcessor.sharedInstance.deleteFile(clip.path!)
                 }
             }
+            // save pulses
+            self.pulses.forEach { pulse in
+                var params = Dictionary<String, NSObject>()
+                params["feedback_id"] = feedback
+                //let pointObj = NSValue(CGPoint: pulse.location!)
+                params["xvalue"] = pulse.location!.x
+                params["yvalue"] = pulse.location!.y
+                params["time"] = pulse.time
+                
+                ParseClient.sharedInstance.createPulseWithCompletion(params){ (pulse, error) -> () in
+                    print("yay saved a pulse")
+                }
+            }
+            
             self.markAccepted()
         }
     }

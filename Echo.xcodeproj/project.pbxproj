@@ -63,6 +63,7 @@
 		F5355F961CA769B000BA707E /* DualHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5355F951CA769B000BA707E /* DualHomeViewController.swift */; };
 		F5355F981CA769D400BA707E /* DualSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5355F971CA769D400BA707E /* DualSelectViewController.swift */; };
 		F5355F9A1CA769DE00BA707E /* DualVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5355F991CA769DE00BA707E /* DualVideoViewController.swift */; };
+		F53A3CD51CB1BC4B005758D5 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A3CD41CB1BC4B005758D5 /* Pulse.swift */; };
 		F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */; };
 		F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */; };
 		F56D5DFB1C855AF6006A7D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56D5DF91C855AF6006A7D7A /* Main.storyboard */; };
@@ -73,9 +74,9 @@
 		F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */; };
 		F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */; };
 		F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */; };
-		F5C5C63C1CAB75E700A32E82 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */; };
 		F5C2D6071CACB40800AC81CF /* Upload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C2D6051CACB40800AC81CF /* Upload.storyboard */; };
 		F5C2D6091CACB5C400AC81CF /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C2D6081CACB5C400AC81CF /* HomeTabViewController.swift */; };
+		F5C5C63C1CAB75E700A32E82 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */; };
 		F5E2008F1C8CC64000DECA95 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E2008E1C8CC64000DECA95 /* Profile.storyboard */; };
 		F5E200911C8CC64800DECA95 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E200901C8CC64800DECA95 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -153,6 +154,7 @@
 		F5355F951CA769B000BA707E /* DualHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualHomeViewController.swift; sourceTree = "<group>"; };
 		F5355F971CA769D400BA707E /* DualSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualSelectViewController.swift; sourceTree = "<group>"; };
 		F5355F991CA769DE00BA707E /* DualVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualVideoViewController.swift; sourceTree = "<group>"; };
+		F53A3CD41CB1BC4B005758D5 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
 		F56D5DF21C855AF6006A7D7A /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56D5DF51C855AF6006A7D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56D5DF71C855AF6006A7D7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -165,9 +167,9 @@
 		F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherFeedbackCell.swift; sourceTree = "<group>"; };
 		F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestSentViewController.swift; sourceTree = "<group>"; };
 		F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRecording.storyboard; sourceTree = "<group>"; };
-		F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5C2D6061CACB40800AC81CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Upload.storyboard; sourceTree = "<group>"; };
 		F5C2D6081CACB5C400AC81CF /* HomeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
+		F5C5C63B1CAB75E700A32E82 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5E2008E1C8CC64000DECA95 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F5E200901C8CC64800DECA95 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +231,7 @@
 				B26D5EAC1C8A44AE00528F2D /* User.swift */,
 				F515CDFB1C8EC7BE00EC7CED /* Entry.swift */,
 				B22EFDFB1C9405E60048EF5E /* AudioClip.swift */,
+				F53A3CD41CB1BC4B005758D5 /* Pulse.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -421,7 +424,6 @@
 				TargetAttributes = {
 					F56D5DF11C855AF6006A7D7A = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 38WNHT2TM4;
 					};
 				};
 			};
@@ -546,6 +548,7 @@
 				EFBE10B41C9A14500018C251 /* StyleGuide.swift in Sources */,
 				F5355F981CA769D400BA707E /* DualSelectViewController.swift in Sources */,
 				F515CE001C8EE1C300EC7CED /* InboxDetailsViewController.swift in Sources */,
+				F53A3CD51CB1BC4B005758D5 /* Pulse.swift in Sources */,
 				B22EFDFC1C9405E60048EF5E /* AudioClip.swift in Sources */,
 				EFDCA1D81C8DF58B00BF0393 /* InboxViewController.swift in Sources */,
 				B233F71F1CA7B529005C2D6F /* JournalCollectionViewCell.swift in Sources */,
@@ -699,7 +702,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo38;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo387;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -719,7 +722,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo38;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo387;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
