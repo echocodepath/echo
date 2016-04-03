@@ -14,12 +14,13 @@ class FeedbackSendReceiptViewController: UIViewController {
     @IBOutlet weak var studentNameLabel: UILabel!
 
     func navigateToJournal(){
-        performSegueWithIdentifier("navigateToJournal", sender: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.hidden = true
         self.navigationController?.navigationBarHidden = true
         studentNameLabel.text = "\(studentName!)."
         _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "navigateToJournal", userInfo: nil, repeats: false)
