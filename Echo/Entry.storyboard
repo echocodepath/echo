@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="8B9A8205-1F34-40C3-BB40-79490FBE58C5"/>
+                                                            <state key="normal" image="2F5DB3C1-C88E-4C8F-863B-7291723D2910"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -412,7 +412,7 @@
                             <constraint firstItem="4VK-D5-SgI" firstAttribute="leading" secondItem="cqd-tf-4Pb" secondAttribute="leading" id="sey-Uq-lVC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="FEEDBACK" id="Zip-w0-8xJ">
+                    <navigationItem key="navigationItem" title="Feedback" id="Zip-w0-8xJ">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="eoY-4D-J1p">
                             <connections>
                                 <action selector="onBack:" destination="DUi-zQ-EcB" id="DsM-xx-c30"/>
@@ -470,7 +470,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8B9A8205-1F34-40C3-BB40-79490FBE58C5" width="13" height="16">
+        <image name="2F5DB3C1-C88E-4C8F-863B-7291723D2910" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

@@ -92,7 +92,7 @@
                             <constraint firstAttribute="trailing" secondItem="372-ye-luG" secondAttribute="trailing" id="osv-dP-Fjb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PROFILE" id="PVf-er-eBV"/>
+                    <navigationItem key="navigationItem" title="Profile" id="PVf-er-eBV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="videosCollectionView" destination="372-ye-luG" id="zif-lo-Ffq"/>
