@@ -73,7 +73,7 @@ struct Utils {
                 location: 0,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkerTeal,
+            value: StyleGuide.Colors.echoBlue,
             range: NSRange(
                 location: 0,
                 length: nameLength))
@@ -133,7 +133,7 @@ struct Utils {
                 location: nameIndex,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkerTeal,
+            value: StyleGuide.Colors.echoBlue,
             range: NSRange(
                 location: nameIndex,
                 length: nameLength))
@@ -158,7 +158,7 @@ struct Utils {
                 location: 13,
                 length: nameLength))
         mutableString.addAttribute(NSForegroundColorAttributeName,
-            value: StyleGuide.Colors.echoDarkerTeal,
+            value: StyleGuide.Colors.echoBlue,
             range: NSRange(
                 location: 13,
                 length: nameLength))
