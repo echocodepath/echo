@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="B3E652B2-44EC-495B-A87C-AD19F5701996"/>
+                                                            <state key="normal" image="CA3EC3BA-F7C1-4429-97D1-A0058901125F"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -459,7 +459,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B3E652B2-44EC-495B-A87C-AD19F5701996" width="13" height="16">
+        <image name="Back" width="17" height="14"/>
+        <image name="CA3EC3BA-F7C1-4429-97D1-A0058901125F" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -542,7 +543,6 @@ hwCSAJQAlgCYAJ0AoACiAKQApgCoAK0AxADGAMgRGhEfESoRMxFGEUoRVRFeEWMRaxFuEXMRghGGEY0R
 lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
-        <image name="Back" width="17" height="14"/>
         <image name="Dual Button" width="195" height="195"/>
         <image name="Edit Button" width="195" height="195"/>
         <image name="Notes Button" width="195" height="195"/>

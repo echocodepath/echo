@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OpJ-hu-KKs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OpJ-hu-KKs">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Record Entry View Controller-->
@@ -118,29 +118,16 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-nO-XUe">
-                                <rect key="frame" x="20" y="25" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="9O0-2F-Dgi"/>
-                                    <constraint firstAttribute="width" constant="20" id="BVB-eZ-pzw"/>
-                                </constraints>
-                                <state key="normal" image="Cancel"/>
-                                <connections>
-                                    <action selector="onBack:" destination="Ile-He-cgq" eventType="touchUpInside" id="7yY-ob-DR7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="centerX" secondItem="Ysv-6w-hdn" secondAttribute="centerX" id="DC7-sI-Kvu"/>
-                            <constraint firstItem="fBv-nO-XUe" firstAttribute="top" secondItem="IEX-Zc-mmh" secondAttribute="bottom" constant="5" id="GBv-tx-ZVg"/>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="leading" secondItem="TqA-pU-deG" secondAttribute="trailing" constant="20" id="HjQ-Wa-jTg"/>
                             <constraint firstAttribute="trailing" secondItem="nFr-dF-hWY" secondAttribute="trailing" id="OpN-e9-gRL"/>
                             <constraint firstItem="TqA-pU-deG" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="PAV-45-BhA"/>
                             <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="Rdl-Qc-u4O"/>
                             <constraint firstItem="DO9-xd-j68" firstAttribute="centerY" secondItem="Ysv-6w-hdn" secondAttribute="centerY" id="Vyp-Ym-zSE"/>
                             <constraint firstItem="qux-fw-Tzp" firstAttribute="top" secondItem="nFr-dF-hWY" secondAttribute="bottom" id="YjN-Pb-Kn3"/>
-                            <constraint firstItem="fBv-nO-XUe" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" constant="20" id="b4z-h3-FSl"/>
                             <constraint firstItem="Q7y-Cs-4Tf" firstAttribute="leading" secondItem="DO9-xd-j68" secondAttribute="trailing" id="fVC-yj-jOT"/>
                             <constraint firstItem="nFr-dF-hWY" firstAttribute="top" secondItem="Ysv-6w-hdn" secondAttribute="top" id="o7x-N1-xeF"/>
                             <constraint firstItem="nFr-dF-hWY" firstAttribute="leading" secondItem="Ysv-6w-hdn" secondAttribute="leading" id="xs4-4b-77A"/>
@@ -383,7 +370,6 @@
     <resources>
         <image name="Back" width="17" height="14"/>
         <image name="Camera Big" width="70" height="51"/>
-        <image name="Cancel" width="35" height="35"/>
         <image name="Flower" width="100" height="100"/>
         <image name="Line" width="65" height="295"/>
         <image name="RECORD VIDEO" width="138" height="15"/>

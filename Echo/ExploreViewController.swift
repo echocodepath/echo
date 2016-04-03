@@ -31,10 +31,10 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = nil
-        if navigationController?.viewControllers.count == 1 {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .Plain, target: self, action: "onCancel")
-            
-        }
+//        if navigationController?.viewControllers.count == 1 {
+//            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_clear"), style: .Plain, target: self, action: "onCancel")
+//            
+//        }
         self.navigationController?.navigationBarHidden = false
         teachersGridView.delegate   = self
         teachersGridView.dataSource = self

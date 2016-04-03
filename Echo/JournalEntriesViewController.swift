@@ -46,6 +46,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         collectionView.backgroundColor = UIColor.whiteColor()
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.tabBarController?.tabBar.hidden = false
 
         collectionView.registerClass(CollectionHeaderFooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: Constants.collectionHeaderViewID)
         
@@ -249,6 +250,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
         if gridViewEnabled == false {
             self.gridIcon.image = UIImage(named: "Grid View")
         } else {
