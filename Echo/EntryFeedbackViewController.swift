@@ -15,6 +15,7 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
     var entry: PFObject?
     var feedback: [PFObject] = []
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var emptyFeedbackView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -30,6 +31,11 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         
         loadFeedback()
         
+        if feedback.count > 0 {
+            emptyFeedbackView.alpha = 0
+        } else {
+            emptyFeedbackView.alpha = 1
+        }
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
