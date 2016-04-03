@@ -33,6 +33,7 @@ class FancyInboxViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func viewDidLoad() {
@@ -65,6 +66,7 @@ class FancyInboxViewController: UIViewController {
         controllerArray.append(sentVc)
         controllerArray.append(acceptedVc)
     }
+    
 
     /*
     // MARK: - Navigation
