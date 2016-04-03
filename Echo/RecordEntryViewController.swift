@@ -22,9 +22,10 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.translucent = true
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
 //        self.navigationController!.view.backgroundColor = UIColor.clearColor()
 
     }
@@ -32,9 +33,9 @@ class RecordEntryViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        self.navigationController!.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController!.navigationBar.shadowImage = nil
-        self.navigationController!.navigationBar.translucent = false
+    self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.translucent = false
     }
     
     override func didReceiveMemoryWarning() {
