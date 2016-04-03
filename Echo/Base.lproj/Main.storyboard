@@ -675,7 +675,17 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ua-Fr-kQP">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="218.5"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwd-sm-N4U">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="218.5"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nwd-sm-N4U" firstAttribute="top" secondItem="Auz-xb-qjn" secondAttribute="top" id="5WS-Kk-UxY"/>
+                                                <constraint firstAttribute="bottom" secondItem="nwd-sm-N4U" secondAttribute="bottom" id="W5n-f1-Sr7"/>
+                                                <constraint firstItem="nwd-sm-N4U" firstAttribute="leading" secondItem="Auz-xb-qjn" secondAttribute="leading" id="jxU-pO-iOm"/>
+                                                <constraint firstAttribute="trailing" secondItem="nwd-sm-N4U" secondAttribute="trailing" id="uAL-za-gIP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="32" id="oTa-Wk-NIe">
@@ -852,6 +862,7 @@
                         <outlet property="tableView" destination="34a-h7-ZAj" id="rLk-7b-kaB"/>
                         <outlet property="titleIconImageView" destination="6Od-Jb-cMx" id="yxp-BJ-1DA"/>
                         <outlet property="titleTextField" destination="S7k-6V-Zf3" id="GBk-pJ-2cH"/>
+                        <outlet property="videoPlayerContainer" destination="nwd-sm-N4U" id="44g-Cp-gOE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31p-Qf-hdT" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import AVKit
 import AVFoundation
 import Parse
 
-class EntryFormViewController: UITableViewController {
+class EntryFormViewController: UITableViewController, VideoPlayerContainable {
     var video: NSURL?
     var thumbnail: NSData?
     
+    var videoURL: NSURL?
+    let videoPlayer = AVPlayerViewController()
+    var playerRateBeforeSeek: Float = 0
+    var avPlayer: AVPlayer?
+
     
+    @IBOutlet weak var videoPlayerContainer: UIView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var privateSwitch: UISwitch!
     @IBOutlet weak var entryThumbnailImageView: UIImageView!
@@ -41,6 +48,21 @@ class EntryFormViewController: UITableViewController {
         }
         entryThumbnailImageView.image = uiImage
         thumbnail = UIImagePNGRepresentation(uiImage!)
+    }
+    
+    private func playVideo(url: NSURL){
+        tableView.reloadData()
+        videoPlayer(addToView: videoPlayerContainer, videoURL: url)
+        
+//        videoPlayer.showsPlaybackControls = false
+        avPlayer = AVPlayer(URL: url)
+        videoPlayer.player = avPlayer!
+        videoPlayer.player!.play()
+//        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+//        timeObserver = avPlayer!.addPeriodicTimeObserverForInterval(timeInterval,
+//            queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
+//                self.observeTime(elapsedTime)
+//        }
     }
     
     func setupIcons() {
@@ -105,8 +127,9 @@ class EntryFormViewController: UITableViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        
+        videoURL = video!
         generateThumbnail()
+        playVideo(video!)
         setupIcons()
         privateSwitch.onTintColor = StyleGuide.Colors.echoBorderGray
     }
