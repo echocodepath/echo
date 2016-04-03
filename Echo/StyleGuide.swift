@@ -12,6 +12,7 @@ struct StyleGuide {
     struct Layout {
         static let someCommonLayoutValue: CGFloat = 10
     }
+    
     struct Fonts {
         static func regularFont(size size: CGFloat) -> UIFont {
             return UIFont(name: "Avenir Next", size: size)!
@@ -50,12 +51,31 @@ struct StyleGuide {
     }
 }
 
+
+
+//static func regularFont(size size: CGFloat) -> UIFont {
+//    return UIFont(name: "Avenir Next", size: size)!
+//}
+//static func boldFont(size size: CGFloat) -> UIFont {
+//    return UIFont(name: "Avenir-Black", size: size)!
+//}
+//static func mediumFont(size size: CGFloat) -> UIFont {
+//    return UIFont(name: "Avenir-Medium", size: size)!
+//}
+//static func semiBoldFont(size size: CGFloat) -> UIFont {
+//    return UIFont(name: "Avenir-Heavy", size: size)!
+//}
+
 struct Utils {
     static func configureDefaultNavigationBar(navBar: UINavigationBar) {
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 18)!
+        ]
         navBar.translucent = false
         navBar.barTintColor = StyleGuide.Colors.echoOrange
         navBar.tintColor = UIColor.whiteColor()
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
     }
     
     static func createNormalInboxText(name: String, title: String) -> NSAttributedString {
@@ -66,10 +86,10 @@ struct Utils {
         let startingTitlePoint = totalLength - titleLength - 1
         let mutableString = NSMutableAttributedString(
             string: startingString,
-            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+            attributes: [NSFontAttributeName:StyleGuide.Fonts.regularFont(size: 13)])
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: 0,
                 length: nameLength))
@@ -80,7 +100,7 @@ struct Utils {
                 length: nameLength))
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: startingTitlePoint,
                 length: titleLength))
@@ -116,10 +136,10 @@ struct Utils {
         
         let mutableString = NSMutableAttributedString(
             string: startingString,
-            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+            attributes: [NSFontAttributeName:StyleGuide.Fonts.regularFont(size: 13)])
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: titleIndex,
                 length: titleLength))
@@ -129,7 +149,7 @@ struct Utils {
                 location: titleIndex,
                 length: titleLength))
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: nameIndex,
                 length: nameLength))
@@ -151,10 +171,10 @@ struct Utils {
         
         let mutableString = NSMutableAttributedString(
             string: startingString,
-            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13.0)])
+            attributes: [NSFontAttributeName:StyleGuide.Fonts.regularFont(size: 13)])
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: 13,
                 length: nameLength))
@@ -165,7 +185,7 @@ struct Utils {
                 length: nameLength))
         
         mutableString.addAttribute(NSFontAttributeName,
-            value: UIFont.systemFontOfSize(13, weight: UIFontWeightBold),
+            value: StyleGuide.Fonts.boldFont(size: 13),
             range: NSRange(
                 location: startingTitlePoint + 1,
                 length: titleLength))
