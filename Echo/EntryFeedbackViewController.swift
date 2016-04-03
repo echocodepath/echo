@@ -30,12 +30,8 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
         titleLabel.textColor = StyleGuide.Colors.echoDarkerGray
         
         loadFeedback()
-        
-        if feedback.count > 0 {
-            emptyFeedbackView.alpha = 0
-        } else {
-            emptyFeedbackView.alpha = 1
-        }
+        emptyFeedbackView.alpha = 0
+
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
@@ -80,9 +76,13 @@ class EntryFeedbackViewController: UIViewController, UITableViewDelegate, UITabl
                     self.feedback = objects
                     print("objects!! \(objects)")
                 }
-                self.tableView.reloadData()
-                print("FEEDBACK \(self.feedback)")
-
+                if objects!.count == 0 {
+                    UIView.animateWithDuration(0.15, animations: { () -> Void in
+                        self.emptyFeedbackView.alpha = 1
+                    })
+                } else {
+                    self.tableView.reloadData()
+                }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
