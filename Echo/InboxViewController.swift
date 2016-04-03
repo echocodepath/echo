@@ -24,7 +24,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Received"
         tableView.delegate = self
         tableView.dataSource = self
         self.fetchRequests()
