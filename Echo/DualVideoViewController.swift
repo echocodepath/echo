@@ -68,14 +68,39 @@ class DualVideoViewController: UIViewController {
         let studentVideoData = studentEntry!["video"] as! PFFile
         let teacherVideoData = teacherEntry!["video"] as! PFFile
         
-        // TODO: Refactor so no nested getDatas
-        studentVideoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            studentUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.studentVideoId!)
-            teacherVideoData.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                teacherUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data!, id: self.teacherVideoId!)
+        let queue = NSOperationQueue()
+        
+        let op1 = NSBlockOperation {
+            do {
+                let data = try studentVideoData.getData()
+                studentUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data, id: self.studentVideoId!)
+            }
+            catch {
+                print("Error: \(error)")
+            }
+        }
+        
+        let op2 = NSBlockOperation {
+            do {
+                let data = try teacherVideoData.getData()
+                teacherUrl = FileProcessor.sharedInstance.writeVideoDataToFileWithId(data, id: self.teacherVideoId!)
+            }
+            catch {
+                print("Error: \(error)")
+            }
+        }
+        
+        let finish = NSBlockOperation {
+            NSOperationQueue.mainQueue().addOperationWithBlock({
+                // The ops have finished
                 self.playVideos(studentUrl!, teacherUrl: teacherUrl!)
             })
-        })
+        }
+        
+        finish.addDependency(op1)
+        finish.addDependency(op2)
+        
+        queue.addOperations([op1, op2, finish], waitUntilFinished: false)
     }
     
     @IBAction func onBack(sender: AnyObject) {
