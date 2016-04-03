@@ -50,11 +50,11 @@ class HomeTabViewController: UITabBarController {
             item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         }
         
-//        for item in self.tabBar.items! as [UITabBarItem] {
-//            if let image = item.image {
-//                item.image = image.imageWithColor(StyleGuide.Colors.iconGray).imageWithRenderingMode(.AlwaysOriginal)
-//            }
-//        }
+        for item in self.tabBar.items! as [UITabBarItem] {
+            if let image = item.image {
+                item.image = image.imageWithColor(StyleGuide.Colors.echoIconGray).imageWithRenderingMode(.AlwaysOriginal)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
