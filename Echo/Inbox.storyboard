@@ -152,7 +152,7 @@
             </objects>
             <point key="canvasLocation" x="182" y="806"/>
         </scene>
-        <!--INBOX-->
+        <!--Inbox-->
         <scene sceneID="eTz-mO-b9Y">
             <objects>
                 <viewController id="cay-oM-DKp" customClass="FancyInboxViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="INBOX" id="v4w-rT-Wk1"/>
+                    <navigationItem key="navigationItem" title="Inbox" id="v4w-rT-Wk1"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owM-6z-rRn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -96,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UPLOAD FROM ALBUM" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-My-xqv">
-                                        <rect key="frame" x="14" y="85" width="128" height="10"/>
+                                        <rect key="frame" x="1" y="85" width="142" height="10"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
