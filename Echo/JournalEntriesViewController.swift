@@ -275,16 +275,12 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                     for object in objects {
                         let date = object.createdAt!
                         let month = calendar.components([.Month], fromDate: date).month
-//                        self.entries.append(object)
                         self.calculateMonthIndex(object, entryMonth: month)
                         self.tableView.reloadData()
                         self.collectionView.reloadData()
                     }
                     
-//                    self.entries = self.entries.sort ({ $0.createdAt! > $1.createdAt! })
-//                    
                 }
-                // TODO SORT DICTIONARY BASED ON DATE HERE
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
