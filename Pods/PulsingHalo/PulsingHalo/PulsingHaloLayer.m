@@ -66,7 +66,7 @@
     
     self.animationGroup = [CAAnimationGroup animation];
     self.animationGroup.duration = self.animationDuration + self.pulseInterval;
-    self.animationGroup.repeatCount = INFINITY;
+    self.animationGroup.repeatCount = 1;
     self.animationGroup.removedOnCompletion = NO;
     self.animationGroup.timingFunction = defaultCurve;
     
@@ -77,7 +77,7 @@
     
     CAKeyframeAnimation *opacityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.duration = self.animationDuration;
-    opacityAnimation.values = @[@0.45, @0.45, @0];
+    opacityAnimation.values = @[@0.75, @0.75, @0.75];
     opacityAnimation.keyTimes = @[@0, @0.2, @1];
     opacityAnimation.removedOnCompletion = NO;
     
