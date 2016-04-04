@@ -8,7 +8,7 @@
         <!--FEEDBACK MODE-->
         <scene sceneID="HBJ-Y9-dSq">
             <objects>
-                <viewController id="pZo-Ig-Fpy" customClass="AcceptFeedbackRequestViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="pZo-Ig-Fpy" customClass="AcceptFeedbackRequestViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cd1-jn-4NI"/>
                         <viewControllerLayoutGuide type="bottom" id="T57-TO-RJx"/>
@@ -176,6 +176,7 @@
                             <constraint firstAttribute="trailing" secondItem="w4k-Pu-gFi" secondAttribute="trailing" id="4FZ-Iq-W5y"/>
                             <constraint firstItem="Cbf-zF-6pQ" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="6wG-90-dT9"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="Cbf-zF-6pQ" secondAttribute="bottom" id="9qg-Qw-xZL"/>
+                            <constraint firstAttribute="trailing" secondItem="j3a-1p-gYw" secondAttribute="trailing" id="CMs-4t-gax"/>
                             <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="j3a-1p-gYw" secondAttribute="bottom" id="F9e-Kp-r1p"/>
                             <constraint firstItem="YS5-52-zOn" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="JY8-4H-bxA"/>
                             <constraint firstAttribute="trailing" secondItem="YS5-52-zOn" secondAttribute="trailing" id="NRq-ck-LSl"/>
@@ -185,11 +186,13 @@
                             <constraint firstItem="w4k-Pu-gFi" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="ZTu-5s-2fd"/>
                             <constraint firstItem="STO-ih-dpp" firstAttribute="top" secondItem="w4k-Pu-gFi" secondAttribute="bottom" constant="-3" id="cvS-MK-mPT"/>
                             <constraint firstAttribute="trailing" secondItem="j3a-1p-gYw" secondAttribute="trailing" id="dbf-qX-sQh"/>
+                            <constraint firstItem="T57-TO-RJx" firstAttribute="top" secondItem="j3a-1p-gYw" secondAttribute="bottom" id="exQ-pn-CQ1"/>
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="iNI-yV-kCR"/>
                             <constraint firstItem="STO-ih-dpp" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="kH0-tG-gxQ"/>
                             <constraint firstItem="YS5-52-zOn" firstAttribute="top" secondItem="STO-ih-dpp" secondAttribute="bottom" id="qbS-qA-W7c"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="sCs-WN-JAg"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="AuA-PP-7UM" secondAttribute="bottom" id="snT-ID-UNN"/>
+                            <constraint firstItem="j3a-1p-gYw" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="tDX-qb-eNW"/>
                             <constraint firstAttribute="trailing" secondItem="STO-ih-dpp" secondAttribute="trailing" id="vmD-9O-5cB"/>
                             <constraint firstItem="AuA-PP-7UM" firstAttribute="leading" secondItem="kVk-oi-Nuq" secondAttribute="leading" id="vnP-bh-KQ2"/>
                             <constraint firstItem="j3a-1p-gYw" firstAttribute="top" secondItem="YS5-52-zOn" secondAttribute="bottom" id="zjB-Ct-Zf0"/>

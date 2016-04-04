@@ -596,6 +596,7 @@
                             <outlet property="delegate" destination="1AO-Dm-Uni" id="9f6-wZ-kTI"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Feedback Request" id="RCk-MZ-5Ah">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="Gdq-ef-8Fo">
                             <connections>
