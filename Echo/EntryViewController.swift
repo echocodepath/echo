@@ -254,6 +254,10 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         videoPlayer.player?.pause()
+        if entry != nil {
+            let videoData = entry!["video"] as! PFFile
+            videoData.cancel()
+        }
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
