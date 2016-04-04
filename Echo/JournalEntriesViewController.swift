@@ -20,27 +20,17 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var collectionView: UICollectionView!
     var refreshControlTableView: UIRefreshControl!
     var entryDict = [Int: [PFObject]]()
-    let months = [
-        1: "January",
-        2: "Februrary",
-        3: "March",
-        4: "April",
-        5: "May",
-        6: "June",
-        7: "July",
-        8: "August",
-        9: "September",
-        10: "October",
-        11: "November",
-        12: "December"
-    ]
-    
-    var currentMonthOrder = Array<Int>()
 
+    var currentMonthOrder = Array<Int>()
+    var monthOrder = Array<String>()
+    var monthSectionCount = 0
+    
     var entries: [PFObject] = []
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var gridIcon: UIBarButtonItem!
     
+    var orderedMonths = Array<String>()
+    var previousMonth: String?
     var gridViewEnabled = false
     
     override func viewDidLoad() {
@@ -95,20 +85,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         let view = CollectionHeaderFooterView()
         view.backgroundColor = UIColor.whiteColor()
         view.label.text = {
-            if currentMonthOrder.count > section - 1 {
-                let currentMonth = currentMonthOrder[section - 1]
-                if entryDict[section] != nil {
-                    if entryDict[section]?.count == 0 {
-                        return nil
-                    } else {
-                        return "\(months[currentMonth]!) 2016"
-                    }
-                } else {
-                    return nil
-                }
-            } else {
-                return nil
-            }
+            return monthOrder[Int(section - 1)]
         }()
         
         return view
@@ -145,20 +122,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.collectionHeaderViewID, forIndexPath: indexPath) as! CollectionHeaderFooterView
         view.label.text = {
-            if currentMonthOrder.count > Int(indexPath.section) - 1 {
-                let currentMonth = currentMonthOrder[indexPath.section - 1]
-                if entryDict[indexPath.section] != nil {
-                    if entryDict[indexPath.section]?.count == 0 {
-                        return nil
-                    } else {
-                        return "\(months[currentMonth]!) 2016"
-                    }
-                } else {
-                    return nil
-                }
-            } else {
-                return nil
-            }
+            return monthOrder[indexPath.section - 1]
         }()
         return view
     }
@@ -228,38 +192,36 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    func calculateMonthIndex(journalEntry: PFObject, entryMonth: Int) {
-        // NEEDS REFACTORING AFTER DEMO -- BADLY
+    func calculateMonthIndex(journalEntry: PFObject) {
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let currentMonth = calendar.components([.Month], fromDate: date).month
-        if currentMonth == entryMonth {
-            if entryDict[1] != nil {
-                self.entryDict[1]!.append(journalEntry)
+        
+        let entryDate = journalEntry.createdAt!
+        let entryMonth = calendar.components([.Month], fromDate: entryDate).month
+        let entryMonthAndYear = DateManager.onlyMonthAndYearFormatter.stringFromDate(entryDate)
+        
+        if previousMonth != nil {
+            if previousMonth == entryMonthAndYear {
+                entryDict[monthSectionCount]!.append(journalEntry)
             } else {
-                self.entryDict[1] = [journalEntry]
-                self.currentMonthOrder.append(entryMonth)
+                monthSectionCount += 1
+                if entryDict[monthSectionCount] == nil {
+                    entryDict[monthSectionCount] = [journalEntry]
+                    monthOrder.append(entryMonthAndYear)
+                } else {
+                    entryDict[monthSectionCount]!.append(journalEntry)
+                }
             }
         } else {
-            let shiftedMonth = currentMonth - entryMonth + 1
-            if  shiftedMonth > 0 {
-                if entryDict[shiftedMonth] != nil {
-                    self.entryDict[shiftedMonth]!.append(journalEntry)
-                } else {
-                    self.entryDict[shiftedMonth] = [journalEntry]
-                    self.currentMonthOrder.append(entryMonth)
-                }
-            } else {
-                let newShiftedMonth = 12 - (shiftedMonth * -1)
-                if entryDict[newShiftedMonth] != nil {
-                    self.entryDict[newShiftedMonth]!.append(journalEntry)
-                } else {
-                    self.entryDict[newShiftedMonth] = [journalEntry]
-                    self.currentMonthOrder.append(entryMonth)
-                }
-            }
+            monthSectionCount += 1
+            entryDict[monthSectionCount] = [journalEntry]
+            monthOrder.append(entryMonthAndYear)
         }
         
+        previousMonth = entryMonthAndYear
+        self.tableView.reloadData()
+        self.collectionView.reloadData()
     }
     
     
@@ -269,17 +231,12 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         entryQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                let calendar = NSCalendar.currentCalendar()
                 if let objects = objects {
-                    self.entries = []
-                    for object in objects {
-                        let date = object.createdAt!
-                        let month = calendar.components([.Month], fromDate: date).month
-                        self.calculateMonthIndex(object, entryMonth: month)
-                        self.tableView.reloadData()
-                        self.collectionView.reloadData()
+                    let sortedEntries = objects.sort({ $0.createdAt! > $1.createdAt })
+                    for entry in sortedEntries {
+                        self.calculateMonthIndex(entry)
                     }
-                    
+                    print(self.entryDict)
                 }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
