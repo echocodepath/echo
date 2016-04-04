@@ -23,12 +23,25 @@ extension UIImage {
 }
 
 class HomeTabViewController: UITabBarController {
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    override func childViewControllerForStatusBarHidden() -> UIViewController? {
+        return nil
+    }
+    override func childViewControllerForStatusBarStyle() -> UIViewController? {
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if currentUser == nil {
             currentUser = User(user: PFUser.currentUser()!)
         }
-
+        self.tabBar.translucent = false
         self.tabBar.barTintColor = StyleGuide.Colors.echoDarkBrownGray
         self.tabBar.tintColor = UIColor.whiteColor()
         
@@ -42,7 +55,7 @@ class HomeTabViewController: UITabBarController {
         tabBar.frame.origin.x = -2
         
         let tabItems = self.tabBar.items! as [UITabBarItem]
-        let iconImages = ["Journal - Selected", "inbox", "White Camera", "Find Teacher Icon", "Explore Icon"]
+        let iconImages = ["Journal - Selected", "Inbox", "White Camera", "Find Teacher Icon", "Explore Icon"]
         for index in 0...4  {
             let item = tabItems[index] as UITabBarItem
             item.image = UIImage(named: iconImages[index])

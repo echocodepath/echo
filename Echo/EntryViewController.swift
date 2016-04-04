@@ -74,12 +74,7 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
     
     func setupIcons() {
         tableView.separatorStyle = .None
-//        artistIconImageView.image = UIImage(named: "Artist Icon")
         songIconImageView.image = UIImage(named: "Music Icon")
-//        titleIconImageView.image = UIImage(named:"Title Icon")
-//        privateSwitch.onTintColor = UIColor(red: 0.7647, green: 0.7647, blue: 0.7647, alpha: 1.0)
-        entryHeaderView.backgroundColor = StyleGuide.Colors.echoFormGray
-//        playerControlView.backgroundColor = UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
     }
     
     func bindVideoControlActions() {
@@ -125,7 +120,7 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         timeSlider.maximumValue = 1
         timeSlider.continuous = true
         timeSlider.setThumbImage(UIImage(named: "slider_thumb"), forState: .Normal)
-        timeSlider.tintColor = StyleGuide.Colors.echoBrownGray
+
         setupIcons()
         generateRandomCompliment()
         
