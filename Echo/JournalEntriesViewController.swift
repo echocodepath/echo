@@ -145,11 +145,16 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.collectionHeaderViewID, forIndexPath: indexPath) as! CollectionHeaderFooterView
         view.label.text = {
-            if entryDict[indexPath.section] != nil {
-                if entryDict[indexPath.section]?.count == 0 {
-                    return nil
+            if currentMonthOrder.count > Int(indexPath.section) - 1 {
+                let currentMonth = currentMonthOrder[indexPath.section - 1]
+                if entryDict[indexPath.section] != nil {
+                    if entryDict[indexPath.section]?.count == 0 {
+                        return nil
+                    } else {
+                        return "\(months[currentMonth]!) 2016"
+                    }
                 } else {
-                    return "\(months[indexPath.section]!) 2016"
+                    return nil
                 }
             } else {
                 return nil
@@ -224,6 +229,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func calculateMonthIndex(journalEntry: PFObject, entryMonth: Int) {
+        // NEEDS REFACTORING AFTER DEMO -- BADLY
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let currentMonth = calendar.components([.Month], fromDate: date).month
@@ -236,7 +242,6 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
             }
         } else {
             let shiftedMonth = currentMonth - entryMonth + 1
-            print("SHIFTED MONTH!!! \(shiftedMonth)")
             if  shiftedMonth > 0 {
                 if entryDict[shiftedMonth] != nil {
                     self.entryDict[shiftedMonth]!.append(journalEntry)
