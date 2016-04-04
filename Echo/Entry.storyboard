@@ -124,7 +124,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.78251201923076918" green="0.78251201923076918" blue="0.78251201923076918" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="F529DAF0-D35F-4114-ADC8-5CFDAD24D6C6"/>
+                                                            <state key="normal" image="50D11470-D330-4E72-9CE4-D029A4D93D1C"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -174,6 +174,9 @@
                                                                         <constraint firstAttribute="width" constant="116" id="J6y-ZP-dIp"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button" image="Feedback Square Button"/>
+                                                                    <connections>
+                                                                        <segue destination="DUi-zQ-EcB" kind="push" identifier="allFeedback" id="D3Q-h0-gUT"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-so-SQP">
                                                                     <rect key="frame" x="127" y="0.0" width="116" height="116"/>
@@ -226,11 +229,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="Z7f-Dg-BJK">
-                                        <rect key="frame" x="0.0" y="454" width="414" height="107"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Z7f-Dg-BJK">
+                                        <rect key="frame" x="0.0" y="454" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z7f-Dg-BJK" id="gkl-qQ-2bF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="106.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lookin Good!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-my-Y0m">
@@ -261,11 +264,7 @@
                                 <action selector="onBack:" destination="ojq-4h-W5Y" id="XVc-dw-qrL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Feedback" id="S2K-8j-Fmb">
-                            <connections>
-                                <segue destination="DUi-zQ-EcB" kind="push" identifier="allFeedback" id="3xr-2F-VJd"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit_button" id="Dl5-bf-LTf"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -510,9 +509,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="17" height="14"/>
-        <image name="Dual Button" width="195" height="195"/>
-        <image name="F529DAF0-D35F-4114-ADC8-5CFDAD24D6C6" width="13" height="16">
+        <image name="50D11470-D330-4E72-9CE4-D029A4D93D1C" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -595,10 +592,13 @@ hwCSAJQAlgCYAJ0AoACiAKQApgCoAK0AxADGAMgRGhEfESoRMxFGEUoRVRFeEWMRaxFuEXMRghGGEY0R
 lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
+        <image name="Back" width="17" height="14"/>
+        <image name="Dual Button" width="195" height="195"/>
         <image name="Feedback Square Button" width="115" height="115"/>
         <image name="Notes Button" width="195" height="195"/>
         <image name="Request Feedback Button" width="295" height="55"/>
         <image name="Sad Glass" width="92" height="150"/>
         <image name="chevron-right" width="13" height="24"/>
+        <image name="edit_button" width="20" height="20"/>
     </resources>
 </document>

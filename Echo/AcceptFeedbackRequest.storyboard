@@ -304,10 +304,10 @@
         <!--Journal-->
         <scene sceneID="bnX-Ah-I3v">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CMh-Qe-Lvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="EntryViewController" storyboardName="Journal" id="mDJ-Gg-sKo" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="O72-gz-6B4"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMh-Qe-Lvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1416" y="159"/>
         </scene>

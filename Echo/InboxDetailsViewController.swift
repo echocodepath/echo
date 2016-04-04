@@ -65,7 +65,6 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
         semanticTimeAgoLabel.textColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0)
         self.songLabel.alpha = 0
         self.artistLabel.alpha = 0
-        self.createdAtLabel.alpha = 0
         self.usernameLabel.alpha = 0
         self.wouldLikeFeedbackLabel.alpha = 0
         self.requestBodyLabel.alpha = 0
@@ -186,10 +185,10 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
                 self.videoId = self.entry?.objectId
                 self.convertVideoDataToNSURL()
                 self.userId = self.entry?.objectForKey("user_id") as? String
-                self.songLabel.text = "\(self.entry!.valueForKey("song") as! String) - \(self.entry!.valueForKey("title") as! String)"
- 
+                self.songLabel.text = "\(self.entry!.valueForKey("song") as! String)"
+                self.titleLabel.text = self.entry!.valueForKey("title") as! String
                 self.artistLabel.text = "\(self.entry!.valueForKey("artist") as! String)"
-                self.createdAtLabel.text = DateManager.getFriendlyTime(self.entry?.createdAt)
+                self.title = DateManager.getFriendlyTime(self.entry?.createdAt)
                 self.setUserLabels()
             }
         })
@@ -225,8 +224,8 @@ class InboxDetailsViewController: UITableViewController, VideoPlayerContainable 
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.songLabel.alpha = 1
                     self.artistLabel.alpha = 1
-                    self.createdAtLabel.alpha = 1
                     self.usernameLabel.alpha = 1
+                    self.titleLabel.alpha = 1
                     self.wouldLikeFeedbackLabel.alpha = 1
                     self.requestBodyLabel.alpha = 1
                     self.byLabel.alpha = 1
