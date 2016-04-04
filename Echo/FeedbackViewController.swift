@@ -147,7 +147,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         for pulse in pulses {
             let params: [String: NSObject] = ["pulse" : pulse]
             let showPulseAt = pulse.clip_offset
-            NSTimer.scheduledTimerWithTimeInterval(showPulseAt!, target: self, selector: #selector(FeedbackViewController.showPulse(_:)), userInfo: params, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(showPulseAt!, target: self, selector: "showPulse:", userInfo: params, repeats: false)
         }
     }
 
@@ -169,7 +169,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         let currentTime = avPlayer!.currentTime().seconds
         let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
         let playAudioAt = clip.offset! - currentTime
-        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: #selector(FeedbackViewController.playAudio(_:)), userInfo: params, repeats: false)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
         audioTimers.append(timer)
     }
 
