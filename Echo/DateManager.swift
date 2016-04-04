@@ -56,6 +56,15 @@ class DateManager {
         return Static.instance
     }
     
+    class var onlyMonthAndYearFormatter: NSDateFormatter {
+        struct Static {
+            static let instance: NSDateFormatter = NSDateFormatter()
+        }
+        Static.instance.dateFormat = "MMMM yyyy"
+        
+        return Static.instance
+    }
+    
     class var timeOnlyFormatter: NSDateFormatter {
         struct Static {
             static let instance: NSDateFormatter = NSDateFormatter()
