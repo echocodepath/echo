@@ -105,6 +105,7 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         if avPlayer != nil {
             let playerIsPlaying:Bool = avPlayer?.rate > 0
             if playerIsPlaying == true {
+                playBtn.selected = false
             } else {
                 playBtn.selected = true
             }
@@ -133,7 +134,8 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
             self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
             songLabel.text = "\(entry!.valueForKey("song") as! String)"
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
-//            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
+            titleLabel.text = entry!.valueForKey("title") as! String
+            self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
 //            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
 //            if entry!["user_id"] as? String != currentUser?.id{
 //                requestFeedbackBtn.hidden = true
