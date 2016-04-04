@@ -110,19 +110,20 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
-            let position :CGPoint = touch.locationInView(view)
-            print(position.x)
-            print(position.y)
-            
+            // save pulse
+            let position :CGPoint = touch.locationInView(view)  
+            let video_offset = avPlayer!.currentTime().seconds        
+            let clip_offset = audioRecorder.currentTime
+            //let clipNum = self.feedback.count
+            let pulse = Pulse(location: position, video_offset: video_offset, clip_offset: clip_offset)
+            //pulse.clipNum = clipNum
+            pulses.append(pulse)
+
+            //show pulse
             let halo = PulsingHaloLayer()
             halo.repeatCount = 0
             halo.position = position
             view.layer.addSublayer(halo)
-            
-            let time = avPlayer!.currentTime().seconds
-            let pulse = Pulse(location: position, time: time)
-            pulses.append(pulse)
-            
         }
     }
     
@@ -283,7 +284,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     
     func bindRecordOptions() {
-        recordButton.addTarget(self, action:"handleTouchUp:", forControlEvents: .TouchUpInside)
+        //recordButton.addTarget(self, action:"handleTouchUp:", forControlEvents: .TouchUpInside)
         recordButton.addTarget(self, action: "handleTouchDown:", forControlEvents: .TouchDown)
         timeSlider.addTarget(self, action: "sliderBeganTracking:",
             forControlEvents: UIControlEvents.TouchDown)
@@ -293,7 +294,7 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func handleTouchUp(sender: AnyObject) {
+    func handleTouchUp() {
         let timestamp = avPlayer!.currentTime()
         let duration = audioRecorder.currentTime
         let audioClip = AudioClip(path: currentUrl!, offset: timestamp.seconds, duration: duration)
@@ -312,39 +313,47 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
         tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: feedback.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
     }
     
+    var firstTouchDown: Bool = true
+    
     func handleTouchDown(sender: AnyObject) {
-        self.view.bringSubviewToFront(audioWaveContainerView)
-        
-        UIView.animateWithDuration(0.3) { () -> Void in
-            self.state = .Record
-        }
+        if firstTouchDown == true {
+            self.view.bringSubviewToFront(audioWaveContainerView)
+            
+            UIView.animateWithDuration(0.3) { () -> Void in
+                self.state = .Record
+            }
 
-        let audioURL = directoryURL()
-        
-        let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000.0,
-            AVNumberOfChannelsKey: 1 as NSNumber,
-            AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
-        ]
-        do {
-            audioRecorder = try AVAudioRecorder(URL: audioURL!, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.meteringEnabled = true
-            audioRecorder.record()
-            audioWaveContainerView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
-            audioWaveContainerView.waverLevelCallback = { [weak self] waver in
-                if let recorder = self?.audioRecorder {
-                    recorder.updateMeters()
-                    let normalizedValue = pow(10, recorder.averagePowerForChannel(0) / 50)
-                    waver.level = CGFloat(normalizedValue)
+            let audioURL = directoryURL()
+            
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000.0,
+                AVNumberOfChannelsKey: 1 as NSNumber,
+                AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
+            ]
+            do {
+                audioRecorder = try AVAudioRecorder(URL: audioURL!, settings: settings)
+                audioRecorder.delegate = self
+                audioRecorder.meteringEnabled = true
+                audioRecorder.record()
+                audioWaveContainerView.backgroundColor = StyleGuide.Colors.echoLightBrownGray
+                audioWaveContainerView.waverLevelCallback = { [weak self] waver in
+                    if let recorder = self?.audioRecorder {
+                        recorder.updateMeters()
+                        let normalizedValue = pow(10, recorder.averagePowerForChannel(0) / 50)
+                        waver.level = CGFloat(normalizedValue)
+                    }
                 }
+                
+            } catch {
             }
             
-        } catch {
+            avPlayer!.pause()
+            firstTouchDown = false
+        } else {
+            handleTouchUp()
+            firstTouchDown = true
         }
-        
-        avPlayer!.pause()
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
@@ -492,10 +501,13 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
             self.pulses.forEach { pulse in
                 var params = Dictionary<String, NSObject>()
                 params["feedback_id"] = feedback
+                // Find better way to access audio clip id later
+                //params["audioclip_id"] = self.feedback[pulse.clipNum!]
                 //let pointObj = NSValue(CGPoint: pulse.location!)
-                params["xvalue"] = pulse.location!.x
-                params["yvalue"] = pulse.location!.y
-                params["time"] = pulse.time
+                params["locationX"] = pulse.location!.x
+                params["locationY"] = pulse.location!.y
+                params["video_offset"] = pulse.video_offset
+                params["clip_offset"] = pulse.clip_offset
                 
                 ParseClient.sharedInstance.createPulseWithCompletion(params){ (pulse, error) -> () in
                     print("yay saved a pulse")
