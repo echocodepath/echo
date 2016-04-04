@@ -125,6 +125,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     func jumpAndPlayAudio(clip: AudioClip) {
         avPlayer!.pause()
         let player = AVPlayer(URL: clip.path!)
+        createPulseTimers(clip)
         player.play()
         clip.hasBeenPlayed = true
         audioPlayers.append(player)
