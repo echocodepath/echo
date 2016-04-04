@@ -21,10 +21,10 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
     var refreshControlTableView: UIRefreshControl!
     var entryDict = [Int: [PFObject]]()
     let months = [
-        4: "April",
-        3: "March",
-        2: "Februrary",
         1: "January",
+        2: "Februrary",
+        3: "March",
+        4: "April",
         5: "May",
         6: "June",
         7: "July",
@@ -34,6 +34,8 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         11: "November",
         12: "December"
     ]
+    
+    var currentMonthOrder = Array<Int>()
 
     var entries: [PFObject] = []
     @IBOutlet weak var backBtn: UIButton!
@@ -93,16 +95,22 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         let view = CollectionHeaderFooterView()
         view.backgroundColor = UIColor.whiteColor()
         view.label.text = {
-            if entryDict[section] != nil {
-                if entryDict[section]?.count == 0 {
-                    return nil
+            if currentMonthOrder.count > section - 1 {
+                let currentMonth = currentMonthOrder[section - 1]
+                if entryDict[section] != nil {
+                    if entryDict[section]?.count == 0 {
+                        return nil
+                    } else {
+                        return "\(months[currentMonth]!) 2016"
+                    }
                 } else {
-                    return "\(months[section]!) 2016"
+                    return nil
                 }
             } else {
                 return nil
             }
-            }()
+        }()
+        
         return view
     }
 
@@ -215,12 +223,42 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func loadEntries() {
-        for monthIndex in 1...12 {
-            entryDict[monthIndex] = []
+    func calculateMonthIndex(journalEntry: PFObject, entryMonth: Int) {
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let currentMonth = calendar.components([.Month], fromDate: date).month
+        if currentMonth == entryMonth {
+            if entryDict[1] != nil {
+                self.entryDict[1]!.append(journalEntry)
+            } else {
+                self.entryDict[1] = [journalEntry]
+                self.currentMonthOrder.append(entryMonth)
+            }
+        } else {
+            let shiftedMonth = currentMonth - entryMonth + 1
+            print("SHIFTED MONTH!!! \(shiftedMonth)")
+            if  shiftedMonth > 0 {
+                if entryDict[shiftedMonth] != nil {
+                    self.entryDict[shiftedMonth]!.append(journalEntry)
+                } else {
+                    self.entryDict[shiftedMonth] = [journalEntry]
+                    self.currentMonthOrder.append(entryMonth)
+                }
+            } else {
+                let newShiftedMonth = 12 - (shiftedMonth * -1)
+                if entryDict[newShiftedMonth] != nil {
+                    self.entryDict[newShiftedMonth]!.append(journalEntry)
+                } else {
+                    self.entryDict[newShiftedMonth] = [journalEntry]
+                    self.currentMonthOrder.append(entryMonth)
+                }
+            }
         }
         
+    }
+    
+    
+    func loadEntries() {
         let entryQuery = PFQuery(className:"Entry")
         entryQuery.whereKey("user_id", equalTo: (currentUser?.id)!)
         entryQuery.findObjectsInBackgroundWithBlock {
@@ -232,12 +270,11 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                     for object in objects {
                         let date = object.createdAt!
                         let month = calendar.components([.Month], fromDate: date).month
-                        self.entryDict[month]!.append(object)
-//                        self.entries.append(object)
+                        self.calculateMonthIndex(object, entryMonth: month)
                         self.tableView.reloadData()
                         self.collectionView.reloadData()
                     }
-                    print("COUNT", objects.count)
+                    print(self.entryDict)
                 }
                 // TODO SORT DICTIONARY BASED ON DATE HERE
             } else {
