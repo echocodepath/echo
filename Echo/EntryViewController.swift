@@ -12,7 +12,11 @@ import AVKit
 import AVFoundation
 import SnapKit
 
-class EntryViewController: UITableViewController, VideoPlayerContainable {
+class EntryViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, VideoPlayerContainable {
+    
+    @IBOutlet weak var moreVideos: UICollectionView!
+    var entries: [PFObject] = []
+    
     
     var onComplete: ((finished: Bool) -> Void)?
 
@@ -125,10 +129,8 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         setupIcons()
         generateRandomCompliment()
         
-        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-
         
         if entry != nil {
             self.title = "\(entry!.valueForKey("title") as! String)".uppercaseString
@@ -136,16 +138,42 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
             artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
             titleLabel.text = entry!.valueForKey("title") as! String
             self.title = DateManager.defaultFormatter.stringFromDate(entry!.createdAt!)
-//            titleLabel.text = "\(entry!.valueForKey("title") as! String)"
-//            if entry!["user_id"] as? String != currentUser?.id{
-//                requestFeedbackBtn.hidden = true
-//            }
             
             if entry?.valueForKey("user_id") as? String != currentUser!.id {
                 self.navigationController!.navigationItem.rightBarButtonItem = nil
             }
         }
         
+        // If not my entry, setup More Videos
+        moreVideos.delegate = self
+        moreVideos.dataSource = self
+        if entry!["user_id"] as? String != currentUser?.id {
+            fetchEntries()
+        }
+        moreVideos.backgroundColor = UIColor.whiteColor()
+        if let layout = moreVideos.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumInteritemSpacing = 1
+            layout.minimumLineSpacing = 1
+        }
+        
+    }
+    
+    func fetchEntries(){
+        let entryQuery = PFQuery(className:"Entry")
+        // TODO: Do a real related videos query
+        entryQuery.orderByAscending("createdAt")
+        entryQuery.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    self.entries = objects
+                    self.entries.removeAtIndex(0)
+                    self.moreVideos.reloadData()
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
     }
     
     func generateRandomCompliment() {
@@ -166,6 +194,10 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         } else {
             if entry!["user_id"] as? String != currentUser?.id {
                 if indexPath.item == 3 || indexPath.item == 4 {
+                    return 0
+                }
+            } else {
+                if indexPath.item == 5 {
                     return 0
                 }
             }
@@ -264,6 +296,25 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
         avPlayer?.removeTimeObserver(timeObserver)
 
     }
+    
+    
+    // Collection View: Should add didSelect
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.entries.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let kWidth: CGFloat = 100
+        return CGSizeMake(kWidth, kWidth)
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = moreVideos.dequeueReusableCellWithReuseIdentifier("MoreVideosCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+        let cellEntry = self.entries[indexPath.row]
+        cell.entry = cellEntry
+        return cell
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -282,6 +333,12 @@ class EntryViewController: UITableViewController, VideoPlayerContainable {
                 case "notes":
                     let vc = segue.destinationViewController as! NotesViewController
                     vc.entry = entry
+                case "moreVideos":
+                    let cell = sender as! EntryCollectionViewCell
+                    if let indexPath = self.moreVideos.indexPathForCell(cell) {
+                        let vc = segue.destinationViewController as! EntryViewController
+                        vc.entry = self.entries[indexPath.row]
+                    }
                 default:
                     return
             }
