@@ -358,6 +358,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         super.viewWillDisappear(animated)
         self.invalidateTimersAndFeedback()
         self.avPlayer?.pause()
+        if entry != nil {
+            let videoData = entry!["video"] as! PFFile
+            videoData.cancel()
+        }
         if let id = videoId {
             FileProcessor.sharedInstance.deleteVideoFileWithId(id)
         }
