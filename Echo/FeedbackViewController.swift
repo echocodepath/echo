@@ -156,8 +156,10 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         let pulse = dict["pulse"] as! Pulse
         let position = pulse.location
 
-        //show pulse
+        //show pulse        
         let halo = PulsingHaloLayer()
+        halo.radius = 20
+        halo.backgroundColor = UIColor.whiteColor().CGColor
         halo.repeatCount = 0
         halo.position = position!
         view.layer.addSublayer(halo)
