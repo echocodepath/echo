@@ -109,20 +109,25 @@ class AcceptFeedbackRequestViewController: UIViewController, AVAudioRecorderDele
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
-            // save pulse
-            let position :CGPoint = touch.locationInView(view)  
-            let video_offset = avPlayer!.currentTime().seconds        
-            let clip_offset = audioRecorder.currentTime
-            //let clipNum = self.feedback.count
-            let pulse = Pulse(location: position, video_offset: video_offset, clip_offset: clip_offset)
-            //pulse.clipNum = clipNum
-            pulses.append(pulse)
+            if audioRecorder != nil {
+                // save pulse
+                let position :CGPoint = touch.locationInView(view)  
+                let video_offset = avPlayer!.currentTime().seconds        
+                let clip_offset = audioRecorder.currentTime
+                //let clipNum = self.feedback.count
+                let pulse = Pulse(location: position, video_offset: video_offset, clip_offset: clip_offset)
+                //pulse.clipNum = clipNum
+                pulses.append(pulse)
 
-            //show pulse
-            let halo = PulsingHaloLayer()
-            halo.repeatCount = 0
-            halo.position = position
-            view.layer.addSublayer(halo)
+                //show pulse
+                //show pulse
+                let halo = PulsingHaloLayer()
+                halo.radius = 20
+                halo.backgroundColor = UIColor.whiteColor().CGColor
+                halo.repeatCount = 0
+                halo.position = position
+                view.layer.addSublayer(halo)
+            }
         }
     }
     
