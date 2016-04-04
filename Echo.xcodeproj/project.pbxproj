@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */; };
+		47B9AEDFC50DD89D97243308 /* Pods_Echo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B22EFDF41C9293DB0048EF5E /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF31C9293DB0048EF5E /* DateManager.swift */; };
 		B22EFDF61C9293E80048EF5E /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF51C9293E80048EF5E /* FileProcessor.swift */; };
 		B22EFDFA1C9378C50048EF5E /* FeedbackClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22EFDF91C9378C50048EF5E /* FeedbackClipTableViewCell.swift */; };
@@ -424,6 +424,7 @@
 				TargetAttributes = {
 					F56D5DF11C855AF6006A7D7A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 38WNHT2TM4;
 					};
 				};
 			};
@@ -695,6 +696,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -702,7 +704,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo387;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo3875;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -715,6 +717,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -722,7 +725,7 @@
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo387;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echocodeHhs.Echo3875;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
