@@ -167,6 +167,7 @@ class EntryViewController: UITableViewController, UICollectionViewDataSource, UI
             if error == nil {
                 if let objects = objects {
                     self.entries = objects
+                    // TODO: Actually don't include own video in query
                     self.entries.removeAtIndex(0)
                     self.moreVideos.reloadData()
                 }
@@ -298,7 +299,7 @@ class EntryViewController: UITableViewController, UICollectionViewDataSource, UI
     }
     
     
-    // Collection View: Should add didSelect
+    // Collection View
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.entries.count ?? 0
     }
