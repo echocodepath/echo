@@ -117,7 +117,8 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                         let vc = segue.destinationViewController as! FeedbackRequestDetailsViewController
                         let favorite = self.teachers[indexPath.row].objectForKey("favorited") as! PFUser
                         vc.updateTeacher(favorite)
-                        vc.updateEntry(self.entry!)
+                        vc.entry = self.entry!
+//                        vc.updateEntry(self.entry!)
                     }
                     
                 default:
