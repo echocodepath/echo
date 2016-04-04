@@ -15,6 +15,7 @@ class AudioClip: NSObject {
     var duration: Float64?
     var offset: Double?
     var hasBeenPlayed: Bool = false
+    var pulses: [Pulse] = []
     
     init(path: NSURL, offset: Double, duration: Float64 ) {
         self.path = path

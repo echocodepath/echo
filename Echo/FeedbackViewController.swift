@@ -11,6 +11,7 @@ import AVFoundation
 import AVKit
 import Parse
 import SnapKit
+import PulsingHalo
 
 class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource, VideoPlayerContainable {
     var videoPlayerHeight: Constraint?
@@ -28,7 +29,9 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     var entry: PFObject?
     
     var parseAudioClips: [PFObject] = []
+    var parsePulses: [PFObject] = []
     var audioClips: [AudioClip] = []
+    var pulses: [Pulse] = []
     var fileNumber = 0
     var currentUrl: NSURL?
     var audioUrls:[NSURL] = []
@@ -138,7 +141,35 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     
     var currentPlayerUpdateToken: AnyObject?
     var currentPlayer: AVPlayer?
-    
+
+    func createPulseTimers(clip: AudioClip) {
+        let pulses = clip.pulses
+        for pulse in pulses {
+            let params: [String: NSObject] = ["pulse" : pulse]
+            let showPulseAt = pulse.clip_offset
+            NSTimer.scheduledTimerWithTimeInterval(showPulseAt!, target: self, selector: "showPulse:", userInfo: params, repeats: false)
+        }
+    }
+
+    func showPulse(timer: NSTimer) {
+        let pulse = timer.userInfo!["pulse"] as! Pulse
+        let position = pulse.location
+
+        //show pulse
+        let halo = PulsingHaloLayer()
+        halo.repeatCount = 0
+        halo.position = position!
+        view.layer.addSublayer(halo)
+    }
+
+    func createTimer(clip: AudioClip, clipIndex: Int) {
+        let currentTime = avPlayer!.currentTime().seconds
+        let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
+        let playAudioAt = clip.offset! - currentTime
+        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
+        audioTimers.append(timer)
+    }
+
     func playAudio(timer: NSTimer){
         let clip = (timer.userInfo as! [String : AnyObject])["clip"] as! AudioClip
         let index = timer.userInfo!["index"] as! Int
@@ -146,6 +177,7 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         
         avPlayer!.pause()
         let player = AVPlayer(URL: clip.path!)
+        createPulseTimers(clip)
         player.play()
 
         playBtn.selected = true
@@ -186,15 +218,6 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         }
     }
     
-    func createTimer(clip: AudioClip, clipIndex: Int) {
-        let currentTime = avPlayer!.currentTime().seconds
-        let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
-        let playAudioAt = clip.offset! - currentTime
-        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
-        audioTimers.append(timer)
-    }
-    
-    
     func bindGestures() {
         timeSlider.addTarget(self, action: "sliderBeganTracking:",
             forControlEvents: UIControlEvents.TouchDown)
@@ -214,17 +237,44 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
     func loadAudioClips() {
         let audioClipQuery = PFQuery(className:"AudioClip")
         audioClipQuery.whereKey("feedback_id", equalTo: feedback!)
+        audioClipQuery.orderByAscending("offset")
         
-        audioClipQuery.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.parseAudioClips = objects!
-                self.createAudioClipDictionary()
-                self.convertVideoDataToNSURL()
-                self.tableView.reloadData()
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
-            }
+//        audioClipQuery.findObjectsInBackgroundWithBlock {
+//            (objects: [PFObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                self.parseAudioClips = objects!
+//            } else {
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+        do {
+            let data = try audioClipQuery.findObjects()
+            self.parseAudioClips = data
+        }
+        catch {
+            print("Error: \(error)")
+        }
+    }
+
+    func loadPulses() {
+        let pulseQuery = PFQuery(className:"Pulse")
+        pulseQuery.whereKey("feedback_id", equalTo: feedback!)
+        pulseQuery.orderByAscending("video_offset")
+        
+//        pulseQuery.findObjectsInBackgroundWithBlock {
+//            (objects: [PFObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                self.parsePulses = objects!
+//            } else {
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+        do {
+            let data = try pulseQuery.findObjects()
+            self.parsePulses = data
+        }
+        catch {
+            print("Error: \(error)")
         }
     }
     
@@ -339,19 +389,40 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         cell.audioClip = audioClip
         return cell
     }
-    
+
+    func createPulseDictionary() {
+        //parsePulses = parsePulses.sort({ $0.objectForKey("video_offset") as! Double < $1.objectForKey("video_offset") as! Double})
+        parsePulses.forEach({ parseObject in
+            let video_offset = parseObject.objectForKey("video_offset") as! Double
+            let clip_offset = parseObject.objectForKey("clip_offset") as! Double
+            let locationX = parseObject.objectForKey("locationX") as! Double
+            let locationY = parseObject.objectForKey("locationY") as! Double
+            let position = CGPoint(x: locationX, y: locationY)
+            //let audioClipPointer = parseObject.objectForKey("audioclip_id") as! PFObject
+
+            let pulse = Pulse(location: position, video_offset: video_offset, clip_offset: clip_offset)
+            //pulse.clipPointer = audioClipPointer
+            pulses.append(pulse)
+        })
+    }
     
     func createAudioClipDictionary() {
+        //parseAudioClips = parseAudioClips.sort({ $0.objectForKey("offset") as! Double < $1.objectForKey("offset") as! Double})
         parseAudioClips.forEach({ parseObject in
             let audioClipParseObject = parseObject.objectForKey("audioFile") as! PFFile
             let audioClipUrl = convertAudioDataToNSURL(audioClipParseObject)
             let duration = parseObject.objectForKey("duration") as! Float64
             let offset = parseObject.objectForKey("offset") as! Double
             let audioClip = AudioClip(path: audioClipUrl, offset: offset, duration: duration)
+            var audioClipPulses: [Pulse] = []
+            while pulses.count > 0 && pulses[0].video_offset == offset {
+                audioClipPulses.append(pulses[0])
+                pulses.removeAtIndex(0)
+            }
+            audioClip.pulses = audioClipPulses
             audioClips.append(audioClip)
-            
         })
-        audioClips = audioClips.sort({ $0.offset < $1.offset })
+        //audioClips = audioClips.sort({ $0.offset < $1.offset })
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -379,16 +450,39 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         super.viewWillAppear(animated)
         timeSlider.value = 0
         videoId = entry?.objectId
-        loadAudioClips()
-
-        if avPlayer != nil {
-            let playerIsPlaying:Bool = avPlayer?.rate > 0
-            if playerIsPlaying == true {
-            } else {
-                playBtn.selected = true
-            }
+        
+        let queue = NSOperationQueue()
+        
+        let op1 = NSBlockOperation {
+            self.loadAudioClips()
         }
         
+        let op2 = NSBlockOperation {
+            self.loadPulses()
+        }
+        
+        let finish = NSBlockOperation {
+            NSOperationQueue.mainQueue().addOperationWithBlock({
+                // The ops have finished
+                self.createPulseDictionary()
+                self.createAudioClipDictionary()
+                self.convertVideoDataToNSURL()
+                self.tableView.reloadData()
+                
+                if self.avPlayer != nil {
+                    let playerIsPlaying:Bool = self.avPlayer?.rate > 0
+                    if playerIsPlaying == true {
+                    } else {
+                        self.playBtn.selected = true
+                    }
+                }
+            })
+        }
+        
+        finish.addDependency(op1)
+        finish.addDependency(op2)
+        
+        queue.addOperations([op1, op2, finish], waitUntilFinished: false)
     }
     
     deinit {
