@@ -16,11 +16,10 @@ class EntryCollectionViewCell: UICollectionViewCell {
             thumbnailData.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 let thumbnailImage = UIImage(data: data!)
                 self.thumbnailImageView?.image = thumbnailImage
-                self.profileThumbnailImageView?.alpha = 0
                 self.profileThumbnailImageView?.image = thumbnailImage
-                
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.profileThumbnailImageView?.alpha = 1
+                    self.thumbnailImageView?.alpha = 1
                 })
             })
         }
@@ -32,6 +31,9 @@ class EntryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.thumbnailImageView?.alpha = 0
+        self.profileThumbnailImageView?.alpha = 0
+
     }
     
     override func prepareForReuse() {
