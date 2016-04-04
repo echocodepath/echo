@@ -202,7 +202,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 //            currentUser["description"] = self.header.descriptionLabel.text
 //            currentUser.saveInBackground()
 //        }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func favoriteUnfavorite(sender: AnyObject) {
