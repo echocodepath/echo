@@ -150,4 +150,21 @@ class ParseClient: NSObject {
         }
         
     }
+    
+    func createPulseWithCompletion(dict: NSDictionary, completion: (pulse: PFObject?, error: NSError?) -> ()) {
+        
+        let pulse = PFObject(className:"Pulse")
+        for (key, val) in dict {
+            pulse[key as! String] = val
+        }
+        
+        pulse.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                completion(pulse: pulse, error: error)
+            } else {
+            }
+        }
+        
+    }
 }
