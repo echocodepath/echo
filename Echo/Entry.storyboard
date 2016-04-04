@@ -124,7 +124,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.78251201923076918" green="0.78251201923076918" blue="0.78251201923076918" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="AF20FDFA-8B94-43B6-BF93-3441E39F0B56"/>
+                                                            <state key="normal" image="BBDEB201-2A06-48E9-A4ED-77C6F390D900"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -168,7 +168,7 @@
                                                             <rect key="frame" x="1" y="0.0" width="369" height="116"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ux-H4-8GT">
-                                                                    <rect key="frame" x="253" y="0.0" width="116" height="116"/>
+                                                                    <rect key="frame" x="249" y="0.0" width="116" height="116"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="116" id="HjK-xx-ErQ"/>
                                                                         <constraint firstAttribute="width" constant="116" id="J6y-ZP-dIp"/>
@@ -190,7 +190,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZT-ZX-uwe">
-                                                                    <rect key="frame" x="0.0" y="1" width="116" height="116"/>
+                                                                    <rect key="frame" x="4" y="1" width="116" height="116"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="116" id="eXz-hk-QeE"/>
                                                                         <constraint firstAttribute="height" constant="116" id="faN-Kp-gq4"/>
@@ -204,8 +204,8 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="2ze-so-SQP" firstAttribute="centerX" secondItem="dT4-4E-TfG" secondAttribute="centerX" id="8XU-Tj-5iN"/>
-                                                                <constraint firstItem="0ux-H4-8GT" firstAttribute="leading" secondItem="2ze-so-SQP" secondAttribute="trailing" constant="10" id="RtM-yW-Zec"/>
-                                                                <constraint firstItem="2ze-so-SQP" firstAttribute="leading" secondItem="hZT-ZX-uwe" secondAttribute="trailing" constant="11" id="Wgc-Lr-YVW"/>
+                                                                <constraint firstItem="0ux-H4-8GT" firstAttribute="leading" secondItem="2ze-so-SQP" secondAttribute="trailing" constant="6" id="RtM-yW-Zec"/>
+                                                                <constraint firstItem="2ze-so-SQP" firstAttribute="leading" secondItem="hZT-ZX-uwe" secondAttribute="trailing" constant="7" id="Wgc-Lr-YVW"/>
                                                                 <constraint firstItem="0ux-H4-8GT" firstAttribute="top" secondItem="dT4-4E-TfG" secondAttribute="top" id="cML-hH-bby"/>
                                                                 <constraint firstItem="2ze-so-SQP" firstAttribute="top" secondItem="dT4-4E-TfG" secondAttribute="top" id="rYx-CD-Cc4"/>
                                                                 <constraint firstItem="hZT-ZX-uwe" firstAttribute="top" secondItem="dT4-4E-TfG" secondAttribute="top" constant="1" id="tne-YL-wwP"/>
@@ -509,7 +509,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AF20FDFA-8B94-43B6-BF93-3441E39F0B56" width="13" height="16">
+        <image name="BBDEB201-2A06-48E9-A4ED-77C6F390D900" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
