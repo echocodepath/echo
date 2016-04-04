@@ -241,7 +241,7 @@ class JournalEntriesViewController: UIViewController, UITableViewDelegate, UITab
                 self.currentMonthOrder.append(entryMonth)
             }
         } else {
-            let shiftedMonth = currentMonth - entryMonth + 1
+            let shiftedMonth = currentMonth - entryMonth
             if  shiftedMonth > 0 {
                 if entryDict[shiftedMonth] != nil {
                     self.entryDict[shiftedMonth]!.append(journalEntry)
