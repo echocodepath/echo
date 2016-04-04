@@ -147,16 +147,19 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         for pulse in pulses {
             let params: [String: NSObject] = ["pulse" : pulse]
             let showPulseAt = pulse.clip_offset
-            NSTimer.scheduledTimerWithTimeInterval(showPulseAt!, target: self, selector: "showPulse:", userInfo: params, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(showPulseAt!, target: self, selector: #selector(FeedbackViewController.showPulse(_:)), userInfo: params, repeats: false)
         }
     }
 
     func showPulse(timer: NSTimer) {
-        let pulse = timer.userInfo!["pulse"] as! Pulse
+        let dict = timer.userInfo! as! NSDictionary
+        let pulse = dict["pulse"] as! Pulse
         let position = pulse.location
 
         //show pulse
         let halo = PulsingHaloLayer()
+        halo.radius = 20
+        halo.backgroundColor = UIColor.whiteColor().CGColor
         halo.repeatCount = 0
         halo.position = position!
         view.layer.addSublayer(halo)
@@ -166,13 +169,14 @@ class FeedbackViewController: UIViewController, AVAudioPlayerDelegate, UITableVi
         let currentTime = avPlayer!.currentTime().seconds
         let params: [String: NSObject] = ["clip" : clip, "index": clipIndex]
         let playAudioAt = clip.offset! - currentTime
-        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: "playAudio:", userInfo: params, repeats: false)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(playAudioAt, target: self, selector: #selector(FeedbackViewController.playAudio(_:)), userInfo: params, repeats: false)
         audioTimers.append(timer)
     }
 
     func playAudio(timer: NSTimer){
-        let clip = (timer.userInfo as! [String : AnyObject])["clip"] as! AudioClip
-        let index = timer.userInfo!["index"] as! Int
+        let dict = timer.userInfo! as! NSDictionary
+        let clip = dict["clip"] as! AudioClip
+        let index = dict["index"] as! Int
         let indexPath = NSIndexPath(forRow: index, inSection: 0)
         
         avPlayer!.pause()
