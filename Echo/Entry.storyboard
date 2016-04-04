@@ -116,7 +116,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="3BF0D571-9698-429A-84D2-30B7A956B10E"/>
+                                                            <state key="normal" image="90F502E1-528C-4D9A-9CCB-EA7AACC2FD1E"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -427,6 +427,9 @@
                                             <constraint firstAttribute="width" constant="299" id="O6I-LK-Gde"/>
                                         </constraints>
                                         <state key="normal" image="Request Feedback Button"/>
+                                        <connections>
+                                            <segue destination="FV8-a5-ZiI" kind="push" identifier="requestFeedback" id="aOF-k6-htV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -480,7 +483,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvC-D9-aWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271.5" y="202"/>
+            <point key="canvasLocation" x="2279.5" y="253"/>
         </scene>
         <!--Notes-->
         <scene sceneID="9LQ-q0-eZk">
@@ -514,7 +517,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3BF0D571-9698-429A-84D2-30B7A956B10E" width="13" height="16">
+        <image name="90F502E1-528C-4D9A-9CCB-EA7AACC2FD1E" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -605,4 +608,7 @@ lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
         <image name="Sad Glass" width="92" height="150"/>
         <image name="chevron-right" width="13" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aOF-k6-htV"/>
+    </inferredMetricsTieBreakers>
 </document>

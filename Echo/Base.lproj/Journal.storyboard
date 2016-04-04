@@ -91,7 +91,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="upT-yB-V2S">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="upT-yB-V2S">
                                                     <rect key="frame" x="11" y="7" width="55" height="55.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55.5" id="cNv-4R-QkF"/>
