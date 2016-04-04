@@ -40,6 +40,7 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
     @IBOutlet weak var teacherAvatar: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var artistIconImageView: UIImageView!
+    @IBOutlet weak var songLabel: UILabel!
     
     @IBAction func onTogglePlayPause(sender: AnyObject) {
         let playerIsPlaying:Bool = avPlayer!.rate > 0
@@ -156,9 +157,9 @@ class FeedbackRequestDetailsViewController: UITableViewController, UITextViewDel
         view.addGestureRecognizer(tap)
         artistIconImageView.image = UIImage(named: "Music Icon")
         if entry != nil {
-            self.entryLabel.text = "\(entry!.valueForKey("song") as! String)"
-            self.title = "\(entry!.valueForKey("song") as! String) - \(entry!.valueForKey("title") as! String)"
-            artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
+            self.entryLabel.text = "\(entry!.valueForKey("title") as! String)"
+            self.songLabel.text = "\(entry!.valueForKey("song") as! String)"
+            self.artistLabel.text = "\(entry!.valueForKey("artist") as! String)"
         }
         
         if teacher != nil {
