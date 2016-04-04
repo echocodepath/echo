@@ -304,7 +304,7 @@ class EntryViewController: UITableViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let kWidth: CGFloat = 100
+        let kWidth = (collectionView.frame.width * 0.3333) - 0.7
         return CGSizeMake(kWidth, kWidth)
     }
     
