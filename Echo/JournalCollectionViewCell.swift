@@ -42,9 +42,9 @@ class JournalCollectionViewCell: UICollectionViewCell {
 //        let labels = [fullDateLabel, dateNumberLabel, timeLabel]
 //        labels.forEach({ formatName($0) })
         
-//        fullDateLabel.font = StyleGuide.Fonts.regularFont(size: 19.0)
-//        dateNumberLabel.font = StyleGuide.Fonts.semiBoldFont(size: 60.0)
-//        timeLabel.font = StyleGuide.Fonts.regularFont(size: 19.0)
+        fullDateLabel.font = StyleGuide.Fonts.regularFont(size: 19.0)
+        dateNumberLabel.font = StyleGuide.Fonts.semiBoldFont(size: 60.0)
+        timeLabel.font = StyleGuide.Fonts.regularFont(size: 19.0)
     }
     
     func formatName(label: UILabel){
