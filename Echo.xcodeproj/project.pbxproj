@@ -73,6 +73,9 @@
 		F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */; };
 		F577A85D1C8DF3960085974D /* TeacherFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */; };
 		F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */; };
+		F58C23B91D1E357A00BA1BE1 /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C23B81D1E357A00BA1BE1 /* TeacherViewController.swift */; };
+		F58C23BB1D1E3DBD00BA1BE1 /* Teacher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F58C23BA1D1E3DBD00BA1BE1 /* Teacher.storyboard */; };
+		F58C23BD1D1E445300BA1BE1 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C23BC1D1E445300BA1BE1 /* TeacherTableViewCell.swift */; };
 		F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */; };
 		F5C2D6071CACB40800AC81CF /* Upload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5C2D6051CACB40800AC81CF /* Upload.storyboard */; };
 		F5C2D6091CACB5C400AC81CF /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C2D6081CACB5C400AC81CF /* HomeTabViewController.swift */; };
@@ -166,6 +169,9 @@
 		F577A8591C8DF2590085974D /* FeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestViewController.swift; sourceTree = "<group>"; };
 		F577A85C1C8DF3960085974D /* TeacherFeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherFeedbackCell.swift; sourceTree = "<group>"; };
 		F577A8601C8DF72D0085974D /* FeedbackRequestSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackRequestSentViewController.swift; sourceTree = "<group>"; };
+		F58C23B81D1E357A00BA1BE1 /* TeacherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		F58C23BA1D1E3DBD00BA1BE1 /* Teacher.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Teacher.storyboard; sourceTree = "<group>"; };
+		F58C23BC1D1E445300BA1BE1 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		F5904AA81C9E6A7E00829F1B /* FeedbackRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedbackRecording.storyboard; sourceTree = "<group>"; };
 		F5C2D6061CACB40800AC81CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Upload.storyboard; sourceTree = "<group>"; };
 		F5C2D6081CACB5C400AC81CF /* HomeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				EF0AF2471C925430005CDCA2 /* Journal Entries Flow */,
 				F5904AA71C9E3B3D00829F1B /* Inbox */,
 				EFDCA1D31C8DE35600BF0393 /* ExploreViewController.swift */,
+				F58C23B81D1E357A00BA1BE1 /* TeacherViewController.swift */,
 				EFDDB50A1C9B5F510021DF36 /* SettingsViewController.swift */,
 				B233F6F61CA27335005C2D6F /* NavigationController.swift */,
 				F51262DB1CA931A900D942D6 /* NotesViewController.swift */,
@@ -304,6 +311,7 @@
 				B233F71E1CA7B529005C2D6F /* JournalCollectionViewCell.swift */,
 				B233F7201CA8972D005C2D6F /* JournalHeaderCell.swift */,
 				B25836261CAE346D0055EC0C /* CollectionHeaderFooterView.swift */,
+				F58C23BC1D1E445300BA1BE1 /* TeacherTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 				EFDDB5081C9B5ED70021DF36 /* Settings.storyboard */,
 				F53274CF1CA8D89E00F88F37 /* DualVideo.storyboard */,
 				F51262D91CA92CA600D942D6 /* Notes.storyboard */,
+				F58C23BA1D1E3DBD00BA1BE1 /* Teacher.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 			files = (
 				F53274D01CA8D89E00F88F37 /* DualVideo.storyboard in Resources */,
 				F5904AA91C9E6A7E00829F1B /* FeedbackRecording.storyboard in Resources */,
+				F58C23BB1D1E3DBD00BA1BE1 /* Teacher.storyboard in Resources */,
 				EF0AF2421C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard in Resources */,
 				F56D5E001C855AF6006A7D7A /* LaunchScreen.storyboard in Resources */,
 				EFDCA1DA1C8DF60700BF0393 /* .gitignore in Resources */,
@@ -525,6 +535,7 @@
 				F56D5DF81C855AF6006A7D7A /* LoginViewController.swift in Sources */,
 				F501EDBD1C97C2EE003581A5 /* AcceptedRequestsViewController.swift in Sources */,
 				B233F6F31C9F64B7005C2D6F /* FeedbackSendReceiptViewController.swift in Sources */,
+				F58C23BD1D1E445300BA1BE1 /* TeacherTableViewCell.swift in Sources */,
 				F515CE041C8EF62A00EC7CED /* EntryCollectionViewCell.swift in Sources */,
 				F5355F961CA769B000BA707E /* DualHomeViewController.swift in Sources */,
 				F5C5C63C1CAB75E700A32E82 /* VideoViewController.swift in Sources */,
@@ -542,6 +553,7 @@
 				F577A8611C8DF72D0085974D /* FeedbackRequestSentViewController.swift in Sources */,
 				F577A85A1C8DF2590085974D /* FeedbackRequestViewController.swift in Sources */,
 				F56D5DF61C855AF6006A7D7A /* AppDelegate.swift in Sources */,
+				F58C23B91D1E357A00BA1BE1 /* TeacherViewController.swift in Sources */,
 				F501EDBB1C97C006003581A5 /* InboxTabBarController.swift in Sources */,
 				EFDDB50B1C9B5F510021DF36 /* SettingsViewController.swift in Sources */,
 				B22EFE041C98A5160048EF5E /* FeedbackTableViewCell.swift in Sources */,

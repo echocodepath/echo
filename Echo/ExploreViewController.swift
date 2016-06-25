@@ -15,15 +15,13 @@ import AFNetworking
 
 class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var teachersGridView: UICollectionView!
     @IBOutlet weak var entriesGridView: UICollectionView!
     @IBOutlet weak var coverImageView: UIImageView!
     
     var refreshControlTableView: UIRefreshControl!
 
     var controller: AVPlayerViewController?
-    
-    var teachers: [PFUser] = []
+
     var entries: [PFObject] = []
     
     var videoUrl: NSURL?
@@ -36,28 +34,19 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
 //            
 //        }
         self.navigationController?.navigationBarHidden = false
-        teachersGridView.delegate   = self
-        teachersGridView.dataSource = self
         entriesGridView.delegate    = self
         entriesGridView.dataSource  = self
         
         // TODO: Implement Parse caching for teachers and entries, way too slow
-        fetchInstructors()
         fetchEntries()
         
         // Add pull to refresh functionality
         refreshControlTableView = UIRefreshControl()
         refreshControlTableView.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-        teachersGridView?.insertSubview(refreshControlTableView, atIndex: 0)
         entriesGridView?.insertSubview(refreshControlTableView, atIndex: 0)
         
-        teachersGridView.backgroundColor = UIColor.whiteColor()
         entriesGridView.backgroundColor = UIColor.whiteColor()
 
-        if let teacherTayout = teachersGridView.collectionViewLayout as? UICollectionViewFlowLayout {
-            teacherTayout.minimumInteritemSpacing = 1
-            teacherTayout.minimumLineSpacing = 1
-        }
         if let entriesLayout = entriesGridView.collectionViewLayout as? UICollectionViewFlowLayout {
             entriesLayout.minimumInteritemSpacing = 1
             entriesLayout.minimumLineSpacing = 1
@@ -89,26 +78,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
                 })
             } else {
                 print(error)
-            }
-        }
-    }
-    
-    
-    func fetchInstructors(){
-        let teacherQuery = PFUser.query()!
-        teacherQuery.whereKey("is_teacher", equalTo: "true")
-        teacherQuery.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        let user = object as! PFUser
-                        self.teachers.append(user)
-                        self.teachersGridView.reloadData()
-                    }
-                }
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }
@@ -166,54 +135,20 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == teachersGridView {
-            return self.teachers.count ?? 0
-        } else {
-            return self.entries.count ?? 0
-        }
+        return self.entries.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if collectionView != teachersGridView {
-            let kWidth = (collectionView.frame.width * 0.3333) - 1
-            return CGSizeMake(kWidth, kWidth)
-        } else {
-            let kWidth: CGFloat = 100
-            return CGSizeMake(kWidth, kWidth)
-        }
-
+        let kWidth = (collectionView.frame.width * 0.3333) - 1
+        return CGSizeMake(kWidth, kWidth)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if collectionView == teachersGridView {
-            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
-            let teacherImage = self.teachers[indexPath.row]["profilePhotoUrl"] as? String
-            
-            cell.teacherImage.alpha = 0
-            cell.teacherImage.setImageWithURL(NSURL(string: teacherImage!)!)
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                cell.teacherImage.alpha = 1.0
-            })
-            
-            return cell
-        } else {
-            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-            let entry = self.entries[indexPath.row]
-            cell.entry = entry
-            return cell
-        }
+        let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
+        let entry = self.entries[indexPath.row]
+        cell.entry = entry
+        return cell
     }
-    
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-//    {
-//        if collectionView == teachersGridView {
-//            let cell = teachersGridView.dequeueReusableCellWithReuseIdentifier("TeacherCollectionViewCell", forIndexPath: indexPath) as! TeacherCollectionViewCell
-//            //performSegueWithIdentifier("exploreToProfile", sender: cell)
-//        } else {
-//            let cell = entriesGridView.dequeueReusableCellWithReuseIdentifier("EntryCollectionViewCell", forIndexPath: indexPath) as! EntryCollectionViewCell
-////            performSegueWithIdentifier("exploreToEntry", sender: cell)
-//        }
-//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -233,13 +168,6 @@ class ExploreViewController: UIViewController, UICollectionViewDataSource, UICol
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-                case "exploreToProfile":
-                    let cell = sender as! TeacherCollectionViewCell
-                    if let indexPath = self.teachersGridView.indexPathForCell(cell) {
-                        let vc = segue.destinationViewController as! ProfileViewController
-                        vc.profileUser = self.teachers[indexPath.row]
-                    }
-                
                 case "exploreToEntry":
                     let cell = sender as! EntryCollectionViewCell
                     if let indexPath = self.entriesGridView.indexPathForCell(cell) {
