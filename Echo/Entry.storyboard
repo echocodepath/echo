@@ -124,7 +124,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="eKN-eo-4Fw"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.78251201923076918" green="0.78251201923076918" blue="0.78251201923076918" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="E1567C18-6D27-4D34-8D02-0177958C519F"/>
+                                                            <state key="normal" image="45FD7429-A7C6-4E23-8E89-12BDDF75703E"/>
                                                             <connections>
                                                                 <action selector="onTogglePlayPause:" destination="ojq-4h-W5Y" eventType="touchUpInside" id="Z8h-9Y-9cP"/>
                                                             </connections>
@@ -597,9 +597,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="17" height="14"/>
-        <image name="Dual Button" width="195" height="195"/>
-        <image name="E1567C18-6D27-4D34-8D02-0177958C519F" width="13" height="16">
+        <image name="45FD7429-A7C6-4E23-8E89-12BDDF75703E" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -682,6 +680,8 @@ hwCSAJQAlgCYAJ0AoACiAKQApgCoAK0AxADGAMgRGhEfESoRMxFGEUoRVRFeEWMRaxFuEXMRghGGEY0R
 lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
+        <image name="Back" width="17" height="14"/>
+        <image name="Dual Button" width="195" height="195"/>
         <image name="Feedback Square Button" width="115" height="115"/>
         <image name="Notes Button" width="195" height="195"/>
         <image name="Request Feedback Button" width="295" height="55"/>

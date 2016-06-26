@@ -25,23 +25,32 @@ class AuthenticatedSetupViewController: UIViewController {
         appDelegate.window?.rootViewController = loginNav
     }
     
-    func openHomePage() {
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        let homePageNav = NavigationController(rootViewController: homeViewController)
+//    func openHomePage() {
+//        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+//        let homePageNav = NavigationController(rootViewController: homeViewController)
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        appDelegate.window?.rootViewController = homePageNav
+//    }
+    
+    func openHomeTab(){
+        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeTabViewController") as! HomeTabViewController
+        //let homePageNav = NavigationController(rootViewController: homeViewController)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homePageNav
+        appDelegate.window?.rootViewController = homeViewController
     }
     
     @IBAction func onSelectDanceTeacher(sender: AnyObject) {
         let responseDict: [String: String] = ["is_teacher": "true"]
         ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
-        openHomePage()
+        //openHomePage()
+        openHomeTab()
     }
     
     @IBAction func onSelectDanceStudent(sender: AnyObject) {
         let responseDict: [String: String] = ["is_teacher": "false"]
         ParseClient.sharedInstance.setCurrentUserWithDict(responseDict)
-        openHomePage()
+        //openHomePage()
+        openHomeTab()
     }
     
     override func viewDidLoad() {
