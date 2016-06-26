@@ -70,6 +70,14 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

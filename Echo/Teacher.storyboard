@@ -21,38 +21,38 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherTableViewCell" rowHeight="83" id="sOS-o8-KiN" customClass="TeacherTableViewCell" customModule="Echo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherTableViewCell" id="sOS-o8-KiN" customClass="TeacherTableViewCell" customModule="Echo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sOS-o8-KiN" id="KBF-JB-SZP">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Christine Hong" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-9t-6vl">
-                                                    <rect key="frame" x="95" y="5" width="309" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Here is me talking about myself. Yada yada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a7-Xr-5Tt">
+                                                    <rect key="frame" x="95" y="51" width="309" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="11"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christine Hong" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-9t-6vl">
+                                                    <rect key="frame" x="95" y="6" width="309" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="San Francisco, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4L-ON-Pgj">
-                                                    <rect key="frame" x="95" y="30" width="309" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4L-ON-Pgj">
+                                                    <rect key="frame" x="95" y="28" width="309" height="18"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBQ-iB-22e">
-                                                    <rect key="frame" x="20" y="6" width="65" height="60.5"/>
+                                                    <rect key="frame" x="22" y="6" width="65" height="60.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="1cj-0m-qm6"/>
                                                         <constraint firstAttribute="width" constant="65" id="pKZ-Uv-ngM"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Here is me talking about myself. Yada yada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a7-Xr-5Tt">
-                                                    <rect key="frame" x="95" y="52" width="309" height="19.5"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="11"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="5a7-Xr-5Tt" secondAttribute="trailing" constant="10" id="1Xd-0Y-71H"/>
@@ -70,16 +70,20 @@
                                                 <constraint firstItem="5a7-Xr-5Tt" firstAttribute="leading" secondItem="qBQ-iB-22e" secondAttribute="trailing" constant="10" id="Z5c-QX-tzD"/>
                                                 <constraint firstItem="5a7-Xr-5Tt" firstAttribute="top" secondItem="qBQ-iB-22e" secondAttribute="bottom" constant="5" id="b9u-nH-6z8"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5a7-Xr-5Tt" secondAttribute="bottom" constant="5" id="e0H-sm-CpH"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5a7-Xr-5Tt" secondAttribute="bottom" constant="5" id="i1H-QB-1FQ"/>
                                                 <constraint firstItem="m4L-ON-Pgj" firstAttribute="leading" secondItem="qBQ-iB-22e" secondAttribute="trailing" constant="10" id="nQh-1E-2Au"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qBQ-iB-22e" secondAttribute="bottom" constant="8" id="pVd-td-MEy"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qBQ-iB-22e" secondAttribute="bottom" constant="5" id="w2B-H7-So7"/>
                                                 <constraint firstAttribute="bottom" secondItem="5a7-Xr-5Tt" secondAttribute="bottom" constant="5" id="z2u-Ll-bqG"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="PYd-40-PI5"/>
+                                                    <exclude reference="w2B-H7-So7"/>
                                                     <exclude reference="IwR-3G-Cib"/>
                                                     <exclude reference="MTR-yF-j8Z"/>
                                                     <exclude reference="b9u-nH-6z8"/>
+                                                    <exclude reference="e0H-sm-CpH"/>
                                                     <exclude reference="z2u-Ll-bqG"/>
                                                 </mask>
                                             </variation>
@@ -103,7 +107,9 @@
                             <constraint firstItem="ImJ-hv-YNu" firstAttribute="top" secondItem="3gg-h0-eqT" secondAttribute="bottom" id="tqI-od-iMN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Find Teachers" id="FaW-R9-hCl"/>
+                    <navigationItem key="navigationItem" title="Find Teachers" id="FaW-R9-hCl">
+                        <barButtonItem key="rightBarButtonItem" image="Find Teacher Icon" id="Ycs-a9-LDg"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="ImJ-hv-YNu" id="qSS-FN-TbS"/>
@@ -122,4 +128,7 @@
             <point key="canvasLocation" x="1282.5" y="120"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Find Teacher Icon" width="29" height="30"/>
+    </resources>
 </document>
