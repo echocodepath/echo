@@ -11,12 +11,6 @@ import FBSDKLoginKit
 import ParseFacebookUtilsV4
 
 class AuthenticatedSetupViewController: UIViewController {
-
-    @IBAction func onLogout(sender: AnyObject) {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        openLoginPage()
-    }
     
     func openLoginPage() {
         let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
@@ -55,8 +49,14 @@ class AuthenticatedSetupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Teacher BG")!)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

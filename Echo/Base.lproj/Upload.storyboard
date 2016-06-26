@@ -124,7 +124,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qg3-Di-WvY" kind="replace" splitViewControllerTargetIndex="1" id="SqZ-3c-b8E"/>
+                                    <segue destination="Qg3-Di-WvY" kind="push" id="SqZ-3c-b8E"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -263,6 +263,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        if currentPfUser == nil {
+            currentPfUser = PFUser.currentUser()
+        }
+        
         videosCollectionView.backgroundColor = UIColor.whiteColor()
         if let layout = videosCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 1

@@ -13,7 +13,7 @@ import Parse
 
 class LoginViewController: UIViewController {
 //, FBSDKLoginButtonDelegate
-    lazy var carousel = CarouselView()
+//    lazy var carousel = CarouselView()
 
     @IBOutlet weak var loginButton: UIButton!
 //    func generateRandomColor() -> UIColor {
