@@ -95,9 +95,6 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "myProfileSegue":
-                let vc = segue.destinationViewController as! ProfileViewController
-                vc.profileUser = PFUser.currentUser()
             case "teacherToProfileSegue":
                 if let indexPath = self.tableView.indexPathForSelectedRow{
                     let vc = segue.destinationViewController as! ProfileViewController

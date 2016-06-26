@@ -108,7 +108,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Teachers" id="FaW-R9-hCl">
-                        <barButtonItem key="rightBarButtonItem" image="Find Teacher Icon" id="Ycs-a9-LDg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="Ycs-a9-LDg"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -128,7 +128,4 @@
             <point key="canvasLocation" x="1282.5" y="120"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Find Teacher Icon" width="29" height="30"/>
-    </resources>
 </document>
