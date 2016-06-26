@@ -197,12 +197,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     lazy var header: ProfileHeader = ProfileHeader(frame: CGRect.zero)
     
     @IBAction func onBackPress(sender: AnyObject) {
-        // Save text to user description
-//        if let currentUser = self.profileUser {
-//            currentUser["description"] = self.header.descriptionLabel.text
-//            currentUser.saveInBackground()
-//        }
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    @IBAction func onLogout(sender: AnyObject) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let loginNav = NavigationController(rootViewController: loginViewController)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginNav
     }
     
     func favoriteUnfavorite(sender: AnyObject) {
