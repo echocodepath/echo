@@ -91,7 +91,7 @@ class FeedbackRequestViewController: UIViewController, UITableViewDataSource, UI
                 cell.profileImageLabel.alpha = 1
             })
         } else {
-            cell.teacherName.text = "Please add some favorite teachers"
+            cell.teacherName.text = "Please add some favorite teachers below"
         }
         cell.backgroundColor = UIColor.clearColor()
 
