@@ -45,10 +45,10 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let myId = currentPfUser!.objectId
                     for object in objects {
                         let user = object as! PFUser
-                        if user.objectId! != myId! {
+                        //if user.objectId! != myId! {
                             self.teachers.append(user)
                             self.tableView.reloadData()
-                        }
+                        //}
                     }
                 }
             } else {
