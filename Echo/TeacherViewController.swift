@@ -42,10 +42,13 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
             if error == nil {
                 if let objects = objects {
                     self.teachers = []
+                    let myId = currentPfUser!.objectId
                     for object in objects {
                         let user = object as! PFUser
-                        self.teachers.append(user)
-                        self.tableView.reloadData()
+                        if user.objectId! != myId! {
+                            self.teachers.append(user)
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             } else {
@@ -70,6 +73,14 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,9 +95,6 @@ class TeacherViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "myProfileSegue":
-                let vc = segue.destinationViewController as! ProfileViewController
-                vc.profileUser = PFUser.currentUser()
             case "teacherToProfileSegue":
                 if let indexPath = self.tableView.indexPathForSelectedRow{
                     let vc = segue.destinationViewController as! ProfileViewController

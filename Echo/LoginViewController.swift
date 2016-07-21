@@ -13,32 +13,32 @@ import Parse
 
 class LoginViewController: UIViewController {
 //, FBSDKLoginButtonDelegate
-    lazy var carousel = CarouselView()
+//    lazy var carousel = CarouselView()
 
     @IBOutlet weak var loginButton: UIButton!
-    func generateRandomColor() -> UIColor {
-        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
-        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
-        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
-    }
+//    func generateRandomColor() -> UIColor {
+//        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
+//        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
+//        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
+//        
+//        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "login_background.png")!)
-        view.addSubview(carousel)
-        let views = ["carousel" : carousel]
-        carousel.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
-        
-        for index in 0...3 {
-            let view = UIImageView(image: UIImage(named: "help_\(index)"))
-            view.contentMode = .ScaleAspectFit
-            view.backgroundColor = generateRandomColor()
-            carousel.views.append(view)
-        }
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+//        view.addSubview(carousel)
+//        let views = ["carousel" : carousel]
+//        carousel.translatesAutoresizingMaskIntoConstraints = false
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[carousel]|", options: [], metrics: nil, views: views))
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[carousel]|", options: [], metrics: nil, views: views))
+//        
+//        for index in 0...3 {
+//            let view = UIImageView(image: UIImage(named: "help_\(index)"))
+//            view.contentMode = .ScaleAspectFit
+//            view.backgroundColor = generateRandomColor()
+//            carousel.views.append(view)
+//        }
         view.bringSubviewToFront(loginButton)
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("user is not logged in")
@@ -46,6 +46,11 @@ class LoginViewController: UIViewController {
             //openHomePage()
             openHomeTab()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func onLogin(sender: AnyObject) {
@@ -72,12 +77,12 @@ class LoginViewController: UIViewController {
         appDelegate.window?.rootViewController = authSetupPageNav
     }
     
-    func openHomePage(){
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        let homePageNav = NavigationController(rootViewController: homeViewController)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homePageNav
-    }
+//    func openHomePage(){
+//        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+//        let homePageNav = NavigationController(rootViewController: homeViewController)
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        appDelegate.window?.rootViewController = homePageNav
+//    }
     
     func openHomeTab(){
         let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeTabViewController") as! HomeTabViewController

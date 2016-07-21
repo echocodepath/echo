@@ -98,6 +98,11 @@
                                 <action selector="onBackPress:" destination="QSf-33-f4J" id="ftq-TO-ur4"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="W2b-la-52w">
+                            <connections>
+                                <action selector="onLogout:" destination="QSf-33-f4J" id="FhW-S2-O5b"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
