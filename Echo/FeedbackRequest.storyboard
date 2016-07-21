@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Explore-->
+        <!--Teacher-->
         <scene sceneID="cIy-Ry-I8T">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Explore" id="eIt-p2-zaS" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Explore" storyboardName="Teacher" id="eIt-p2-zaS" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="syn-Jz-fzB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLa-h6-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -255,7 +255,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="s2o-lW-F2C"/>
                                                             </constraints>
                                                             <color key="tintColor" red="0.45560687054358995" green="0.45560687054358995" blue="0.45560687054358995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="D66977BE-D064-4B71-8015-209420ADFCD8">
+                                                            <state key="normal" image="60F25C69-B607-4183-970A-AD0161EF49D9">
                                                                 <color key="titleColor" red="0.93277243589743586" green="0.93277243589743586" blue="0.93277243589743586" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
@@ -515,8 +515,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="17" height="14"/>
-        <image name="D66977BE-D064-4B71-8015-209420ADFCD8" width="13" height="16">
+        <image name="60F25C69-B607-4183-970A-AD0161EF49D9" width="13" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -599,6 +598,7 @@ hwCSAJQAlgCYAJ0AoACiAKQApgCoAK0AxADGAMgRGhEfESoRMxFGEUoRVRFeEWMRaxFuEXMRghGGEY0R
 lRGiEacRqRGrEbARuBG7EcARyBHLEd0R4BHlAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAEec
 </mutableData>
         </image>
+        <image name="Back" width="17" height="14"/>
         <image name="More Teachers Button" width="500" height="94"/>
         <image name="Send Receipt BG" width="640" height="1136"/>
         <image name="Triangle 91" width="47" height="27"/>

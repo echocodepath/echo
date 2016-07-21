@@ -229,8 +229,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             request["favorited"] = profileUser
             request["favoriter"] = currentPfUser
             request["username"] = profileUser?.objectForKey("username") as! String
-            request["location"] = profileUser?.objectForKey("location") as! String
-            request["profileUrl"] = profileUser?.objectForKey("profilePhotoUrl") as! String
+            if let location =  profileUser?.objectForKey("location") {
+                request["location"] = location as! String
+            }
+            if let profileUrl = profileUser?.objectForKey("profilePhotoUrl") {
+                request["profileUrl"] = profileUrl as! String
+            }
             
             ParseClient.sharedInstance.createFavoriteWithCompletion(request) { (favorite, error) -> () in
                 print("Yay saved favorite!")

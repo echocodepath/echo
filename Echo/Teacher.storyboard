@@ -107,9 +107,7 @@
                             <constraint firstItem="ImJ-hv-YNu" firstAttribute="top" secondItem="3gg-h0-eqT" secondAttribute="bottom" id="tqI-od-iMN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Find Teachers" id="FaW-R9-hCl">
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="Ycs-a9-LDg"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Find Teachers" id="FaW-R9-hCl"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="ImJ-hv-YNu" id="qSS-FN-TbS"/>
