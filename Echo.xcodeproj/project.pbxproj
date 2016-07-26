@@ -129,7 +129,6 @@
 		B2B1115B1C8F501A009695A6 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		B2EFB6BB1C9B97B50037E888 /* InspirationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationGenerator.swift; sourceTree = "<group>"; };
 		B2FE9E301CAA1BBC0086DDE5 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
-		B2FE9E371CAB81C30086DDE5 /* EZAudioiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZAudioiOS.framework; path = Carthage/Build/iOS/EZAudioiOS.framework; sourceTree = "<group>"; };
 		EF0AF2411C9251C9005CDCA2 /* AcceptFeedbackRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AcceptFeedbackRequest.storyboard; sourceTree = "<group>"; };
 		EF0AF2431C9253E6005CDCA2 /* AcceptFeedbackRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptFeedbackRequestViewController.swift; sourceTree = "<group>"; };
 		EFBE10B31C9A14500018C251 /* StyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 		8F7315F5DEB0A5F67DD3C105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B2FE9E371CAB81C30086DDE5 /* EZAudioiOS.framework */,
 				1EC250F24193B2CE4A475B15 /* Pods_Echo.framework */,
 			);
 			name = Frameworks;
@@ -720,11 +718,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.echo.EchoDance;
@@ -740,11 +736,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/EZAudio.framework/Headers";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Echo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.echo.EchoDance;
