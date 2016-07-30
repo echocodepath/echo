@@ -27,7 +27,7 @@
         
         // default
         self.radius = 60;
-        self.animationDuration = 1;
+        self.animationDuration = 3;
         self.pulseInterval = 0;
         self.backgroundColor = [[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] CGColor];
 
@@ -66,7 +66,7 @@
     
     self.animationGroup = [CAAnimationGroup animation];
     self.animationGroup.duration = self.animationDuration + self.pulseInterval;
-    self.animationGroup.repeatCount = 1;
+    self.animationGroup.repeatCount = INFINITY;
     self.animationGroup.removedOnCompletion = NO;
     self.animationGroup.timingFunction = defaultCurve;
     
@@ -77,7 +77,7 @@
     
     CAKeyframeAnimation *opacityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.duration = self.animationDuration;
-    opacityAnimation.values = @[@0.75, @0.75, @0.5];
+    opacityAnimation.values = @[@0.45, @0.45, @0];
     opacityAnimation.keyTimes = @[@0, @0.2, @1];
     opacityAnimation.removedOnCompletion = NO;
     

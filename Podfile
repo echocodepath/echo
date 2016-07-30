@@ -2,7 +2,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Echo' do
-	pod "PulsingHalo"
+	pod 'PulsingHalo'
 	pod 'AFNetworking'
 	pod 'ParseFacebookUtilsV4','~>1.11.0'
 	pod 'Parse'
