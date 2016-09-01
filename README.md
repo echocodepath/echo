@@ -1,5 +1,6 @@
 # Echo
-[App Demo](https://www.youtube.com/watch?v=NLsKYH5lfFY)
+## [App Demo](https://www.youtube.com/watch?v=NLsKYH5lfFY)
+
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/NLsKYH5lfFY/0.jpg)](http://www.youtube.com/watch?v=NLsKYH5lfFY "Video Title")
 
 ## Features
@@ -7,7 +8,7 @@
 ![Uploading Video](Flow_1.gif)
 
 ### 2. Dual playback mode for journal videos
-![Dual Playback](Flow_2.gif
+![Dual Playback](Flow_2.gif)
 
 ### 3. Recording audio and pulse feedback for videos
 ![Record Feedback](Flow_3.gif)
@@ -19,4 +20,4 @@
 ![Inbox](Flow_4_Part_2.gif)
 
 ### 6. Get inspired by discovering video content from others
-![Explore](Flow_5_-_Explore.gif)
+![Explore](Flow_5.gif)
